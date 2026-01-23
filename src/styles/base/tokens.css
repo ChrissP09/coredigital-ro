@@ -1,0 +1,25 @@
+﻿:root {
+  --color-brand-blue: 213 94% 54%;
+  --color-reviews-green: 152 62% 38%;
+  --color-ai-purple: 268 74% 58%;
+
+  --color-bg: 36 35% 96%;
+  --color-surface: 0 0% 100%;
+  --color-text: 220 16% 16%;
+  --color-muted: 220 9% 46%;
+  --color-border: 220 16% 90%;
+
+  --gradient-hero: linear-gradient(135deg, hsl(36 52% 92%) 0%, hsl(36 35% 96%) 100%);
+
+  --font-sans: 'Source Sans 3', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Playfair Display', 'Times New Roman', serif;
+
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+
+  --shadow-soft: 0 12px 30px rgba(15, 23, 42, 0.12);
+}

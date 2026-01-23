@@ -1,0 +1,47 @@
+﻿@layer components {
+  .site-body {
+    @apply bg-bg;
+  }
+
+  .site-main {
+    @apply mx-auto max-w-6xl px-6 pb-16 pt-12;
+  }
+
+  .page-hero {
+    @apply rounded-md bg-hero p-8 shadow-soft;
+  }
+
+  .page-hero__title {
+    @apply mb-3 text-4xl md:text-5xl;
+  }
+
+  .page-hero__lead {
+    @apply text-lg;
+  }
+
+  .page-section {
+    @apply mt-12;
+  }
+
+  .page-section__title {
+    @apply mb-3;
+  }
+
+  .page-section__list {
+    @apply text-muted;
+  }
+
+  .page-section__item {
+    @apply mb-2;
+  }
+
+  @media (max-width: 720px) {
+    .site-main {
+      @apply px-5 pb-14 pt-10;
+    }
+
+    .page-hero {
+      @apply p-6;
+    }
+  }
+}

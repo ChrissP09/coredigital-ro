@@ -1,0 +1,26 @@
+﻿@layer components {
+  .site-footer {
+    @apply mt-24 border-t border-border bg-surface;
+  }
+
+  .site-footer__inner {
+    @apply mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-6;
+  }
+
+  .site-footer__text {
+    @apply text-muted;
+  }
+
+  .site-footer__links {
+    @apply flex list-none gap-4;
+  }
+
+  .site-footer__link {
+    @apply font-semibold text-ink transition-colors;
+  }
+
+  .site-footer__link:hover,
+  .site-footer__link:focus-visible {
+    @apply text-brand;
+  }
+}

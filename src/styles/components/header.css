@@ -1,0 +1,30 @@
+﻿@layer components {
+  .site-header {
+    @apply bg-surface shadow-soft;
+  }
+
+  .site-header__inner {
+    @apply mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-5;
+  }
+
+  .site-header__brand {
+    @apply font-display text-lg tracking-wide;
+  }
+
+  .site-header__nav {
+    @apply flex;
+  }
+
+  .site-header__list {
+    @apply flex list-none gap-4;
+  }
+
+  .site-header__link {
+    @apply font-semibold text-ink transition-colors;
+  }
+
+  .site-header__link:hover,
+  .site-header__link:focus-visible {
+    @apply text-brand;
+  }
+}

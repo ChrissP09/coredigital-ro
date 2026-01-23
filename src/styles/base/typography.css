@@ -1,0 +1,82 @@
+﻿@layer base {
+  html {
+    font-size: var(--text-base);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: hsl(var(--color-text));
+    background: hsl(var(--color-bg));
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.2;
+    color: hsl(var(--color-text));
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  h4 {
+    @apply text-xl;
+  }
+
+  h5 {
+    @apply text-lg;
+  }
+
+  h6 {
+    @apply text-base;
+  }
+
+  p {
+    color: hsl(var(--color-muted));
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  a:hover,
+  a:focus-visible {
+    color: hsl(var(--color-brand-blue));
+  }
+
+  ul,
+  ol {
+    padding-left: theme('spacing.6');
+  }
+
+  .skip-link {
+    position: absolute;
+    left: -999px;
+    top: theme('spacing.4');
+    background: hsl(var(--color-brand-blue));
+    color: #ffffff;
+    padding: theme('spacing.2') theme('spacing.4');
+    border-radius: var(--radius-sm);
+    z-index: 1000;
+  }
+
+  .skip-link:focus {
+    left: theme('spacing.4');
+  }
+}

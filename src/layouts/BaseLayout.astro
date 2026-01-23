@@ -1,0 +1,25 @@
+﻿---
+const { title = 'Site', description = '' } = Astro.props;
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/main.css';
+---
+
+<!doctype html>
+<html lang="ro" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {description ? <meta name="description" content={description} /> : null}
+    <title>{title}</title>
+  </head>
+  <body class="site-body">
+    <a class="skip-link" href="#main-content">Sari la conținut</a>
+    <Header />
+    <main id="main-content" class="site-main" role="main">
+      <slot />
+    </main>
+    <Footer />
+    <script type="module" src="/src/scripts/main.js" defer></script>
+  </body>
+</html>

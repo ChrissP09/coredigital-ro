@@ -23,6 +23,16 @@ let svg = raw;
 svg = svg.replace(/width=\"[^\"]*\"/i, `width="${size}"`);
 svg = svg.replace(/height=\"[^\"]*\"/i, `height="${size}"`);
 
+if (/style=\"/i.test(svg)) {
+  svg = svg.replace(/style=\"([^\"]*)\"/i, (match, style) => {
+    if (/display\s*:\s*block/i.test(style)) return match;
+    const normalized = style.trim().replace(/;?\s*$/, ';');
+    return `style="${normalized} display:block;"`;
+  });
+} else {
+  svg = svg.replace(/<svg\b/i, `<svg style="display:block"`);
+}
+
 if (className) {
   if (/class=\"/i.test(svg)) {
     svg = svg.replace(/class=\"([^\"]*)\"/i, `class="$1 ${className}"`);
@@ -41,4 +51,3 @@ if (!/focusable=\"/i.test(svg)) {
 ---
 
 <Fragment set:html={svg} />
-

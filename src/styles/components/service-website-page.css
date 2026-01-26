@@ -3,6 +3,13 @@
     display: grid;
     gap: var(--space-7);
     align-items: center;
+    position: relative;
+  }
+
+  .website-hero--align {
+    background: var(--gradient-hero);
+    border: 1px solid hsl(var(--color-border));
+    box-shadow: var(--shadow-soft);
   }
 
   .website-hero__actions {
@@ -34,6 +41,13 @@
   .website-section__lead {
     max-inline-size: var(--content-narrow);
     color: hsl(var(--color-muted));
+  }
+
+  .website-section__header {
+    display: grid;
+    gap: var(--space-2);
+    margin-bottom: var(--space-5);
+    max-inline-size: var(--content-narrow);
   }
 
   .page__grid.website-grid--2,
@@ -153,6 +167,118 @@
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-3);
+  }
+
+  /* Panels for probleme */
+  .website-panels {
+    display: grid;
+    gap: var(--space-5);
+    grid-template-columns: 1fr;
+  }
+
+  .website-panel {
+    position: relative;
+    border-radius: var(--radius-xl);
+    border: 1px solid hsl(var(--color-border));
+    background: linear-gradient(180deg, rgba(37, 99, 235, 0.04), rgba(255, 255, 255, 0.9));
+    padding: var(--space-6);
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+  }
+
+  .website-panel::after {
+    content: '';
+    position: absolute;
+    inset: 12% auto auto 55%;
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(closest-side, rgba(37, 99, 235, 0.18), transparent 60%);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .website-panel__badge {
+    display: inline-flex;
+    gap: var(--space-2);
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(37, 99, 235, 0.08);
+    color: hsl(var(--color-text));
+    font-weight: 700;
+    margin-bottom: var(--space-3);
+  }
+
+  .website-panel h3 {
+    margin-bottom: var(--space-2);
+  }
+
+  /* Soluție */
+  .website-solution {
+    display: grid;
+    gap: var(--space-6);
+    grid-template-columns: 1fr;
+  }
+
+  .website-solution__card,
+  .website-solution__visual {
+    border-radius: var(--radius-xl);
+    border: 1px solid hsl(var(--color-border));
+    background: hsl(var(--color-surface));
+    box-shadow: var(--shadow-soft);
+    padding: var(--space-6);
+  }
+
+  .website-solution__widget {
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(37, 99, 235, 0.14);
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(255, 255, 255, 0.95));
+    padding: var(--space-5);
+    box-shadow: 0 26px 80px rgba(37, 99, 235, 0.15);
+  }
+
+  .website-solution__widget-header {
+    display: inline-flex;
+    gap: var(--space-2);
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(37, 99, 235, 0.16);
+    font-weight: 700;
+  }
+
+  .website-solution__widget-body {
+    margin-top: var(--space-4);
+    display: grid;
+    gap: var(--space-3);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    text-align: center;
+  }
+
+  .website-solution__stat {
+    margin: 0;
+    font-weight: 800;
+    color: hsl(var(--color-text));
+  }
+
+  .website-solution__muted {
+    color: hsl(var(--color-muted));
+    font-size: 0.9rem;
+  }
+
+  .website-solution__progress {
+    margin-top: var(--space-4);
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(37, 99, 235, 0.12);
+    overflow: hidden;
+  }
+
+  .website-solution__progress-bar {
+    width: 78%;
+    height: 100%;
+    background: var(--brand-gradient-strong);
   }
 
   /* Hero visual mockup */
@@ -384,6 +510,14 @@
     .page__grid.website-grid--2 {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
+    .website-panels {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .website-solution {
+      grid-template-columns: 1.1fr 0.9fr;
+    }
   }
 
   @media (min-width: 1024px) {
@@ -403,6 +537,10 @@
     .website-step {
       padding: var(--space-6);
     }
+
+    .website-panels {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
   }
 
   @media (max-width: 720px) {
@@ -419,4 +557,3 @@
     }
   }
 }
-

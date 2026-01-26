@@ -85,34 +85,57 @@
   .u-brand-cta {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    gap: 10px;
     border-radius: var(--radius-md);
-    padding: var(--space-3) var(--space-5);
-    font-weight: 600;
-    transition: transform 0.2s ease, background 0.2s ease;
-    background: var(--brand-color);
+    padding: 12px 16px;
+    font-weight: 750;
+    border: none;
+    background: linear-gradient(180deg, var(--brand-color), var(--service-website-accent));
     color: hsl(var(--color-white));
+    box-shadow: 0 14px 30px rgba(37, 99, 235, 0.2);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
   }
 
   .u-brand-cta:hover,
   .u-brand-cta:focus-visible {
-    background: var(--service-website-accent);
+    transform: translateY(-1px);
+    box-shadow: 0 18px 42px rgba(37, 99, 235, 0.26);
+    filter: saturate(1.05);
   }
 
   .u-brand-outline {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    gap: 10px;
     border-radius: var(--radius-md);
-    border: 2px solid var(--brand-color);
-    padding: var(--space-3) var(--space-5);
-    font-weight: 600;
-    transition: background 0.2s ease, color 0.2s ease;
-    color: var(--brand-text);
+    border: 1px solid hsl(var(--color-border));
+    padding: 12px 16px;
+    font-weight: 750;
+    background: hsl(var(--color-surface));
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    color: hsl(var(--color-text));
   }
 
   .u-brand-outline:hover,
   .u-brand-outline:focus-visible {
-    background: var(--brand-color);
-    color: hsl(var(--color-white));
+    transform: translateY(-1px);
+    border-color: var(--brand-border);
+    box-shadow: 0 18px 42px rgba(15, 23, 42, 0.12);
+  }
+
+  .u-btn-sm {
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+  }
+
+  .u-btn-lg {
+    padding: 14px 18px;
+    border-radius: 14px;
+    font-size: 1.05rem;
   }
 
   .u-gradient-text {

@@ -1,79 +1,429 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import LucideIcon from '../../../components/ui/LucideIcon.astro';
 ---
 
 <BaseLayout
-  title="Construire website | Servicii CoreDigital"
-  description="Website-uri moderne cu structură clară, performanță și SEO de bază."
+  title="Creare website modern pe abonament, fără costuri inițiale | CoreDigital"
+  description="Creare website modern, pe bază de abonament: fără costuri inițiale, lansare rapidă, mentenanță inclusă și suport continuu. Serviciu SEO-first pentru afaceri locale."
 >
-  <section class="section" data-service="website">
+  <!-- 1) Hero -->
+  <section class="section section--l" data-service="website">
     <div class="container">
-      <div class="page__hero">
-        <span class="u-service-pill">Serviciu website</span>
-        <h1 class="page__hero-title u-service-accent">Construire website</h1>
-        <p class="page__lead">Structurăm informația, designul și implementarea pentru conversii.</p>
-      </div>
-    </div>
-  </section>
+      <div class="page__hero website-hero">
+        <div class="website-hero__grid">
+          <div class="website-hero__copy">
+            <span class="u-service-pill">
+              <span class="u-service-icon" aria-hidden="true">
+                <LucideIcon name="Globe" size={18} />
+              </span>
+              Serviciu: Creare website
+            </span>
 
-  <section class="section section--s" data-service="website">
-    <div class="container">
-      <div class="page__section" aria-labelledby="website-includes">
-        <h2 id="website-includes" class="page__section-title">Ce include</h2>
-        <ul class="page__list">
-          <li>Structură de pagini și flow de conversie.</li>
-          <li>Design UI coerent cu brandul.</li>
-          <li>Implementare performantă și responsive.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+            <h1 class="page__hero-title">
+              Creare <span class="u-gradient-text">website modern</span>, fără costuri inițiale
+            </h1>
 
-  <section class="section section--s" data-service="website">
-    <div class="container">
-      <div class="page__section" aria-labelledby="website-process">
-        <h2 id="website-process" class="page__section-title">Proces</h2>
-        <div class="page__grid">
-          <div class="page__card">
-            <h3>Descoperire</h3>
-            <p>Clarificăm obiectivele și publicul țintă.</p>
+            <p class="page__lead">
+              Website profesional pe abonament: lansare rapidă, scalabil, fără investiție inițială. Include mentenanță și
+              actualizări — ca să rămâi mereu relevant.
+            </p>
+
+            <div class="website-hero__actions">
+              <a class="u-brand-cta u-btn-lg" href="/contact">
+                Solicită o ofertă <i class="fas fa-arrow-right"></i>
+              </a>
+              <a class="u-brand-outline u-btn-lg" href="#proces">
+                <i class="fa-solid fa-play"></i> Vezi cum funcționează
+              </a>
+            </div>
+
+            <div class="website-hero__micro" aria-label="Beneficii rapide">
+              <span class="website-hero__micro-item">
+                <LucideIcon name="BadgeCheck" size={18} /> Fără cost inițial
+              </span>
+              <span class="website-hero__micro-item">
+                <LucideIcon name="BadgeCheck" size={18} /> Lansare rapidă
+              </span>
+              <span class="website-hero__micro-item">
+                <LucideIcon name="BadgeCheck" size={18} /> Suport inclus
+              </span>
+            </div>
           </div>
-          <div class="page__card">
-            <h3>Structură & conținut</h3>
-            <p>Stabilim arhitectura informației și mesajele cheie.</p>
-          </div>
-          <div class="page__card">
-            <h3>Design & build</h3>
-            <p>Construim interfața și optimizăm performanța.</p>
-          </div>
-          <div class="page__card">
-            <h3>Lansare</h3>
-            <p>Publicăm și monitorizăm rezultatele inițiale.</p>
+
+          <!-- Vizual hero: fereastră de browser + layout website -->
+          <div class="website-hero__visual" aria-hidden="true">
+            <div class="website-mock">
+              <div class="website-mock__top">
+                <div class="website-mock__dots">
+                  <span class="website-mock__dot website-mock__dot--red"></span>
+                  <span class="website-mock__dot website-mock__dot--yellow"></span>
+                  <span class="website-mock__dot website-mock__dot--green"></span>
+                </div>
+                <div class="website-mock__url">core-digital.ro • /</div>
+                <div class="website-mock__chip">Draft</div>
+              </div>
+
+              <div class="website-mock__body">
+                <div class="website-mock__nav">
+                  <div class="website-mock__logo"></div>
+                  <div class="website-mock__links">
+                    <span class="website-mock__link"></span>
+                    <span class="website-mock__link"></span>
+                    <span class="website-mock__link"></span>
+                  </div>
+                  <div class="website-mock__btn"></div>
+                </div>
+
+                <div class="website-mock__hero">
+                  <div class="website-mock__eyebrow"></div>
+                  <div class="website-mock__title"></div>
+                  <div class="website-mock__subtitle"></div>
+                  <div class="website-mock__cta-row">
+                    <div class="website-mock__cta website-mock__cta--primary"></div>
+                    <div class="website-mock__cta website-mock__cta--ghost"></div>
+                  </div>
+                </div>
+
+                <div class="website-mock__cards">
+                  <div class="website-mock__card">
+                    <div class="website-mock__card-icon"></div>
+                    <div class="website-mock__card-line"></div>
+                    <div class="website-mock__card-line website-mock__card-line--short"></div>
+                  </div>
+                  <div class="website-mock__card">
+                    <div class="website-mock__card-icon"></div>
+                    <div class="website-mock__card-line"></div>
+                    <div class="website-mock__card-line website-mock__card-line--short"></div>
+                  </div>
+                  <div class="website-mock__card">
+                    <div class="website-mock__card-icon"></div>
+                    <div class="website-mock__card-line"></div>
+                    <div class="website-mock__card-line website-mock__card-line--short"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="website-mock__badge website-mock__badge--left">
+                <span class="website-mock__badge-dot"></span>
+                <span>SEO-first</span>
+              </div>
+              <div class="website-mock__badge website-mock__badge--right">
+                <span class="website-mock__badge-dot"></span>
+                <span>Pe abonament</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section section--s" data-service="website">
+  <!-- 2) Probleme -->
+  <section class="section section--s" data-service="website" id="probleme">
     <div class="container">
-      <div class="page__section" aria-labelledby="website-deliverables">
-        <h2 id="website-deliverables" class="page__section-title">Livrabile</h2>
-        <ul class="page__list">
-          <li>Pagini principale și secțiuni esențiale.</li>
-          <li>Setări SEO de bază.</li>
-          <li>Ghid rapid de administrare.</li>
-        </ul>
+      <div class="page__section" aria-labelledby="website-problems">
+        <h2 id="website-problems" class="page__section-title">Problemele reale pe care le rezolvăm</h2>
+        <p class="page__lead website-section__lead">
+          Înțelegem situația: ai nevoie de un website modern care să aducă clienți, dar costurile, timpul și lipsa
+          suportului după “livrare” te țin pe loc. Modelul nostru pe abonament rezolvă exact asta.
+        </p>
+
+        <div class="page__grid website-grid--2" role="list">
+          <div class="page__card" role="listitem">
+            <div class="website-card__head">
+              <span class="u-service-icon" aria-hidden="true"><LucideIcon name="Wallet" size={18} /></span>
+              <h3>Costuri mari la început</h3>
+            </div>
+            <p>În loc de o investiție inițială mare, ai un abonament lunar predictibil.</p>
+          </div>
+          <div class="page__card" role="listitem">
+            <div class="website-card__head">
+              <span class="u-service-icon" aria-hidden="true"><LucideIcon name="Timer" size={18} /></span>
+              <h3>Timp lung de dezvoltare</h3>
+            </div>
+            <p>Proces clar și rapid, ca să ajungi la lansare fără luni de așteptare.</p>
+          </div>
+          <div class="page__card" role="listitem">
+            <div class="website-card__head">
+              <span class="u-service-icon" aria-hidden="true"><LucideIcon name="LifeBuoy" size={18} /></span>
+              <h3>Lipsă suport după livrare</h3>
+            </div>
+            <p>Suport și mentenanță incluse. Website-ul rămâne îngrijit și actualizat.</p>
+          </div>
+          <div class="page__card" role="listitem">
+            <div class="website-card__head">
+              <span class="u-service-icon" aria-hidden="true"><LucideIcon name="Settings" size={18} /></span>
+              <h3>Site-uri greu de administrat</h3>
+            </div>
+            <p>Structură curată, ușor de extins, fără plugin-uri inutile și complexitate.</p>
+          </div>
+          <div class="page__card" role="listitem">
+            <div class="website-card__head">
+              <span class="u-service-icon" aria-hidden="true"><LucideIcon name="LayoutTemplate" size={18} /></span>
+              <h3>Design învechit care nu convertește</h3>
+            </div>
+            <p>Design modern, premium, SaaS-like, gândit pentru încredere și conversii.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section section--s" data-service="website">
+  <!-- 3) Soluția -->
+  <section class="section section--s" data-service="website" id="solutie">
+    <div class="container">
+      <div class="page__section" aria-labelledby="website-solution">
+        <h2 id="website-solution" class="page__section-title">Soluția noastră: website pe abonament</h2>
+        <div class="page__grid website-grid--2">
+          <div class="page__card">
+            <h3>Ce înseamnă “website pe abonament”</h3>
+            <p>
+              Primești un website modern, livrat rapid, iar noi rămânem alături de tine cu mentenanță, actualizări și
+              optimizări constante. Tu te concentrezi pe business, noi pe prezența ta online.
+            </p>
+            <ul class="page__list website-list--ticks">
+              <li>Fără cost inițial</li>
+              <li>Mentenanță inclusă</li>
+              <li>Actualizări constante</li>
+              <li>Extindere pe măsură ce crești</li>
+            </ul>
+          </div>
+          <div class="page__card u-service-border">
+            <h3>Focus pe rezultate, nu pe “livrare și atât”</h3>
+            <p>
+              Un website bun trebuie să aducă cereri, apeluri și programări. Construim cu atenție la structură, mesaj,
+              viteză și SEO — ca să convertească.
+            </p>
+            <div class="website-kpi" aria-label="Beneficii">
+              <div class="website-kpi__item">
+                <div class="website-kpi__value">+încredere</div>
+                <div class="website-kpi__label">prima impresie</div>
+              </div>
+              <div class="website-kpi__item">
+                <div class="website-kpi__value">+cereri</div>
+                <div class="website-kpi__label">lead-uri</div>
+              </div>
+              <div class="website-kpi__item">
+                <div class="website-kpi__value">+vizibilitate</div>
+                <div class="website-kpi__label">Google</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4) Proces -->
+  <section class="section section--s" data-service="website" id="proces">
+    <div class="container">
+      <div class="page__section" aria-labelledby="website-process">
+        <h2 id="website-process" class="page__section-title">Cum funcționează procesul nostru</h2>
+        <p class="page__lead website-section__lead">Step by step, fără surprize. Tu aprobi, noi construim și optimizăm.</p>
+
+        <div class="website-steps" role="list">
+          <article class="website-step" role="listitem">
+            <div class="website-step__num">1</div>
+            <div class="website-step__body">
+              <h3>Analizăm nevoile tale</h3>
+              <p>Clarificăm obiectivele, publicul și ce înseamnă “rezultat” pentru business-ul tău.</p>
+            </div>
+          </article>
+          <article class="website-step" role="listitem">
+            <div class="website-step__num">2</div>
+            <div class="website-step__body">
+              <h3>Creăm structura și designul</h3>
+              <p>Arhitectură de pagini, copy și un design modern, coerent cu brandul.</p>
+            </div>
+          </article>
+          <article class="website-step" role="listitem">
+            <div class="website-step__num">3</div>
+            <div class="website-step__body">
+              <h3>Construim website-ul</h3>
+              <p>Implementare performantă, responsive, cu bune practici SEO de bază.</p>
+            </div>
+          </article>
+          <article class="website-step" role="listitem">
+            <div class="website-step__num">4</div>
+            <div class="website-step__body">
+              <h3>Lansare rapidă</h3>
+              <p>Publicăm, verificăm totul și facem ultimele ajustări înainte de start.</p>
+            </div>
+          </article>
+          <article class="website-step" role="listitem">
+            <div class="website-step__num">5</div>
+            <div class="website-step__body">
+              <h3>Optimizare continuă pe abonament</h3>
+              <p>Îmbunătățim secțiunile și paginile pe baza feedback-ului și datelor reale.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5) Include abonament -->
+  <section class="section section--s" data-service="website" id="include">
+    <div class="container">
+      <div class="page__section" aria-labelledby="website-includes">
+        <h2 id="website-includes" class="page__section-title">Ce include abonamentul</h2>
+        <p class="page__lead website-section__lead">
+          Totul este gândit să elimine costurile inițiale și să-ți ofere un website care rămâne actual.
+        </p>
+
+        <div class="page__grid website-grid--3" role="list">
+          <div class="page__card" role="listitem">
+            <div class="website-card__head">
+              <span class="u-service-icon" aria-hidden="true"><LucideIcon name="Palette" size={18} /></span>
+              <h3>Design modern</h3>
+            </div>
+            <p>UI premium, aerisit, consistent cu brandul tău.</p>
+          </div>
+          <div class="page__card" role="listitem">
+            <div class="website-card__head">
+              <span class="u-service-icon" aria-hidden="true"><LucideIcon name="Smartphone" size={18} /></span>
+              <h3>Website responsive</h3>
+            </div>
+            <p>Arată impecabil pe telefon, tabletă și desktop.</p>
+          </div>
+          <div class="page__card" role="listitem">
+            <div class="website-card__head">
+              <span class="u-service-icon" aria-hidden="true"><LucideIcon name="Search" size={18} /></span>
+              <h3>SEO de bază</h3>
+            </div>
+            <p>Structură SEO-first: H1–H3, meta, viteză, indexare.</p>
+          </div>
+          <div class="page__card" role="listitem">
+            <div class="website-card__head">
+              <span class="u-service-icon" aria-hidden="true"><LucideIcon name="Server" size={18} /></span>
+              <h3>Hosting / mentenanță</h3>
+            </div>
+            <p>Mentenanță, monitorizare și actualizări incluse în abonament.</p>
+          </div>
+          <div class="page__card" role="listitem">
+            <div class="website-card__head">
+              <span class="u-service-icon" aria-hidden="true"><LucideIcon name="MessageCircle" size={18} /></span>
+              <h3>Suport continuu</h3>
+            </div>
+            <p>Ai cu cine itera — fără costuri surpriză când ai nevoie de ajustări.</p>
+          </div>
+          <div class="page__card" role="listitem">
+            <div class="website-card__head">
+              <span class="u-service-icon" aria-hidden="true"><LucideIcon name="Puzzle" size={18} /></span>
+              <h3>Extindere</h3>
+            </div>
+            <p>Adăugăm pagini, secțiuni și integrări pe măsură ce crești.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6) De ce contează -->
+  <section class="section section--s" data-service="website" id="de-ce">
+    <div class="container">
+      <div class="page__section" aria-labelledby="website-why">
+        <h2 id="website-why" class="page__section-title">De ce contează un website bine făcut</h2>
+        <div class="page__grid website-grid--2">
+          <div class="page__card">
+            <h3>Prima impresie</h3>
+            <p>
+              Un website modern transmite încredere și profesionalism. Un site vechi transmite nesiguranță — iar oamenii
+              pleacă înainte să te contacteze.
+            </p>
+          </div>
+          <div class="page__card">
+            <h3>Conversii și vizibilitate în Google</h3>
+            <p>
+              Structura, mesajul și viteza influențează direct câți oameni îți scriu sau te sună. Iar o bază bună de SEO
+              ajută să fii găsit în căutări relevante.
+            </p>
+            <ul class="page__list website-list--ticks">
+              <li>mai multe cereri (lead-uri)</li>
+              <li>mai multă încredere</li>
+              <li>mai multă vizibilitate</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7) De ce noi -->
+  <section class="section section--s" data-service="website" id="de-noi">
+    <div class="container">
+      <div class="page__section" aria-labelledby="website-why-us">
+        <h2 id="website-why-us" class="page__section-title">De ce să ne alegi pe noi</h2>
+        <div class="page__grid website-grid--3" role="list">
+          <div class="page__card" role="listitem">
+            <h3>Model pe abonament</h3>
+            <p>Fără costuri inițiale. Plătești lunar, simplu și predictibil.</p>
+          </div>
+          <div class="page__card" role="listitem">
+            <h3>Focus pe rezultate</h3>
+            <p>Website-ul este construit pentru cereri, apeluri și programări — nu doar “să existe”.</p>
+          </div>
+          <div class="page__card" role="listitem">
+            <h3>Design modern</h3>
+            <p>Look & feel premium, aerisit, ușor de parcurs.</p>
+          </div>
+          <div class="page__card" role="listitem">
+            <h3>Suport continuu</h3>
+            <p>Actualizăm, îmbunătățim și menținem totul funcțional pe termen lung.</p>
+          </div>
+          <div class="page__card" role="listitem">
+            <h3>Gândire digitală</h3>
+            <p>Structură de conversie, copy clar, integrare cu obiectivele tale.</p>
+          </div>
+          <div class="page__card" role="listitem">
+            <h3>AI-ready</h3>
+            <p>Pregătim baza perfectă pentru automatizări și AI chatbot când ești gata.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8) Social proof -->
+  <section class="section section--s" data-service="website" id="testimoniale">
+    <div class="container">
+      <div class="page__section" aria-labelledby="website-proof">
+        <h2 id="website-proof" class="page__section-title">Testimoniale</h2>
+        <div class="page__grid website-grid--3" role="list">
+          <figure class="page__card website-quote" role="listitem">
+            <blockquote>
+              “În sfârșit un site modern care ne aduce cereri. Modelul pe abonament ne-a ajutat să pornim fără stres.”
+            </blockquote>
+            <figcaption>— Business local</figcaption>
+          </figure>
+          <figure class="page__card website-quote" role="listitem">
+            <blockquote>“Lansare rapidă și suport real după. Exact ce ne lipsea înainte.”</blockquote>
+            <figcaption>— Antreprenor</figcaption>
+          </figure>
+          <figure class="page__card website-quote" role="listitem">
+            <blockquote>“Structură clară, design premium și o colaborare foarte simplă.”</blockquote>
+            <figcaption>— Servicii locale</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9) CTA final -->
+  <section class="section section--s" data-service="website" id="contact">
     <div class="container">
       <div class="page__cta u-service-border" aria-labelledby="website-cta">
-        <h2 id="website-cta" class="page__section-title">Vrei un website care convertește?</h2>
-        <p>Spune-ne câte pagini ai nevoie și termenul dorit.</p>
-        <a class="u-service-cta" href="/contact">Discută cu noi</a>
+        <h2 id="website-cta" class="page__section-title">Vrei să discutăm despre website-ul tău?</h2>
+        <p>
+          Fără presiune. Spune-ne ce faci și ce obiective ai. Îți răspundem cu o propunere clară și un plan de lansare.
+        </p>
+        <div class="website-final__actions">
+          <a class="u-brand-cta u-btn-lg" href="/contact">
+            Discută cu noi <i class="fas fa-arrow-right"></i>
+          </a>
+          <a class="u-brand-outline u-btn-lg" href="/#preturi">Vezi pachetele</a>
+        </div>
       </div>
     </div>
   </section>

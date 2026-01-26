@@ -1,0 +1,99 @@
+@layer components {
+  .pricing-summary {
+    background: hsl(var(--color-white));
+  }
+
+  .pricing-summary__inner {
+    text-align: center;
+  }
+
+  .pricing-summary__title {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .pricing-summary__lead {
+    margin-top: var(--space-2);
+    font-size: 1.125rem;
+    color: hsl(var(--color-muted));
+  }
+
+  .pricing-summary__grid {
+    margin-top: var(--space-7);
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .pricing-summary__card {
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--service-border);
+    background: hsl(var(--color-white));
+    padding: var(--space-6);
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .pricing-summary__card--featured {
+    position: relative;
+    border-color: var(--brand-border);
+    background: var(--gradient-hero);
+  }
+
+  .pricing-summary__badge {
+    position: absolute;
+    top: calc(var(--space-4) * -1);
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    padding: var(--space-2) var(--space-4);
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: var(--brand-color);
+    color: hsl(var(--color-white));
+  }
+
+  .pricing-summary__card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .pricing-summary__price {
+    margin-top: var(--space-4);
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+
+  .pricing-summary__period {
+    color: hsl(var(--color-muted));
+  }
+
+  .pricing-summary__list {
+    margin: var(--space-6) 0;
+    display: grid;
+    gap: var(--space-3);
+    text-align: left;
+    font-size: 0.875rem;
+  }
+
+  .pricing-summary__list i {
+    margin-right: var(--space-2);
+    color: var(--service-color);
+  }
+
+  .pricing-summary__addon {
+    margin-top: var(--space-7);
+    text-align: center;
+  }
+
+  .pricing-summary__addon-text {
+    margin-bottom: var(--space-3);
+    font-size: 1.125rem;
+    color: hsl(var(--color-muted));
+  }
+
+  @media (min-width: 768px) {
+    .pricing-summary__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+}

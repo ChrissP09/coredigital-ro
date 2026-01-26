@@ -1,0 +1,66 @@
+@layer components {
+  .services-overview {
+    background: var(--gradient-hero);
+  }
+
+  .services-overview__inner {
+    text-align: center;
+  }
+
+  .services-overview__title {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .services-overview__lead {
+    margin-top: var(--space-2);
+    font-size: 1.125rem;
+    color: hsl(var(--color-muted));
+  }
+
+  .services-overview__grid {
+    margin-top: var(--space-7);
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .services-overview__card {
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--service-border);
+    background: hsl(var(--color-white));
+    padding: var(--space-6);
+    text-align: left;
+    box-shadow: var(--shadow-soft);
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .services-overview__card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+
+  .services-overview__card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .services-overview__card-text {
+    color: hsl(var(--color-muted));
+  }
+
+  .services-overview__list {
+    padding-left: var(--space-5);
+    display: grid;
+    gap: var(--space-2);
+    color: hsl(var(--color-muted));
+  }
+
+  @media (min-width: 768px) {
+    .services-overview__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+}

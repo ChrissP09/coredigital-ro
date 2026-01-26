@@ -1,9 +1,22 @@
-﻿@import './base/tokens.css';
+@import './base/tokens.css';
 @import './base/reset.css';
 @import './base/typography.css';
+@import './base/layout.css';
+@import './base/utilities.css';
 @import './components/header.css';
 @import './components/footer.css';
 @import './components/page.css';
+@import './components/hero.css';
+@import './components/problems.css';
+@import './components/services-overview.css';
+@import './components/service-focus.css';
+@import './components/reviews-focus.css';
+@import './components/ai-focus.css';
+@import './components/process.css';
+@import './components/pricing-summary.css';
+@import './components/why-core.css';
+@import './components/final-cta.css';
+@import './components/greenspark.css';
 
 @tailwind base;
 @tailwind components;

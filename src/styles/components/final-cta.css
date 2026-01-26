@@ -1,0 +1,64 @@
+@layer components {
+  .final-cta {
+    text-align: center;
+    background: var(--brand-gradient-strong);
+    color: hsl(var(--color-white));
+  }
+
+  .final-cta__inner {
+    max-width: var(--content-narrow);
+    margin-inline: auto;
+  }
+
+  .final-cta__title {
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 700;
+  }
+
+  .final-cta__lead {
+    margin-top: var(--space-4);
+    font-size: 1.125rem;
+    color: hsl(var(--color-white) / 0.85);
+  }
+
+  .final-cta__actions {
+    margin-top: var(--space-6);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+
+  .final-cta__button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    border-radius: var(--radius-lg);
+    padding: var(--space-3) var(--space-6);
+    font-weight: 600;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .final-cta__button--primary {
+    background: hsl(var(--color-white));
+    color: var(--brand-color);
+  }
+
+  .final-cta__button--outline {
+    border: 2px solid hsl(var(--color-white));
+    color: hsl(var(--color-white));
+  }
+
+  .final-cta__button--outline:hover,
+  .final-cta__button--outline:focus-visible {
+    background: hsl(var(--color-white));
+    color: var(--brand-color);
+  }
+
+  .final-cta__note {
+    margin-top: var(--space-6);
+    font-size: 1rem;
+    color: hsl(var(--color-white) / 0.7);
+  }
+}

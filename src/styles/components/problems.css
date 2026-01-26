@@ -1,0 +1,63 @@
+@layer components {
+  .problems {
+    background: hsl(var(--color-white));
+  }
+
+  .problems__inner {
+    text-align: center;
+  }
+
+  .problems__title {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .problems__lead {
+    margin-top: var(--space-2);
+    font-size: 1.125rem;
+    color: hsl(var(--color-muted));
+  }
+
+  .problems__grid {
+    margin-top: var(--space-7);
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .problems__card {
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-border);
+    background: hsl(var(--color-white));
+    padding: var(--space-6);
+    box-shadow: var(--shadow-soft);
+    text-align: left;
+  }
+
+  .problems__icon {
+    margin-bottom: var(--space-4);
+    display: inline-flex;
+    height: var(--space-7);
+    width: var(--space-7);
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+    background: var(--brand-soft);
+    color: var(--brand-color);
+  }
+
+  .problems__card-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+
+  .problems__card-text {
+    margin-top: var(--space-2);
+    color: hsl(var(--color-muted));
+  }
+
+  @media (min-width: 768px) {
+    .problems__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+}

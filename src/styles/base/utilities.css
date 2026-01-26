@@ -1,0 +1,124 @@
+@layer utilities {
+  [data-service='website'] {
+    --service-color: var(--service-website);
+    --service-soft: var(--service-website-soft);
+    --service-border: var(--service-website-border);
+    --service-text: var(--service-website-text);
+    --service-accent: var(--service-website-accent);
+    --service-gradient: var(--service-website-gradient);
+    --service-cta-text: var(--service-website-cta-text);
+  }
+
+  [data-service='reviews'] {
+    --service-color: var(--service-reviews);
+    --service-soft: var(--service-reviews-soft);
+    --service-border: var(--service-reviews-border);
+    --service-text: var(--service-reviews-text);
+    --service-accent: var(--service-reviews-accent);
+    --service-gradient: var(--service-reviews-gradient);
+    --service-cta-text: var(--service-reviews-cta-text);
+  }
+
+  [data-service='ai'] {
+    --service-color: var(--service-ai);
+    --service-soft: var(--service-ai-soft);
+    --service-border: var(--service-ai-border);
+    --service-text: var(--service-ai-text);
+    --service-accent: var(--service-ai-accent);
+    --service-gradient: var(--service-ai-gradient);
+    --service-cta-text: var(--service-ai-cta-text);
+  }
+
+  .u-service-accent {
+    color: var(--service-color);
+  }
+
+  .u-service-bg {
+    background: var(--service-soft);
+  }
+
+  .u-service-border {
+    border: 1px solid var(--service-border);
+  }
+
+  .u-service-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    border-radius: 999px;
+    padding: var(--space-2) var(--space-4);
+    font-size: 0.875rem;
+    font-weight: 600;
+    background: var(--service-soft);
+    color: var(--service-text);
+    border: 1px solid var(--service-border);
+  }
+
+  .u-service-icon {
+    display: inline-flex;
+    height: var(--space-6-5);
+    width: var(--space-6-5);
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    background: var(--service-soft);
+    color: var(--service-color);
+    border: 1px solid var(--service-border);
+  }
+
+  .u-service-cta {
+    display: inline-flex;
+    align-items: center;
+    border-radius: var(--radius-md);
+    padding: var(--space-3) var(--space-5);
+    font-weight: 600;
+    transition: transform 0.2s ease, background 0.2s ease;
+    background: var(--service-color);
+    color: var(--service-cta-text);
+  }
+
+  .u-service-cta:hover,
+  .u-service-cta:focus-visible {
+    background: var(--service-accent);
+  }
+
+  .u-brand-cta {
+    display: inline-flex;
+    align-items: center;
+    border-radius: var(--radius-md);
+    padding: var(--space-3) var(--space-5);
+    font-weight: 600;
+    transition: transform 0.2s ease, background 0.2s ease;
+    background: var(--brand-color);
+    color: hsl(var(--color-white));
+  }
+
+  .u-brand-cta:hover,
+  .u-brand-cta:focus-visible {
+    background: var(--service-website-accent);
+  }
+
+  .u-brand-outline {
+    display: inline-flex;
+    align-items: center;
+    border-radius: var(--radius-md);
+    border: 2px solid var(--brand-color);
+    padding: var(--space-3) var(--space-5);
+    font-weight: 600;
+    transition: background 0.2s ease, color 0.2s ease;
+    color: var(--brand-text);
+  }
+
+  .u-brand-outline:hover,
+  .u-brand-outline:focus-visible {
+    background: var(--brand-color);
+    color: hsl(var(--color-white));
+  }
+
+  .u-gradient-text {
+    background: var(--brand-gradient-strong);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}

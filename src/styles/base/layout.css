@@ -1,0 +1,20 @@
+@layer base {
+  .container {
+    inline-size: 100%;
+    max-inline-size: var(--content-width);
+    margin-inline: auto;
+  }
+
+  .section {
+    padding-block: var(--section-space-m);
+    padding-inline: var(--gutter);
+  }
+
+  .section--s {
+    padding-block: var(--section-space-s);
+  }
+
+  .section--l {
+    padding-block: var(--section-space-l);
+  }
+}

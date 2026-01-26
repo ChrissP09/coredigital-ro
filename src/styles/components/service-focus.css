@@ -1,0 +1,116 @@
+@layer components {
+  .service-focus {
+    background: hsl(var(--color-white));
+  }
+
+  .service-focus__inner {
+    display: grid;
+    gap: var(--space-8);
+  }
+
+  .service-focus__title {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .service-focus__lead {
+    margin-top: var(--space-3);
+    font-size: 1.125rem;
+    color: hsl(var(--color-muted));
+  }
+
+  .service-focus__list {
+    margin-top: var(--space-6);
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  .service-focus__item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .service-focus__check {
+    margin-top: var(--space-1);
+    display: inline-flex;
+    height: var(--space-6);
+    width: var(--space-6);
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    background: var(--service-soft);
+    color: var(--service-color);
+    border: 1px solid var(--service-border);
+  }
+
+  .service-focus__item-title {
+    font-weight: 600;
+    color: hsl(var(--color-text));
+  }
+
+  .service-focus__item-text {
+    color: hsl(var(--color-muted));
+  }
+
+  .service-focus__visual {
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--service-border);
+    background: var(--section-blue-soft);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .service-focus__mock {
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    background: hsl(var(--color-white));
+    padding: var(--space-5);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .service-focus__mock-bar {
+    margin-bottom: var(--space-3);
+    height: var(--space-2);
+    width: var(--space-8);
+    border-radius: 999px;
+    background: var(--brand-soft);
+  }
+
+  .service-focus__mock-line {
+    margin-bottom: var(--space-3);
+    height: var(--space-3);
+    border-radius: var(--radius-md);
+    background: hsl(var(--color-border));
+  }
+
+  .service-focus__mock-line--short {
+    width: 75%;
+  }
+
+  .service-focus__mock-line--tiny {
+    width: 50%;
+  }
+
+  .service-focus__badge {
+    margin-top: var(--space-5);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: hsl(var(--color-text));
+  }
+
+  .service-focus__badge i {
+    font-size: 1.25rem;
+    color: var(--service-color);
+  }
+
+  @media (min-width: 1024px) {
+    .service-focus__inner {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: center;
+    }
+  }
+}

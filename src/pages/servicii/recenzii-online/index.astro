@@ -1,0 +1,827 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Colectare recenzii online | CoreDigital"
+  description="Transformă clienții mulțumiți în recenzii Google care aduc clienți noi. Sistem automat de colectare recenzii pentru afaceri locale."
+  bodyClass="bg-white text-gray-900 antialiased"
+>
+<section class="pt-32 pb-20 lg:pt-40 lg:pb-32 bg-gradient-to-br from-blue-50 via-white to-purple-50 fade-in-up">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="inline-block bg-green-600 text-white text-sm font-semibold px-4 py-2 rounded-full mb-6">
+                        <i class="fa-solid fa-star mr-2"></i>
+                        Colectare Recenzii
+                    </div>
+                    <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                        Transformă clienții mulțumiți în recenzii care aduc
+                        <span class="gradient-text">clienți noi</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        Mai mulți oameni aleg afaceri cu multe recenzii pozitive. Îi ajutăm pe clienții tăi să lase recenzii, simplu și automat, fără să ridici un deget.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contact" class="bg-primary-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-primary-700 transition-all hover:scale-105 inline-flex items-center justify-center">
+                            Vreau mai multe recenzii
+                            <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#proces" class="border-2 border-primary-600 text-emerald-600 px-8 py-4 rounded-xl font-semibold hover:bg-primary-600 hover:text-white transition-all text-center">
+                            Vezi cum funcționează
+                        </a>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute -top-6 -right-6 w-32 h-32 bg-yellow-200 rounded-full opacity-30 blur-2xl animate-float"></div>
+                    <div class="absolute -bottom-6 -left-6 w-24 h-24 bg-green-300 rounded-full opacity-30 blur-2xl animate-float" style="animation-delay: 2s;"></div>
+
+                    <!-- Google Reviews Mockup -->
+                    <div class="relative bg-white rounded-3xl shadow-2xl p-8 border border-gray-200">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 bg-emerald-600 rounded-xl flex items-center justify-center">
+                                    <i class="fa-brands fa-google text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-gray-900">Google Reviews</div>
+                                    <div class="text-sm text-gray-500">Recenzii verificate</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Rating Display -->
+                        <div class="text-center mb-8">
+                            <div class="text-6xl font-bold text-gray-900 mb-2">4.8</div>
+                            <div class="flex justify-center space-x-1 mb-3">
+                                <i class="fa-solid fa-star text-yellow-400 text-2xl star-animate"></i>
+                                <i class="fa-solid fa-star text-yellow-400 text-2xl star-animate"></i>
+                                <i class="fa-solid fa-star text-yellow-400 text-2xl star-animate"></i>
+                                <i class="fa-solid fa-star text-yellow-400 text-2xl star-animate"></i>
+                                <i class="fa-solid fa-star text-yellow-400 text-2xl star-animate"></i>
+                            </div>
+                            <div class="text-gray-600 font-medium">Din 187 recenzii</div>
+                        </div>
+
+                        <!-- Recent Reviews -->
+                        <div class="space-y-4">
+                            <div class="bg-gray-50 rounded-xl p-4">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <div class="w-8 h-8 bg-emerald-100 border border-emerald-200 rounded-full"></div>
+                                    <div class="flex-1">
+                                        <div class="text-sm font-semibold text-gray-900">Maria P.</div>
+                                        <div class="flex space-x-1">
+                                            <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                                            <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                                            <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                                            <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                                            <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                                        </div>
+                                    </div>
+                                    <div class="text-xs text-gray-400">Azi</div>
+                                </div>
+                                <p class="text-sm text-gray-600">"Experiență excelentă! Recomand cu încredere."</p>
+                            </div>
+
+                            <div class="bg-gray-50 rounded-xl p-4">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <div class="w-8 h-8 bg-emerald-100 border border-emerald-200 rounded-full"></div>
+                                    <div class="flex-1">
+                                        <div class="text-sm font-semibold text-gray-900">Ion D.</div>
+                                        <div class="flex space-x-1">
+                                            <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                                            <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                                            <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                                            <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                                            <i class="fa-solid fa-star text-yellow-400 text-xs"></i>
+                                        </div>
+                                    </div>
+                                    <div class="text-xs text-gray-400">Ieri</div>
+                                </div>
+                                <p class="text-sm text-gray-600">"Servicii de top! Mulțumit de rezultate."</p>
+                            </div>
+                        </div>
+
+                        <!-- Badge -->
+                        <div class="absolute -bottom-4 -right-4 bg-emerald-600 rounded-2xl shadow-xl px-5 py-3 border-2 border-white">
+                            <div class="flex items-center space-x-2">
+                                <i class="fa-solid fa-check-circle text-white text-lg"></i>
+                                <div class="text-white">
+                                    <div class="text-xs font-bold">Rezultate în 7-14 zile</div>
+                                    <div class="text-xs opacity-90">Automatizat 100%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problema -->
+    <section class="py-20 lg:py-32 bg-white fade-in-up">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">De ce nu ai recenzii, deși clienții sunt mulțumiți?</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Clienții tăi sunt fericiți, dar nimeni nu lasă recenzii. Iar când caută alții pe Google, aleg concurența care pare mai de încredere — doar pentru că are mai multe stele.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-red-50 rounded-3xl p-8 border border-red-100">
+                    <div class="w-16 h-16 bg-white border border-emerald-200 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-brain text-emerald-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Clienții uită să lase recenzie</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Au fost mulțumiți, dar nu li se pare urgent. Au plecat și au uitat complet.
+                    </p>
+                </div>
+                <div class="bg-orange-50 rounded-3xl p-8 border border-orange-100">
+                    <div class="w-16 h-16 bg-white border border-emerald-200 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-map-location-dot text-emerald-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Nu știu unde să lase recenzie</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Ar vrea să ajute, dar nu știu cum să ajungă pe pagina de Google Reviews. E prea complicat.
+                    </p>
+                </div>
+                <div class="bg-yellow-50 rounded-3xl p-8 border border-yellow-100">
+                    <div class="w-16 h-16 bg-white border border-emerald-200 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-exclamation-triangle text-emerald-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Lipsesc recenziile pozitive — rămân doar criticile</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Clienții nemulțumiți lasă recenzii din impuls. Cei mulțumiți — nu. Rezultat? Rating scăzut, deși serviciul e bun.
+                    </p>
+                </div>
+                <div class="bg-red-50 rounded-3xl p-8 border border-red-100">
+                    <div class="w-16 h-16 bg-white border border-emerald-200 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-arrow-trend-down text-emerald-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Pierzi clienți înainte să-i cunoști</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        78% din oameni citesc recenziile înainte să aleagă o afacere. Fără recenzii sau cu rating sub 4★, ești invizibil.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Soluția -->
+    <section class="py-20 lg:py-32 bg-gradient-to-br from-gray-50 to-blue-50 fade-in-up">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+                        Sistem automat care transformă clienții mulțumiți în
+                        <span class="gradient-text">recenzii Google</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        Nu mai rogi clienții manual. Nu mai trimiți mesaje individuale. Nu mai aștepți și speri.
+                    </p>
+                    <p class="text-lg text-gray-900 font-semibold mb-8">
+                        Creăm un sistem care:
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-clock text-emerald-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-900 mb-2">Momentul perfect</h3>
+                                <p class="text-gray-600">Solicităm recenzia când clientul e încă entuziasmat, nu peste 3 luni când a uitat totul.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-link text-emerald-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-900 mb-2">Link direct, fără complicații</h3>
+                                <p class="text-gray-600">Clientul dă click, vede Google, lasă recenzia. Fără căutări, fără confuzii.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-shield text-emerald-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-900 mb-2">Filtrare inteligentă</h3>
+                                <p class="text-gray-600">Dacă clientul e nemulțumit, îl direcționăm către tine direct — nu către Google. Protejăm ratingul.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-check-circle text-emerald-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-900 mb-2">Tu nu faci nimic</h3>
+                                <p class="text-gray-600">Sistem automatizat complet. Tu vezi doar notificări: "Ai primit o recenzie nouă".</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <!-- Elegant Flow Animation Container -->
+                    <div class="bg-gradient-to-br from-white to-emerald-50 rounded-3xl shadow-2xl p-8 border border-emerald-100/60 overflow-hidden relative">
+                        <!-- Background decoration -->
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-200 rounded-full opacity-20 blur-3xl"></div>
+                        <div class="absolute bottom-0 left-0 w-24 h-24 bg-slate-200 rounded-full opacity-20 blur-3xl"></div>
+
+                        <h3 class="text-xl font-bold text-gray-900 mb-8 text-center relative z-10">Procesul automatizat</h3>
+
+                        <!-- Scrolling Flow Container -->
+                        <div class="relative overflow-hidden h-[500px] rounded-2xl bg-white border border-emerald-100/60 flow-scroll-mask">
+                            <div class="flow-scroll-content space-y-6 p-6">
+                                <!-- Step 1: Achiziție Finalizată -->
+                                <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200/70 transition-all hover:-translate-y-0.5 hover:shadow-lg">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="w-14 h-14 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center justify-center flex-shrink-0">
+                                            <i class="fa-solid fa-shopping-bag text-emerald-600 text-xl"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="font-bold text-gray-900 mb-1 flex items-center">
+                                                Achiziție Finalizată
+                                                <span class="ml-auto text-xs text-gray-400">acum 2 minute</span>
+                                            </div>
+                                            <div class="text-sm text-gray-600">Client mulțumit de serviciu</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Arrow Down -->
+                                <div class="flex justify-center">
+                                    <div class="w-1 h-8 bg-gradient-to-b from-emerald-200 to-emerald-400"></div>
+                                </div>
+
+                                <!-- Step 2: SMS Trimis -->
+                                <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200/70 transition-all hover:-translate-y-0.5 hover:shadow-lg">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-14 h-14 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center justify-center">
+                                                <i class="fa-solid fa-comment-dots text-emerald-600 text-xl"></i>
+                                            </div>
+                                            <div>
+                                                <div class="font-bold text-gray-900">SMS Trimis</div>
+                                                <div class="text-xs text-gray-400">în așteptare...</div>
+                                            </div>
+                                        </div>
+                                        <span class="text-emerald-600 text-sm font-semibold">Livrat</span>
+                                    </div>
+                                    <div class="bg-gray-50 rounded-xl p-3 text-sm text-gray-700 border border-gray-200">
+                                        "Salut Dan! Mulțumim că ne-ai ales. Cum ți s-a părut experiența? apasă aici: review.flow/m8s"
+                                    </div>
+                                </div>
+
+                                <!-- Arrow Down -->
+                                <div class="flex justify-center">
+                                    <div class="w-1 h-8 bg-gradient-to-b from-emerald-200 to-emerald-400"></div>
+                                </div>
+
+                                <!-- Step 3: Click pe Link -->
+                                <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200/70 transition-all hover:-translate-y-0.5 hover:shadow-lg">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="w-14 h-14 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center justify-center flex-shrink-0">
+                                            <i class="fa-solid fa-mouse-pointer text-emerald-600 text-xl"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="font-bold text-gray-900 mb-1">Click pe Link</div>
+                                            <div class="text-sm text-gray-600">Redirecționare către Google</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Arrow Down -->
+                                <div class="flex justify-center">
+                                    <div class="w-1 h-8 bg-gradient-to-b from-emerald-200 to-emerald-400"></div>
+                                </div>
+
+                                <!-- Step 4: Recenzie Primită -->
+                                <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200/70 transition-all hover:-translate-y-0.5 hover:shadow-lg">
+                                    <div class="flex items-center space-x-4 mb-3">
+                                        <div class="w-14 h-14 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center justify-center flex-shrink-0">
+                                            <i class="fa-solid fa-star text-emerald-600 text-xl"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="font-bold text-gray-900 mb-1">Recenzie Primită</div>
+                                            <div class="flex items-center space-x-1">
+                                                <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                                                <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                                                <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                                                <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                                                <i class="fa-solid fa-star text-yellow-400 text-sm"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-gray-50 rounded-xl p-3 text-sm text-gray-700 border border-gray-200">
+                                        "Servicii excelente! Recomand cu încredere!"
+                                    </div>
+                                </div>
+
+                                <!-- Success Badge -->
+                                <div class="bg-emerald-600 rounded-2xl p-5 shadow-xl text-white text-center">
+                                    <div class="flex items-center justify-center space-x-2 mb-2">
+                                        <i class="fa-solid fa-check-circle text-2xl"></i>
+                                        <div class="font-bold text-lg">Proces Finalizat!</div>
+                                    </div>
+                                    <div class="text-sm opacity-90">Rating actualizat pe Google Business</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scroll indicator badge -->
+                        <div class="absolute bottom-4 right-4 bg-white rounded-full px-4 py-2 shadow-lg border border-gray-200 z-20">
+                            <div class="flex items-center space-x-2 text-sm text-gray-600">
+                                <i class="fa-solid fa-wand-magic-sparkles text-emerald-600"></i>
+                                <span class="font-semibold">Automatizat 100%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filtrare Inteligentă -->
+    <section class="py-20 lg:py-32 bg-white fade-in-up">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Graphic Left -->
+                <div class="relative order-2 lg:order-1">
+                    <!-- Feedback Flow Container -->
+                    <div class="bg-gradient-to-br from-white to-emerald-50 rounded-3xl shadow-2xl p-6 lg:p-8 border border-emerald-100/60 relative overflow-hidden">
+                        <!-- Background decoration -->
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-200 rounded-full opacity-20 blur-3xl"></div>
+                        <div class="absolute bottom-0 left-0 w-24 h-24 bg-slate-200 rounded-full opacity-20 blur-3xl"></div>
+
+                        <h3 class="text-base font-bold text-gray-900 mb-6 text-center relative z-10">Feedback Flow</h3>
+
+                        <!-- Rating Question Card -->
+                        <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200/70 mb-4 relative z-10">
+                            <div class="text-center mb-3">
+                                <div class="text-sm font-semibold text-gray-900 mb-3">Cum ne evaluezi?</div>
+                                <div class="flex justify-center space-x-2" id="rating-stars">
+                                    <i class="fa-solid fa-star text-2xl rating-star cursor-pointer transition-all text-yellow-400" data-rating="1" style="transform: scale(1);"></i>
+                                    <i class="fa-solid fa-star text-2xl rating-star cursor-pointer transition-all text-yellow-400" data-rating="2" style="transform: scale(1);"></i>
+                                    <i class="fa-solid fa-star text-2xl rating-star cursor-pointer transition-all text-yellow-400" data-rating="3" style="transform: scale(1);"></i>
+                                    <i class="fa-solid fa-star text-2xl rating-star cursor-pointer transition-all text-yellow-400" data-rating="4" style="transform: scale(1);"></i>
+                                    <i class="fa-solid fa-star text-2xl rating-star cursor-pointer transition-all text-yellow-400" data-rating="5" style="transform: scale(1);"></i>
+                                </div>
+                            </div>
+
+                            <!-- Flow branches -->
+                            <div class="grid grid-cols-2 gap-3 mt-4">
+                                <!-- Low rating path -->
+                                <div class="text-center opacity-50 transition-opacity duration-500" id="low-rating-path" style="opacity: 0.5;">
+                                    <div class="bg-slate-50 rounded-xl p-3 border border-slate-200">
+                                        <div class="text-xs font-bold text-slate-700 mb-1">1-3 Stele</div>
+                                        <div class="text-xs text-slate-600">Feedback privat</div>
+                                    </div>
+                                </div>
+
+                                <!-- High rating path -->
+                                <div class="text-center opacity-50 transition-opacity duration-500" id="high-rating-path" style="opacity: 1;">
+                                    <div class="bg-emerald-50 rounded-xl p-3 border border-emerald-200">
+                                        <div class="text-xs font-bold text-emerald-700 mb-1">4-5 Stele</div>
+                                        <div class="text-xs text-emerald-600">Google / FB</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Result Cards -->
+                        <div class="space-y-3 relative z-10" style="min-height: 75px;">
+                            <!-- Private Resolution -->
+                            <div class="grid transition-all duration-500 ease-in-out" id="private-card" style="grid-template-rows: 0fr; opacity: 0;">
+                                <div class="overflow-hidden">
+                                    <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/70">
+                                        <div class="flex items-start space-x-3">
+                                            <div class="w-9 h-9 bg-slate-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                                <i class="fa-solid fa-lock text-slate-600 text-sm"></i>
+                                            </div>
+                                            <div class="flex-1">
+                                                <div class="font-bold text-gray-900 text-sm mb-1">Rezoluție Privată</div>
+                                                <div class="text-xs text-gray-600">Rezolvi intern, fără review-uri negative.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Public Review -->
+                            <div class="grid transition-all duration-500 ease-in-out" id="public-card" style="grid-template-rows: 1fr; opacity: 1;">
+                                <div class="overflow-hidden">
+                                    <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/70">
+                                        <div class="flex items-start space-x-3">
+                                            <div class="w-9 h-9 bg-emerald-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                                <i class="fa-solid fa-star text-emerald-600 text-sm"></i>
+                                            </div>
+                                            <div class="flex-1">
+                                                <div class="font-bold text-gray-900 text-sm mb-1">Recenzie Publică</div>
+                                                <div class="text-xs text-gray-600">Live pe Google Business Profile</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Alert Badge -->
+                            <div class="grid transition-all duration-500 ease-in-out" id="alert-card" style="grid-template-rows: 0fr; opacity: 0;">
+                                <div class="overflow-hidden">
+                                    <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/70">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="w-9 h-9 bg-amber-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                                <i class="fa-solid fa-bell text-amber-600 text-sm"></i>
+                                            </div>
+                                            <div class="flex-1">
+                                                <div class="font-bold text-gray-900 text-sm mb-1">Alerte Instante</div>
+                                                <div class="text-xs text-gray-600">Notificare imediat la feedback.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Right -->
+                <div class="order-1 lg:order-2">
+                    <div class="inline-block bg-emerald-100 text-emerald-700 text-sm font-semibold px-4 py-2 rounded-full mb-6">
+                        <i class="fa-solid fa-shield-check mr-2"></i>
+                        Protecție Reputație
+                    </div>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+                        Filtrare Inteligentă
+                    </h2>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        Protejează-ți reputația captând clienții nemulțumiți înainte să posteze public. Direcționăm feedback-ul negativ către suport, iar clienții fericiți către Google.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-lock text-slate-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-900 mb-2">Rezoluție Privată</h3>
+                                <p class="text-gray-600">Rezolvi problemele intern, fără review-uri negative. Clienții nemulțumiți completează un formular privat către echipa ta.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-bell text-orange-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-900 mb-2">Alerte Instante</h3>
+                                <p class="text-gray-600">Primești notificare imediat ce apare un feedback negativ. Reacționezi rapid și rezolvi problema înainte să escaladeze.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beneficii -->
+    <section class="py-20 lg:py-32 bg-white fade-in-up">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Un flux constant de recenzii care lucrează pentru tine, non-stop</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Fiecare recenzie nouă e un pas către mai multă credibilitate, mai multă vizibilitate și mai mulți clienți noi.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-3xl p-8 border border-gray-200 hover:shadow-xl transition-shadow">
+                    <div class="w-16 h-16 bg-emerald-50 border border-emerald-200 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-star text-emerald-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Mai multe recenzii pozitive</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Clienții mulțumiți îți lasă recenzii. În loc de 3 recenzii pe an, ai 10-20 pe lună.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 border border-gray-200 hover:shadow-xl transition-shadow">
+                    <div class="w-16 h-16 bg-emerald-50 border border-emerald-200 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-chart-line text-emerald-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Rating mai mare pe Google</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Cu fiecare recenzie nouă de 5★, ratingul crește. Atragi mai multă încredere și atenție.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 border border-gray-200 hover:shadow-xl transition-shadow">
+                    <div class="w-16 h-16 bg-emerald-50 border border-emerald-200 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-map-location-dot text-emerald-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Apar mai sus în căutările locale</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Google favorizează afacerile cu multe recenzii recente. Vizibilitate mai mare = mai mulți clienți noi.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 border border-gray-200 hover:shadow-xl transition-shadow">
+                    <div class="w-16 h-16 bg-emerald-50 border border-emerald-200 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-trophy text-emerald-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Clienții te aleg pe tine, nu concurența</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Când au de ales între tine (4.8★, 150 recenzii) și concurență (4.2★, 20 recenzii) — te aleg pe tine.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 border border-gray-200 hover:shadow-xl transition-shadow">
+                    <div class="w-16 h-16 bg-emerald-50 border border-emerald-200 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-shield-check text-emerald-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Protejezi reputația online</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Feedback-ul negativ ajunge la tine mai întâi. Poți rezolva problema înainte să devină recenzie publică.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 border border-gray-200 hover:shadow-xl transition-shadow">
+                    <div class="w-16 h-16 bg-emerald-50 border border-emerald-200 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-check-double text-emerald-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Mai multă credibilitate fără efort</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Recenziile lucrează pentru tine 24/7. Conving clienții noi fără să intervii tu.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Procesul -->
+    <section id="proces" class="py-20 lg:py-32 bg-gradient-to-br from-blue-50 to-purple-50 fade-in-up">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">De la setup la recenzii, fără complicații</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Implementăm totul pentru tine. Sistemul rulează automat. Tu vezi doar rezultatele.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="relative">
+                    <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-200 h-full">
+                        <div class="w-16 h-16 bg-emerald-600 rounded-2xl flex items-center justify-center mb-6">
+                            <span class="text-white text-2xl font-bold">1</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Setăm sistemul pentru tine</h3>
+                        <div class="inline-block bg-emerald-100 text-primary-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">
+                            ⏱ 1-2 zile
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">
+                            Integrăm sistemul cu afacerea ta (Google Business, CRM, etc.). Tu doar confirmi detaliile.
+                        </p>
+                    </div>
+                    <div class="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2">
+                        <i class="fa-solid fa-arrow-right text-primary-300 text-3xl"></i>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-200 h-full">
+                        <div class="w-16 h-16 bg-emerald-600 rounded-2xl flex items-center justify-center mb-6">
+                            <span class="text-white text-2xl font-bold">2</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Clienții primesc mesaj automat</h3>
+                        <div class="inline-block bg-emerald-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">
+                            ⏱ După fiecare vizită
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">
+                            La câteva ore sau zile după vizită, clientul primește un mesaj prietenos cu link direct.
+                        </p>
+                    </div>
+                    <div class="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2">
+                        <i class="fa-solid fa-arrow-right text-primary-300 text-3xl"></i>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-200 h-full">
+                        <div class="w-16 h-16 bg-emerald-600 rounded-2xl flex items-center justify-center mb-6">
+                            <span class="text-white text-2xl font-bold">3</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Recenziile apar pe Google</h3>
+                        <div class="inline-block bg-yellow-100 text-yellow-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">
+                            ⏱ Imediat
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">
+                            Nicio așteptare. Recenziile apar live pe profilul tău Google Business.
+                        </p>
+                    </div>
+                    <div class="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2">
+                        <i class="fa-solid fa-arrow-right text-primary-300 text-3xl"></i>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-200 h-full">
+                        <div class="w-16 h-16 bg-emerald-600 rounded-2xl flex items-center justify-center mb-6">
+                            <span class="text-white text-2xl font-bold">4</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Tu monitorizezi rezultatele</h3>
+                        <div class="inline-block bg-emerald-100 text-emerald-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">
+                            ⏱ În permanență
+                        </div>
+                        <p class="text-gray-600 leading-relaxed">
+                            Dashboard simplu: vezi câte recenzii ai primit, care e ratingul, ce spun clienții.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pentru cine -->
+    <section class="py-20 lg:py-32 bg-white fade-in-up">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Perfect pentru afaceri care depind de încredere</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Dacă oamenii te aleg după recenzii — atunci ai nevoie de recenzii.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl p-8 border border-blue-200 hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-md">
+                        <i class="fa-solid fa-hotel text-emerald-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Pensiuni &amp; Hoteluri</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Turiștii aleg doar după recenzii. Un rating de 4.7★+ e esențial.
+                    </p>
+                </div>
+
+                <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-3xl p-8 border border-orange-200 hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-md">
+                        <i class="fa-solid fa-utensils text-emerald-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Restaurante &amp; Cafenele</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Clienții caută "restaurante cu recenzii bune". Fără ele, ești invizibil.
+                    </p>
+                </div>
+
+                <div class="bg-gradient-to-br from-pink-50 to-pink-100 rounded-3xl p-8 border border-pink-200 hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-md">
+                        <i class="fa-solid fa-scissors text-emerald-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Saloane &amp; Servicii Beauty</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Oamenii caută încredere înainte să-și lase părul sau pielea în mâinile cuiva.
+                    </p>
+                </div>
+
+                <div class="bg-gradient-to-br from-red-50 to-red-100 rounded-3xl p-8 border border-red-200 hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-md">
+                        <i class="fa-solid fa-heart-pulse text-emerald-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Cabinete Medicale &amp; Stomatologii</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Sănătatea e sensibilă. Recenziile conving mai mult decât orice reclamă.
+                    </p>
+                </div>
+
+                <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl p-8 border border-gray-200 hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-md">
+                        <i class="fa-solid fa-wrench text-emerald-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Servicii Auto &amp; Reparații</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Clienții vor certitudinea că nu vor fi înșelați. Recenziile creează acea certitudine.
+                    </p>
+                </div>
+
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-3xl p-8 border border-purple-200 hover:shadow-xl transition-all hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-md">
+                        <i class="fa-solid fa-shopping-bag text-emerald-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Magazine Locale &amp; Retail</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Magazinele cu recenzii bune atrag clienți noi zilnic, fără să cheltuiască pe reclame.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- De ce noi -->
+    <section class="py-20 lg:py-32 bg-gradient-to-br from-gray-50 to-blue-50 fade-in-up">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Diferența dintre a spera la recenzii și a le primi constant</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Nu e vorba doar de tehnologie. E vorba de strategie, implementare corectă și rezultate măsurabile.
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto space-y-6">
+                <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-200 flex items-start space-x-6 hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-check text-emerald-600 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Sistem automatizat complet</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Nu trimiți tu mesaje. Nu monitorizezi manual. Totul rulează automat, tu doar vezi rezultatele.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-200 flex items-start space-x-6 hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-check text-emerald-600 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Implementare rapidă</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            În 1-2 zile ești live. Nu pierzi luni de zile cu integrări complicate.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-200 flex items-start space-x-6 hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-check text-emerald-600 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Protejare reputație</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Clienții nemulțumiți ajung la tine, nu la Google. Rezolvi problema înainte să devină publică.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-200 flex items-start space-x-6 hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-check text-emerald-600 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Rezultate măsurabile</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Știi exact câte recenzii ai primit, când, și cum evoluează ratingul. Dashboard clar, fără confuzii.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-200 flex items-start space-x-6 hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-check text-emerald-600 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Suport și optimizare continuă</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Dacă ceva nu funcționează cum trebuie, ajustăm. Nu te lăsăm singur după implementare.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section id="contact" class="py-20 lg:py-32 bg-gradient-to-br from-primary-600 to-primary-800 text-white fade-in-up">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+            <h2 class="text-3xl lg:text-5xl font-bold mb-6 leading-tight">
+                Hai să construim încrederea care aduce clienți noi
+            </h2>
+            <p class="text-xl mb-8 leading-relaxed opacity-90">
+                Clienții tăi mulțumiți sunt cea mai bună reclamă. Dar dacă nu lasă recenzii, nimeni nu știe cât de bun ești.
+            </p>
+            <p class="text-lg mb-12 opacity-90">
+                Dă-le voce. Automatizează procesul. Lasă recenziile să lucreze pentru tine.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                <a href="#contact" class="bg-white text-emerald-600 px-10 py-4 rounded-xl font-bold hover:bg-gray-100 transition-all hover:scale-105 inline-flex items-center justify-center text-lg">
+                    Vreau mai multe recenzii
+                    <i class="fa-solid fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <div class="flex items-center justify-center space-x-3 text-white/90">
+                <i class="fa-solid fa-envelope text-xl"></i>
+                <span class="text-lg">Ai întrebări? Scrie-ne la <a href="mailto:contact@coredigital.ro" class="font-bold underline hover:text-white">contact@coredigital.ro</a></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+
+</BaseLayout>

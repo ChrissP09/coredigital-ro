@@ -1,18 +1,106 @@
-﻿:root {
-  --color-brand-blue: 213 94% 54%;
-  --color-reviews-green: 152 62% 38%;
-  --color-ai-purple: 268 74% 58%;
+:root {
+  --color-brand-blue: 221 83% 53%;
+  --color-reviews-green: 142 71% 45%;
+  --color-ai-purple: 262 83% 58%;
 
-  --color-bg: 36 35% 96%;
+  --color-bg: 210 40% 98%;
   --color-surface: 0 0% 100%;
-  --color-text: 220 16% 16%;
-  --color-muted: 220 9% 46%;
-  --color-border: 220 16% 90%;
+  --color-white: 0 0% 100%;
+  --color-text: 222 47% 11%;
+  --color-muted: 215 16% 47%;
+  --color-border: 214 32% 91%;
 
-  --gradient-hero: linear-gradient(135deg, hsl(36 52% 92%) 0%, hsl(36 35% 96%) 100%);
+  --section-blue: hsl(214 100% 96%);
+  --section-blue-soft: hsl(214 100% 98%);
+  --section-green: hsl(142 62% 94%);
+  --section-purple: hsl(262 80% 96%);
+  --section-neutral: hsl(210 40% 98%);
 
-  --font-sans: 'Source Sans 3', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-  --font-display: 'Playfair Display', 'Times New Roman', serif;
+  --content-width: 72rem;
+  --gutter: clamp(1rem, 3vw, 2rem);
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-6-5: 2.5rem;
+  --space-7: 3rem;
+  --space-7-5: 3.5rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+
+  --content-narrow: 52rem;
+  --content-form: 42rem;
+
+  --section-space-m: clamp(4.8rem, calc(4.5652173913vw + 3.1565217391rem), 9rem);
+  --section-space-s: calc(var(--section-space-m) * 0.75);
+  --section-space-l: calc(var(--section-space-m) * 1.25);
+
+  --brand-color: hsl(var(--color-brand-blue));
+  --brand-soft: hsl(var(--color-brand-blue) / 0.12);
+  --brand-border: hsl(var(--color-brand-blue) / 0.2);
+  --brand-text: hsl(var(--color-brand-blue));
+  --brand-gradient: linear-gradient(
+    135deg,
+    hsl(var(--color-brand-blue) / 0.14) 0%,
+    hsl(var(--color-brand-blue) / 0.04) 100%
+  );
+  --brand-gradient-strong: linear-gradient(
+    135deg,
+    hsl(var(--color-brand-blue) / 0.95) 0%,
+    hsl(var(--color-brand-blue) / 0.75) 100%
+  );
+  --gradient-hero: linear-gradient(135deg, var(--section-blue) 0%, var(--section-blue-soft) 100%);
+
+  --service-website-h: 221;
+  --service-website-s: 83%;
+  --service-website-l: 53%;
+  --service-website: hsl(var(--service-website-h) var(--service-website-s) var(--service-website-l));
+  --service-website-soft: hsl(var(--service-website-h) var(--service-website-s) 95% / 0.8);
+  --service-website-border: hsl(var(--service-website-h) var(--service-website-s) 44% / 0.25);
+  --service-website-text: hsl(var(--service-website-h) var(--service-website-s) 32%);
+  --service-website-accent: hsl(var(--service-website-h) var(--service-website-s) 46%);
+  --service-website-cta-text: hsl(var(--color-white));
+  --service-website-gradient: linear-gradient(
+    135deg,
+    hsl(var(--service-website-h) var(--service-website-s) 94% / 0.9) 0%,
+    hsl(var(--service-website-h) var(--service-website-s) 98% / 0.95) 100%
+  );
+
+  --service-reviews-h: 142;
+  --service-reviews-s: 71%;
+  --service-reviews-l: 45%;
+  --service-reviews: hsl(var(--service-reviews-h) var(--service-reviews-s) var(--service-reviews-l));
+  --service-reviews-soft: hsl(var(--service-reviews-h) var(--service-reviews-s) 92% / 0.9);
+  --service-reviews-border: hsl(var(--service-reviews-h) var(--service-reviews-s) 42% / 0.25);
+  --service-reviews-text: hsl(var(--service-reviews-h) var(--service-reviews-s) 32%);
+  --service-reviews-accent: hsl(var(--service-reviews-h) var(--service-reviews-s) 38%);
+  --service-reviews-cta-text: hsl(var(--color-white));
+  --service-reviews-gradient: linear-gradient(
+    135deg,
+    hsl(var(--service-reviews-h) var(--service-reviews-s) 92% / 0.95) 0%,
+    hsl(var(--service-reviews-h) var(--service-reviews-s) 97% / 0.95) 100%
+  );
+
+  --service-ai-h: 262;
+  --service-ai-s: 83%;
+  --service-ai-l: 58%;
+  --service-ai: hsl(var(--service-ai-h) var(--service-ai-s) var(--service-ai-l));
+  --service-ai-soft: hsl(var(--service-ai-h) var(--service-ai-s) 95% / 0.85);
+  --service-ai-border: hsl(var(--service-ai-h) var(--service-ai-s) 52% / 0.25);
+  --service-ai-text: hsl(var(--service-ai-h) var(--service-ai-s) 42%);
+  --service-ai-accent: hsl(var(--service-ai-h) var(--service-ai-s) 48%);
+  --service-ai-cta-text: hsl(var(--color-white));
+  --service-ai-gradient: linear-gradient(
+    135deg,
+    hsl(var(--service-ai-h) var(--service-ai-s) 92% / 0.9) 0%,
+    hsl(var(--service-ai-h) var(--service-ai-s) 98% / 0.95) 100%
+  );
+
+  --font-sans: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
 
   --text-base: 1rem;
   --text-lg: 1.125rem;
@@ -20,6 +108,9 @@
 
   --radius-sm: 8px;
   --radius-md: 14px;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
 
-  --shadow-soft: 0 12px 30px rgba(15, 23, 42, 0.12);
+  --shadow-soft: 0 12px 30px rgba(15, 23, 42, 0.08);
 }

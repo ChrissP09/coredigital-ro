@@ -1,4 +1,4 @@
-﻿@layer base {
+@layer base {
   html {
     font-size: var(--text-base);
   }
@@ -62,21 +62,21 @@
 
   ul,
   ol {
-    padding-left: theme('spacing.6');
+    padding-left: var(--space-6);
   }
 
   .skip-link {
     position: absolute;
     left: -999px;
-    top: theme('spacing.4');
+    top: var(--space-4);
     background: hsl(var(--color-brand-blue));
-    color: #ffffff;
-    padding: theme('spacing.2') theme('spacing.4');
+    color: hsl(var(--color-white));
+    padding: var(--space-2) var(--space-4);
     border-radius: var(--radius-sm);
     z-index: 1000;
   }
 
   .skip-link:focus {
-    left: theme('spacing.4');
+    left: var(--space-4);
   }
 }

@@ -1,4 +1,4 @@
-﻿# Core Web Blueprint
+# Core Web Blueprint
 
 Reusable blueprint for fast static websites built with Astro, Tailwind CSS, BEM, and variable-first design tokens.
 
@@ -41,6 +41,15 @@ npm run build
 - Single source of truth: `src/styles/base/tokens.css`.
 - Colors, fonts, radii, shadows are CSS variables.
 - Tailwind theme references these variables in `tailwind.config.cjs`.
+
+## Layout & Spacing Rules
+- Section-first structure: `main > section.section > .container`.
+- `.container` must be `inline-size: 100%`, `max-inline-size: var(--content-width)`, `margin-inline: auto`.
+- `.section` must use `padding-block: var(--section-space-m)` and `padding-inline: var(--gutter)`.
+- Section variants: `.section--s` uses `--section-space-s`, `.section--l` uses `--section-space-l`.
+- Canonical spacing token (do not change): `--section-space-m: clamp(4.8rem, calc(4.5652173913vw + 3.1565217391rem), 9rem);`
+- No hardcoded spacing values in components/pages. Add new spacing only via `tokens.css`.
+- Edit spacing scale and layout tokens only in `src/styles/base/tokens.css`.
 
 ## Heading Hierarchy
 - Exactly one `h1` per page.

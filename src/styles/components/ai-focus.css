@@ -1,0 +1,141 @@
+@layer components {
+  .ai-focus {
+    background: var(--section-purple);
+  }
+
+  .ai-focus__inner {
+    display: grid;
+    gap: var(--space-8);
+  }
+
+  .ai-focus__title {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .ai-focus__lead {
+    margin-top: var(--space-3);
+    font-size: 1.125rem;
+    color: hsl(var(--color-muted));
+  }
+
+  .ai-focus__list {
+    margin-top: var(--space-6);
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .ai-focus__item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--service-border);
+    background: hsl(var(--color-white));
+    padding: var(--space-4);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .ai-focus__icon {
+    display: inline-flex;
+    height: var(--space-6-5);
+    width: var(--space-6-5);
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+    background: var(--service-soft);
+    color: var(--service-color);
+  }
+
+  .ai-focus__item-title {
+    font-weight: 600;
+    color: hsl(var(--color-text));
+  }
+
+  .ai-focus__item-text {
+    color: hsl(var(--color-muted));
+  }
+
+  .ai-focus__visual {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .ai-focus__chat {
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--service-border);
+    background: hsl(var(--color-white));
+    padding: var(--space-4);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .ai-focus__chat-header {
+    margin-bottom: var(--space-4);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .ai-focus__avatar {
+    display: inline-flex;
+    height: var(--space-6-5);
+    width: var(--space-6-5);
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+    background: var(--service-soft);
+    color: var(--service-color);
+  }
+
+  .ai-focus__chat-title {
+    font-weight: 600;
+    color: hsl(var(--color-text));
+  }
+
+  .ai-focus__chat-status {
+    font-size: 0.875rem;
+    color: hsl(var(--color-muted));
+  }
+
+  .ai-focus__bubble {
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    font-size: 0.875rem;
+    background: var(--service-soft);
+    color: var(--service-text);
+  }
+
+  .ai-focus__dots {
+    margin-top: var(--space-4);
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  .ai-focus__dots span {
+    height: var(--space-2);
+    width: var(--space-2);
+    border-radius: 999px;
+    background: hsl(var(--color-border));
+  }
+
+  .ai-focus__badge {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: hsl(var(--color-text));
+  }
+
+  .ai-focus__badge i {
+    font-size: 1.25rem;
+    color: var(--service-color);
+  }
+
+  @media (min-width: 1024px) {
+    .ai-focus__inner {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: center;
+    }
+  }
+}

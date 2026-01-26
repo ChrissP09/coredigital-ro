@@ -1,11 +1,106 @@
-﻿<header class="site-header" role="banner">
-  <div class="site-header__inner">
-    <a class="site-header__brand" href="/">Site Blueprint</a>
-    <nav class="site-header__nav" aria-label="Navigare principală">
-      <ul class="site-header__list">
-        <li class="site-header__item"><a class="site-header__link" href="/">Acasă</a></li>
-        <li class="site-header__item"><a class="site-header__link" href="/despre-noi">Despre noi</a></li>
-      </ul>
-    </nav>
+---
+const { pathname } = Astro.url;
+const normalize = (path) => (path.length > 1 && path.endsWith('/') ? path.slice(0, -1) : path);
+const current = normalize(pathname);
+const isActive = (href) => current === normalize(href);
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200/50 shadow-lg">
+  <nav class="max-w-7xl mx-auto px-6 lg:px-8" aria-label="Navigare principală">
+    <div class="flex justify-between items-center h-20">
+      <div class="flex items-center">
+        <a class="text-2xl font-bold gradient-text" href="/">CoreDigital</a>
+      </div>
+
+      <div class="hidden lg:flex items-center space-x-8">
+        <div class="relative group">
+          <a class="text-gray-600 hover:text-primary-600 transition-colors font-medium inline-flex items-center" href="/servicii">
+            Servicii
+            <i class="fa-solid fa-chevron-down ml-2 text-xs"></i>
+          </a>
+          <div class="absolute left-0 top-full mt-3 w-64 rounded-2xl border border-gray-200 bg-white/95 backdrop-blur-lg shadow-xl opacity-0 invisible translate-y-2 transition-all duration-200 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0">
+            <div class="p-2">
+              <a class="block rounded-xl px-4 py-3 text-gray-700 hover:text-primary-600 hover:bg-primary-50 transition-colors" href="/servicii/construire-website">
+                Construire website
+              </a>
+              <a class="block rounded-xl px-4 py-3 text-gray-700 hover:text-primary-600 hover:bg-primary-50 transition-colors" href="/servicii/recenzii-online">
+                Recenzii online
+              </a>
+              <a class="block rounded-xl px-4 py-3 text-gray-700 hover:text-primary-600 hover:bg-primary-50 transition-colors" href="/servicii/chatbot-ai">
+                Chatbot AI
+              </a>
+            </div>
+          </div>
+        </div>
+        <a class="text-gray-600 hover:text-primary-600 transition-colors font-medium" href="/#preturi">
+          Prețuri
+        </a>
+        <a
+          class="text-gray-600 hover:text-primary-600 transition-colors font-medium"
+          href="/despre-noi"
+          aria-current={isActive('/despre-noi') ? 'page' : undefined}
+        >
+          Despre Noi
+        </a>
+        <a class="bg-primary-600 text-white px-6 py-2 rounded-xl hover:bg-primary-700 transition-colors font-medium" href="/#contact">
+          Contact
+        </a>
+      </div>
+
+      <button
+        class="lg:hidden text-gray-600 hover:text-primary-600 transition-colors"
+        id="mobile-menu-button"
+        type="button"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Deschide meniul</span>
+        <i class="fa-solid fa-bars text-2xl"></i>
+      </button>
+    </div>
+  </nav>
+
+  <div
+    id="mobile-menu"
+    class="lg:hidden fixed inset-0 bg-white/95 backdrop-blur-lg z-50 transform transition-transform duration-300 ease-in-out translate-x-full"
+    aria-hidden="true"
+  >
+    <div class="flex flex-col h-full p-6">
+      <div class="flex justify-between items-center mb-12">
+        <a class="text-2xl font-bold gradient-text" href="/">CoreDigital</a>
+        <button class="text-gray-600 hover:text-primary-600 transition-colors" id="mobile-menu-close" type="button">
+          <span class="sr-only">Închide meniul</span>
+          <i class="fa-solid fa-times text-2xl"></i>
+        </button>
+      </div>
+
+      <div class="flex flex-col space-y-8">
+        <div class="space-y-3">
+          <a class="text-gray-600 hover:text-primary-600 transition-colors font-medium py-2" href="/servicii">
+            Servicii
+          </a>
+          <div class="pl-4 flex flex-col space-y-3">
+            <a class="text-gray-500 hover:text-primary-600 transition-colors font-medium" href="/servicii/construire-website">
+              Construire website
+            </a>
+            <a class="text-gray-500 hover:text-primary-600 transition-colors font-medium" href="/servicii/recenzii-online">
+              Recenzii online
+            </a>
+            <a class="text-gray-500 hover:text-primary-600 transition-colors font-medium" href="/servicii/chatbot-ai">
+              Chatbot AI
+            </a>
+          </div>
+        </div>
+        <a class="text-gray-600 hover:text-primary-600 transition-colors font-medium py-2" href="/#preturi">
+          Prețuri
+        </a>
+        <a class="text-gray-600 hover:text-primary-600 transition-colors font-medium py-2" href="/despre-noi">
+          Despre Noi
+        </a>
+        <a class="bg-primary-600 text-white px-6 py-3 rounded-xl hover:bg-primary-700 transition-colors font-medium text-center" href="/#contact">
+          Contact
+        </a>
+      </div>
+    </div>
   </div>
 </header>

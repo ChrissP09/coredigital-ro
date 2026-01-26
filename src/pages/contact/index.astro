@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Contact | CoreDigital"
+  description="Hai să discutăm despre proiectul tău digital."
+>
+  <section class="section">
+    <div class="container">
+      <div class="page__hero">
+        <h1 class="page__hero-title">Contact</h1>
+        <p class="page__lead">Trimite-ne detalii și revenim cu pașii următori.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--s">
+    <div class="container">
+      <div class="page__section" aria-labelledby="contact-details">
+        <h2 id="contact-details" class="page__section-title">Detalii rapide</h2>
+        <ul class="page__list">
+          <li>Email: contact@coredigital.ro</li>
+          <li>Telefon: +40 700 000 000</li>
+          <li>Program: Luni–Vineri, 09:00–18:00</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--s">
+    <div class="container">
+      <div class="page__section" aria-labelledby="contact-form">
+        <h2 id="contact-form" class="page__section-title">Formular de contact</h2>
+        <form class="contact-form" method="post" action="#">
+          <div class="contact-form__field">
+            <label class="contact-form__label" for="contact-name">Nume</label>
+            <input class="contact-form__input" id="contact-name" name="name" type="text" placeholder="Numele tău" />
+          </div>
+          <div class="contact-form__field">
+            <label class="contact-form__label" for="contact-email">Email</label>
+            <input class="contact-form__input" id="contact-email" name="email" type="email" placeholder="email@exemplu.ro" />
+          </div>
+          <div class="contact-form__field">
+            <label class="contact-form__label" for="contact-message">Mesaj</label>
+            <textarea class="contact-form__input" id="contact-message" name="message" rows="5" placeholder="Descrie proiectul"></textarea>
+          </div>
+          <button class="contact-form__button" type="submit">Trimite mesaj</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--s">
+    <div class="container">
+      <div class="page__cta" aria-labelledby="contact-cta">
+        <h2 id="contact-cta" class="page__section-title">Preferi un call?</h2>
+        <p>Spune-ne intervalul potrivit și revenim cu o programare.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -9,7 +9,15 @@ const isActive = (href) => current === normalize(href);
   <nav class="max-w-7xl mx-auto px-6 lg:px-8" aria-label="Navigare principală">
     <div class="flex justify-between items-center h-20">
       <div class="flex items-center">
-        <a class="text-2xl font-bold gradient-text" href="/">CoreDigital</a>
+        <a class="flex items-center" href="/" aria-label="CoreDigital">
+          <img
+            src="/core-digital-logo.svg"
+            alt="CoreDigital"
+            class="h-9 w-auto"
+            loading="eager"
+            decoding="async"
+          />
+        </a>
       </div>
 
       <div class="hidden lg:flex items-center space-x-8">
@@ -67,7 +75,15 @@ const isActive = (href) => current === normalize(href);
   >
     <div class="flex flex-col h-full p-6">
       <div class="flex justify-between items-center mb-12">
-        <a class="text-2xl font-bold gradient-text" href="/">CoreDigital</a>
+        <a class="flex items-center" href="/" aria-label="CoreDigital">
+          <img
+            src="/core-digital-logo.svg"
+            alt="CoreDigital"
+            class="h-9 w-auto"
+            loading="eager"
+            decoding="async"
+          />
+        </a>
         <button class="text-gray-600 hover:text-primary-600 transition-colors" id="mobile-menu-close" type="button">
           <span class="sr-only">Închide meniul</span>
           <i class="fa-solid fa-times text-2xl"></i>

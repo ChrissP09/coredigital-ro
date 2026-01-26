@@ -57,6 +57,12 @@
     max-inline-size: var(--content-narrow);
   }
 
+  .website-section__header--center {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .page__grid.website-grid--2,
   .page__grid.website-grid--3 {
     grid-template-columns: 1fr;
@@ -210,10 +216,11 @@
     align-items: center;
     padding: 8px 12px;
     border-radius: 999px;
-    background: rgba(37, 99, 235, 0.08);
+    background: rgba(248, 113, 113, 0.12);
     color: hsl(var(--color-text));
     font-weight: 700;
     margin-bottom: var(--space-3);
+    border: 1px solid rgba(248, 113, 113, 0.28);
   }
 
   .website-panel h3 {

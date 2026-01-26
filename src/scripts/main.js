@@ -104,3 +104,77 @@ if (revealEls.length) {
   }
 }
 
+// Lightweight "live chat" demo (homepage AI section).
+const chatDemos = Array.from(document.querySelectorAll('[data-chat-demo]'));
+if (chatDemos.length) {
+  chatDemos.forEach((demo) => {
+    const steps = Array.from(demo.querySelectorAll('[data-chat-step]'));
+    const typing = demo.querySelector('[data-chat-typing]');
+    const messages = demo.querySelector('[data-chat-messages]');
+
+    if (!steps.length) return;
+
+    // If the user prefers reduced motion, keep everything visible.
+    if (prefersReducedMotion) {
+      steps.forEach((el) => el.classList.remove('hidden'));
+      if (typing) typing.classList.add('hidden');
+      return;
+    }
+
+    const showStep = (index) => {
+      steps.forEach((el, i) => el.classList.toggle('hidden', i > index));
+      if (typing) typing.classList.add('hidden');
+      if (messages) messages.scrollTop = messages.scrollHeight;
+    };
+
+    const reset = () => {
+      steps.forEach((el) => el.classList.add('hidden'));
+      showStep(0);
+    };
+    reset();
+
+    let stepIndex = 0;
+    let timeoutId = null;
+
+    const schedule = (fn, delay) => {
+      timeoutId = window.setTimeout(fn, delay);
+    };
+
+    const tick = () => {
+      // Show typing indicator briefly before the next message.
+      if (typing) {
+        typing.classList.remove('hidden');
+        if (messages) messages.scrollTop = messages.scrollHeight;
+      }
+
+      schedule(() => {
+        if (typing) typing.classList.add('hidden');
+
+        stepIndex += 1;
+        if (stepIndex >= steps.length) {
+          // Pause, then loop.
+          schedule(() => {
+            stepIndex = 0;
+            reset();
+            schedule(tick, 900);
+          }, 1400);
+          return;
+        }
+
+        showStep(stepIndex);
+        schedule(tick, 1100);
+      }, 650);
+    };
+
+    // Start after a short delay so it feels "live".
+    schedule(tick, 900);
+
+    // Stop animation if the element is removed.
+    const stop = () => {
+      if (timeoutId) window.clearTimeout(timeoutId);
+      timeoutId = null;
+    };
+
+    window.addEventListener('beforeunload', stop, { once: true });
+  });
+}

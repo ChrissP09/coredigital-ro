@@ -268,6 +268,12 @@
     margin-top: var(--space-5);
   }
 
+  .website-benefits__cta-note {
+    margin: 0 0 var(--space-3);
+    color: hsl(var(--color-muted));
+    font-weight: 600;
+  }
+
   .website-benefit {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -392,6 +398,7 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--space-4);
+    flex-wrap: wrap;
     padding: var(--space-4);
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.75));
     border-bottom: 1px solid rgba(37, 99, 235, 0.14);
@@ -446,6 +453,7 @@
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
+    flex-wrap: wrap;
   }
 
   .website-config__tag {

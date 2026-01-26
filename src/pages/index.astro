@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LucideIcon from '../components/ui/LucideIcon.astro';
+import ProcessSteps from '../components/ui/ProcessSteps.astro';
 ---
 
 <BaseLayout
@@ -880,45 +881,7 @@ import LucideIcon from '../components/ui/LucideIcon.astro';
   </section>
 
 <!-- How It Works -->
-  <section id="cum-functioneaza" class="py-20 lg:py-32 bg-gradient-to-br from-gray-50 to-blue-50 fade-in-up">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Cum funcționează</h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">Proces simplu și transparent, de la analiză la succes online</p>
-      </div>
-
-      <div class="grid md:grid-cols-4 gap-8">
-        <div class="text-center">
-          <div class="w-20 h-20 bg-primary-100 rounded-3xl flex items-center justify-center mx-auto mb-6">
-            <span class="text-2xl font-bold text-primary-600">1</span>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">Analiză</h3>
-          <p class="text-gray-600">Analizăm nevoile business-ului tău și identificăm oportunitățile de îmbunătățire</p>
-        </div>
-        <div class="text-center">
-          <div class="w-20 h-20 bg-primary-100 rounded-3xl flex items-center justify-center mx-auto mb-6">
-            <span class="text-2xl font-bold text-primary-600">2</span>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">Implementare</h3>
-          <p class="text-gray-600">Construim și configurăm soluțiile alese pentru afacerea ta</p>
-        </div>
-        <div class="text-center">
-          <div class="w-20 h-20 bg-primary-100 rounded-3xl flex items-center justify-center mx-auto mb-6">
-            <span class="text-2xl font-bold text-primary-600">3</span>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">Lansare</h3>
-          <p class="text-gray-600">Lansăm noile soluții și monitorizăm performanța împreună</p>
-        </div>
-        <div class="text-center">
-          <div class="w-20 h-20 bg-primary-100 rounded-3xl flex items-center justify-center mx-auto mb-6">
-            <span class="text-2xl font-bold text-primary-600">4</span>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">Optimizare</h3>
-          <p class="text-gray-600">Îmbunătățim continuu pentru rezultate din ce în ce mai bune</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <ProcessSteps class="fade-in-up" />
 
 <!-- Pricing -->
   <section id="preturi" class="py-20 lg:py-32 bg-white fade-in-up">

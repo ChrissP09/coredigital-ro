@@ -1,36 +1,43 @@
-<section class="section process" id="proces">
+---
+const { id = 'cum-functioneaza', class: className = '' } = Astro.props;
+const sectionClass = ['section', 'section--l', 'process', className].filter(Boolean).join(' ');
+---
+
+<section class={sectionClass} id={id}>
   <div class="container process__inner">
     <header class="process__header">
       <h2 class="process__title">Cum funcționează</h2>
-      <p class="process__lead">Pași clari, fără întârzieri și fără ambiguitate.</p>
+      <p class="process__lead">Proces simplu și transparent, de la analiză la succes online</p>
     </header>
-    <div class="process__grid">
+    <div class="process__grid" aria-label="Pașii procesului">
       <article class="process__step">
         <span class="process__number">1</span>
         <div>
           <h3 class="process__step-title">Analiză</h3>
-          <p class="process__step-text">Audităm prezența actuală și clarificăm obiectivele.</p>
+          <p class="process__step-text">
+            Analizăm nevoile business-ului tău și identificăm oportunitățile de îmbunătățire
+          </p>
         </div>
       </article>
       <article class="process__step">
         <span class="process__number">2</span>
         <div>
           <h3 class="process__step-title">Implementare</h3>
-          <p class="process__step-text">Construim website, fluxuri de review și AI chatbot.</p>
+          <p class="process__step-text">Construim și configurăm soluțiile alese pentru afacerea ta</p>
         </div>
       </article>
       <article class="process__step">
         <span class="process__number">3</span>
         <div>
           <h3 class="process__step-title">Lansare</h3>
-          <p class="process__step-text">Publicăm și configurăm dashboard-ul de monitorizare.</p>
+          <p class="process__step-text">Lansăm noile soluții și monitorizăm performanța împreună</p>
         </div>
       </article>
       <article class="process__step">
         <span class="process__number">4</span>
         <div>
           <h3 class="process__step-title">Optimizare</h3>
-          <p class="process__step-text">Îmbunătățim constant pe baza datelor reale.</p>
+          <p class="process__step-text">Îmbunătățim continuu pentru rezultate din ce în ce mai bune</p>
         </div>
       </article>
     </div>

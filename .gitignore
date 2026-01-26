@@ -3,6 +3,11 @@ dist/
 # generated types
 .astro/
 
+# scraps / exports
+greenspark/
+index.html
+src/pages/_tmp_*.txt
+
 # dependencies
 node_modules/
 

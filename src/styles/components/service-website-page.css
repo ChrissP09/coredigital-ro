@@ -6,10 +6,17 @@
     position: relative;
   }
 
-  .website-hero--align {
+  .website-hero-section {
     background: var(--gradient-hero);
-    border: 1px solid hsl(var(--color-border));
+    border-radius: var(--radius-xl);
     box-shadow: var(--shadow-soft);
+  }
+
+  .website-hero--align {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: var(--space-7) 0;
   }
 
   .website-hero__actions {

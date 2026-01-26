@@ -6,10 +6,6 @@
     position: relative;
   }
 
-  .website-hero__container {
-    max-inline-size: 80rem;
-  }
-
   .website-hero-section {
     background: var(--gradient-hero);
     border-radius: var(--radius-xl);

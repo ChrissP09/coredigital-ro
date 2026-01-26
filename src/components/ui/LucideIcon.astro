@@ -23,14 +23,14 @@ let svg = raw;
 svg = svg.replace(/width=\"[^\"]*\"/i, `width="${size}"`);
 svg = svg.replace(/height=\"[^\"]*\"/i, `height="${size}"`);
 
+const baseStyle = 'display:inline-block;vertical-align:middle;';
 if (/style=\"/i.test(svg)) {
   svg = svg.replace(/style=\"([^\"]*)\"/i, (match, style) => {
-    if (/display\s*:\s*block/i.test(style)) return match;
     const normalized = style.trim().replace(/;?\s*$/, ';');
-    return `style="${normalized} display:block;"`;
+    return `style="${normalized} ${baseStyle}"`;
   });
 } else {
-  svg = svg.replace(/<svg\b/i, `<svg style="display:block"`);
+  svg = svg.replace(/<svg\b/i, `<svg style="${baseStyle}"`);
 }
 
 if (className) {

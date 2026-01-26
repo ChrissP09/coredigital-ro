@@ -1,4 +1,24 @@
 @layer components {
+  [data-chat-demo] [data-chat-step],
+  [data-chat-demo] [data-chat-typing] {
+    will-change: transform, opacity;
+  }
+
+  [data-chat-demo] .chat-demo-in {
+    animation: chat-demo-in 320ms ease-out both;
+  }
+
+  @keyframes chat-demo-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   .site-body {
     background: hsl(var(--color-bg));
   }

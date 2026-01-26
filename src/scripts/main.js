@@ -121,10 +121,29 @@ if (chatDemos.length) {
       return;
     }
 
+    const scrollToBottom = () => {
+      if (!messages) return;
+      messages.scrollTo({
+        top: messages.scrollHeight,
+        behavior: prefersReducedMotion ? 'auto' : 'smooth',
+      });
+    };
+
+    const animateIn = (el) => {
+      el.classList.add('chat-demo-in');
+      window.setTimeout(() => el.classList.remove('chat-demo-in'), 380);
+    };
+
     const showStep = (index) => {
-      steps.forEach((el, i) => el.classList.toggle('hidden', i > index));
+      steps.forEach((el, i) => {
+        const shouldShow = i <= index;
+        const wasHidden = el.classList.contains('hidden');
+        el.classList.toggle('hidden', !shouldShow);
+        if (shouldShow && wasHidden && i === index) animateIn(el);
+      });
+
       if (typing) typing.classList.add('hidden');
-      if (messages) messages.scrollTop = messages.scrollHeight;
+      scrollToBottom();
     };
 
     const reset = () => {
@@ -140,11 +159,16 @@ if (chatDemos.length) {
       timeoutId = window.setTimeout(fn, delay);
     };
 
+    const typingDelayMs = 850;
+    const betweenMessagesMs = 1500;
+    const loopPauseMs = 2200;
+
     const tick = () => {
       // Show typing indicator briefly before the next message.
       if (typing) {
         typing.classList.remove('hidden');
-        if (messages) messages.scrollTop = messages.scrollHeight;
+        animateIn(typing);
+        scrollToBottom();
       }
 
       schedule(() => {
@@ -156,18 +180,18 @@ if (chatDemos.length) {
           schedule(() => {
             stepIndex = 0;
             reset();
-            schedule(tick, 900);
-          }, 1400);
+            schedule(tick, 1200);
+          }, loopPauseMs);
           return;
         }
 
         showStep(stepIndex);
-        schedule(tick, 1100);
-      }, 650);
+        schedule(tick, betweenMessagesMs);
+      }, typingDelayMs);
     };
 
     // Start after a short delay so it feels "live".
-    schedule(tick, 900);
+    schedule(tick, 1200);
 
     // Stop animation if the element is removed.
     const stop = () => {

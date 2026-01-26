@@ -571,12 +571,21 @@
   }
 
   .website-config__kpis {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: var(--space-3);
   }
 
+  .website-config__kpis--2 .website-config__kpi {
+    flex: 1 1 180px;
+  }
+
+  .website-config__kpis--3 .website-config__kpi {
+    flex: 1 1 140px;
+  }
+
   .website-config__kpi {
+    min-width: 0;
     border-radius: var(--radius-xl);
     border: 1px solid rgba(37, 99, 235, 0.12);
     background: rgba(255, 255, 255, 0.75);
@@ -590,6 +599,7 @@
     align-items: center;
     font-weight: 900;
     color: hsl(var(--color-text));
+    flex-wrap: wrap;
   }
 
   .website-config__kpi-top :global(svg) {

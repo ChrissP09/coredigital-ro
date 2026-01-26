@@ -80,6 +80,7 @@
   .u-service-cta:hover,
   .u-service-cta:focus-visible {
     background: var(--service-accent);
+    color: var(--service-cta-text);
   }
 
   .u-brand-cta {
@@ -102,6 +103,7 @@
     transform: translateY(-1px);
     box-shadow: 0 18px 42px rgba(37, 99, 235, 0.26);
     filter: saturate(1.05);
+    color: hsl(var(--color-white));
   }
 
   .u-brand-outline {

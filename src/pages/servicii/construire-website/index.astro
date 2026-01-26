@@ -202,11 +202,11 @@ import LucideIcon from '../../../components/ui/LucideIcon.astro';
   <!-- Soluția noastră -->
   <section class="section section--s fade-in-up" data-service="website" id="solutie">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="website-section__header">
+      <div class="website-section__header website-section__header--center">
         <h2 class="page__section-title">Soluția noastră: website pe abonament</h2>
         <p class="page__lead website-section__lead">
-          Website livrat rapid, fără cost inițial, cu mentenanță și optimizări incluse. Tu crești, noi avem grijă ca
-          prezența ta online să țină pasul.
+          În loc de “mii de euro din start” și un proiect care se întinde, primești un website modern pe abonament: fără
+          cost inițial, lansare rapidă și suport continuu.
         </p>
       </div>
 
@@ -214,34 +214,86 @@ import LucideIcon from '../../../components/ui/LucideIcon.astro';
         <div class="website-solution__card">
           <h3>Ce primești</h3>
           <ul class="page__list website-list--ticks">
-            <li>Website modern, livrat rapid</li>
-            <li>Fără cost inițial, abonament lunar</li>
-            <li>Mentenanță, hosting, suport continuu</li>
-            <li>Actualizări și extinderi pe măsură ce crești</li>
+            <li>Website modern, responsive, construit pentru conversii</li>
+            <li>Abonament lunar, fără cost inițial și fără costuri “din surpriză”</li>
+            <li>Mentenanță + suport continuu (când ai nevoie de modificări)</li>
+            <li>Iterații și extinderi pe măsură ce crește business-ul</li>
           </ul>
         </div>
 
         <div class="website-solution__visual">
-          <div class="website-solution__widget">
-            <div class="website-solution__widget-header">
-              <LucideIcon name="Sparkles" size={18} /> Focus pe rezultate
-            </div>
-            <div class="website-solution__widget-body">
-              <div>
-                <p class="website-solution__stat">+încredere</p>
-                <span class="website-solution__muted">prima impresie</span>
+          <div class="website-config" aria-hidden="true">
+            <div class="website-config__top">
+              <div class="website-config__brand">
+                <div class="website-config__logo"></div>
+                <div class="website-config__brand-text">
+                  <div class="website-config__title">Configurator</div>
+                  <div class="website-config__subtitle">CoreDigital Website</div>
+                </div>
               </div>
-              <div>
-                <p class="website-solution__stat">+cereri</p>
-                <span class="website-solution__muted">lead-uri</span>
-              </div>
-              <div>
-                <p class="website-solution__stat">+vizibilitate</p>
-                <span class="website-solution__muted">Google</span>
+              <div class="website-config__top-actions">
+                <span class="website-config__tag">v1.0</span>
+                <span class="website-config__x"></span>
               </div>
             </div>
-            <div class="website-solution__progress">
-              <div class="website-solution__progress-bar"></div>
+
+            <div class="website-config__section">
+              <div class="website-config__section-title">Plan</div>
+              <div class="website-config__options">
+                <div class="website-config__option website-config__option--active">
+                  <div class="website-config__radio"></div>
+                  <div>
+                    <div class="website-config__opt-title">Abonament</div>
+                    <div class="website-config__opt-sub">0€ setup</div>
+                  </div>
+                </div>
+                <div class="website-config__option">
+                  <div class="website-config__radio"></div>
+                  <div>
+                    <div class="website-config__opt-title">Proiect clasic</div>
+                    <div class="website-config__opt-sub">mii € upfront</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="website-config__section">
+              <div class="website-config__section-title">Focus pe rezultate</div>
+              <div class="website-config__kpis">
+                <div class="website-config__kpi">
+                  <div class="website-config__kpi-top">
+                    <LucideIcon name="Sparkles" size={16} /> +încredere
+                  </div>
+                  <div class="website-config__kpi-sub">prima impresie</div>
+                </div>
+                <div class="website-config__kpi">
+                  <div class="website-config__kpi-top">
+                    <LucideIcon name="Sparkles" size={16} /> +cereri
+                  </div>
+                  <div class="website-config__kpi-sub">lead-uri</div>
+                </div>
+                <div class="website-config__kpi">
+                  <div class="website-config__kpi-top">
+                    <LucideIcon name="Sparkles" size={16} /> +vizibilitate
+                  </div>
+                  <div class="website-config__kpi-sub">Google</div>
+                </div>
+              </div>
+              <div class="website-config__progress">
+                <div class="website-config__progress-bar"></div>
+              </div>
+            </div>
+
+            <div class="website-config__section website-config__section--row">
+              <div class="website-config__chip">
+                <span class="website-config__chip-dot"></span> Lansare rapidă
+              </div>
+              <div class="website-config__chip">
+                <span class="website-config__chip-dot"></span> Suport inclus
+              </div>
+              <div class="website-config__chip">
+                <span class="website-config__chip-dot"></span> Update-uri
+              </div>
             </div>
           </div>
         </div>

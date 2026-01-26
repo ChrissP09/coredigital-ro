@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LucideIcon from '../components/ui/LucideIcon.astro';
+---
+
+<BaseLayout title="Icon preview" description="Preview icon options">
+  <section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-6">
+      <h1 class="text-3xl font-bold text-gray-900 mb-2">Icon preview</h1>
+      <p class="text-gray-600 mb-10">
+        Pagina temporară pentru a compara iconițele înainte să le punem în site.
+      </p>
+
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="rounded-2xl border border-gray-200 p-6">
+          <div class="text-sm font-semibold text-gray-900 mb-4">Brain</div>
+          <div class="flex items-center gap-6 text-purple-600">
+            <LucideIcon name="Brain" size={56} />
+            <LucideIcon name="Brain" size={32} />
+            <LucideIcon name="Brain" size={20} />
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-gray-200 p-6">
+          <div class="text-sm font-semibold text-gray-900 mb-4">MessagesSquare (chat)</div>
+          <div class="flex items-center gap-6 text-purple-600">
+            <LucideIcon name="MessagesSquare" size={56} />
+            <LucideIcon name="MessagesSquare" size={32} />
+            <LucideIcon name="MessagesSquare" size={20} />
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-gray-200 p-6">
+          <div class="text-sm font-semibold text-gray-900 mb-4">AI Chat (messages + sparkles)</div>
+          <div class="flex items-center gap-6 text-purple-600">
+            <span class="relative inline-flex">
+              <LucideIcon name="MessagesSquare" size={56} />
+              <span class="absolute -right-2 -top-2">
+                <LucideIcon name="WandSparkles" size={22} />
+              </span>
+            </span>
+            <span class="relative inline-flex">
+              <LucideIcon name="MessagesSquare" size={32} />
+              <span class="absolute -right-2 -top-2">
+                <LucideIcon name="WandSparkles" size={14} />
+              </span>
+            </span>
+            <span class="relative inline-flex">
+              <LucideIcon name="MessagesSquare" size={20} />
+              <span class="absolute -right-2 -top-2">
+                <LucideIcon name="WandSparkles" size={10} />
+              </span>
+            </span>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-gray-200 p-6">
+          <div class="text-sm font-semibold text-gray-900 mb-4">AI (brain-circuit)</div>
+          <div class="flex items-center gap-6 text-purple-600">
+            <LucideIcon name="BrainCircuit" size={56} />
+            <LucideIcon name="BrainCircuit" size={32} />
+            <LucideIcon name="BrainCircuit" size={20} />
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-gray-200 p-6">
+          <div class="text-sm font-semibold text-gray-900 mb-4">Microchip (Font Awesome - vechi)</div>
+          <div class="flex items-center gap-6">
+            <i class="fa-solid fa-microchip text-5xl text-purple-600"></i>
+            <i class="fa-solid fa-microchip text-3xl text-purple-600"></i>
+            <i class="fa-solid fa-microchip text-xl text-purple-600"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

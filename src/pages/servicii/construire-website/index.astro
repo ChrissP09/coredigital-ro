@@ -51,66 +51,79 @@ import LucideIcon from '../../../components/ui/LucideIcon.astro';
             </div>
           </div>
 
-          <!-- Vizual hero: fereastră + carduri -->
+          <!-- Vizual hero: tablet + elemente plutitoare -->
           <div class="website-hero__visual" aria-hidden="true">
-            <div class="website-mock">
-              <div class="website-mock__top">
-                <div class="website-mock__dots">
-                  <span class="website-mock__dot website-mock__dot--red"></span>
-                  <span class="website-mock__dot website-mock__dot--yellow"></span>
-                  <span class="website-mock__dot website-mock__dot--green"></span>
-                </div>
-                <div class="website-mock__url">core-digital.ro • /</div>
-                <div class="website-mock__chip">Draft</div>
-              </div>
+            <div class="website-hero__floaters">
+              <span class="website-hero__cube website-hero__cube--1"></span>
+              <span class="website-hero__cube website-hero__cube--2"></span>
+              <span class="website-hero__cube website-hero__cube--3"></span>
+              <span class="website-hero__cube website-hero__cube--4"></span>
+              <span class="website-hero__cube website-hero__cube--5"></span>
+              <span class="website-hero__cube website-hero__cube--6"></span>
+            </div>
 
-              <div class="website-mock__body">
-                <div class="website-mock__nav">
-                  <div class="website-mock__logo"></div>
-                  <div class="website-mock__links">
-                    <span class="website-mock__link"></span>
-                    <span class="website-mock__link"></span>
-                    <span class="website-mock__link"></span>
+            <div class="website-hero__device">
+              <div class="website-mock">
+                <div class="website-mock__frame">
+                  <div class="website-mock__top">
+                    <div class="website-mock__dots">
+                      <span class="website-mock__dot website-mock__dot--red"></span>
+                      <span class="website-mock__dot website-mock__dot--yellow"></span>
+                      <span class="website-mock__dot website-mock__dot--green"></span>
+                    </div>
+                    <div class="website-mock__url">core-digital.ro • /</div>
+                    <div class="website-mock__chip">Draft</div>
                   </div>
-                  <div class="website-mock__btn"></div>
+
+                  <div class="website-mock__body">
+                    <div class="website-mock__nav">
+                      <div class="website-mock__logo"></div>
+                      <div class="website-mock__links">
+                        <span class="website-mock__link"></span>
+                        <span class="website-mock__link"></span>
+                        <span class="website-mock__link"></span>
+                      </div>
+                      <div class="website-mock__btn"></div>
+                    </div>
+
+                    <div class="website-mock__hero">
+                      <div class="website-mock__eyebrow"></div>
+                      <div class="website-mock__title"></div>
+                      <div class="website-mock__subtitle"></div>
+                      <div class="website-mock__cta-row">
+                        <div class="website-mock__cta website-mock__cta--primary"></div>
+                        <div class="website-mock__cta website-mock__cta--ghost"></div>
+                      </div>
+                    </div>
+
+                    <div class="website-mock__cards">
+                      <div class="website-mock__card">
+                        <div class="website-mock__card-icon"></div>
+                        <div class="website-mock__card-line"></div>
+                        <div class="website-mock__card-line website-mock__card-line--short"></div>
+                      </div>
+                      <div class="website-mock__card">
+                        <div class="website-mock__card-icon"></div>
+                        <div class="website-mock__card-line"></div>
+                        <div class="website-mock__card-line website-mock__card-line--short"></div>
+                      </div>
+                      <div class="website-mock__card">
+                        <div class="website-mock__card-icon"></div>
+                        <div class="website-mock__card-line"></div>
+                        <div class="website-mock__card-line website-mock__card-line--short"></div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <div class="website-mock__hero">
-                  <div class="website-mock__eyebrow"></div>
-                  <div class="website-mock__title"></div>
-                  <div class="website-mock__subtitle"></div>
-                  <div class="website-mock__cta-row">
-                    <div class="website-mock__cta website-mock__cta--primary"></div>
-                    <div class="website-mock__cta website-mock__cta--ghost"></div>
-                  </div>
+                <div class="website-mock__badge website-mock__badge--left">
+                  <span class="website-mock__badge-dot"></span>
+                  <span>SEO-first</span>
                 </div>
-
-                <div class="website-mock__cards">
-                  <div class="website-mock__card">
-                    <div class="website-mock__card-icon"></div>
-                    <div class="website-mock__card-line"></div>
-                    <div class="website-mock__card-line website-mock__card-line--short"></div>
-                  </div>
-                  <div class="website-mock__card">
-                    <div class="website-mock__card-icon"></div>
-                    <div class="website-mock__card-line"></div>
-                    <div class="website-mock__card-line website-mock__card-line--short"></div>
-                  </div>
-                  <div class="website-mock__card">
-                    <div class="website-mock__card-icon"></div>
-                    <div class="website-mock__card-line"></div>
-                    <div class="website-mock__card-line website-mock__card-line--short"></div>
-                  </div>
+                <div class="website-mock__badge website-mock__badge--right">
+                  <span class="website-mock__badge-dot"></span>
+                  <span>Pe abonament</span>
                 </div>
-              </div>
-
-              <div class="website-mock__badge website-mock__badge--left">
-                <span class="website-mock__badge-dot"></span>
-                <span>SEO-first</span>
-              </div>
-              <div class="website-mock__badge website-mock__badge--right">
-                <span class="website-mock__badge-dot"></span>
-                <span>Pe abonament</span>
               </div>
             </div>
           </div>
@@ -592,32 +605,50 @@ import LucideIcon from '../../../components/ui/LucideIcon.astro';
   <!-- De ce noi -->
   <section class="section section--s fade-in-up" data-service="website" id="de-noi">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="website-section__header">
+      <div class="website-section__header website-section__header--center">
         <h2 class="page__section-title">De ce să ne alegi pe noi</h2>
       </div>
 
-      <div class="page__grid website-grid--3" role="list">
-        <div class="page__card" role="listitem">
+        <div class="page__grid website-features-grid" role="list">
+        <div class="page__card website-feature website-feature--wide website-feature--tint" role="listitem">
+          <span class="website-feature__icon" aria-hidden="true">
+            <LucideIcon name="Wallet" size={26} />
+          </span>
           <h3>Model pe abonament</h3>
           <p>Fără costuri inițiale. Plătești lunar, simplu și predictibil.</p>
         </div>
-        <div class="page__card" role="listitem">
+        <div class="page__card website-feature" role="listitem">
+          <span class="website-feature__icon" aria-hidden="true">
+            <LucideIcon name="Search" size={26} />
+          </span>
           <h3>Focus pe rezultate</h3>
           <p>Website-ul este construit pentru cereri, apeluri și programări — nu doar “să existe”.</p>
         </div>
-        <div class="page__card" role="listitem">
+        <div class="page__card website-feature" role="listitem">
+          <span class="website-feature__icon" aria-hidden="true">
+            <LucideIcon name="Palette" size={26} />
+          </span>
           <h3>Design modern</h3>
           <p>Look & feel premium, aerisit, ușor de parcurs.</p>
         </div>
-        <div class="page__card" role="listitem">
+        <div class="page__card website-feature website-feature--wide website-feature--tint" role="listitem">
+          <span class="website-feature__icon" aria-hidden="true">
+            <LucideIcon name="LifeBuoy" size={26} />
+          </span>
           <h3>Suport continuu</h3>
           <p>Actualizăm, îmbunătățim și menținem totul funcțional pe termen lung.</p>
         </div>
-        <div class="page__card" role="listitem">
+        <div class="page__card website-feature" role="listitem">
+          <span class="website-feature__icon" aria-hidden="true">
+            <LucideIcon name="Puzzle" size={26} />
+          </span>
           <h3>Gândire digitală</h3>
           <p>Structură de conversie, copy clar, integrare cu obiectivele tale.</p>
         </div>
-        <div class="page__card" role="listitem">
+        <div class="page__card website-feature website-feature--wide website-feature--tint" role="listitem">
+          <span class="website-feature__icon" aria-hidden="true">
+            <LucideIcon name="BrainCircuit" size={26} />
+          </span>
           <h3>AI-ready</h3>
           <p>Pregătim baza perfectă pentru automatizări și AI chatbot când ești gata.</p>
         </div>

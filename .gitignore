@@ -7,6 +7,7 @@ dist/
 greenspark/
 index.html
 src/pages/_tmp_*.txt
+temp/
 
 # dependencies
 node_modules/

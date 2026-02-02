@@ -13,11 +13,11 @@ import LucideIcon from '../../../components/ui/LucideIcon.astro';
       <div class="page__hero website-hero website-hero--align">
         <div class="website-hero__grid">
           <div class="website-hero__copy">
-            <span class="u-service-pill">
-              <span class="u-service-icon" aria-hidden="true">
-                <LucideIcon name="Globe" size={18} />
+            <span class="website-hero__pill" aria-label="Serviciu: Creare website">
+              <span class="website-hero__pill-icon" aria-hidden="true">
+                <LucideIcon name="LayoutTemplate" size={16} />
               </span>
-              Serviciu: Creare website
+              <span class="website-hero__pill-text">Creare Website</span>
             </span>
 
             <h1 class="page__hero-title">
@@ -25,16 +25,16 @@ import LucideIcon from '../../../components/ui/LucideIcon.astro';
             </h1>
 
             <p class="page__lead">
-              Website profesional pe abonament: lansare rapidă, scalabil, mentenanță inclusă. SEO-first, făcut să
-              convertească, nu doar să “existe”.
+              Website pe abonament, fără bătăi de cap: design modern, lansare rapidă, mentenanță inclusă. SEO-first și
+              optimizat pentru cereri reale.
             </p>
 
             <div class="website-hero__actions">
               <a class="u-brand-cta u-btn-lg" href="/contact">
-                Hai să discutăm <i class="fas fa-arrow-right"></i>
+                Hai să discutăm <LucideIcon name="ArrowUpRight" size={18} />
               </a>
               <a class="u-brand-outline u-btn-lg" href="#proces">
-                <i class="fa-solid fa-play"></i> Vezi cum funcționează
+                <LucideIcon name="ChevronDown" size={18} /> Vezi cum funcționează
               </a>
             </div>
 
@@ -371,38 +371,130 @@ import LucideIcon from '../../../components/ui/LucideIcon.astro';
 
       <div class="website-steps">
         <article class="website-step">
-          <div class="website-step__num">1</div>
-          <div class="website-step__body">
-            <h3>Analizăm nevoile tale</h3>
-            <p>Clarificăm obiectivele, publicul și ce înseamnă “rezultat” pentru tine.</p>
+          <div class="website-step__visual website-step__visual--analysis" aria-hidden="true">
+            <div class="ws-chat">
+              <div class="ws-chat__bubble">
+                <div class="ws-chat__dot"></div>
+                <div class="ws-chat__lines">
+                  <span class="ws-chat__line ws-chat__line--1"></span>
+                  <span class="ws-chat__line ws-chat__line--2"></span>
+                  <span class="ws-chat__line ws-chat__line--3"></span>
+                </div>
+              </div>
+              <div class="ws-chat__input">
+                <span class="ws-chat__typed">Obiective & public</span><span class="ws-caret"></span>
+              </div>
+            </div>
+          </div>
+          <div class="website-step__meta">
+            <span class="website-step__icon" aria-hidden="true"><LucideIcon name="Search" size={18} /></span>
+            <div class="website-step__body">
+              <h3>Analizăm nevoile tale</h3>
+              <p>Clarificăm obiectivele, publicul și ce înseamnă „rezultat” pentru tine.</p>
+            </div>
           </div>
         </article>
         <article class="website-step">
-          <div class="website-step__num">2</div>
-          <div class="website-step__body">
-            <h3>Structură & design</h3>
-            <p>Arhitectură de pagini, copy și un design modern, coerent cu brandul.</p>
+          <div class="website-step__visual website-step__visual--wireframe" aria-hidden="true">
+            <div class="ws-wire">
+              <div class="ws-wire__top"></div>
+              <div class="ws-wire__grid">
+                <div class="ws-wire__side"></div>
+                <div class="ws-wire__main">
+                  <span class="ws-wire__block ws-wire__block--a"></span>
+                  <span class="ws-wire__block ws-wire__block--b"></span>
+                  <span class="ws-wire__block ws-wire__block--c"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="website-step__meta">
+            <span class="website-step__icon" aria-hidden="true"><LucideIcon name="LayoutTemplate" size={18} /></span>
+            <div class="website-step__body">
+              <h3>Structură & design</h3>
+              <p>Arhitectură de pagini, copy și un design modern, coerent cu brandul.</p>
+            </div>
           </div>
         </article>
         <article class="website-step">
-          <div class="website-step__num">3</div>
-          <div class="website-step__body">
-            <h3>Construim website-ul</h3>
-            <p>Implementare performantă, responsive, cu bune practici SEO de bază.</p>
+          <div class="website-step__visual website-step__visual--build" aria-hidden="true">
+            <div class="ws-code">
+              <span class="ws-code__line ws-code__line--1"></span>
+              <span class="ws-code__line ws-code__line--2"></span>
+              <span class="ws-code__line ws-code__line--3"></span>
+              <span class="ws-code__line ws-code__line--4"></span>
+              <div class="ws-progress">
+                <span class="ws-progress__bar"></span>
+              </div>
+            </div>
+          </div>
+          <div class="website-step__meta">
+            <span class="website-step__icon" aria-hidden="true"><LucideIcon name="Settings" size={18} /></span>
+            <div class="website-step__body">
+              <h3>Construim website-ul</h3>
+              <p>Implementare performantă, responsive, cu bune practici SEO de bază.</p>
+            </div>
           </div>
         </article>
         <article class="website-step">
-          <div class="website-step__num">4</div>
-          <div class="website-step__body">
-            <h3>Lansare rapidă</h3>
-            <p>Publicăm, verificăm tracking-ul și facem ultimele ajustări.</p>
+          <div class="website-step__visual website-step__visual--launch" aria-hidden="true">
+            <div class="ws-launch">
+              <div class="ws-launch__row ws-launch__row--1"></div>
+              <div class="ws-launch__row ws-launch__row--2"></div>
+              <div class="ws-launch__track">
+                <span class="ws-launch__dot"></span>
+              </div>
+              <div class="ws-launch__pill"></div>
+            </div>
+          </div>
+          <div class="website-step__meta">
+            <span class="website-step__icon" aria-hidden="true"><LucideIcon name="Timer" size={18} /></span>
+            <div class="website-step__body">
+              <h3>Lansare rapidă</h3>
+              <p>Publicăm, verificăm tracking-ul și facem ultimele ajustări.</p>
+            </div>
           </div>
         </article>
         <article class="website-step">
-          <div class="website-step__num">5</div>
-          <div class="website-step__body">
-            <h3>Optimizare continuă</h3>
-            <p>Îmbunătățim secțiunile și paginile pe baza feedback-ului și datelor reale.</p>
+          <div class="website-step__visual website-step__visual--opt" aria-hidden="true">
+            <div class="ws-chart">
+              <svg class="ws-chart__svg" viewBox="0 0 320 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="ws-chart__grid" d="M1 35H319M1 70H319M1 105H319" />
+                <path class="ws-chart__line" d="M12 108C52 108 74 92 96 86C130 74 140 80 166 64C196 44 212 58 240 40C264 26 288 24 308 18" />
+              </svg>
+              <span class="ws-chart__dot"></span>
+            </div>
+          </div>
+          <div class="website-step__meta">
+            <span class="website-step__icon" aria-hidden="true"><LucideIcon name="Sparkles" size={18} /></span>
+            <div class="website-step__body">
+              <h3>Optimizare continuă</h3>
+              <p>Îmbunătățim secțiunile și paginile pe baza feedback-ului și datelor reale.</p>
+            </div>
+          </div>
+        </article>
+        <article class="website-step">
+          <div class="website-step__visual website-step__visual--billing" aria-hidden="true">
+            <div class="ws-billing">
+              <div class="ws-billing__card">
+                <div class="ws-billing__head"></div>
+                <div class="ws-billing__line ws-billing__line--1"></div>
+                <div class="ws-billing__line ws-billing__line--2"></div>
+                <div class="ws-billing__total">
+                  <span class="ws-billing__label"></span>
+                  <span class="ws-billing__amount"></span>
+                </div>
+              </div>
+              <div class="ws-billing__tag">Lunar fix</div>
+              <div class="ws-billing__check" aria-hidden="true"></div>
+            </div>
+          </div>
+          <div class="website-step__meta">
+            <span class="website-step__icon" aria-hidden="true"><LucideIcon name="Wallet" size={18} /></span>
+            <div class="website-step__body">
+              <h3>0 costuri ascunse</h3>
+              <p>Plătești un abonament lunar fix. Totul e clar de la început, fără taxe surpriză.</p>
+            </div>
           </div>
         </article>
       </div>

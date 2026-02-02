@@ -1,0 +1,11 @@
+@layer components {
+  .reviews-hero__copy {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  .reviews-hero__copy .website-hero__pill {
+    margin-bottom: var(--space-1);
+  }
+}
+

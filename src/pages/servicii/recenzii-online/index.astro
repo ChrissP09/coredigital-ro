@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import LucideIcon from '../../../components/ui/LucideIcon.astro';
 ---
 
 <BaseLayout
@@ -7,28 +8,29 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
   description="Transformă clienții mulțumiți în recenzii Google care aduc clienți noi. Sistem automat de colectare recenzii pentru afaceri locale."
   bodyClass="bg-white text-gray-900 antialiased"
 >
-<section class="pt-32 pb-20 lg:pt-40 lg:pb-32 bg-gradient-to-br from-blue-50 via-white to-purple-50 fade-in-up">
+<section class="pt-32 pb-20 lg:pt-40 lg:pb-32 bg-gradient-to-br from-blue-50 via-white to-purple-50 fade-in-up" data-service="reviews">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <div class="inline-block bg-green-600 text-white text-sm font-semibold px-4 py-2 rounded-full mb-6">
-                        <i class="fa-solid fa-star mr-2"></i>
-                        Colectare Recenzii
-                    </div>
-                    <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                <div class="reviews-hero__copy">
+                    <span class="website-hero__pill" aria-label="Serviciu: Colectare recenzii">
+                        <span class="website-hero__pill-icon" aria-hidden="true">
+                            <LucideIcon name="MessagesSquare" size={16} />
+                        </span>
+                        <span class="website-hero__pill-text">Colectare Recenzii</span>
+                    </span>
+                    <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
                         Transformă clienții mulțumiți în recenzii care aduc
                         <span class="gradient-text">clienți noi</span>
                     </h1>
-                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                    <p class="text-xl text-gray-600 leading-relaxed">
                         Mai mulți oameni aleg afaceri cu multe recenzii pozitive. Îi ajutăm pe clienții tăi să lase recenzii, simplu și automat, fără să ridici un deget.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#contact" class="bg-primary-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-primary-700 transition-all hover:scale-105 inline-flex items-center justify-center">
-                            Vreau mai multe recenzii
-                            <i class="fa-solid fa-arrow-right ml-2"></i>
+                        <a href="#contact" class="u-brand-cta u-btn-lg">
+                            Vreau mai multe recenzii <LucideIcon name="ArrowUpRight" size={18} />
                         </a>
-                        <a href="#proces" class="border-2 border-primary-600 text-emerald-600 px-8 py-4 rounded-xl font-semibold hover:bg-primary-600 hover:text-white transition-all text-center">
-                            Vezi cum funcționează
+                        <a href="#proces" class="u-brand-outline u-btn-lg">
+                            <LucideIcon name="ChevronDown" size={18} /> Vezi cum funcționează
                         </a>
                     </div>
                 </div>

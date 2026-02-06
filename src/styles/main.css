@@ -8,6 +8,7 @@
 @import './components/page.css';
 @import './components/service-website-page.css';
 @import './components/service-reviews-page.css';
+@import './components/service-ai-page.css';
 @import './components/hero.css';
 @import './components/problems.css';
 @import './components/services-overview.css';
@@ -16,6 +17,8 @@
 @import './components/ai-focus.css';
 @import './components/process.css';
 @import './components/pricing-summary.css';
+@import './components/pricing-page.css';
+@import './components/pricing-combo.css';
 @import './components/why-core.css';
 @import './components/final-cta.css';
 @import './components/greenspark.css';

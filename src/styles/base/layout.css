@@ -10,6 +10,10 @@
     padding-inline: var(--gutter);
   }
 
+  .section + .section {
+    padding-top: 0;
+  }
+
   .section--s {
     padding-block: var(--section-space-s);
   }

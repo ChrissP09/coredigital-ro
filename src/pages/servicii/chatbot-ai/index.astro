@@ -1,79 +1,562 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import LucideIcon from '../../../components/ui/LucideIcon.astro';
 ---
 
 <BaseLayout
-  title="Chatbot AI | Servicii CoreDigital"
-  description="Chatbot AI pentru suport, lead-uri și automatizare conversații online."
+  title="AI Chatbot pentru website: suport non-stop și lead-uri | CoreDigital"
+  description="Transformă vizitatorii în clienți cu un AI Chatbot care răspunde non-stop: suport instant, întrebări frecvente, calificare lead-uri și automatizare."
 >
-  <section class="section" data-service="ai">
-    <div class="container">
-      <div class="page__hero">
-        <span class="u-service-pill">Serviciu AI</span>
-        <h1 class="page__hero-title u-service-accent">Chatbot AI</h1>
-        <p class="page__lead">Automatizăm conversațiile și calificăm lead-urile non-stop.</p>
-      </div>
-    </div>
-  </section>
+  <!-- Hero -->
+  <section class="section section--l ai-hero-section fade-in-up" data-service="ai">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="ai-hero">
+        <div class="ai-hero__grid">
+          <div class="ai-hero__copy">
+            <span class="website-hero__pill" aria-label="Serviciu: AI Chatbot">
+              <span class="website-hero__pill-icon" aria-hidden="true">
+                <LucideIcon name="WandSparkles" size={16} />
+              </span>
+              <span class="website-hero__pill-text">AI Chatbot</span>
+            </span>
 
-  <section class="section section--s" data-service="ai">
-    <div class="container">
-      <div class="page__section" aria-labelledby="ai-usecases">
-        <h2 id="ai-usecases" class="page__section-title">Cazuri de utilizare</h2>
-        <ul class="page__list">
-          <li>Răspunsuri rapide la întrebări frecvente.</li>
-          <li>Precalificare clienți și programări.</li>
-          <li>Colectare lead-uri și informații utile.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+            <h1 class="page__hero-title">
+              Transformă vizitatorii în clienți cu un <span class="u-gradient-text">AI Chatbot</span> care răspunde non-stop
+            </h1>
 
-  <section class="section section--s" data-service="ai">
-    <div class="container">
-      <div class="page__section" aria-labelledby="ai-setup">
-        <h2 id="ai-setup" class="page__section-title">Implementare</h2>
-        <div class="page__grid">
-          <div class="page__card">
-            <h3>Scenarii</h3>
-            <p>Definim fluxuri conversaționale și tonul brandului.</p>
+            <p class="page__lead ai-hero__lead">
+              Automatizează întrebările frecvente, califică lead-urile și oferă suport instant, direct pe website-ul tău.
+            </p>
+
+            <div class="ai-hero__actions">
+              <a class="u-brand-cta u-btn-lg" href="/contact">
+                Activează AI Chatbot-ul <LucideIcon name="ArrowUpRight" size={18} />
+              </a>
+              <a class="u-brand-outline u-btn-lg" href="#cum-functioneaza">
+                <LucideIcon name="ChevronDown" size={18} /> Vezi cum funcționează
+              </a>
+            </div>
+
+            <div class="ai-hero__micro" aria-label="Beneficii rapide">
+              <span class="ai-hero__micro-item">
+                <LucideIcon name="BadgeCheck" size={18} /> 24/7 răspuns instant
+              </span>
+              <span class="ai-hero__micro-item">
+                <LucideIcon name="BadgeCheck" size={18} /> Calificare lead-uri
+              </span>
+              <span class="ai-hero__micro-item">
+                <LucideIcon name="BadgeCheck" size={18} /> Reduce suportul manual
+              </span>
+            </div>
           </div>
-          <div class="page__card">
-            <h3>Integrare</h3>
-            <p>Conectăm chatbotul la website și canale relevante.</p>
-          </div>
-          <div class="page__card">
-            <h3>Testare</h3>
-            <p>Validăm răspunsurile și ajustăm înainte de lansare.</p>
-          </div>
-          <div class="page__card">
-            <h3>Monitorizare</h3>
-            <p>Optimizăm continuu pe baza conversațiilor reale.</p>
+
+          <div class="ai-hero__visual" aria-hidden="true">
+            <div class="ai-chatmock" data-chat-demo>
+              <div class="ai-chatmock__top">
+                <div class="ai-chatmock__dots">
+                  <span class="ai-chatmock__dot ai-chatmock__dot--red"></span>
+                  <span class="ai-chatmock__dot ai-chatmock__dot--yellow"></span>
+                  <span class="ai-chatmock__dot ai-chatmock__dot--green"></span>
+                </div>
+                <div class="ai-chatmock__title">
+                  <LucideIcon name="Lock" size={14} /> coredigital.ro • /chat
+                </div>
+                <div class="ai-chatmock__status">Online</div>
+              </div>
+
+              <div class="ai-chatmock__body">
+                <div class="ai-chatmock__header">
+                  <div class="ai-chatmock__avatar">
+                    <LucideIcon name="Sparkles" size={18} />
+                  </div>
+                  <div class="ai-chatmock__meta">
+                    <div class="ai-chatmock__name">AI Asistent</div>
+                    <div class="ai-chatmock__sub">Răspunde instant • 24/7</div>
+                  </div>
+                  <div class="ai-chatmock__badge">Live</div>
+                </div>
+
+                <div class="ai-chatmock__messages" data-chat-messages>
+                  <div class="ai-chatmock__row ai-chatmock__row--bot" data-chat-step="1">
+                    <div class="ai-chatmock__bubble ai-chatmock__bubble--bot">
+                      Bună! Cu ce te pot ajuta azi?
+                    </div>
+                    <div class="ai-chatmock__time">09:12</div>
+                  </div>
+
+                  <div class="ai-chatmock__row ai-chatmock__row--user hidden" data-chat-step="2">
+                    <div class="ai-chatmock__bubble ai-chatmock__bubble--user">
+                      Salut! Aveți prețuri și cât durează implementarea?
+                    </div>
+                    <div class="ai-chatmock__time">09:13</div>
+                  </div>
+
+                  <div class="ai-chatmock__row ai-chatmock__row--bot hidden" data-chat-step="3">
+                    <div class="ai-chatmock__bubble ai-chatmock__bubble--bot">
+                      Sigur. Îl configurăm pentru business-ul tău și îl integrăm pe site în 1–3 zile. Vrei să-ți trimit o
+                      ofertă pe email?
+                    </div>
+                    <div class="ai-chatmock__time">09:13</div>
+                  </div>
+
+                  <div class="ai-chatmock__row ai-chatmock__row--user hidden" data-chat-step="4">
+                    <div class="ai-chatmock__bubble ai-chatmock__bubble--user">
+                      Da, te rog. Email: contact@firma.ro
+                    </div>
+                    <div class="ai-chatmock__time">09:14</div>
+                  </div>
+
+                  <div class="ai-chatmock__row ai-chatmock__row--bot hidden" data-chat-step="5">
+                    <div class="ai-chatmock__bubble ai-chatmock__bubble--bot">
+                      Perfect! Am notat. Îți trimit detaliile și pașii următori în câteva minute.
+                    </div>
+                    <div class="ai-chatmock__time">09:14</div>
+                  </div>
+
+                  <div class="ai-chatmock__typing hidden" data-chat-typing>
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+
+                <div class="ai-chatmock__input">
+                  <span class="ai-chatmock__placeholder">Scrie un mesaj…</span>
+                  <span class="ai-chatmock__send">
+                    <LucideIcon name="SendHorizontal" size={16} />
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ai-hero__chips">
+              <span class="ai-chip">
+                <span class="ai-chip__dot"></span> Întrebări frecvente
+              </span>
+              <span class="ai-chip">
+                <span class="ai-chip__dot"></span> Lead-uri
+              </span>
+              <span class="ai-chip">
+                <span class="ai-chip__dot"></span> Suport
+              </span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section section--s" data-service="ai">
-    <div class="container">
-      <div class="page__section" aria-labelledby="ai-deliverables">
-        <h2 id="ai-deliverables" class="page__section-title">Livrabile</h2>
-        <ul class="page__list">
-          <li>Set complet de fluxuri conversaționale.</li>
-          <li>Integrare pe website și documentație.</li>
-          <li>Raport de performanță inițială.</li>
-        </ul>
+  <!-- De ce business-urile pierd clienți -->
+  <section class="section section--s fade-in-up" data-service="ai" id="probleme">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="website-section__header website-section__header--center">
+        <h2 class="page__section-title">De ce business-urile pierd clienți</h2>
+        <p class="page__lead website-section__lead">
+          Majoritatea vizitatorilor părăsesc website-ul fără să contacteze afacerea. De cele mai multe ori, nu e lipsă de
+          interes — e lipsă de răspuns la momentul potrivit.
+        </p>
+      </div>
+
+      <div class="page__grid ai-problems__grid" role="list">
+        <article class="page__card ai-card" role="listitem">
+          <span class="ai-card__icon" aria-hidden="true"><LucideIcon name="Timer" size={20} /></span>
+          <h3>Lipsa răspunsurilor imediate</h3>
+          <p>Vizitatorul are o întrebare, nu găsește răspunsul, pleacă.</p>
+        </article>
+        <article class="page__card ai-card" role="listitem">
+          <span class="ai-card__icon" aria-hidden="true"><LucideIcon name="MessagesSquare" size={20} /></span>
+          <h3>Întrebări repetitive</h3>
+          <p>Aceleași întrebări consumă timp: preț, program, locație, servicii.</p>
+        </article>
+        <article class="page__card ai-card" role="listitem">
+          <span class="ai-card__icon" aria-hidden="true"><LucideIcon name="SendHorizontal" size={20} /></span>
+          <h3>Lead-uri pierdute</h3>
+          <p>Fără un ghidaj clar, oamenii nu ajung la formular sau la contact.</p>
+        </article>
+        <article class="page__card ai-card" role="listitem">
+          <span class="ai-card__icon" aria-hidden="true"><LucideIcon name="Settings" size={20} /></span>
+          <h3>Lipsă automatizare</h3>
+          <p>Suportul manual nu scalează. Orice creștere în trafic devine stres.</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <section class="section section--s" data-service="ai">
-    <div class="container">
-      <div class="page__cta u-service-border" aria-labelledby="ai-cta">
-        <h2 id="ai-cta" class="page__section-title">Vrei un chatbot personalizat?</h2>
-        <p>Spune-ne ce întrebări primești cel mai des de la clienți.</p>
-        <a class="u-service-cta" href="/contact">Cere demo</a>
+  <!-- Soluția: AI Chatbot-ul -->
+  <section class="section section--s fade-in-up" data-service="ai" id="solutie">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="website-section__header website-section__header--center">
+        <h2 class="page__section-title">Soluția: AI Chatbot-ul</h2>
+        <p class="page__lead website-section__lead">
+          AI Chatbot-ul răspunde instant, non-stop, și ghidează utilizatorii exact când sunt interesați.
+        </p>
+      </div>
+
+      <div class="ai-solution">
+        <div class="ai-solution__card">
+          <h3>Ce primești</h3>
+          <p class="ai-solution__lead">
+            Un chatbot configurat pentru business-ul tău, construit să reducă fricțiunea și să transforme vizitele în
+            cereri.
+          </p>
+
+          <div class="ai-benefits" role="list" aria-label="Beneficii AI Chatbot">
+            <div class="ai-benefit" role="listitem">
+              <span class="ai-benefit__icon" aria-hidden="true"><LucideIcon name="BadgeCheck" size={18} /></span>
+              <div class="ai-benefit__body">
+                <div class="ai-benefit__title">Răspunde la întrebări frecvente</div>
+                <div class="ai-benefit__text">Program, prețuri, servicii, locație — fără să ridici un deget.</div>
+              </div>
+            </div>
+            <div class="ai-benefit" role="listitem">
+              <span class="ai-benefit__icon" aria-hidden="true"><LucideIcon name="Search" size={18} /></span>
+              <div class="ai-benefit__body">
+                <div class="ai-benefit__title">Direcționează către pagini cheie</div>
+                <div class="ai-benefit__text">Trimite oamenii la servicii, prețuri, programări sau contact.</div>
+              </div>
+            </div>
+            <div class="ai-benefit" role="listitem">
+              <span class="ai-benefit__icon" aria-hidden="true"><LucideIcon name="MessagesSquare" size={18} /></span>
+              <div class="ai-benefit__body">
+                <div class="ai-benefit__title">Califică lead-uri</div>
+                <div class="ai-benefit__text">Strânge informații utile înainte să ajungă la tine.</div>
+              </div>
+            </div>
+            <div class="ai-benefit" role="listitem">
+              <span class="ai-benefit__icon" aria-hidden="true"><LucideIcon name="LifeBuoy" size={18} /></span>
+              <div class="ai-benefit__body">
+                <div class="ai-benefit__title">Reduce timpul pierdut cu suportul manual</div>
+                <div class="ai-benefit__text">Echipa ta se ocupă de ce contează, nu de întrebări repetitive.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ai-solution__actions">
+            <a class="u-brand-cta u-btn-lg" href="/contact">
+              Activează AI Chatbot-ul <LucideIcon name="ArrowUpRight" size={18} />
+            </a>
+            <p class="ai-solution__note">
+              Îți spunem clar ce poate face chatbot-ul pentru business-ul tău și ce date sunt necesare pentru configurare.
+            </p>
+          </div>
+        </div>
+
+        <div class="ai-solution__visual" aria-hidden="true">
+          <div class="ai-dashboard">
+            <div class="ai-dashboard__top">
+              <div class="ai-dashboard__brand">
+                <span class="ai-dashboard__logo"><LucideIcon name="BrainCircuit" size={18} /></span>
+                <div>
+                  <div class="ai-dashboard__title">Panou AI Chatbot</div>
+                  <div class="ai-dashboard__sub">status & impact</div>
+                </div>
+              </div>
+              <span class="ai-dashboard__tag">
+                <span class="ai-dashboard__dot"></span> Live
+              </span>
+            </div>
+
+            <div class="ai-dashboard__section">
+              <div class="ai-dashboard__section-title">Status</div>
+              <div class="ai-dashboard__kpis">
+                <div class="ai-kpi">
+                  <div class="ai-kpi__top"><LucideIcon name="BadgeCheck" size={16} /> Online</div>
+                  <div class="ai-kpi__sub">24/7</div>
+                </div>
+                <div class="ai-kpi">
+                  <div class="ai-kpi__top"><LucideIcon name="MessagesSquare" size={16} /> Suport</div>
+                  <div class="ai-kpi__sub">instant</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ai-dashboard__section">
+              <div class="ai-dashboard__section-title">Impact</div>
+              <div class="ai-dashboard__kpis ai-dashboard__kpis--3">
+                <div class="ai-kpi">
+                  <div class="ai-kpi__top"><LucideIcon name="Sparkles" size={16} /> +cereri</div>
+                  <div class="ai-kpi__sub">lead-uri</div>
+                </div>
+                <div class="ai-kpi">
+                  <div class="ai-kpi__top"><LucideIcon name="Sparkles" size={16} /> +încredere</div>
+                  <div class="ai-kpi__sub">răspuns rapid</div>
+                </div>
+                <div class="ai-kpi">
+                  <div class="ai-kpi__top"><LucideIcon name="Sparkles" size={16} /> +eficiență</div>
+                  <div class="ai-kpi__sub">suport</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ai-dashboard__chips">
+              <span class="ai-chip ai-chip--soft"><span class="ai-chip__dot"></span> Colectare date</span>
+              <span class="ai-chip ai-chip--soft"><span class="ai-chip__dot"></span> Programări</span>
+              <span class="ai-chip ai-chip--soft"><span class="ai-chip__dot"></span> FAQ</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cum funcționează -->
+  <section class="section section--s fade-in-up" data-service="ai" id="cum-functioneaza">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="website-section__header website-section__header--center">
+        <h2 class="page__section-title">Cum funcționează</h2>
+        <p class="page__lead website-section__lead">Simplu, clar și iterativ. Tu aprobi, noi configurăm și optimizăm.</p>
+      </div>
+
+      <div class="ai-steps" role="list">
+        <article class="ai-step" role="listitem">
+          <span class="ai-step__icon" aria-hidden="true"><LucideIcon name="Puzzle" size={18} /></span>
+          <div class="ai-step__body">
+            <h3>Configurare personalizată</h3>
+            <p>Îl adaptăm la întrebările reale și la tonul brandului tău.</p>
+          </div>
+        </article>
+        <article class="ai-step" role="listitem">
+          <span class="ai-step__icon" aria-hidden="true"><LucideIcon name="LayoutTemplate" size={18} /></span>
+          <div class="ai-step__body">
+            <h3>Integrare direct pe website</h3>
+            <p>Se instalează rapid și funcționează pe desktop & mobil.</p>
+          </div>
+        </article>
+        <article class="ai-step" role="listitem">
+          <span class="ai-step__icon" aria-hidden="true"><LucideIcon name="MessagesSquare" size={18} /></span>
+          <div class="ai-step__body">
+            <h3>Interacțiune automată</h3>
+            <p>Răspunde instant, direcționează și colectează informații.</p>
+          </div>
+        </article>
+        <article class="ai-step" role="listitem">
+          <span class="ai-step__icon" aria-hidden="true"><LucideIcon name="Settings" size={18} /></span>
+          <div class="ai-step__body">
+            <h3>Optimizare continuă</h3>
+            <p>Ajustăm pe baza conversațiilor reale pentru rezultate mai bune.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ce poate face -->
+  <section class="section section--s fade-in-up" data-service="ai" id="capabilitati">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="website-section__header website-section__header--center">
+        <h2 class="page__section-title">Ce poate face AI Chatbot-ul</h2>
+        <p class="page__lead website-section__lead">Funcționalități gândite pentru conversii și suport — fără complexitate.</p>
+      </div>
+
+      <div class="page__grid ai-grid--3" role="list">
+        <div class="page__card ai-card" role="listitem">
+          <span class="ai-card__icon" aria-hidden="true"><LucideIcon name="Search" size={20} /></span>
+          <h3>Informații despre servicii și prețuri</h3>
+          <p>Răspunsuri clare și rapide, fără să caute utilizatorul prin pagini.</p>
+        </div>
+        <div class="page__card ai-card" role="listitem">
+          <span class="ai-card__icon" aria-hidden="true"><LucideIcon name="MessagesSquare" size={20} /></span>
+          <h3>Colectează date de contact</h3>
+          <p>Strânge email/telefon și contextul cererii — gata pentru follow-up.</p>
+        </div>
+        <div class="page__card ai-card" role="listitem">
+          <span class="ai-card__icon" aria-hidden="true"><LucideIcon name="BadgeCheck" size={20} /></span>
+          <h3>Răspunde non-stop</h3>
+          <p>Chiar și când ești ocupat: seara, în weekend sau în concediu.</p>
+        </div>
+        <div class="page__card ai-card" role="listitem">
+          <span class="ai-card__icon" aria-hidden="true"><LucideIcon name="Smartphone" size={20} /></span>
+          <h3>Îmbunătățește experiența utilizatorilor</h3>
+          <p>Oferă ghidaj rapid, fără fricțiune — mai ales pe mobil.</p>
+        </div>
+        <div class="page__card ai-card" role="listitem">
+          <span class="ai-card__icon" aria-hidden="true"><LucideIcon name="Server" size={20} /></span>
+          <h3>Scalabil fără costuri suplimentare</h3>
+          <p>Poate gestiona mai multe conversații simultan, fără să crești echipa.</p>
+        </div>
+        <div class="page__card ai-card" role="listitem">
+          <span class="ai-card__icon" aria-hidden="true"><LucideIcon name="Lock" size={20} /></span>
+          <h3>Control și claritate</h3>
+          <p>Stabilești ce răspunde, cum răspunde și când trimite către tine.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pentru cine este -->
+  <section class="section section--s fade-in-up" data-service="ai" id="pentru-cine">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="website-section__header website-section__header--center">
+        <h2 class="page__section-title">Pentru cine este</h2>
+        <p class="page__lead website-section__lead">
+          Ideal pentru business-uri care vor mai multe cereri și mai puțin suport manual.
+        </p>
+      </div>
+
+      <div class="ai-audience" role="list">
+        {[
+          'Afaceri locale',
+          'Servicii profesionale',
+          'Startup-uri',
+          'Website-uri de prezentare',
+          'Business-uri orientate pe lead-uri',
+        ].map((label) => (
+          <span class="ai-pill" role="listitem">
+            <LucideIcon name="BadgeCheck" size={18} /> {label}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Abonament lunar -->
+  <section class="section section--s fade-in-up" data-service="ai" id="optiuni">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="website-section__header website-section__header--center">
+        <h2 class="page__section-title">Abonament lunar</h2>
+        <p class="page__lead website-section__lead">
+          AI Chatbot-ul este disponibil doar pe abonament lunar, cu prețuri de la 100 RON/lună până la 400 RON/lună, în
+          funcție de funcționalități și nivelul de automatizare.
+        </p>
+      </div>
+
+      <div class="page__grid ai-grid--2" role="list">
+        <div class="page__card ai-option ai-option--highlight" role="listitem">
+          <div class="ai-option__head">
+            <span class="ai-option__badge">Recomandat</span>
+            <h3>Start</h3>
+          </div>
+          <div class="ai-price" aria-label="Preț">
+            <span class="ai-price__value">100 RON</span>
+            <span class="ai-price__unit">/ lună</span>
+            <span class="ai-price__asterisk" aria-hidden="true">*</span>
+          </div>
+          <p>Chatbot text, voce sau combinat — perfect pentru întrebări frecvente și colectare de lead-uri.</p>
+          <ul class="page__list ai-list--ticks">
+            <li>text / voce / combinat</li>
+            <li>răspunsuri la întrebări frecvente</li>
+            <li>colectare date de contact</li>
+            <li>integrare pe website</li>
+            <li>suport + îmbunătățiri continue</li>
+          </ul>
+          <p class="ai-option__footnote">
+            * cost suplimentar mic/lună poate apărea în funcție de gradul de utilizare al serviciului de către clienți.
+          </p>
+        </div>
+
+        <div class="page__card ai-option" role="listitem">
+          <div class="ai-option__head">
+            <span class="ai-option__badge ai-option__badge--soft">Avansat</span>
+            <h3>Pro</h3>
+          </div>
+          <div class="ai-price" aria-label="Preț">
+            <span class="ai-price__value">400 RON</span>
+            <span class="ai-price__unit">/ lună</span>
+            <span class="ai-price__asterisk" aria-hidden="true">*</span>
+          </div>
+          <p>Funcții avansate pentru follow-up, canale multiple și integrare cu CRM/booking.</p>
+          <ul class="page__list ai-list--ticks">
+            <li>auto-reply WhatsApp & email</li>
+            <li>integrare + acces CRM</li>
+            <li>booking + lead automation</li>
+            <li>follow-up automat</li>
+            <li>raportare & optimizare continuă</li>
+          </ul>
+          <p class="ai-option__footnote">
+            * cost suplimentar mic/lună poate apărea în funcție de gradul de utilizare al serviciului de către clienți.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Beneficii pentru business -->
+  <section class="section section--s fade-in-up" data-service="ai" id="beneficii">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="website-section__header website-section__header--center">
+        <h2 class="page__section-title">Beneficii pentru business</h2>
+        <p class="page__lead website-section__lead">Rezultate clare: conversii, lead-uri și timp economisit.</p>
+      </div>
+
+      <div class="page__grid ai-benefits-grid" role="list">
+        <article class="page__card ai-benefit-card ai-benefit-card--wide ai-benefit-card--tint" role="listitem">
+          <span class="ai-benefit-card__icon" aria-hidden="true">
+            <LucideIcon name="Sparkles" size={22} />
+          </span>
+          <h3>Conversii mai bune</h3>
+          <p>Răspunde când interesul este maxim și transformă întrebările în acțiuni concrete.</p>
+          <ul class="page__list ai-list--ticks">
+            <li>răspuns instant la întrebările “care blochează”</li>
+            <li>ghidaj către contact / programare / ofertă</li>
+            <li>CTA-uri clare, fără fricțiune</li>
+          </ul>
+        </article>
+
+        <article class="page__card ai-benefit-card" role="listitem">
+          <span class="ai-benefit-card__icon" aria-hidden="true">
+            <LucideIcon name="MessagesSquare" size={22} />
+          </span>
+          <h3>Lead-uri mai calificate</h3>
+          <p>Strânge context și date utile (serviciu, buget, interval, locație) înainte să ajungă la tine.</p>
+        </article>
+
+        <article class="page__card ai-benefit-card" role="listitem">
+          <span class="ai-benefit-card__icon" aria-hidden="true">
+            <LucideIcon name="Timer" size={22} />
+          </span>
+          <h3>Timp economisit</h3>
+          <p>Scazi suportul manual și întreruperile. Echipa ta se concentrează pe livrare, nu pe FAQ.</p>
+        </article>
+
+        <article class="page__card ai-benefit-card ai-benefit-card--wide" role="listitem">
+          <span class="ai-benefit-card__icon" aria-hidden="true">
+            <LucideIcon name="LifeBuoy" size={22} />
+          </span>
+          <h3>Suport automatizat</h3>
+          <p>FAQ + ghidaj către acțiune, chiar și seara sau în weekend — fără “revenim mâine”.</p>
+          <ul class="page__list ai-list--ticks">
+            <li>răspunsuri consistente, cu ton de brand</li>
+            <li>direcționare către pagini cheie</li>
+            <li>escaladare către tine când e nevoie</li>
+          </ul>
+        </article>
+
+        <article class="page__card ai-benefit-card" role="listitem">
+          <span class="ai-benefit-card__icon" aria-hidden="true">
+            <LucideIcon name="Smartphone" size={22} />
+          </span>
+          <h3>Experiență modernă</h3>
+          <p>UX mai bun, mai ales pe mobil: utilizatorul găsește rapid ce caută, fără să scrolleze mult.</p>
+        </article>
+
+        <article class="page__card ai-benefit-card ai-benefit-card--wide ai-benefit-card--tint" role="listitem">
+          <span class="ai-benefit-card__icon" aria-hidden="true">
+            <LucideIcon name="Server" size={22} />
+          </span>
+          <h3>Scalare fără stres</h3>
+          <p>Mai multe conversații simultan, fără echipă mai mare și fără să pierzi oportunități.</p>
+          <ul class="page__list ai-list--ticks">
+            <li>preia vârfurile de trafic fără “busy”</li>
+            <li>automatizează follow-up-ul (Pro)</li>
+            <li>integrare CRM/booking pentru flux complet</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="section section--s fade-in-up" data-service="ai" id="contact">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="page__cta ai-final-cta" aria-labelledby="ai-cta">
+        <h2 id="ai-cta" class="page__section-title">Lasă AI-ul să vorbească pentru tine.</h2>
+        <p>Activează AI Chatbot-ul și transformă vizitatorii în cereri, fără efort.</p>
+        <div class="ai-final-cta__actions">
+          <a class="u-brand-cta u-btn-lg" href="/contact">
+            Activează AI Chatbot-ul <LucideIcon name="ArrowUpRight" size={18} />
+          </a>
+          <a class="u-brand-outline u-btn-lg" href="#solutie">
+            Vezi soluția <LucideIcon name="ChevronDown" size={18} />
+          </a>
+        </div>
       </div>
     </div>
   </section>

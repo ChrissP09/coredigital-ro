@@ -1,92 +1,161 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import LucideIcon from '../../components/ui/LucideIcon.astro';
 ---
 
 <BaseLayout
   title="Servicii | CoreDigital"
   description="Servicii digitale: website, recenzii online și chatbot AI pentru afaceri locale."
 >
-  <section class="section">
-    <div class="container">
-      <div class="page__hero">
-        <h1 class="page__hero-title">Servicii CoreDigital</h1>
-        <p class="page__lead">Pachete clare, livrabile structurate și rezultate măsurabile.</p>
-      </div>
-    </div>
-  </section>
+  <!-- Hero -->
+  <section class="section section--l services-overview fade-in-up">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="services-overview__inner">
+        <span class="website-hero__pill services-overview__pill" aria-label="Servicii CoreDigital">
+          <span class="website-hero__pill-icon" aria-hidden="true">
+            <LucideIcon name="LayoutTemplate" size={16} />
+          </span>
+          <span class="website-hero__pill-text">Servicii CoreDigital</span>
+        </span>
 
-  <section class="section section--s">
-    <div class="container">
-      <div class="page__section" aria-labelledby="services-offer">
-        <h2 id="services-offer" class="page__section-title">Ce oferim</h2>
-        <div class="page__grid">
-          <article class="page__card u-service-border" data-service="website">
-            <span class="u-service-pill">Construire website</span>
-            <h3 class="u-service-accent">Structură și livrare rapidă</h3>
-            <ul class="page__list">
-              <li>Arhitectură clară a paginilor.</li>
-              <li>Design coerent cu brandul.</li>
-              <li>Implementare performantă.</li>
-            </ul>
-            <a class="u-service-cta" href="/servicii/construire-website">Detalii serviciu</a>
-          </article>
-          <article class="page__card u-service-border" data-service="reviews">
-            <span class="u-service-pill">Recenzii online</span>
-            <h3 class="u-service-accent">Reputație și încredere</h3>
-            <ul class="page__list">
-              <li>Fluxuri pentru recenzii reale.</li>
-              <li>Răspunsuri consistente.</li>
-              <li>Monitorizare lunară.</li>
-            </ul>
-            <a class="u-service-cta" href="/servicii/recenzii-online">Detalii serviciu</a>
-          </article>
-          <article class="page__card u-service-border" data-service="ai">
-            <span class="u-service-pill">Chatbot AI</span>
-            <h3 class="u-service-accent">Automatizare conversații</h3>
-            <ul class="page__list">
-              <li>Răspunsuri instant.</li>
-              <li>Calificare lead-uri.</li>
-              <li>Integrare multi-canal.</li>
-            </ul>
-            <a class="u-service-cta" href="/servicii/chatbot-ai">Detalii serviciu</a>
-          </article>
+        <h1 class="services-overview__title">
+          Un sistem complet pentru <span class="u-gradient-text">creștere</span>
+        </h1>
+        <p class="services-overview__lead">
+          Website, recenzii și AI Chatbot pot funcționa separat, dar cel mai bine lucrează împreună: un flux complet care
+          atrage, convinge și convertește — cap-coadă, integrat.
+        </p>
+
+        <div class="services-overview__actions">
+          <a class="u-brand-cta u-btn-lg" href="/contact">
+            Vreau integrare completă <LucideIcon name="ArrowUpRight" size={18} />
+          </a>
+          <a class="u-brand-outline u-btn-lg" href="#servicii">
+            Vezi cele 3 servicii <LucideIcon name="ChevronDown" size={18} />
+          </a>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="section section--s">
-    <div class="container">
-      <div class="page__section" aria-labelledby="services-fit">
-        <h2 id="services-fit" class="page__section-title">Pentru cine este potrivit</h2>
-        <p>Business-uri locale, profesioniști și echipe care au nevoie de claritate în comunicare.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--s">
-    <div class="container">
-      <div class="page__section" aria-labelledby="services-flow">
-        <h2 id="services-flow" class="page__section-title">Cum lucrăm</h2>
-        <div class="page__grid">
-          <div class="page__card">
-            <h3>Audit rapid</h3>
-            <p>Identificăm ce lipsește și ce contează pentru clienții tăi.</p>
-          </div>
-          <div class="page__card">
-            <h3>Plan și livrare</h3>
-            <p>Structurăm livrabilele și le implementăm incremental.</p>
+        <div class="services-overview__media" aria-hidden="true">
+          <div class="services-overview__media-card">
+            <img
+              src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1600&q=80"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section section--s">
-    <div class="container">
-      <div class="page__cta" aria-labelledby="services-cta">
-        <h2 id="services-cta" class="page__section-title">Vrei un plan dedicat?</h2>
-        <p>Trimite-ne obiectivele și îți propunem soluția potrivită.</p>
+  <!-- Servicii -->
+  <section class="section section--s fade-in-up" id="servicii">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="website-section__header website-section__header--center">
+        <h2 class="page__section-title">Alege serviciul potrivit</h2>
+        <p class="page__lead website-section__lead">
+          Fiecare serviciu e gândit să rezolve o problemă reală: conversii, încredere sau automatizare. Poți începe cu unul
+          singur și scala pe parcurs.
+        </p>
+      </div>
+
+      <div class="services-overview__grid" role="list" aria-label="Servicii">
+        <article class="services-overview__card services-card" data-service="website" role="listitem">
+          <div class="services-overview__card-head">
+            <span class="services-card__icon" aria-hidden="true">
+              <LucideIcon name="LayoutTemplate" size={20} />
+            </span>
+            <span class="services-card__tag">Website</span>
+          </div>
+            <div>
+              <div class="services-overview__card-title">Construire website</div>
+              <p class="services-overview__card-text">
+              Website modern pe abonament, fără cost inițial. Construit pentru cereri reale: structură, copy și SEO.
+              </p>
+            </div>
+          <ul class="page__list website-list--ticks services-card__list">
+            <li>design premium + responsive</li>
+            <li>lansare rapidă + mentenanță</li>
+            <li>optimizat pentru conversii</li>
+          </ul>
+          <div class="services-card__actions">
+            <a class="u-brand-cta u-btn-sm" href="/servicii/construire-website">
+              Vezi detalii <LucideIcon name="ArrowUpRight" size={16} />
+            </a>
+          </div>
+        </article>
+
+        <article class="services-overview__card services-card" data-service="reviews" role="listitem">
+          <div class="services-overview__card-head">
+            <span class="services-card__icon" aria-hidden="true">
+              <LucideIcon name="MessagesSquare" size={20} />
+            </span>
+            <span class="services-card__tag">Recenzii</span>
+          </div>
+          <div>
+            <div class="services-overview__card-title">Recenzii online</div>
+            <p class="services-overview__card-text">
+              Automatizezi cererea de recenzii și crești încrederea. Sistem simplu, fără fricțiune, orientat pe Google.
+            </p>
+          </div>
+          <ul class="page__list website-list--ticks services-card__list">
+            <li>flux automat pentru recenzii</li>
+            <li>protejare reputație</li>
+            <li>rezultate măsurabile</li>
+          </ul>
+          <div class="services-card__actions">
+            <a class="u-brand-cta u-btn-sm" href="/servicii/recenzii-online">
+              Vezi detalii <LucideIcon name="ArrowUpRight" size={16} />
+            </a>
+          </div>
+        </article>
+
+        <article class="services-overview__card services-card" data-service="ai" role="listitem">
+          <div class="services-overview__card-head">
+            <span class="services-card__icon" aria-hidden="true">
+              <LucideIcon name="WandSparkles" size={20} />
+            </span>
+            <span class="services-card__tag">AI</span>
+          </div>
+          <div>
+            <div class="services-overview__card-title">AI Chatbot</div>
+            <p class="services-overview__card-text">
+              Răspunde non-stop, califică lead-uri și reduce suportul manual. De la 100 RON/lună până la automatizări avansate.
+            </p>
+          </div>
+          <ul class="page__list website-list--ticks services-card__list">
+            <li>FAQ + colectare date</li>
+            <li>follow-up & canale (Pro)</li>
+            <li>integrare CRM/booking</li>
+          </ul>
+          <div class="services-card__actions">
+            <a class="u-brand-cta u-btn-sm" href="/servicii/chatbot-ai">
+              Vezi detalii <LucideIcon name="ArrowUpRight" size={16} />
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--s fade-in-up">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="page__cta services-cta" aria-labelledby="services-cta">
+        <h2 id="services-cta" class="page__section-title">Nu știi cu ce să începi?</h2>
+        <p>
+          Spune-ne obiectivul (mai multe cereri, mai multă încredere sau automatizare), iar noi îți recomandăm serviciul
+          potrivit.
+        </p>
+        <div class="services-cta__actions">
+          <a class="u-brand-cta u-btn-lg" href="/contact">
+            Programează o discuție <LucideIcon name="ArrowUpRight" size={18} />
+          </a>
+          <a class="u-brand-outline u-btn-lg" href="/preturi">
+            Vezi prețurile <LucideIcon name="ArrowUpRight" size={18} />
+          </a>
+        </div>
       </div>
     </div>
   </section>

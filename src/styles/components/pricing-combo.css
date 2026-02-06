@@ -1,0 +1,198 @@
+@layer components {
+  .pricing-combo {
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+    background: rgb(17, 22, 33);
+    color: hsl(var(--color-white));
+    padding: 32px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  }
+
+  .pricing-combo__orb {
+    position: absolute;
+    width: 256px;
+    height: 256px;
+    border-radius: 999px;
+    filter: blur(64px);
+    opacity: 0.2;
+    pointer-events: none;
+  }
+
+  .pricing-combo__orb--primary {
+    top: -40px;
+    right: -40px;
+    background: rgb(36, 99, 235);
+  }
+
+  .pricing-combo__orb--purple {
+    bottom: -40px;
+    left: -40px;
+    background: rgb(147, 51, 234);
+  }
+
+  .pricing-combo__inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .pricing-combo__content {
+    flex: 1;
+    text-align: center;
+  }
+
+  .pricing-combo__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: rgba(36, 99, 235, 0.2);
+    border: 1px solid rgba(36, 99, 235, 0.3);
+    color: rgb(147, 197, 253);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+  }
+
+  .pricing-combo__label svg {
+    color: rgb(36, 99, 235);
+  }
+
+  .pricing-combo__title {
+    margin: 0 0 16px;
+    font-size: 1.875rem;
+    font-weight: 900;
+  }
+
+  .pricing-combo__desc {
+    margin: 0 0 24px;
+    color: rgb(209, 213, 219);
+    font-size: 1.125rem;
+    line-height: 1.7;
+    max-inline-size: 36rem;
+  }
+
+  .pricing-combo__perks {
+    margin: 0 0 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    color: rgb(209, 213, 219);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .pricing-combo__perk {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .pricing-combo__perk::before {
+    content: '✓';
+    color: rgb(36, 99, 235);
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  .pricing-combo__price-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+    min-width: 280px;
+    backdrop-filter: blur(4px);
+  }
+
+  .pricing-combo__old {
+    color: rgb(156, 163, 175);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: line-through;
+    margin-bottom: 4px;
+  }
+
+  .pricing-combo__price {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-bottom: 24px;
+  }
+
+  .pricing-combo__amount {
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1;
+    color: hsl(var(--color-white));
+  }
+
+  .pricing-combo__period {
+    color: rgb(209, 213, 219);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .pricing-combo__button {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(36, 99, 235);
+    color: hsl(var(--color-white));
+    font-weight: 700;
+    padding: 12px 24px;
+    border-radius: 12px;
+    transition: background 150ms ease;
+    box-shadow: 0 10px 15px -3px rgba(36, 99, 235, 0.3), 0 4px 6px -4px rgba(36, 99, 235, 0.3);
+  }
+
+  .pricing-combo__button:hover,
+  .pricing-combo__button:focus-visible {
+    background: rgb(29, 78, 216);
+    color: hsl(var(--color-white));
+  }
+
+  .pricing-combo__note {
+    margin: 12px 0 0;
+    text-align: center;
+    color: rgb(156, 163, 175);
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  @media (min-width: 768px) {
+    .pricing-combo {
+      padding: 48px;
+    }
+
+    .pricing-combo__inner {
+      flex-direction: row;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .pricing-combo__content {
+      text-align: left;
+    }
+
+    .pricing-combo__title {
+      font-size: 2.25rem;
+    }
+
+    .pricing-combo__perks {
+      justify-content: flex-start;
+    }
+  }
+}

@@ -1,94 +1,161 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import LucideIcon from '../../components/ui/LucideIcon.astro';
+import PricingCombo from '../../components/ui/PricingCombo.astro';
 ---
 
 <BaseLayout
   title="Prețuri | CoreDigital"
   description="Structură de prețuri pentru website, recenzii online și chatbot AI."
 >
-  <section class="section">
-    <div class="container">
-      <div class="page__hero">
-        <h1 class="page__hero-title">Prețuri</h1>
-        <p class="page__lead">Pachete flexibile și estimări clare înainte de implementare.</p>
-      </div>
-    </div>
-  </section>
+  <!-- Hero -->
+  <section class="section section--l pricing-hero fade-in-up">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="pricing-hero__inner">
+        <span class="website-hero__pill pricing-hero__pill" aria-label="Prețuri CoreDigital">
+          <span class="website-hero__pill-icon" aria-hidden="true">
+            <LucideIcon name="Wallet" size={16} />
+          </span>
+          <span class="website-hero__pill-text">Prețuri transparente</span>
+        </span>
 
-  <section class="section section--s">
-    <div class="container">
-      <div class="page__section" aria-labelledby="pricing-structure">
-        <h2 id="pricing-structure" class="page__section-title">Structura prețurilor</h2>
-        <p>Stabilim bugetul în funcție de complexitate, termene și livrabile.</p>
-      </div>
-    </div>
-  </section>
+        <h1 class="pricing-hero__title">
+          Prețuri și planuri <span class="u-gradient-text">transparente</span>
+        </h1>
+        <p class="pricing-hero__lead">
+          Alege planul potrivit pentru afacerea ta, fără costuri ascunse. Poți începe cu un singur serviciu sau poți alege
+          pachetul complet (All-in-One).
+        </p>
 
-  <section class="section section--s">
-    <div class="container">
-      <div class="page__section" aria-labelledby="pricing-packages">
-        <h2 id="pricing-packages" class="page__section-title">Pachete orientative</h2>
-        <div class="page__grid">
-          <article class="page__card u-service-border" data-service="website">
-            <span class="u-service-pill">Website</span>
-            <h3 class="u-service-accent">Website esențial</h3>
-            <ul class="page__list">
-              <li>Pagini de bază și structură clară.</li>
-              <li>UI coerent și responsive.</li>
-            </ul>
-          </article>
-          <article class="page__card u-service-border" data-service="reviews">
-            <span class="u-service-pill">Recenzii</span>
-            <h3 class="u-service-accent">Reputație locală</h3>
-            <ul class="page__list">
-              <li>Optimizări + flux de recenzii.</li>
-              <li>Răspunsuri și monitorizare.</li>
-            </ul>
-          </article>
-          <article class="page__card u-service-border" data-service="ai">
-            <span class="u-service-pill">Chatbot AI</span>
-            <h3 class="u-service-accent">Automatizări AI</h3>
-            <ul class="page__list">
-              <li>Fluxuri conversaționale.</li>
-              <li>Integrare și raportare.</li>
-            </ul>
-          </article>
+        <div class="pricing-hero__trust" aria-label="Avantaje">
+          <span class="pricing-hero__trust-item">
+            <LucideIcon name="BadgeCheck" size={18} /> Fără costuri ascunse
+          </span>
+          <span class="pricing-hero__trust-item">
+            <LucideIcon name="LifeBuoy" size={18} /> Suport inclus
+          </span>
+          <span class="pricing-hero__trust-item">
+            <LucideIcon name="Timer" size={18} /> Lansare rapidă
+          </span>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section section--s">
-    <div class="container">
-      <div class="page__section" aria-labelledby="pricing-included">
-        <h2 id="pricing-included" class="page__section-title">Ce este inclus</h2>
-        <div class="page__grid">
-          <div class="page__card">
-            <h3>Consultanță</h3>
-            <p>Clarificăm obiectivele și prioritățile.</p>
-          </div>
-          <div class="page__card">
-            <h3>Implementare</h3>
-            <p>Livrăm conform planului agreat.</p>
-          </div>
-          <div class="page__card">
-            <h3>Optimizare</h3>
-            <p>Verificăm și ajustăm după lansare.</p>
-          </div>
-          <div class="page__card">
-            <h3>Suport</h3>
-            <p>Răspuns rapid pentru întrebări esențiale.</p>
+  <!-- Toggle + Plans -->
+  <section class="section section--s fade-in-up" id="planuri">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="pricing-toggle" aria-label="Tip plan">
+        <span class="pricing-toggle__tab is-active" aria-current="true">Abonament lunar</span>
+        <a class="pricing-toggle__tab" href="#preturi-personalizate">Plan personalizat</a>
+      </div>
+
+      <div class="pricing-panels">
+        <div class="pricing-grid" role="list" aria-label="Planuri abonament">
+          <article class="pricing-card" role="listitem">
+            <div class="pricing-card__top">
+              <div class="pricing-card__name">Agent AI Chatbot</div>
+              <p class="pricing-card__desc">Răspuns non-stop, colectare lead-uri și suport instant direct pe website.</p>
+            </div>
+
+            <div class="pricing-card__price">
+              <span class="pricing-card__amount">de la 100 RON</span>
+              <span class="pricing-card__period">/ lună</span>
+            </div>
+
+            <a class="pricing-card__cta" href="/contact">Activează serviciul</a>
+
+            <ul class="pricing-card__list">
+              <li>text / voce / combinat</li>
+              <li>colectare date de contact</li>
+              <li>calificare lead-uri</li>
+              <li>* cost suplimentar mic în funcție de utilizare</li>
+            </ul>
+          </article>
+
+          <article class="pricing-card pricing-card--popular" role="listitem">
+            <div class="pricing-card__badge">Cel mai popular</div>
+            <div class="pricing-card__top">
+              <div class="pricing-card__name">Creare website</div>
+              <p class="pricing-card__desc">Website modern pe abonament, fără cost inițial. Design premium, conversii, SEO.</p>
+            </div>
+
+            <div class="pricing-card__price">
+              <span class="pricing-card__amount">300 RON</span>
+              <span class="pricing-card__period">/ lună</span>
+            </div>
+
+            <a class="pricing-card__cta pricing-card__cta--primary" href="/contact">Activează serviciul</a>
+
+            <ul class="pricing-card__list">
+              <li>design premium + responsive</li>
+              <li>lansare rapidă + mentenanță</li>
+              <li>copy clar + structură conversie</li>
+              <li>suport continuu</li>
+            </ul>
+          </article>
+
+          <article class="pricing-card" role="listitem">
+            <div class="pricing-card__top">
+              <div class="pricing-card__name">Colectare recenzii Google</div>
+              <p class="pricing-card__desc">
+                Crești încrederea și vizibilitatea cu un flux automat pentru recenzii reale și monitorizare.
+              </p>
+            </div>
+
+            <div class="pricing-card__price">
+              <span class="pricing-card__amount">400 RON</span>
+              <span class="pricing-card__period">/ lună</span>
+            </div>
+
+            <a class="pricing-card__cta" href="/contact">Activează serviciul</a>
+
+            <ul class="pricing-card__list">
+              <li>flux automat de recenzii</li>
+              <li>protejare reputație</li>
+              <li>raportare & optimizare</li>
+              <li>suport inclus</li>
+            </ul>
+          </article>
+
+          <div class="pricing-grid__combo" role="listitem">
+            <PricingCombo
+              label="Ofertă limitată"
+              title="Pachetul All-in-One"
+              description={`Obții acces simultan la toate cele 3 servicii: website, recenzii și AI Chatbot. Ideal dacă vrei un sistem complet care atrage, convinge și convertește.`}
+              perks={['Website + mentenanță', 'Recenzii Google', 'AI Chatbot', 'Integrare completă']}
+              oldPrice="1.100 RON"
+              price="700 RON"
+              period="/ lună"
+              ctaText="Activează All-in-One"
+              ctaHref="/contact"
+              note="Facturare lunară. Suport inclus."
+            />
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section section--s">
-    <div class="container">
-      <div class="page__cta" aria-labelledby="pricing-cta">
-        <h2 id="pricing-cta" class="page__section-title">Vrei o ofertă exactă?</h2>
-        <p>Trimite-ne detalii despre proiect și revenim cu un estimat.</p>
+  <!-- Final CTA -->
+  <section class="section section--s fade-in-up">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div id="preturi-personalizate" class="page__cta pricing-final" aria-labelledby="pricing-cta">
+        <div class="pricing-final__icon" aria-hidden="true">
+          <LucideIcon name="MessageCircle" size={22} />
+        </div>
+        <h2 id="pricing-cta" class="page__section-title">Ai nevoie de o soluție personalizată?</h2>
+        <p>
+          Pentru nevoi specifice (CRM, booking, follow-up, automatizări), îți facem un plan personalizat pe obiectivele tale.
+        </p>
+        <div class="pricing-final__actions">
+          <a class="u-brand-outline u-btn-lg" href="/contact">
+            Programează o discuție <LucideIcon name="ArrowUpRight" size={18} />
+          </a>
+          <a class="u-brand-cta u-btn-lg" href="/contact">
+            Contactează vânzările <LucideIcon name="ArrowUpRight" size={18} />
+          </a>
+        </div>
       </div>
     </div>
   </section>

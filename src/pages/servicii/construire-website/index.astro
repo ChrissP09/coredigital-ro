@@ -1,6 +1,73 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import LucideIcon from '../../../components/ui/LucideIcon.astro';
+
+const testimonials = [
+  {
+    id: 'capsule',
+    company: 'Capsule',
+    logoMark:
+      'https://api.dicebear.com/9.x/shapes/svg?seed=Capsule&backgroundColor=b6e3f4,c0aede,d1d4f9,fde2e4,ffd5dc&radius=12',
+    quote:
+      '“Am trecut de la un site vechi la unul modern, clar și rapid. În primele săptămâni am simțit diferența: mai multe cereri și mai puține întrebări repetitive.”',
+    person: 'Alex Radu',
+    role: 'Founder, Capsule Studio',
+    avatar:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=Alex%20Radu&backgroundColor=b6e3f4,c0aede,d1d4f9,fde2e4,ffd5dc',
+    stats: [
+      { value: '87%', label: 'creștere în cereri' },
+      { value: '38%', label: 'creștere în conversii' },
+    ],
+  },
+  {
+    id: 'spherule',
+    company: 'Spherule',
+    logoMark:
+      'https://api.dicebear.com/9.x/shapes/svg?seed=Spherule&backgroundColor=b6e3f4,c0aede,d1d4f9,fde2e4,ffd5dc&radius=12',
+    quote:
+      '“Structura paginii și mesajul sunt foarte bine gândite. Ne-a ajutat să explicăm oferta simplu, iar oamenii ajung mai repede la decizia de contact.”',
+    person: 'Ioana Dima',
+    role: 'Managing Director, Spherule Labs',
+    avatar:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=Ioana%20Dima&backgroundColor=b6e3f4,c0aede,d1d4f9,fde2e4,ffd5dc',
+    stats: [
+      { value: '52%', label: 'mai multă încredere' },
+      { value: '29%', label: 'timp mai mic până la contact' },
+    ],
+  },
+  {
+    id: 'galileo',
+    company: 'Galileo',
+    logoMark:
+      'https://api.dicebear.com/9.x/shapes/svg?seed=Galileo&backgroundColor=b6e3f4,c0aede,d1d4f9,fde2e4,ffd5dc&radius=12',
+    quote:
+      '“Ne-a plăcut că totul este aerisit și ușor de parcurs pe mobil. Site-ul se încarcă rapid și se simte premium — exact ce voiam.”',
+    person: 'Mihai Nistor',
+    role: 'Co-owner, Galileo Clinic',
+    avatar:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=Mihai%20Nistor&backgroundColor=b6e3f4,c0aede,d1d4f9,fde2e4,ffd5dc',
+    stats: [
+      { value: '41%', label: 'mai multe apeluri' },
+      { value: '24%', label: 'mai multe programări' },
+    ],
+  },
+  {
+    id: 'segment',
+    company: 'Segment',
+    logoMark:
+      'https://api.dicebear.com/9.x/shapes/svg?seed=Segment&backgroundColor=b6e3f4,c0aede,d1d4f9,fde2e4,ffd5dc&radius=12',
+    quote:
+      '“În sfârșit un site care nu doar arată bine, dar și convertește. Totul e coerent: copy, structură și CTA-uri. Procesul a fost simplu și rapid.”',
+    person: 'Cristina Marin',
+    role: 'Operations, Segment Partners',
+    avatar:
+      'https://api.dicebear.com/9.x/avataaars/svg?seed=Cristina%20Marin&backgroundColor=b6e3f4,c0aede,d1d4f9,fde2e4,ffd5dc',
+    stats: [
+      { value: '33%', label: 'creștere în trafic relevant' },
+      { value: '18%', label: 'bounce mai mic' },
+    ],
+  },
+];
 ---
 
 <BaseLayout
@@ -135,79 +202,52 @@ import LucideIcon from '../../../components/ui/LucideIcon.astro';
   <!-- Probleme -->
   <section class="section section--s fade-in-up" data-service="website" id="probleme">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="website-section__header website-section__header--center">
-        <h2 class="page__section-title">Problemele reale pe care le rezolvăm</h2>
-        <p class="page__lead website-section__lead">
-          Astea sunt problemele care îți mănâncă bugetul și timpul când vrei un website: cost inițial mare, lansare lentă,
-          lipsă suport și un site care nu convertește.
-        </p>
-      </div>
+      <div class="website-problems__panel">
+        <div class="website-section__header website-section__header--center website-problems__header">
+          <h2 class="page__section-title">Problemele reale pe care le rezolvăm</h2>
+          <p class="page__lead website-section__lead">
+            Astea sunt problemele care îți mănâncă bugetul și timpul când vrei un website: cost inițial mare, lansare lentă,
+            lipsă suport și un site care nu convertește.
+          </p>
+        </div>
 
-      <div class="website-panels">
-        <article class="website-panel">
-          <div class="website-panel__badge">
-            <LucideIcon name="Wallet" size={16} /> Costuri mari la început
-          </div>
-          <h3>Website-uri de câteva mii de euro “din start”</h3>
-          <p>
-            Un proiect clasic vine adesea cu un cost inițial mare (mii de euro), înainte să vezi rezultate sau să știi dacă
-            site-ul chiar îți aduce cereri.
-          </p>
-        </article>
+        <div class="page__grid website-problems__grid" role="list">
+          <article class="page__card website-problem-card" role="listitem">
+            <span class="website-problem-card__icon website-problem-card__icon--red" aria-hidden="true">
+              <LucideIcon name="Wallet" size={22} />
+            </span>
+            <h3 class="website-problem-card__title">Costuri mari la început</h3>
+            <p class="website-problem-card__kicker">Website-uri de câteva mii de euro “din start”</p>
+            <p>
+              Un proiect clasic vine adesea cu un cost inițial mare (mii de euro), înainte să vezi rezultate sau să știi dacă
+              site-ul chiar îți aduce cereri.
+            </p>
+          </article>
 
-        <article class="website-panel">
-          <div class="website-panel__badge">
-            <LucideIcon name="Timer" size={16} /> Timp lung de dezvoltare
-          </div>
-          <h3>Luni de așteptare până la lansare</h3>
-          <p>
-            Brief-uri, revizii, “mai vedem săptămâna viitoare” — iar tu pierzi timp și oportunități în timp ce concurența
-            apare deja în Google.
-          </p>
-        </article>
+          <article class="page__card website-problem-card" role="listitem">
+            <span class="website-problem-card__icon website-problem-card__icon--amber" aria-hidden="true">
+              <LucideIcon name="Timer" size={22} />
+            </span>
+            <h3 class="website-problem-card__title">Timp lung de dezvoltare</h3>
+            <p class="website-problem-card__kicker">Luni de așteptare până la lansare</p>
+            <p>
+              Brief-uri, revizii, “mai vedem săptămâna viitoare” — iar tu pierzi timp și oportunități în timp ce concurența
+              apare deja în Google.
+            </p>
+          </article>
 
-        <article class="website-panel">
-          <div class="website-panel__badge">
-            <LucideIcon name="LifeBuoy" size={16} /> Lipsă suport după livrare
-          </div>
-          <h3>După “livrare”, rămâi singur cu problemele</h3>
-          <p>
-            Când apar erori, update-uri, schimbări de conținut sau cerințe noi, suportul devine lent, scump sau pur și
-            simplu lipsește.
-          </p>
-        </article>
-
-        <article class="website-panel">
-          <div class="website-panel__badge">
-            <LucideIcon name="Settings" size={16} /> Site greu de administrat
-          </div>
-          <h3>Fiecare modificare “costă” și durează</h3>
-          <p>
-            Site-uri făcute pe grabă ajung greu de întreținut: plugin-uri multe, dependențe, setări confuze și schimbări
-            mici care devin proiecte.
-          </p>
-        </article>
-
-        <article class="website-panel">
-          <div class="website-panel__badge">
-            <LucideIcon name="LayoutTemplate" size={16} /> Design învechit
-          </div>
-          <h3>Design care nu inspiră încredere și nu convertește</h3>
-          <p>
-            Un site vechi, încărcat sau neclar scade conversiile: oamenii pleacă repede, nu găsesc informația și nu au
-            motiv să te contacteze.
-          </p>
-        </article>
-        <article class="website-panel">
-          <div class="website-panel__badge">
-            <LucideIcon name="Lock" size={16} /> Siguranță și încredere scăzute
-          </div>
-          <h3>Site lent, erori, lipsă conformitate</h3>
-          <p>
-            Pagini lente, formulare care nu trimit, lipsă politici/elemente GDPR și detalii neclare — toate reduc încrederea
-            și cresc abandonul.
-          </p>
-        </article>
+          <article class="page__card website-problem-card" role="listitem">
+            <span class="website-problem-card__icon website-problem-card__icon--slate" aria-hidden="true">
+              <LucideIcon name="LifeBuoy" size={22} />
+            </span>
+            <h3 class="website-problem-card__title">Lipsă suport după livrare</h3>
+            <p class="website-problem-card__kicker">După “livrare”, rămâi singur cu problemele</p>
+            <p>
+              Când apar erori, update-uri, schimbări de conținut sau cerințe noi, suportul devine lent, scump sau pur și
+              simplu lipsește.
+            </p>
+          </article>
+        </div>
       </div>
     </div>
   </section>
@@ -359,7 +399,7 @@ import LucideIcon from '../../../components/ui/LucideIcon.astro';
 
               <div class="website-config__section website-config__section--row">
                 <div class="website-config__chip">
-                  <span class="website-config__chip-dot"></span> SEO de bază
+                  <span class="website-config__chip-dot"></span> SEO
                 </div>
                 <div class="website-config__chip">
                   <span class="website-config__chip-dot"></span> Mobile-first
@@ -445,7 +485,7 @@ import LucideIcon from '../../../components/ui/LucideIcon.astro';
             <span class="website-step__icon" aria-hidden="true"><LucideIcon name="Settings" size={18} /></span>
             <div class="website-step__body">
               <h3>Construim website-ul</h3>
-              <p>Implementare performantă, responsive, cu bune practici SEO de bază.</p>
+              <p>Implementare performantă, responsive, cu bune practici SEO.</p>
             </div>
           </div>
         </article>
@@ -542,7 +582,7 @@ import LucideIcon from '../../../components/ui/LucideIcon.astro';
         <div class="page__card" role="listitem">
           <div class="website-card__head">
             <span class="u-service-icon" aria-hidden="true"><LucideIcon name="Search" size={18} /></span>
-            <h3>SEO de bază</h3>
+            <h3>SEO</h3>
           </div>
           <p>Structură SEO-first: titluri, meta, viteză, indexare.</p>
         </div>
@@ -574,29 +614,136 @@ import LucideIcon from '../../../components/ui/LucideIcon.astro';
   <!-- De ce contează -->
   <section class="section section--s fade-in-up" data-service="website" id="de-ce">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="website-section__header">
+      <div class="website-section__header website-section__header--center">
         <h2 class="page__section-title">De ce contează un website bine făcut</h2>
+        <p class="page__lead website-section__lead">
+          Website-ul tău nu e doar o „carte de vizită”. E prima impresie, modul în care explici clar ce faci și locul unde
+          oamenii decid dacă te contactează.
+        </p>
       </div>
 
-      <div class="page__grid website-grid--2">
-        <div class="page__card">
-          <h3>Prima impresie</h3>
-          <p>
-            Un website modern transmite încredere și profesionalism. Un site vechi transmite nesiguranță — iar oamenii
-            pleacă înainte să te contacteze.
+      <div class="website-impact">
+        <div class="website-impact__card">
+          <h3>Ce se schimbă în practică</h3>
+          <p class="website-impact__lead">
+            Un website bun te ajută să pari credibil, să fii găsit mai ușor și să transformi vizitatorii în cereri reale.
           </p>
+
+          <div class="website-benefits" role="list" aria-label="Impactul unui website bine făcut">
+            <div class="website-benefit" role="listitem">
+              <span class="website-benefit__icon" aria-hidden="true">
+                <LucideIcon name="Sparkles" size={18} />
+              </span>
+              <div class="website-benefit__body">
+                <div class="website-benefit__title">Prima impresie</div>
+                <div class="website-benefit__text">
+                  Un website modern transmite încredere și profesionalism. Un site vechi transmite nesiguranță — iar oamenii
+                  pleacă înainte să te contacteze.
+                </div>
+              </div>
+            </div>
+
+            <div class="website-benefit" role="listitem">
+              <span class="website-benefit__icon" aria-hidden="true">
+                <LucideIcon name="Search" size={18} />
+              </span>
+              <div class="website-benefit__body">
+                <div class="website-benefit__title">Conversii și vizibilitate</div>
+                <div class="website-benefit__text">
+                  Structura, mesajul și viteza influențează direct câți oameni îți scriu sau te sună. O bază bună de SEO ajută
+                  să fii găsit în căutări relevante.
+                </div>
+              </div>
+            </div>
+
+            <div class="website-benefit" role="listitem">
+              <span class="website-benefit__icon" aria-hidden="true">
+                <LucideIcon name="BadgeCheck" size={18} />
+              </span>
+              <div class="website-benefit__body">
+                <div class="website-benefit__title">Rezultatul: mai mult business</div>
+                <ul class="page__list website-list--ticks website-impact__ticks">
+                  <li>mai multe cereri (lead-uri)</li>
+                  <li>mai multă încredere</li>
+                  <li>mai multă vizibilitate</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="page__card">
-          <h3>Conversii și vizibilitate</h3>
-          <p>
-            Structura, mesajul și viteza influențează direct câți oameni îți scriu sau te sună. O bază bună de SEO ajută
-            să fii găsit în căutări relevante.
-          </p>
-          <ul class="page__list website-list--ticks">
-            <li>mai multe cereri (lead-uri)</li>
-            <li>mai multă încredere</li>
-            <li>mai multă vizibilitate</li>
-          </ul>
+
+        <div class="website-impact__visual" aria-hidden="true">
+          <div class="website-config">
+            <div class="website-config__top">
+              <div class="website-config__brand">
+                <div class="website-config__logo">
+                  <img src="/core-digital-square-logo.svg" alt="" width="42" height="42" decoding="async" />
+                </div>
+                <div class="website-config__brand-text">
+                  <div class="website-config__title">Impact website</div>
+                  <div class="website-config__subtitle">Cum influențează cererile</div>
+                </div>
+              </div>
+              <div class="website-config__top-actions">
+                <span class="website-config__tag">Audit rapid</span>
+                <span class="website-config__x"></span>
+              </div>
+            </div>
+
+            <div class="website-config__section">
+              <div class="website-config__section-title">Prima impresie</div>
+              <div class="website-config__kpis website-config__kpis--2">
+                <div class="website-config__kpi">
+                  <div class="website-config__kpi-top">
+                    <LucideIcon name="Sparkles" size={16} /> +încredere
+                  </div>
+                  <div class="website-config__kpi-sub">profesionalism</div>
+                </div>
+                <div class="website-config__kpi">
+                  <div class="website-config__kpi-top">
+                    <LucideIcon name="Sparkles" size={16} /> +claritate
+                  </div>
+                  <div class="website-config__kpi-sub">mesaj</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="website-config__section">
+              <div class="website-config__section-title">Conversii & vizibilitate</div>
+              <div class="website-config__kpis website-config__kpis--3">
+                <div class="website-config__kpi">
+                  <div class="website-config__kpi-top">
+                    <LucideIcon name="Sparkles" size={16} /> +cereri
+                  </div>
+                  <div class="website-config__kpi-sub">lead-uri</div>
+                </div>
+                <div class="website-config__kpi">
+                  <div class="website-config__kpi-top">
+                    <LucideIcon name="Sparkles" size={16} /> +vizibilitate
+                  </div>
+                  <div class="website-config__kpi-sub">Google</div>
+                </div>
+                <div class="website-config__kpi">
+                  <div class="website-config__kpi-top">
+                    <LucideIcon name="Sparkles" size={16} /> +viteză
+                  </div>
+                  <div class="website-config__kpi-sub">UX</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="website-config__section website-config__section--row">
+              <div class="website-config__chip">
+                <span class="website-config__chip-dot"></span> SEO
+              </div>
+              <div class="website-config__chip">
+                <span class="website-config__chip-dot"></span> Mesaj clar
+              </div>
+              <div class="website-config__chip">
+                <span class="website-config__chip-dot"></span> Mobile-first
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -659,25 +806,91 @@ import LucideIcon from '../../../components/ui/LucideIcon.astro';
   <!-- Social proof -->
   <section class="section section--s fade-in-up" data-service="website" id="testimoniale">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="website-section__header">
-        <h2 class="page__section-title">Testimoniale</h2>
+      <div class="website-section__header website-section__header--center">
+        <h2 class="page__section-title">Recomandat de parteneri din industrie</h2>
+        <p class="page__lead website-section__lead">
+          Branduri și echipe care au ales un website modern, rapid și construit pentru cereri reale.
+        </p>
       </div>
 
-      <div class="page__grid website-grid--3" role="list">
-        <figure class="page__card website-quote" role="listitem">
-          <blockquote>
-            “În sfârșit un site modern care ne aduce cereri. Modelul pe abonament ne-a ajutat să pornim fără stres.”
-          </blockquote>
-          <figcaption>— Business local</figcaption>
-        </figure>
-        <figure class="page__card website-quote" role="listitem">
-          <blockquote>“Lansare rapidă și suport real după. Exact ce ne lipsea înainte.”</blockquote>
-          <figcaption>— Antreprenor</figcaption>
-        </figure>
-        <figure class="page__card website-quote" role="listitem">
-          <blockquote>“Structură clară, design premium și o colaborare foarte simplă.”</blockquote>
-          <figcaption>— Servicii locale</figcaption>
-        </figure>
+      <div class="website-testimonials" data-testimonials="website">
+        <div class="website-testimonials__tabs" role="tablist" aria-label="Testimoniale - companii">
+          {testimonials.map((t, idx) => (
+            <button
+              type="button"
+              class:list={['website-testimonials__tab', idx === 0 && 'is-active']}
+              role="tab"
+              aria-selected={idx === 0 ? 'true' : 'false'}
+              aria-controls={`testimonial-panel-${t.id}`}
+              id={`testimonial-tab-${t.id}`}
+              tabindex={idx === 0 ? '0' : '-1'}
+              data-tab={t.id}
+            >
+              <img
+                class="website-testimonials__logo-mark"
+                src={t.logoMark}
+                alt=""
+                width="24"
+                height="24"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="website-testimonials__logo-text">{t.company}</span>
+            </button>
+          ))}
+        </div>
+
+        <div class="website-testimonials__panes">
+          {testimonials.map((t, idx) => (
+            <div
+              class:list={['website-testimonials__pane', idx === 0 && 'is-active']}
+              role="tabpanel"
+              id={`testimonial-panel-${t.id}`}
+              aria-labelledby={`testimonial-tab-${t.id}`}
+              tabindex={idx === 0 ? '0' : '-1'}
+              hidden={idx === 0 ? undefined : true}
+              data-panel={t.id}
+            >
+              <div class="website-testimonials__quote-card">
+                <div class="website-testimonials__stars" aria-label="Rating: 5 din 5">
+                  <span aria-hidden="true">★★★★★</span>
+                </div>
+
+                <p class="website-testimonials__quote">{t.quote}</p>
+
+                <div class="website-testimonials__author">
+                  <img
+                    class="website-testimonials__avatar"
+                    src={t.avatar}
+                    alt=""
+                    width="48"
+                    height="48"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div class="website-testimonials__author-meta">
+                    <div class="website-testimonials__author-name">{t.person}</div>
+                    <div class="website-testimonials__author-role">{t.role}</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="website-testimonials__stats-card" aria-label="Impact">
+                {t.stats.map((s) => (
+                  <div class="website-testimonials__stat">
+                    <div class="website-testimonials__stat-top">
+                      <span class="website-testimonials__stat-value">{s.value}</span>
+                      <span class="website-testimonials__delta" aria-hidden="true">
+                        ▲
+                      </span>
+                    </div>
+                    <div class="website-testimonials__stat-label">{s.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>
@@ -695,7 +908,7 @@ import LucideIcon from '../../../components/ui/LucideIcon.astro';
           <a class="u-brand-cta u-btn-lg" href="/contact">
             Discută cu noi <i class="fas fa-arrow-right"></i>
           </a>
-          <a class="u-brand-outline u-btn-lg" href="/#preturi">Vezi pachetele</a>
+          <a class="u-brand-outline u-btn-lg" href="/preturi">Vezi pachetele</a>
         </div>
       </div>
     </div>

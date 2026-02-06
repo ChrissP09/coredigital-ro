@@ -1,0 +1,51 @@
+---
+import LucideIcon from './LucideIcon.astro';
+
+const {
+  label = 'Ofertă limitată',
+  title = 'Pachetul All-in-One',
+  description = `Obții acces simultan la toate cele 3 servicii: website, recenzii și AI Chatbot. Ideal dacă vrei un sistem complet
+care atrage, convinge și convertește.`,
+  perks = ['Website + mentenanță', 'Recenzii Google', 'AI Chatbot', 'Integrare completă'],
+  oldPrice = '1.100 RON',
+  price = '700 RON',
+  period = '/ lună',
+  ctaText = 'Activează All-in-One',
+  ctaHref = '/contact',
+  note = 'Facturare lunară. Suport inclus.',
+} = Astro.props;
+---
+
+<div class="pricing-combo" aria-label="Pachet All-in-One">
+  <div class="pricing-combo__orb pricing-combo__orb--primary" aria-hidden="true"></div>
+  <div class="pricing-combo__orb pricing-combo__orb--purple" aria-hidden="true"></div>
+
+  <div class="pricing-combo__inner">
+    <div class="pricing-combo__content">
+      <div class="pricing-combo__label">
+        <LucideIcon name="BadgeCheck" size={16} />
+        <span>{label}</span>
+      </div>
+
+      <h2 class="pricing-combo__title">{title}</h2>
+      <p class="pricing-combo__desc">{description}</p>
+
+      <div class="pricing-combo__perks" aria-label="Include">
+        {perks.map((perk) => (
+          <div class="pricing-combo__perk">{perk}</div>
+        ))}
+      </div>
+    </div>
+
+    <div class="pricing-combo__price-card">
+      <span class="pricing-combo__old">{oldPrice}</span>
+      <div class="pricing-combo__price">
+        <span class="pricing-combo__amount">{price}</span>
+        <span class="pricing-combo__period">{period}</span>
+      </div>
+      <a class="pricing-combo__button" href={ctaHref}>{ctaText}</a>
+      <p class="pricing-combo__note">{note}</p>
+    </div>
+  </div>
+</div>
+

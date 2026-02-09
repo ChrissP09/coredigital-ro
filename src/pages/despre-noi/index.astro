@@ -1,64 +1,693 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import LucideIcon from '../../components/ui/LucideIcon.astro';
+
+const whyBento = [
+  {
+    id: 'integrat',
+    icon: 'Puzzle',
+    title: 'Sistem complet, integrat',
+    text: 'Website + recenzii online + AI Chatbot. Le poți activa separat, dar împreună acoperă fluxul: atrage → convinge → convertește.',
+    dataService: 'website',
+    className: 'about-bento__card--wide',
+  },
+  {
+    id: 'abonament',
+    icon: 'Wallet',
+    title: 'Abonament predictibil',
+    text: 'Fără cost inițial mare. Plătești lunar pentru implementare, suport și îmbunătățiri — ca un sistem care trebuie să funcționeze continuu.',
+    dataService: 'reviews',
+    className: 'about-bento__card--tall',
+  },
+  {
+    id: 'curat',
+    icon: 'BadgeCheck',
+    title: 'Implementări curate',
+    text: 'Structură, copy și setări făcute corect de la început: SEO de bază, tracking, performanță și o experiență clară pentru utilizator.',
+    dataService: 'website',
+    className: '',
+  },
+  {
+    id: 'optimizare',
+    icon: 'Settings',
+    title: 'Optimizare continuă',
+    text: 'Nu „predăm” și dispărem. Urmărim ce se întâmplă, propunem ajustări și optimizăm conversia, mesajele și automatizările.',
+    dataService: 'ai',
+    className: '',
+  },
+  {
+    id: 'comunicare',
+    icon: 'MessagesSquare',
+    title: 'Comunicare simplă',
+    text: 'Un plan clar, pași mici, aprobări rapide. Știi ce urmează, ce primești și când.',
+    dataService: 'reviews',
+    className: 'about-bento__card--full',
+  },
+];
+
+const calendarDays = Array.from({ length: 35 }, (_, idx) => idx);
+
+const processSteps = [
+  {
+    step: 'Pasul 1',
+    title: 'Clarificare & obiectiv',
+    text: 'Stabilim ce vrei să obții (cereri, încredere, automatizare) și ce contează în business-ul tău.',
+  },
+  {
+    step: 'Pasul 2',
+    title: 'Structură & conținut',
+    text: 'Punem mesajul în ordine: ofertă, diferențiatori, dovezi și CTA-uri. Copy scurt, scanabil.',
+  },
+  {
+    step: 'Pasul 3',
+    title: 'Implementare & integrare',
+    text: 'Lansăm și conectăm tot ce trebuie: formulare, lead-uri, recenzii, chatbot, booking / CRM (dacă există).',
+  },
+  {
+    step: 'Pasul 4',
+    title: 'Monitorizare & optimizări',
+    text: 'Iterăm lunar: ajustăm copy, CTA-uri, secțiuni, fluxuri de recenzii și automatizări, în funcție de obiective.',
+  },
+];
+
+const subscriptionCategories = [
+  {
+    dataService: 'website',
+    icon: 'LayoutTemplate',
+    title: 'Website modern',
+    items: ['structură + design premium', 'copy clar, orientat pe conversie', 'SEO de bază + performanță', 'mentenanță și update-uri'],
+    ctaText: 'Vezi serviciul',
+    ctaHref: '/servicii/construire-website',
+  },
+  {
+    dataService: 'reviews',
+    icon: 'MessagesSquare',
+    title: 'Recenzii online',
+    items: ['flux simplu pentru cerere recenzii', 'monitorizare + răspunsuri recomandate', 'protejare reputație', 'raportare & optimizări'],
+    ctaText: 'Vezi serviciul',
+    ctaHref: '/servicii/recenzii-online',
+  },
+  {
+    dataService: 'ai',
+    icon: 'WandSparkles',
+    title: 'AI Chatbot',
+    items: ['răspunsuri non-stop', 'colectare date + calificare lead-uri', 'FAQ și direcționare către acțiuni', 'integrare CRM/booking (opțional)'],
+    ctaText: 'Vezi serviciul',
+    ctaHref: '/servicii/chatbot-ai',
+  },
+  {
+    dataService: 'website',
+    icon: 'LifeBuoy',
+    title: 'Integrare & suport',
+    items: ['setup inițial ghidat', 'ajustări lunare (copy / layout)', 'suport și prioritizare', 'plan de îmbunătățiri (lunar)'],
+    ctaText: 'Vezi prețurile',
+    ctaHref: '/preturi',
+  },
+];
+
+const industries = [
+  'clinici / cabinete',
+  'salon / beauty',
+  'service auto',
+  'restaurante / cafenele',
+  'imobiliare',
+  'educație / cursuri',
+  'fitness',
+  'servicii B2B locale',
+];
+
+const serviceHighlights = [
+  {
+    dataService: 'website',
+    icon: 'LayoutTemplate',
+    title: 'Website',
+    meta: 'Structură + SEO',
+    desc: 'Mesaj clar, design premium și pagini construite pentru cereri reale.',
+  },
+  {
+    dataService: 'reviews',
+    icon: 'MessagesSquare',
+    title: 'Recenzii',
+    meta: 'Flux automat',
+    desc: 'Crești încrederea cu un sistem simplu de cerere și monitorizare.',
+  },
+  {
+    dataService: 'ai',
+    icon: 'WandSparkles',
+    title: 'AI Chatbot',
+    meta: 'Lead-uri',
+    desc: 'Răspunsuri non-stop, întrebări calificate și colectare date.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Pot începe cu un singur serviciu?',
+    a: 'Da. Poți activa website / recenzii / AI Chatbot separat. Recomandarea noastră: le integrăm pe măsură ce crește nevoie de automatizare și volum.',
+  },
+  {
+    q: 'Există cost inițial?',
+    a: 'Modelul este pe abonament lunar. Dacă apar cerințe speciale (ex: integrări complexe), discutăm transparent înainte și folosim placeholderuri în ofertă.',
+  },
+  {
+    q: 'Ce înseamnă „optimizare continuă” concret?',
+    a: 'Iterații mici: ajustăm copy, CTA-uri, secțiuni, fluxuri de recenzii și răspunsurile chatbotului, pe baza feedback-ului și a datelor disponibile.',
+  },
+  {
+    q: 'Ce am nevoie să vă trimit ca să începeți?',
+    a: 'Logo (dacă există), servicii + prețuri (sau intervale), program, oraș, date de contact și 3–5 exemple de clienți „ideali”. Restul îl structurăm împreună.',
+  },
+  {
+    q: 'Cât durează până e live?',
+    a: 'Depinde de complexitate și viteza aprobărilor. Lucrăm în etape scurte, cu livrabile clare, ca să poți vedea progresul rapid.',
+  },
+  {
+    q: 'Cum funcționează suportul lunar?',
+    a: 'Ai un canal clar de comunicare, modificări incluse în abonament (în limite rezonabile) și propuneri de îmbunătățire în funcție de obiective.',
+  },
+  {
+    q: 'Pot renunța oricând?',
+    a: 'Discutăm termenii în contract. În general, modelul pe abonament are sens când există un minim de continuitate pentru optimizare.',
+  },
+];
 ---
 
 <BaseLayout
   title="Despre noi | CoreDigital"
-  description="Echipa CoreDigital și modul nostru de lucru pentru proiecte digitale solide."
+  description="CoreDigital construiește un sistem complet pentru creștere: website modern, recenzii online și AI Chatbot, pe abonament lunar."
+  bodyClass="about-page"
 >
-  <section class="section">
-    <div class="container">
-      <div class="page__hero">
-        <h1 class="page__hero-title">Despre CoreDigital</h1>
-        <p class="page__lead">Suntem o echipă orientată pe rezultate, structură și livrabile clare.</p>
-      </div>
-    </div>
-  </section>
+  <!-- A. Hero “Despre noi” -->
+  <section class="section section--l fade-in-up about-hero-section">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="page__hero about-hero">
+        <header class="about-hero__header">
+          <span class="website-hero__pill" aria-label="Despre CoreDigital">
+            <span class="website-hero__pill-icon" aria-hidden="true">
+              <LucideIcon name="Sparkles" size={16} />
+            </span>
+            <span class="website-hero__pill-text">Despre noi</span>
+          </span>
 
-  <section class="section section--s">
-    <div class="container">
-      <div class="page__section" aria-labelledby="about-mission">
-        <h2 id="about-mission" class="page__section-title">Misiune</h2>
-        <p>Ajutăm afacerile locale să comunice clar și să convertească online.</p>
-      </div>
-    </div>
-  </section>
+          <h1 class="about-hero__title">
+            Sistem complet pentru <span class="u-gradient-text">creștere</span>, pe abonament
+          </h1>
+          <p class="page__lead about-hero__lead">
+            Website modern + recenzii online + AI Chatbot. Separat au impact, integrate funcționează cel mai bine: un flux complet
+            care atrage, convinge și convertește.
+          </p>
 
-  <section class="section section--s">
-    <div class="container">
-      <div class="page__section" aria-labelledby="about-values">
-        <h2 id="about-values" class="page__section-title">Valori</h2>
-        <ul class="page__list">
-          <li>Transparență și comunicare simplă.</li>
-          <li>Structură înainte de estetică.</li>
-          <li>Decizii bazate pe date reale.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--s">
-    <div class="container">
-      <div class="page__section" aria-labelledby="about-team">
-        <h2 id="about-team" class="page__section-title">Echipă</h2>
-        <p>Colaborăm cu specialiști în strategie, design și implementare.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--s">
-    <div class="container">
-      <div class="page__section" aria-labelledby="about-work">
-        <h2 id="about-work" class="page__section-title">Cum lucrăm</h2>
-        <div class="page__grid">
-          <div class="page__card">
-            <h3>Descoperire</h3>
-            <p>Înțelegem piața, competiția și obiectivele.</p>
+          <div class="about-hero__actions" aria-label="Acțiuni">
+            <a class="u-brand-cta u-btn-lg" href="/contact">
+              Programează o discuție <LucideIcon name="ArrowUpRight" size={18} />
+            </a>
+            <a class="u-brand-outline u-btn-lg" href="/preturi">
+              Vezi prețurile <LucideIcon name="ArrowUpRight" size={18} />
+            </a>
           </div>
-          <div class="page__card">
-            <h3>Execuție</h3>
-            <p>Implementăm rapid și validăm în etape scurte.</p>
+
+          <div class="pricing-hero__trust" aria-label="Avantaje">
+            <span class="pricing-hero__trust-item">
+              <LucideIcon name="Timer" size={18} /> Implementare în pași clari
+            </span>
+            <span class="pricing-hero__trust-item">
+              <LucideIcon name="Wallet" size={18} /> Abonament lunar predictibil
+            </span>
+            <span class="pricing-hero__trust-item">
+              <LucideIcon name="LifeBuoy" size={18} /> Suport & optimizare
+            </span>
           </div>
+        </header>
+
+        <div class="about-showcase" aria-label="Preview sistem CoreDigital">
+          <div class="about-showcase__grid">
+            <div class="about-media-card about-media-card--side" aria-hidden="true">
+              <img
+                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <div class="about-media-card about-media-card--main">
+              <img
+                src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1800&q=80"
+                alt="Echipă lucrând la un proiect digital"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <div class="about-media-card about-media-card--side" aria-hidden="true">
+              <img
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-service-row" aria-label="Componente sistem">
+        {serviceHighlights.map((item) => (
+          <article class="about-service-card" data-service={item.dataService}>
+            <div class="about-service-card__head">
+              <div class="about-service-card__left">
+                <span class="about-service-card__icon" aria-hidden="true">
+                  <LucideIcon name={item.icon} size={16} />
+                </span>
+                <span class="about-service-card__title">{item.title}</span>
+              </div>
+              <span class="about-service-card__meta">{item.meta}</span>
+            </div>
+            <p class="about-service-card__desc">{item.desc}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- B. “De ce CoreDigital” -->
+  <section class="section section--s fade-in-up" id="de-ce">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="website-section__header website-section__header--center">
+        <h2 class="page__section-title">De ce CoreDigital</h2>
+        <p class="page__lead website-section__lead">
+          Nu vindem „promisiuni”. Construim un sistem clar, ușor de administrat, care te ajută să obții cereri și să crești
+          încrederea — fără complicații.
+        </p>
+      </div>
+
+      <div class="about-bento" role="list" aria-label="Diferențiatori">
+        {whyBento.map((item) => (
+          <article class={`about-bento__card ${item.className}`.trim()} role="listitem" data-service={item.dataService}>
+            <div class="about-bento__visual" aria-hidden="true">
+              {item.id === 'integrat' ? (
+                <div class="about-mock about-mock--integrat">
+                  <div class="about-mini-flow" aria-label="Flux: claritate, încredere, conversie">
+                    <svg class="about-mini-flow__svg" viewBox="0 0 1000 240" aria-hidden="true">
+                      <defs>
+                        <linearGradient id="cdGlow" x1="0" y1="0" x2="1" y2="0">
+                          <stop offset="0" stop-color="rgba(37, 99, 235, 0)" />
+                          <stop offset="0.2" stop-color="rgba(37, 99, 235, 0.55)" />
+                          <stop offset="0.5" stop-color="rgba(37, 99, 235, 0.9)" />
+                          <stop offset="0.8" stop-color="rgba(37, 99, 235, 0.55)" />
+                          <stop offset="1" stop-color="rgba(37, 99, 235, 0)" />
+                        </linearGradient>
+                        <filter id="cdBlur" x="-20%" y="-60%" width="140%" height="220%">
+                          <feGaussianBlur stdDeviation="6" />
+                        </filter>
+                      </defs>
+
+                      <path
+                        d="M170 120 C 300 80, 370 80, 500 120 S 700 160, 830 120"
+                        stroke="url(#cdGlow)"
+                        stroke-width="18"
+                        stroke-linecap="round"
+                        fill="none"
+                        filter="url(#cdBlur)"
+                        opacity="0.55"
+                      />
+                      <path
+                        d="M170 120 C 300 80, 370 80, 500 120 S 700 160, 830 120"
+                        stroke="url(#cdGlow)"
+                        stroke-width="4"
+                        stroke-linecap="round"
+                        fill="none"
+                        opacity="0.95"
+                      />
+
+                      <circle cx="170" cy="120" r="10" fill="rgba(37, 99, 235, 0.9)" />
+                      <circle cx="500" cy="120" r="10" fill="rgba(37, 99, 235, 0.9)" />
+                      <circle cx="830" cy="120" r="10" fill="rgba(37, 99, 235, 0.9)" />
+                    </svg>
+
+                    <article class="about-mini-tile" data-service="website">
+                      <div class="about-mini-visual about-mini-visual--website" aria-hidden="true">
+                        <div class="about-ui about-ui--website">
+                          <div class="about-ui__top"></div>
+                          <div class="about-ui__line"></div>
+                          <div class="about-ui__cards">
+                            <span></span><span></span><span></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="about-mini-title">Claritate</div>
+                      <div class="about-mini-meta">Mesaj + structură</div>
+                    </article>
+
+                    <article class="about-mini-tile" data-service="reviews">
+                      <div class="about-mini-visual about-mini-visual--reviews" aria-hidden="true">
+                        <div class="about-ui about-ui--reviews">
+                          <div class="about-ui__stars">
+                            <span></span><span></span><span></span><span></span><span></span>
+                          </div>
+                          <div class="about-ui__pill"></div>
+                          <div class="about-ui__rows">
+                            <span></span><span></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="about-mini-title">Credibilitate</div>
+                      <div class="about-mini-meta">Dovezi + reputație</div>
+                    </article>
+
+                    <article class="about-mini-tile" data-service="ai">
+                      <div class="about-mini-visual about-mini-visual--ai" aria-hidden="true">
+                        <div class="about-ui about-ui--ai">
+                          <div class="about-ui__bubble about-ui__bubble--left"></div>
+                          <div class="about-ui__bubble about-ui__bubble--right"></div>
+                          <div class="about-ui__input"></div>
+                        </div>
+                      </div>
+                      <div class="about-mini-title">Conversie</div>
+                      <div class="about-mini-meta">Lead-uri + follow-up</div>
+                    </article>
+                  </div>
+                </div>
+              ) : item.id === 'abonament' ? (
+                <div class="about-mock about-mock--abonament">
+                  <div class="about-calendar about-calendar--fancy" data-service="website">
+                    <div class="about-calendar__top">
+                      <div class="about-calendar__label">
+                        <div class="about-calendar__title">Cost fix</div>
+                      </div>
+                      <div class="about-calendar__chip">Facturare lunară</div>
+                    </div>
+
+                    <div class="about-calendar__weekdays" aria-hidden="true">
+                      {['Lu', 'Ma', 'Mi', 'Jo', 'Vi', 'Sa', 'Du'].map((d) => (
+                        <span>{d}</span>
+                      ))}
+                    </div>
+
+                    <div class="about-calendar__grid" aria-hidden="true">
+                      {calendarDays.map((idx) => {
+                        const classes = ['about-calendar__day'];
+                        if (idx < 3 || idx > 30) classes.push('is-muted');
+                        if (idx === 17) classes.push('is-active');
+                        if (idx === 16 || idx === 18) classes.push('is-near');
+                        if (idx === 10 || idx === 24) classes.push('is-marker');
+                        return <span class={classes.join(' ')}></span>;
+                      })}
+                    </div>
+                  </div>
+                </div>
+              ) : item.id === 'curat' ? (
+                <div class="about-mock about-mock--curat">
+                  <div class="about-check" data-service="website">
+                    <div class="about-check__item">
+                      <span class="about-check__tick" aria-hidden="true"></span>
+                      <span>SEO de bază</span>
+                    </div>
+                    <div class="about-check__item">
+                      <span class="about-check__tick" aria-hidden="true"></span>
+                      <span>Performanță</span>
+                    </div>
+                    <div class="about-check__item">
+                      <span class="about-check__tick" aria-hidden="true"></span>
+                      <span>Tracking</span>
+                    </div>
+                  </div>
+                  <div class="about-score" data-service="reviews">
+                    <div class="about-score__ring" aria-hidden="true"></div>
+                    <div class="about-score__label">Setup curat</div>
+                  </div>
+                </div>
+              ) : item.id === 'optimizare' ? (
+                <div class="about-mock about-mock--opt">
+                  <div class="about-chart">
+                    <div class="about-chart__bars" aria-hidden="true">
+                      <span style="height: 34%"></span>
+                      <span style="height: 58%"></span>
+                      <span style="height: 46%"></span>
+                      <span style="height: 74%"></span>
+                      <span style="height: 62%"></span>
+                      <span style="height: 86%"></span>
+                    </div>
+                    <div class="about-chart__caption">
+                      <span class="about-chart__dot" aria-hidden="true"></span>
+                      <span>Iterații mici, constant</span>
+                    </div>
+                  </div>
+                  <div class="about-mini-panel" data-service="ai">
+                    <div class="about-mini-panel__title">Next:</div>
+                    <div class="about-mini-panel__pill">copy CTA</div>
+                    <div class="about-mini-panel__pill">flow recenzii</div>
+                    <div class="about-mini-panel__pill">răspunsuri bot</div>
+                  </div>
+                </div>
+              ) : (
+                <div class="about-mock about-mock--comms">
+                  <div class="about-bubbles">
+                    <div class="about-bubble about-bubble--left">Ce urmează?</div>
+                    <div class="about-bubble about-bubble--right">Îți trimitem pașii + livrabilele.</div>
+                    <div class="about-bubble about-bubble--left">Aprob rapid.</div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div class="about-bento__copy">
+              <div class="about-bento__kicker" data-service={item.dataService}>
+                <span class="u-service-icon" aria-hidden="true">
+                  <LucideIcon name={item.icon} size={18} />
+                </span>
+                <span>{item.title}</span>
+              </div>
+              <p class="m-0">{item.text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
+        <a class="u-brand-cta u-btn-lg" href="/contact">
+          Programează o discuție <LucideIcon name="ArrowUpRight" size={18} />
+        </a>
+        <a class="u-brand-outline u-btn-lg" href="/servicii">
+          Vezi serviciile <LucideIcon name="ArrowUpRight" size={18} />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Extra: misiune & valori (inspirat din layout-ul de referință) -->
+  <section class="section section--s fade-in-up" id="misiune">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="page__card">
+        <div class="about-split">
+          <div class="about-split__copy">
+            <h2 class="page__section-title m-0">De ce existăm</h2>
+            <p class="page__lead m-0">
+              Pentru ca business-urile locale să aibă un sistem online care funcționează zilnic — nu doar „un site”.
+            </p>
+            <p class="m-0">
+              Clarificăm mesajul, implementăm curat și optimizăm constant. Fără jargon, fără blocaje, fără costuri ascunse.
+            </p>
+
+            <ul class="page__list website-list--ticks mt-4">
+              <li>spui clar oferta și diferențiatorii</li>
+              <li>crești încrederea cu recenzii reale</li>
+              <li>automatizezi întrebările repetitive</li>
+              <li>ai suport și îmbunătățiri lunare</li>
+            </ul>
+
+            <div class="about-split__actions mt-2">
+              <a class="u-brand-cta u-btn-lg" href="/contact">
+                Programează o discuție <LucideIcon name="ArrowUpRight" size={18} />
+              </a>
+              <a class="u-brand-outline u-btn-lg" href="/preturi">
+                Vezi prețurile <LucideIcon name="ArrowUpRight" size={18} />
+              </a>
+            </div>
+          </div>
+
+          <div class="about-media-card" style="aspect-ratio: 4 / 3;">
+            <img
+              src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=80"
+              alt="Lucru la laptop, planificare și implementare"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- C. “Cum lucrăm” -->
+  <section class="section section--s fade-in-up" id="cum-lucram">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="website-section__header website-section__header--center">
+        <h2 class="page__section-title">Cum lucrăm</h2>
+        <p class="page__lead website-section__lead">
+          Proces în 4 pași, fără „mister”. Primești livrabile clare și aprobi rapid, iar noi implementăm și optimizăm în etape
+          scurte.
+        </p>
+      </div>
+
+      <div class="page__grid md:grid-cols-2 lg:grid-cols-4" role="list" aria-label="Proces">
+        {processSteps.map((item) => (
+          <article class="page__card" data-service="website" role="listitem">
+            <span class="u-service-pill">{item.step}</span>
+            <h3 class="mt-3 mb-2">{item.title}</h3>
+            <p class="m-0 text-slate-600">{item.text}</p>
+          </article>
+        ))}
+      </div>
+
+      <div class="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
+        <a class="u-brand-cta u-btn-lg" href="/contact">
+          Programează o discuție <LucideIcon name="ArrowUpRight" size={18} />
+        </a>
+        <a class="u-brand-outline u-btn-lg" href="#abonament">
+          Ce primești în abonament <LucideIcon name="ChevronDown" size={18} />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- D. “Ce primești în abonament” -->
+  <section class="section section--s fade-in-up" id="abonament">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="website-section__header website-section__header--center">
+        <h2 class="page__section-title">Ce primești în abonament</h2>
+        <p class="page__lead website-section__lead">
+          Un sistem întreținut, nu un „proiect livrat și gata”. Abonamentul acoperă implementare, suport și îmbunătățiri lunare.
+        </p>
+      </div>
+
+      <div class="page__grid md:grid-cols-2" role="list" aria-label="Componente abonament">
+        {subscriptionCategories.map((item) => (
+          <article class="page__card" data-service={item.dataService} role="listitem">
+            <div class="flex items-center gap-3">
+              <span class="u-service-icon" aria-hidden="true">
+                <LucideIcon name={item.icon} size={18} />
+              </span>
+              <h3 class="m-0">{item.title}</h3>
+            </div>
+            <ul class="page__list website-list--ticks mt-4">
+              {item.items.map((li) => (
+                <li>{li}</li>
+              ))}
+            </ul>
+            <div class="mt-5">
+              <a class="u-service-cta" href={item.ctaHref}>
+                {item.ctaText} <LucideIcon name="ArrowUpRight" size={16} />
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
+        <a class="u-brand-cta u-btn-lg" href="/preturi">
+          Vezi prețurile <LucideIcon name="ArrowUpRight" size={18} />
+        </a>
+        <a class="u-brand-outline u-btn-lg" href="/contact">
+          Vreau integrare completă <LucideIcon name="ArrowUpRight" size={18} />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- E. “Pentru cine e” -->
+  <section class="section section--s fade-in-up" id="pentru-cine">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="website-section__header website-section__header--center">
+        <h2 class="page__section-title">Pentru cine e</h2>
+        <p class="page__lead website-section__lead">
+          Pentru business-uri locale și IMM-uri care vor mai multe cereri, mai multă încredere și automatizare — fără să-și bată
+          capul cu detalii tehnice.
+        </p>
+      </div>
+
+      <div class="page__grid md:grid-cols-2">
+        <div class="page__card" data-service="website">
+          <h3 class="m-0">Industrii potrivite</h3>
+          <p class="mt-2 text-slate-600">Exemple de domenii unde sistemul funcționează bine (lista se poate extinde).</p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            {industries.map((item) => (
+              <span class="u-service-pill">{item}</span>
+            ))}
+          </div>
+        </div>
+
+        <div class="page__card">
+          <h3 class="m-0">Semne că e momentul potrivit</h3>
+          <p class="mt-2 text-slate-600">Dacă te regăsești aici, putem începe simplu și iterăm pe parcurs.</p>
+          <ul class="page__list website-list--ticks mt-4">
+            <li>ai trafic, dar puține cereri sau apeluri</li>
+            <li>recenziile apar rar sau neuniform</li>
+            <li>primești multe întrebări repetitive</li>
+            <li>vrei un sistem care se îmbunătățește lunar</li>
+          </ul>
+          <div class="mt-5 flex flex-col sm:flex-row gap-3">
+            <a class="u-brand-cta u-btn-sm" href="/contact">
+              Programează o discuție <LucideIcon name="ArrowUpRight" size={16} />
+            </a>
+            <a class="u-brand-outline u-btn-sm" href="/preturi">
+              Vezi prețurile <LucideIcon name="ArrowUpRight" size={16} />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- F. “Întrebări frecvente” -->
+  <section class="section section--s fade-in-up" id="faq">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="website-section__header website-section__header--center">
+        <h2 class="page__section-title">Întrebări frecvente</h2>
+        <p class="page__lead website-section__lead">
+          Răspunsuri scurte, fără „fine print”. Dacă ai un caz special, îl discutăm direct.
+        </p>
+      </div>
+
+      <dl class="faq-list" aria-label="Întrebări și răspunsuri">
+        {faqs.map((item) => (
+          <div class="faq-list__item">
+            <dt class="faq-list__question">{item.q}</dt>
+            <dd class="faq-list__answer">{item.a}</dd>
+          </div>
+        ))}
+      </dl>
+
+      <div class="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
+        <a class="u-brand-cta u-btn-lg" href="/contact">
+          Contact <LucideIcon name="ArrowUpRight" size={18} />
+        </a>
+        <a class="u-brand-outline u-btn-lg" href="/preturi">
+          Vezi prețurile <LucideIcon name="ArrowUpRight" size={18} />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- G. CTA final mare -->
+  <section class="section section--s fade-in-up">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="page__cta pricing-final" aria-labelledby="about-cta">
+        <div class="pricing-final__icon" aria-hidden="true">
+          <LucideIcon name="MessageCircle" size={22} />
+        </div>
+        <h2 id="about-cta" class="page__section-title">Vrei să construim sistemul complet?</h2>
+        <p>
+          Spune-ne ce vrei să obții, iar noi îți propunem o structură clară și pachetul potrivit. Fără presiune, doar o discuție
+          utilă.
+        </p>
+        <div class="pricing-final__actions">
+          <a class="u-brand-outline u-btn-lg" href="/preturi">
+            Vezi prețurile <LucideIcon name="ArrowUpRight" size={18} />
+          </a>
+          <a class="u-brand-cta u-btn-lg" href="/contact">
+            Programează o discuție <LucideIcon name="ArrowUpRight" size={18} />
+          </a>
         </div>
       </div>
     </div>

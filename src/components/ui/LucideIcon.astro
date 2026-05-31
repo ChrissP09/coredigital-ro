@@ -5,6 +5,7 @@ import messagesSquare from 'lucide-static/icons/messages-square.svg?raw';
 import wandSparkles from 'lucide-static/icons/wand-sparkles.svg?raw';
 import sendHorizontal from 'lucide-static/icons/send-horizontal.svg?raw';
 import arrowUpRight from 'lucide-static/icons/arrow-up-right.svg?raw';
+import arrowRight from 'lucide-static/icons/arrow-right.svg?raw';
 import lock from 'lucide-static/icons/lock.svg?raw';
 import globe from 'lucide-static/icons/globe.svg?raw';
 import sparkles from 'lucide-static/icons/sparkles.svg?raw';
@@ -24,16 +25,45 @@ import puzzle from 'lucide-static/icons/puzzle.svg?raw';
 import mail from 'lucide-static/icons/mail.svg?raw';
 import phone from 'lucide-static/icons/phone.svg?raw';
 import calendarDays from 'lucide-static/icons/calendar-days.svg?raw';
+// New icons for Aethel redesign
+import zap from 'lucide-static/icons/zap.svg?raw';
+import checkCircle from 'lucide-static/icons/check-circle.svg?raw';
+import check from 'lucide-static/icons/check.svg?raw';
+import play from 'lucide-static/icons/play.svg?raw';
+import monitor from 'lucide-static/icons/monitor.svg?raw';
+import star from 'lucide-static/icons/star.svg?raw';
+import starOff from 'lucide-static/icons/star-off.svg?raw';
+import trendingUp from 'lucide-static/icons/trending-up.svg?raw';
+import alertTriangle from 'lucide-static/icons/alert-triangle.svg?raw';
+import alertOctagon from 'lucide-static/icons/alert-octagon.svg?raw';
+import clock from 'lucide-static/icons/clock.svg?raw';
+import layers from 'lucide-static/icons/layers.svg?raw';
+import heart from 'lucide-static/icons/heart.svg?raw';
+import barChart2 from 'lucide-static/icons/bar-chart-2.svg?raw';
+import userPlus from 'lucide-static/icons/user-plus.svg?raw';
+import image from 'lucide-static/icons/image.svg?raw';
+import mapPin from 'lucide-static/icons/map-pin.svg?raw';
+import creditCard from 'lucide-static/icons/credit-card.svg?raw';
+import award from 'lucide-static/icons/award.svg?raw';
+import shieldCheck from 'lucide-static/icons/shield-check.svg?raw';
+import rocket from 'lucide-static/icons/rocket.svg?raw';
+import plus from 'lucide-static/icons/plus.svg?raw';
+import menu from 'lucide-static/icons/menu.svg?raw';
+import x from 'lucide-static/icons/x.svg?raw';
+import facebook from 'lucide-static/icons/facebook.svg?raw';
+import linkedin from 'lucide-static/icons/linkedin.svg?raw';
 
-const { name, class: className = '', size = 24 } = Astro.props;
+const { name, class: className = '', size = 24, style: inlineStyle = '' } = Astro.props;
 
-const icons = {
+const icons: Record<string, string> = {
+  // Original
   Brain: brain,
   BrainCircuit: brainCircuit,
   MessagesSquare: messagesSquare,
   WandSparkles: wandSparkles,
   SendHorizontal: sendHorizontal,
   ArrowUpRight: arrowUpRight,
+  ArrowRight: arrowRight,
   Lock: lock,
   Globe: globe,
   Sparkles: sparkles,
@@ -53,6 +83,33 @@ const icons = {
   Mail: mail,
   Phone: phone,
   CalendarDays: calendarDays,
+  // Aethel redesign
+  Zap: zap,
+  CheckCircle: checkCircle,
+  Check: check,
+  Play: play,
+  Monitor: monitor,
+  Star: star,
+  StarOff: starOff,
+  TrendingUp: trendingUp,
+  AlertTriangle: alertTriangle,
+  AlertOctagon: alertOctagon,
+  Clock: clock,
+  Layers: layers,
+  Heart: heart,
+  BarChart2: barChart2,
+  UserPlus: userPlus,
+  Image: image,
+  MapPin: mapPin,
+  CreditCard: creditCard,
+  Award: award,
+  ShieldCheck: shieldCheck,
+  Rocket: rocket,
+  Plus: plus,
+  Menu: menu,
+  X: x,
+  Facebook: facebook,
+  Linkedin: linkedin,
 };
 
 const raw = icons[name];
@@ -62,13 +119,13 @@ if (!raw) {
 
 let svg = raw;
 
-svg = svg.replace(/width=\"[^\"]*\"/i, `width="${size}"`);
-svg = svg.replace(/height=\"[^\"]*\"/i, `height="${size}"`);
+svg = svg.replace(/width="[^"]*"/i, `width="${size}"`);
+svg = svg.replace(/height="[^"]*"/i, `height="${size}"`);
 
-const baseStyle = 'display:inline-block;vertical-align:middle;';
-if (/style=\"/i.test(svg)) {
-  svg = svg.replace(/style=\"([^\"]*)\"/i, (match, style) => {
-    const normalized = style.trim().replace(/;?\s*$/, ';');
+const baseStyle = `display:inline-block;vertical-align:middle;flex-shrink:0;${inlineStyle}`;
+if (/style="/i.test(svg)) {
+  svg = svg.replace(/style="([^"]*)"/i, (_, s) => {
+    const normalized = s.trim().replace(/;?\s*$/, ';');
     return `style="${normalized} ${baseStyle}"`;
   });
 } else {
@@ -76,18 +133,18 @@ if (/style=\"/i.test(svg)) {
 }
 
 if (className) {
-  if (/class=\"/i.test(svg)) {
-    svg = svg.replace(/class=\"([^\"]*)\"/i, `class="$1 ${className}"`);
+  if (/class="/i.test(svg)) {
+    svg = svg.replace(/class="([^"]*)"/i, `class="$1 ${className}"`);
   } else {
     svg = svg.replace(/<svg\b/i, `<svg class="${className}"`);
   }
 }
 
-if (!/aria-hidden=\"/i.test(svg)) {
+if (!/aria-hidden="/i.test(svg)) {
   svg = svg.replace(/<svg\b/i, `<svg aria-hidden="true"`);
 }
 
-if (!/focusable=\"/i.test(svg)) {
+if (!/focusable="/i.test(svg)) {
   svg = svg.replace(/<svg\b/i, `<svg focusable="false"`);
 }
 ---

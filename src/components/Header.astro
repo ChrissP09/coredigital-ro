@@ -50,7 +50,7 @@ const isActive = (href) => current === normalize(href);
         >
           Despre Noi
         </a>
-        <a class="u-brand-cta u-btn-sm" href="/#contact">
+        <a class="u-brand-cta u-btn-sm" href="/contact" aria-current={isActive('/contact') ? 'page' : undefined}>
           Contact
         </a>
       </div>
@@ -113,7 +113,7 @@ const isActive = (href) => current === normalize(href);
         <a class="text-gray-600 hover:text-primary-600 transition-colors font-medium py-2" href="/despre-noi">
           Despre Noi
         </a>
-        <a class="u-brand-cta u-btn-sm text-center" href="/#contact">
+        <a class="u-brand-cta u-btn-sm text-center" href="/contact">
           Contact
         </a>
       </div>

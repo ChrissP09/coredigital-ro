@@ -1,61 +1,197 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import LucideIcon from '../../components/ui/LucideIcon.astro';
 ---
 
 <BaseLayout
   title="Contact | CoreDigital"
-  description="Hai să discutăm despre proiectul tău digital."
+  description="Programează o discuție cu CoreDigital pentru website, recenzii online și chatbot AI."
 >
-  <section class="section">
-    <div class="container">
-      <div class="page__hero">
-        <h1 class="page__hero-title">Contact</h1>
-        <p class="page__lead">Trimite-ne detalii și revenim cu pașii următori.</p>
+  <section class="section section--l contact-hero fade-in-up">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="contact-hero__inner">
+        <span class="website-hero__pill contact-hero__pill" aria-label="Contact CoreDigital">
+          <span class="website-hero__pill-icon" aria-hidden="true">
+            <LucideIcon name="MessageCircle" size={16} />
+          </span>
+          <span class="website-hero__pill-text">Contact CoreDigital</span>
+        </span>
+
+        <h1 class="contact-hero__title">
+          Hai să discutăm despre <span class="u-gradient-text">următorul pas</span>
+        </h1>
+        <p class="contact-hero__lead">
+          Spune-ne ce vrei să îmbunătățești: website, recenzii, chatbot AI sau un sistem complet. Revenim cu pașii clari și
+          o recomandare potrivită pentru afacerea ta.
+        </p>
+
+        <div class="contact-hero__trust" aria-label="Avantaje contact">
+          <span class="contact-hero__trust-item">
+            <LucideIcon name="Timer" size={18} /> Răspuns în 24h
+          </span>
+          <span class="contact-hero__trust-item">
+            <LucideIcon name="BadgeCheck" size={18} /> Consultanță inițială inclusă
+          </span>
+          <span class="contact-hero__trust-item">
+            <LucideIcon name="LifeBuoy" size={18} /> Plan clar de implementare
+          </span>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section section--s">
-    <div class="container">
-      <div class="page__section" aria-labelledby="contact-details">
-        <h2 id="contact-details" class="page__section-title">Detalii rapide</h2>
-        <ul class="page__list">
-          <li>Email: contact@coredigital.ro</li>
-          <li>Telefon: +40 700 000 000</li>
-          <li>Program: Luni–Vineri, 09:00–18:00</li>
-        </ul>
+  <section class="section section--s fade-in-up">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="contact-grid">
+        <div class="contact-card contact-card--form" aria-labelledby="contact-form-title">
+          <div class="contact-card__top">
+            <div class="contact-card__icon" aria-hidden="true">
+              <LucideIcon name="SendHorizontal" size={22} />
+            </div>
+            <div>
+              <h2 id="contact-form-title" class="contact-card__title">Trimite-ne detalii</h2>
+              <p class="contact-card__text">Cu cât contextul e mai clar, cu atât putem reveni mai precis.</p>
+            </div>
+          </div>
+
+          <form class="contact-form" method="post" action="#">
+            <div class="contact-form__row">
+              <div class="contact-form__field">
+                <label class="contact-form__label" for="contact-name">Nume</label>
+                <input
+                  class="contact-form__input"
+                  id="contact-name"
+                  name="name"
+                  type="text"
+                  autocomplete="name"
+                  placeholder="Numele tău"
+                />
+              </div>
+              <div class="contact-form__field">
+                <label class="contact-form__label" for="contact-company">Companie</label>
+                <input
+                  class="contact-form__input"
+                  id="contact-company"
+                  name="company"
+                  type="text"
+                  autocomplete="organization"
+                  placeholder="Numele afacerii"
+                />
+              </div>
+            </div>
+
+            <div class="contact-form__row">
+              <div class="contact-form__field">
+                <label class="contact-form__label" for="contact-email">Email</label>
+                <input
+                  class="contact-form__input"
+                  id="contact-email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  placeholder="email@exemplu.ro"
+                />
+              </div>
+              <div class="contact-form__field">
+                <label class="contact-form__label" for="contact-phone">Telefon</label>
+                <input
+                  class="contact-form__input"
+                  id="contact-phone"
+                  name="phone"
+                  type="tel"
+                  autocomplete="tel"
+                  placeholder="+40 700 000 000"
+                />
+              </div>
+            </div>
+
+            <div class="contact-form__field">
+              <label class="contact-form__label" for="contact-service">Serviciu de interes</label>
+              <select class="contact-form__input" id="contact-service" name="service">
+                <option value="">Alege o opțiune</option>
+                <option value="website">Construire website</option>
+                <option value="reviews">Recenzii online</option>
+                <option value="ai">Chatbot AI</option>
+                <option value="all-in-one">Pachet All-in-One</option>
+                <option value="custom">Soluție personalizată</option>
+              </select>
+            </div>
+
+            <div class="contact-form__field">
+              <label class="contact-form__label" for="contact-message">Mesaj</label>
+              <textarea
+                class="contact-form__input contact-form__textarea"
+                id="contact-message"
+                name="message"
+                rows="6"
+                placeholder="Descrie pe scurt obiectivul, situația actuală și ce ai vrea să obții."
+              ></textarea>
+            </div>
+
+            <button class="contact-form__button" type="submit">
+              Trimite mesajul <LucideIcon name="ArrowUpRight" size={18} />
+            </button>
+          </form>
+        </div>
+
+        <aside class="contact-side" aria-label="Detalii rapide de contact">
+          <article class="contact-card contact-card--highlight">
+            <div class="contact-card__icon" aria-hidden="true">
+              <LucideIcon name="Mail" size={22} />
+            </div>
+            <h2 class="contact-card__title">Contact direct</h2>
+            <p class="contact-card__text">Pentru întrebări rapide, ne poți scrie direct pe email.</p>
+            <a class="contact-card__link" href="mailto:contact@coredigital.ro">contact@coredigital.ro</a>
+          </article>
+
+          <article class="contact-card">
+            <div class="contact-card__icon" aria-hidden="true">
+              <LucideIcon name="Phone" size={22} />
+            </div>
+            <h2 class="contact-card__title">Telefon</h2>
+            <p class="contact-card__text">Luni - Vineri, 09:00 - 18:00</p>
+            <a class="contact-card__link" href="tel:+40700000000">+40 700 000 000</a>
+          </article>
+
+          <article class="contact-card">
+            <div class="contact-card__icon" aria-hidden="true">
+              <LucideIcon name="CalendarDays" size={22} />
+            </div>
+            <h2 class="contact-card__title">Preferi un call?</h2>
+            <p class="contact-card__text">Trimite intervalul potrivit și revenim cu o propunere de programare.</p>
+            <a class="u-brand-outline u-btn-sm contact-side__cta" href="mailto:contact@coredigital.ro">
+              Cere programare <LucideIcon name="ArrowUpRight" size={16} />
+            </a>
+          </article>
+        </aside>
       </div>
     </div>
   </section>
 
-  <section class="section section--s">
-    <div class="container">
-      <div class="page__section" aria-labelledby="contact-form">
-        <h2 id="contact-form" class="page__section-title">Formular de contact</h2>
-        <form class="contact-form" method="post" action="#">
-          <div class="contact-form__field">
-            <label class="contact-form__label" for="contact-name">Nume</label>
-            <input class="contact-form__input" id="contact-name" name="name" type="text" placeholder="Numele tău" />
-          </div>
-          <div class="contact-form__field">
-            <label class="contact-form__label" for="contact-email">Email</label>
-            <input class="contact-form__input" id="contact-email" name="email" type="email" placeholder="email@exemplu.ro" />
-          </div>
-          <div class="contact-form__field">
-            <label class="contact-form__label" for="contact-message">Mesaj</label>
-            <textarea class="contact-form__input" id="contact-message" name="message" rows="5" placeholder="Descrie proiectul"></textarea>
-          </div>
-          <button class="contact-form__button" type="submit">Trimite mesaj</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--s">
-    <div class="container">
-      <div class="page__cta" aria-labelledby="contact-cta">
-        <h2 id="contact-cta" class="page__section-title">Preferi un call?</h2>
-        <p>Spune-ne intervalul potrivit și revenim cu o programare.</p>
+  <section class="section section--s fade-in-up">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="contact-final" aria-labelledby="contact-process-title">
+        <div class="pricing-final__icon" aria-hidden="true">
+          <LucideIcon name="MessageCircle" size={22} />
+        </div>
+        <h2 id="contact-process-title" class="page__section-title">Ce se întâmplă după ce ne scrii?</h2>
+        <div class="contact-steps" role="list" aria-label="Pași după trimiterea mesajului">
+          <article class="contact-step" role="listitem">
+            <span class="contact-step__number">01</span>
+            <h3>Analizăm contextul</h3>
+            <p>Ne uităm la obiectiv, serviciul ales și stadiul actual al prezenței online.</p>
+          </article>
+          <article class="contact-step" role="listitem">
+            <span class="contact-step__number">02</span>
+            <h3>Revenim cu întrebări clare</h3>
+            <p>Dacă avem nevoie de detalii, le cerem punctual, fără discuții inutile.</p>
+          </article>
+          <article class="contact-step" role="listitem">
+            <span class="contact-step__number">03</span>
+            <h3>Propunem direcția potrivită</h3>
+            <p>Primești o recomandare realistă: serviciu individual, All-in-One sau soluție personalizată.</p>
+          </article>
+        </div>
       </div>
     </div>
   </section>

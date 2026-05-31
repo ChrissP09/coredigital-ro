@@ -21,6 +21,9 @@ import search from 'lucide-static/icons/search.svg?raw';
 import server from 'lucide-static/icons/server.svg?raw';
 import messageCircle from 'lucide-static/icons/message-circle.svg?raw';
 import puzzle from 'lucide-static/icons/puzzle.svg?raw';
+import mail from 'lucide-static/icons/mail.svg?raw';
+import phone from 'lucide-static/icons/phone.svg?raw';
+import calendarDays from 'lucide-static/icons/calendar-days.svg?raw';
 
 const { name, class: className = '', size = 24 } = Astro.props;
 
@@ -47,6 +50,9 @@ const icons = {
   Server: server,
   MessageCircle: messageCircle,
   Puzzle: puzzle,
+  Mail: mail,
+  Phone: phone,
+  CalendarDays: calendarDays,
 };
 
 const raw = icons[name];

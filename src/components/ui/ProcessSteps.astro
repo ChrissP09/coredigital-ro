@@ -1,45 +1,282 @@
 ---
+import LucideIcon from './LucideIcon.astro';
 const { id = 'cum-functioneaza', class: className = '' } = Astro.props;
-const sectionClass = ['section', 'section--l', 'process', className].filter(Boolean).join(' ');
+
+const steps = [
+  {
+    n: '01',
+    icon: 'Search',
+    title: 'Analizăm nevoile tale',
+    desc: 'Clarificăm obiectivele, publicul și ce înseamnă „rezultat" pentru afacerea ta. Fără presupuneri.',
+    detail: '1–2 zile',
+  },
+  {
+    n: '02',
+    icon: 'Palette',
+    title: 'Structură & design',
+    desc: 'Arhitectură de pagini, copy clar și un design modern, coerent cu brandul tău.',
+    detail: '3–5 zile',
+  },
+  {
+    n: '03',
+    icon: 'Rocket',
+    title: 'Construim & lansăm',
+    desc: 'Implementare performantă, responsive, optimizată SEO. Tu aprobi, noi livrăm.',
+    detail: 'Live rapid',
+  },
+  {
+    n: '04',
+    icon: 'TrendingUp',
+    title: 'Optimizăm continuu',
+    desc: 'Monitorizăm, ajustăm și îmbunătățim pe baza datelor reale. Abonament activ = rezultate în creștere.',
+    detail: 'Lunar',
+  },
+];
 ---
 
-<section class={sectionClass} id={id}>
-  <div class="container process__inner">
-    <header class="process__header">
-      <h2 class="process__title">Cum funcționează</h2>
-      <p class="process__lead">Proces simplu și transparent, de la analiză la succes online</p>
-    </header>
-    <div class="process__grid" aria-label="Pașii procesului">
-      <article class="process__step">
-        <span class="process__number">1</span>
-        <div>
-          <h3 class="process__step-title">Analiză</h3>
-          <p class="process__step-text">
-            Analizăm nevoile business-ului tău și identificăm oportunitățile de îmbunătățire
-          </p>
-        </div>
-      </article>
-      <article class="process__step">
-        <span class="process__number">2</span>
-        <div>
-          <h3 class="process__step-title">Implementare</h3>
-          <p class="process__step-text">Construim și configurăm soluțiile alese pentru afacerea ta</p>
-        </div>
-      </article>
-      <article class="process__step">
-        <span class="process__number">3</span>
-        <div>
-          <h3 class="process__step-title">Lansare</h3>
-          <p class="process__step-text">Lansăm noile soluții și monitorizăm performanța împreună</p>
-        </div>
-      </article>
-      <article class="process__step">
-        <span class="process__number">4</span>
-        <div>
-          <h3 class="process__step-title">Optimizare</h3>
-          <p class="process__step-text">Îmbunătățim continuu pentru rezultate din ce în ce mai bune</p>
-        </div>
-      </article>
+<section class="process-v2 py-24 lg:py-32" id={id}>
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+
+    <!-- Header -->
+    <div class="text-center mb-20">
+      <span class="u-section-tag mb-5 inline-flex">
+        <LucideIcon name="Layers" size={12} />
+        Cum funcționează
+      </span>
+      <h2 class="mb-4">Proces simplu.<br/>Rezultate clare.</h2>
+      <p class="max-w-md mx-auto" style="color: hsl(var(--color-muted));">
+        Step by step, fără surprize. Tu aprobi, noi construim și optimizăm.
+      </p>
     </div>
+
+    <!-- Steps -->
+    <div class="process-v2__grid">
+      {steps.map((step, i) => (
+        <div class="process-v2__step">
+
+          <!-- Connector line (not on last) -->
+          {i < steps.length - 1 && (
+            <div class="process-v2__connector" aria-hidden="true"></div>
+          )}
+
+          <!-- Number -->
+          <div class="process-v2__num" aria-hidden="true">{step.n}</div>
+
+          <!-- Icon badge -->
+          <div class="process-v2__icon">
+            <LucideIcon name={step.icon} size={20} style="color: var(--brand-color);" />
+          </div>
+
+          <!-- Content -->
+          <div class="process-v2__content">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="process-v2__title">{step.title}</h3>
+              <span class="process-v2__badge">{step.detail}</span>
+            </div>
+            <p class="process-v2__desc">{step.desc}</p>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
   </div>
 </section>
+
+<style>
+  .process-v2 {
+    background: hsl(var(--color-surface));
+  }
+
+  .process-v2__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .process-v2__step {
+    position: relative;
+    display: grid;
+    grid-template-columns: 64px 56px 1fr;
+    grid-template-rows: auto;
+    align-items: start;
+    gap: 0 20px;
+    padding: 32px 28px;
+    border-radius: 20px;
+    border: 1px solid hsl(var(--color-border));
+    background: hsl(var(--color-bg));
+    transition: border-color 0.2s ease, transform 0.2s ease;
+    margin-bottom: 12px;
+  }
+
+  .process-v2__step:hover {
+    border-color: hsl(var(--color-lime) / 0.3);
+    transform: translateX(4px);
+  }
+
+  /* Connector between steps */
+  .process-v2__connector {
+    display: none;
+  }
+
+  /* Large background number */
+  .process-v2__num {
+    font-family: var(--font-mono);
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: hsl(var(--color-lime) / 0.25);
+    letter-spacing: -0.04em;
+    padding-top: 4px;
+    user-select: none;
+    transition: color 0.2s ease;
+  }
+
+  .process-v2__step:hover .process-v2__num {
+    color: hsl(var(--color-lime) / 0.5);
+  }
+
+  /* Icon badge */
+  .process-v2__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: var(--brand-soft);
+    border: 1px solid var(--brand-border);
+    transition: box-shadow 0.2s ease;
+  }
+
+  .process-v2__step:hover .process-v2__icon {
+    box-shadow: 0 0 20px hsl(var(--color-lime) / 0.2);
+  }
+
+  /* Content */
+  .process-v2__title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: hsl(var(--color-text));
+    letter-spacing: -0.01em;
+  }
+
+  .process-v2__badge {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: var(--brand-soft);
+    color: var(--brand-color);
+    border: 1px solid var(--brand-border);
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-left: 12px;
+  }
+
+  .process-v2__desc {
+    margin-top: 6px;
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: hsl(var(--color-muted));
+  }
+
+  /* Desktop: 2-col grid */
+  @media (min-width: 768px) {
+    .process-v2__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .process-v2__step {
+      margin-bottom: 0;
+    }
+  }
+
+  /* Large desktop: 4-col horizontal with connector line */
+  @media (min-width: 1024px) {
+    .process-v2__grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      align-items: stretch;
+      background: hsl(var(--color-bg));
+      border: 1px solid hsl(var(--color-border));
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .process-v2__step {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto 1fr;
+      gap: 0;
+      padding: 36px 28px 32px;
+      border-radius: 0;
+      border: none;
+      border-right: 1px solid hsl(var(--color-border));
+      margin-bottom: 0;
+      position: relative;
+    }
+
+    .process-v2__step:last-child {
+      border-right: none;
+    }
+
+    .process-v2__step:hover {
+      transform: none;
+      background: hsl(var(--color-surface-2));
+    }
+
+    /* Top accent line on hover */
+    .process-v2__step::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--brand-color);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .process-v2__step:hover::before {
+      opacity: 1;
+    }
+
+    .process-v2__num {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .process-v2__icon {
+      margin-bottom: 16px;
+    }
+
+    .process-v2__content {
+      flex-direction: column;
+    }
+
+    .process-v2__content > div {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .process-v2__badge {
+      margin-left: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .process-v2__step,
+    .process-v2__step:hover {
+      transition: none;
+      transform: none;
+    }
+  }
+</style>

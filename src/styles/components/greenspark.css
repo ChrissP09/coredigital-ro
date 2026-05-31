@@ -96,12 +96,12 @@
 
   .reviews-marquee-mask::before {
     top: 0;
-    background: linear-gradient(180deg, rgba(236, 253, 245, 0.95) 0%, rgba(236, 253, 245, 0) 100%);
+    background: linear-gradient(180deg, hsl(var(--color-bg) / 0.95) 0%, hsl(var(--color-bg) / 0) 100%);
   }
 
   .reviews-marquee-mask::after {
     bottom: 0;
-    background: linear-gradient(0deg, rgba(236, 253, 245, 0.95) 0%, rgba(236, 253, 245, 0) 100%);
+    background: linear-gradient(0deg, hsl(var(--color-bg) / 0.95) 0%, hsl(var(--color-bg) / 0) 100%);
   }
 
   .reviews-marquee-mask:hover .reviews-marquee {
@@ -129,12 +129,12 @@
 
   .flow-scroll-mask::before {
     top: 0;
-    background: linear-gradient(180deg, rgba(236, 253, 245, 0.95) 0%, rgba(236, 253, 245, 0) 100%);
+    background: linear-gradient(180deg, hsl(var(--color-surface) / 0.95) 0%, hsl(var(--color-surface) / 0) 100%);
   }
 
   .flow-scroll-mask::after {
     bottom: 0;
-    background: linear-gradient(0deg, rgba(236, 253, 245, 0.95) 0%, rgba(236, 253, 245, 0) 100%);
+    background: linear-gradient(0deg, hsl(var(--color-surface) / 0.95) 0%, hsl(var(--color-surface) / 0) 100%);
   }
 
   .flow-scroll-mask:hover .flow-scroll-content {
@@ -176,6 +176,78 @@
     100% {
       transform: translateY(-50%);
     }
+  }
+
+  /* CTA conic border — rotating element technique (no @property, no pause) */
+  .cta-border-wrap {
+    position: relative;
+    padding: 1px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 0 40px 0 hsl(83 78% 56% / 0.08);
+  }
+
+  .cta-border-spin {
+    position: absolute;
+    width: 200%;
+    aspect-ratio: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    background: conic-gradient(
+      transparent 0deg,
+      hsl(83 78% 56% / 0.9) 55deg,
+      transparent 85deg
+    );
+    animation: ctaBorderSpin 5s linear infinite;
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  @keyframes ctaBorderSpin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  .cta-border-inner {
+    position: relative;
+    z-index: 1;
+    border-radius: 23px;
+    overflow: hidden;
+    background: hsl(215 20% 7%);
+  }
+
+  /* Pricing ghost button */
+  .pricing-ghost-btn {
+    border: 1px solid hsl(var(--color-border));
+    color: hsl(var(--color-text));
+    background: transparent;
+    transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+  }
+
+  .pricing-ghost-btn:hover {
+    border-color: var(--brand-border);
+    background: var(--brand-soft);
+    color: var(--brand-color);
+  }
+
+  /* Chat status dot pulse */
+  .chat-status-dot {
+    animation: statusPulse 2.5s ease-in-out infinite;
+  }
+
+  @keyframes statusPulse {
+    0%, 100% { box-shadow: 0 0 0 0 hsl(142 70% 50% / 0.5); }
+    50% { box-shadow: 0 0 0 4px hsl(142 70% 50% / 0); }
+  }
+
+  /* Chat live badge subtle blink */
+  .chat-live-badge {
+    animation: liveBlink 3s ease-in-out infinite;
+  }
+
+  @keyframes liveBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.65; }
   }
 
   /* Reveal-on-scroll helper used across homepage sections */

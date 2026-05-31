@@ -97,11 +97,13 @@ const testimonials = [
             </p>
 
             <div class="website-hero__actions">
-              <a class="u-brand-cta u-btn-lg" href="/contact">
-                Hai să discutăm <LucideIcon name="ArrowUpRight" size={18} />
+              <a class="u-brand-cta u-btn-lg u-btn-split" href="/contact">
+                Hai să discutăm
+                <span class="btn-ic"><LucideIcon name="ArrowUpRight" size={16} /></span>
               </a>
-              <a class="u-brand-outline u-btn-lg" href="#proces">
-                <LucideIcon name="ChevronDown" size={18} /> Vezi cum funcționează
+              <a class="u-brand-outline u-btn-lg u-btn-split" href="#proces">
+                Vezi cum funcționează
+                <span class="btn-ic"><LucideIcon name="ChevronDown" size={16} /></span>
               </a>
             </div>
 
@@ -143,43 +145,65 @@ const testimonials = [
                   </div>
 
                   <div class="website-mock__body">
+
+                    <!-- Nav -->
                     <div class="website-mock__nav">
                       <div class="website-mock__logo"></div>
                       <div class="website-mock__links">
                         <span class="website-mock__link"></span>
                         <span class="website-mock__link"></span>
+                        <span class="website-mock__link website-mock__link--active"></span>
                         <span class="website-mock__link"></span>
                       </div>
                       <div class="website-mock__btn"></div>
                     </div>
 
+                    <!-- Hero block -->
                     <div class="website-mock__hero">
-                      <div class="website-mock__eyebrow"></div>
-                      <div class="website-mock__title"></div>
-                      <div class="website-mock__subtitle"></div>
+                      <!-- ambient glow -->
+                      <div class="website-mock__hero-glow"></div>
+
+                      <!-- tag pill -->
+                      <div class="website-mock__tag"></div>
+
+                      <!-- h1 lines -->
+                      <div class="website-mock__title website-mock__title--1"></div>
+                      <div class="website-mock__title website-mock__title--2"></div>
+
+                      <!-- subtitle lines -->
+                      <div class="website-mock__sub website-mock__sub--1"></div>
+                      <div class="website-mock__sub website-mock__sub--2"></div>
+
+                      <!-- CTA row -->
                       <div class="website-mock__cta-row">
                         <div class="website-mock__cta website-mock__cta--primary"></div>
                         <div class="website-mock__cta website-mock__cta--ghost"></div>
                       </div>
+
+                      <!-- micro trust pills -->
+                      <div class="website-mock__pills">
+                        <span class="website-mock__pill-item"></span>
+                        <span class="website-mock__pill-item website-mock__pill-item--sm"></span>
+                        <span class="website-mock__pill-item website-mock__pill-item--sm"></span>
+                      </div>
                     </div>
 
+                    <!-- Feature cards -->
                     <div class="website-mock__cards">
-                      <div class="website-mock__card">
-                        <div class="website-mock__card-icon"></div>
-                        <div class="website-mock__card-line"></div>
-                        <div class="website-mock__card-line website-mock__card-line--short"></div>
-                      </div>
-                      <div class="website-mock__card">
-                        <div class="website-mock__card-icon"></div>
-                        <div class="website-mock__card-line"></div>
-                        <div class="website-mock__card-line website-mock__card-line--short"></div>
-                      </div>
-                      <div class="website-mock__card">
-                        <div class="website-mock__card-icon"></div>
-                        <div class="website-mock__card-line"></div>
-                        <div class="website-mock__card-line website-mock__card-line--short"></div>
-                      </div>
+                      {[
+                        {metric: '+87%', w: '55%'},
+                        {metric: '4.9★', w: '60%'},
+                        {metric: '+23%', w: '50%'},
+                      ].map(c => (
+                        <div class="website-mock__card">
+                          <div class="website-mock__card-icon"></div>
+                          <div class="website-mock__card-line" style={`width: ${c.w};`}></div>
+                          <div class="website-mock__card-sub"></div>
+                          <div class="website-mock__card-metric">{c.metric}</div>
+                        </div>
+                      ))}
                     </div>
+
                   </div>
                 </div>
 

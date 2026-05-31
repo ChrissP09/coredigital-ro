@@ -52,6 +52,13 @@ import menu from 'lucide-static/icons/menu.svg?raw';
 import x from 'lucide-static/icons/x.svg?raw';
 import facebook from 'lucide-static/icons/facebook.svg?raw';
 import linkedin from 'lucide-static/icons/linkedin.svg?raw';
+import wifi from 'lucide-static/icons/wifi.svg?raw';
+import battery from 'lucide-static/icons/battery.svg?raw';
+import activity from 'lucide-static/icons/activity.svg?raw';
+import users from 'lucide-static/icons/users.svg?raw';
+import shoppingBag from 'lucide-static/icons/shopping-bag.svg?raw';
+import mousePointer from 'lucide-static/icons/mouse-pointer.svg?raw';
+import bell from 'lucide-static/icons/bell.svg?raw';
 
 const { name, class: className = '', size = 24, style: inlineStyle = '' } = Astro.props;
 
@@ -110,6 +117,13 @@ const icons: Record<string, string> = {
   X: x,
   Facebook: facebook,
   Linkedin: linkedin,
+  Wifi: wifi,
+  Battery: battery,
+  Activity: activity,
+  Users: users,
+  ShoppingBag: shoppingBag,
+  MousePointer: mousePointer,
+  Bell: bell,
 };
 
 const raw = icons[name];

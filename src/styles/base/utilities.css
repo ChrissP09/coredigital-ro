@@ -149,6 +149,39 @@
     font-size: 1rem;
   }
 
+  /* Split pill button — text + icon circle */
+  .u-btn-split {
+    border-radius: 9999px !important;
+    padding: 8px 8px 8px 22px !important;
+    gap: 10px;
+  }
+
+  .u-btn-split .btn-ic {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: transform 0.15s ease;
+  }
+
+  /* Primary split: transparent dark circle */
+  .u-brand-cta.u-btn-split .btn-ic {
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  /* Outline split: subtle border circle */
+  .u-brand-outline.u-btn-split .btn-ic {
+    background: hsl(var(--color-surface-2));
+    border: 1px solid hsl(var(--color-border));
+  }
+
+  .u-btn-split:hover .btn-ic {
+    transform: translateX(2px);
+  }
+
   /* Gradient text — lime */
   .u-gradient-text {
     background: var(--brand-gradient-strong);

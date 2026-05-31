@@ -1,5 +1,13 @@
 import './website-testimonials-tabs.js';
 
+// Header scroll effect
+const siteHeader = document.querySelector('.site-header');
+if (siteHeader) {
+  const onScroll = () => siteHeader.classList.toggle('is-scrolled', window.scrollY > 20);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
 const root = document.documentElement;
 root.classList.remove('no-js');
 root.classList.add('js');

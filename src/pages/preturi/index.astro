@@ -44,7 +44,7 @@ import PricingCombo from '../../components/ui/PricingCombo.astro';
 
   <!-- Toggle + Plans -->
   <section class="section section--s fade-in-up" id="planuri">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
       <div class="pricing-toggle" aria-label="Tip plan">
         <span class="pricing-toggle__tab is-active" aria-current="true">Abonament lunar</span>
         <a class="pricing-toggle__tab" href="#preturi-personalizate">Plan personalizat</a>
@@ -52,69 +52,98 @@ import PricingCombo from '../../components/ui/PricingCombo.astro';
 
       <div class="pricing-panels">
         <div class="pricing-grid" role="list" aria-label="Planuri abonament">
+
+          <!-- Card 1: AI Chatbot -->
           <article class="pricing-card" role="listitem">
-            <div class="pricing-card__top">
-              <div class="pricing-card__name">Agent AI Chatbot</div>
+            <div>
+              <div class="pricing-card__icon">
+                <LucideIcon name="Sparkles" size={18} style="color: var(--brand-color);" />
+              </div>
+              <p class="pricing-card__label">AI Chatbot</p>
+              <h3 class="pricing-card__name">Agent AI Chatbot</h3>
               <p class="pricing-card__desc">Răspuns non-stop, colectare lead-uri și suport instant direct pe website.</p>
             </div>
 
+            <div class="pricing-card__divider"></div>
+
             <div class="pricing-card__price">
-              <span class="pricing-card__amount">de la 100 RON</span>
-              <span class="pricing-card__period">/ lună</span>
+              <span class="pricing-card__amount">100</span>
+              <span class="pricing-card__period">RON / lună</span>
             </div>
 
-            <a class="pricing-card__cta" href="/contact">Activează serviciul</a>
+            <a class="pricing-ghost-btn pricing-card__cta-btn" href="/contact">Activează serviciul</a>
 
             <ul class="pricing-card__list">
-              <li>text / voce / combinat</li>
-              <li>colectare date de contact</li>
-              <li>calificare lead-uri</li>
-              <li>* cost suplimentar mic în funcție de utilizare</li>
+              {['text / voce / combinat', 'colectare date de contact', 'calificare lead-uri', '* cost suplimentar mic în funcție de utilizare'].map(f => (
+                <li class="pricing-card__feat">
+                  <span class="pricing-card__check"><LucideIcon name="Check" size={10} style="color: var(--brand-color);" /></span>
+                  {f}
+                </li>
+              ))}
             </ul>
           </article>
 
+          <!-- Card 2: Website — featured -->
           <article class="pricing-card pricing-card--popular" role="listitem">
-            <div class="pricing-card__badge">Cel mai popular</div>
-            <div class="pricing-card__top">
-              <div class="pricing-card__name">Creare website</div>
+            <div class="pricing-card__badge">
+              <LucideIcon name="Zap" size={11} /> Cel mai popular
+            </div>
+
+            <div>
+              <div class="pricing-card__icon pricing-card__icon--featured">
+                <LucideIcon name="Monitor" size={18} style="color: var(--brand-color);" />
+              </div>
+              <p class="pricing-card__label" style="color: var(--brand-color);">Website</p>
+              <h3 class="pricing-card__name">Creare website</h3>
               <p class="pricing-card__desc">Website modern pe abonament, fără cost inițial. Design premium, conversii, SEO.</p>
             </div>
 
+            <div class="pricing-card__divider"></div>
+
             <div class="pricing-card__price">
-              <span class="pricing-card__amount">300 RON</span>
-              <span class="pricing-card__period">/ lună</span>
+              <span class="pricing-card__amount">300</span>
+              <span class="pricing-card__period">RON / lună</span>
             </div>
 
-            <a class="pricing-card__cta pricing-card__cta--primary" href="/contact">Activează serviciul</a>
+            <a class="u-brand-cta pricing-card__cta-btn" href="/contact">Activează serviciul</a>
 
             <ul class="pricing-card__list">
-              <li>design premium + responsive</li>
-              <li>lansare rapidă + mentenanță</li>
-              <li>copy clar + structură conversie</li>
-              <li>suport continuu</li>
+              {['design premium + responsive', 'lansare rapidă + mentenanță', 'copy clar + structură conversie', 'suport continuu'].map(f => (
+                <li class="pricing-card__feat" style="color: hsl(var(--color-text));">
+                  <span class="pricing-card__check"><LucideIcon name="Check" size={10} style="color: var(--brand-color);" /></span>
+                  {f}
+                </li>
+              ))}
             </ul>
           </article>
 
+          <!-- Card 3: Recenzii -->
           <article class="pricing-card" role="listitem">
-            <div class="pricing-card__top">
-              <div class="pricing-card__name">Colectare recenzii Google</div>
-              <p class="pricing-card__desc">
-                Crești încrederea și vizibilitatea cu un flux automat pentru recenzii reale și monitorizare.
-              </p>
+            <div>
+              <div class="pricing-card__icon">
+                <LucideIcon name="Star" size={18} style="color: var(--brand-color);" />
+              </div>
+              <p class="pricing-card__label">Recenzii</p>
+              <h3 class="pricing-card__name">Colectare recenzii Google</h3>
+              <p class="pricing-card__desc">Crești încrederea și vizibilitatea cu un flux automat pentru recenzii reale și monitorizare.</p>
             </div>
+
+            <div class="pricing-card__divider"></div>
 
             <div class="pricing-card__price">
-              <span class="pricing-card__amount">400 RON</span>
-              <span class="pricing-card__period">/ lună</span>
+              <span class="pricing-card__amount">400</span>
+              <span class="pricing-card__period">RON / lună</span>
             </div>
 
-            <a class="pricing-card__cta" href="/contact">Activează serviciul</a>
+            <a class="pricing-ghost-btn pricing-card__cta-btn" href="/contact">Activează serviciul</a>
 
             <ul class="pricing-card__list">
-              <li>flux automat de recenzii</li>
-              <li>protejare reputație</li>
-              <li>raportare & optimizare</li>
-              <li>suport inclus</li>
+              {['flux automat de recenzii', 'protejare reputație', 'raportare & optimizare', 'suport inclus'].map(f => (
+                <li class="pricing-card__feat">
+                  <span class="pricing-card__check"><LucideIcon name="Check" size={10} style="color: var(--brand-color);" /></span>
+                  {f}
+                </li>
+              ))}
             </ul>
           </article>
 
@@ -145,17 +174,12 @@ import PricingCombo from '../../components/ui/PricingCombo.astro';
           <LucideIcon name="MessageCircle" size={22} />
         </div>
         <h2 id="pricing-cta" class="page__section-title">Ai nevoie de o soluție personalizată?</h2>
-        <p>
-          Pentru nevoi specifice (CRM, booking, follow-up, automatizări), îți facem un plan personalizat pe obiectivele tale.
+        <p class="page__lead" style="max-width: 48ch;">
+          Discutăm despre nevoile tale și construim un plan potrivit, indiferent de dimensiunea business-ului.
         </p>
-        <div class="pricing-final__actions">
-          <a class="u-brand-outline u-btn-lg" href="/contact">
-            Programează o discuție <LucideIcon name="ArrowUpRight" size={18} />
-          </a>
-          <a class="u-brand-cta u-btn-lg" href="/contact">
-            Contactează vânzările <LucideIcon name="ArrowUpRight" size={18} />
-          </a>
-        </div>
+        <a class="u-brand-cta u-btn-lg" href="/contact">
+          Hai să discutăm <LucideIcon name="ArrowRight" size={18} />
+        </a>
       </div>
     </div>
   </section>

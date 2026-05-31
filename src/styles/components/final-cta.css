@@ -12,7 +12,7 @@
 
   .final-cta__title {
     font-size: clamp(2rem, 3vw, 3rem);
-    font-weight: 700;
+    font-weight: 500;
   }
 
   .final-cta__lead {
@@ -41,7 +41,7 @@
   }
 
   .final-cta__button--primary {
-    background: hsl(var(--color-white));
+    background: hsl(var(--color-surface));
     color: var(--brand-color);
   }
 
@@ -52,7 +52,7 @@
 
   .final-cta__button--outline:hover,
   .final-cta__button--outline:focus-visible {
-    background: hsl(var(--color-white));
+    background: hsl(var(--color-surface));
     color: var(--brand-color);
   }
 

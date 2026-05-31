@@ -10,7 +10,7 @@
 
   .reviews-focus__title {
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 500;
   }
 
   .reviews-focus__lead {
@@ -31,7 +31,7 @@
     gap: var(--space-3);
     border-radius: var(--radius-lg);
     border: 1px solid var(--service-border);
-    background: hsl(var(--color-white));
+    background: hsl(var(--color-surface));
     padding: var(--space-4);
     box-shadow: var(--shadow-soft);
   }
@@ -45,7 +45,7 @@
     border-radius: var(--radius-lg);
     background: var(--service-soft);
     color: var(--service-color);
-    font-weight: 700;
+    font-weight: 500;
   }
 
   .reviews-focus__item-title {
@@ -73,7 +73,7 @@
   .reviews-focus__board {
     border-radius: var(--radius-2xl);
     border: 1px solid var(--service-border);
-    background: hsl(var(--color-white));
+    background: hsl(var(--color-surface));
     padding: var(--space-5);
     box-shadow: var(--shadow-soft);
     display: grid;
@@ -113,7 +113,7 @@
   .reviews-focus__card {
     border-radius: var(--radius-xl);
     border: 1px solid var(--service-border);
-    background: hsl(var(--color-white));
+    background: hsl(var(--color-surface));
     padding: var(--space-4);
     box-shadow: var(--shadow-soft);
   }

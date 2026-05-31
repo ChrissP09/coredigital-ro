@@ -1,59 +1,109 @@
 ---
+import LucideIcon from './ui/LucideIcon.astro';
 const year = new Date().getFullYear();
 ---
 
-<footer class="bg-gray-900 text-white py-16" role="contentinfo">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+<footer class="border-t border-border" role="contentinfo">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16">
     <div class="grid md:grid-cols-4 gap-12">
+
+      <!-- Brand -->
       <div>
-        <div class="text-2xl font-bold text-primary-400 mb-6">CoreDigital</div>
-        <p class="text-gray-400 leading-relaxed">
-          Tot ce are nevoie un business local online, într-un singur abonament lunar.
+        <a href="/" aria-label="CoreDigital" class="inline-block mb-5">
+          <img
+            src="/core-digital-logo transparent.svg"
+            alt="CoreDigital"
+            class="h-7 w-auto"
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
+        <p class="text-sm leading-relaxed" style="color: hsl(var(--color-muted));">
+          Tot ce are nevoie un business local online,<br/>într-un singur abonament lunar.
         </p>
       </div>
 
+      <!-- Servicii -->
       <div>
-        <h4 class="font-semibold mb-6 text-lg">Servicii</h4>
-        <ul class="space-y-3 text-gray-400">
+        <p class="u-label mb-5" style="color: hsl(var(--color-muted));">Servicii</p>
+        <ul class="space-y-3 text-sm" style="color: hsl(var(--color-muted));">
           <li>
-            <a class="hover:text-white transition-colors" href="/despre-noi">Despre Noi</a>
+            <a class="hover:text-white transition-colors" href="/servicii/construire-website">Website modern</a>
           </li>
           <li>
-            <a class="hover:text-white transition-colors" href="/#servicii">Website modern</a>
+            <a class="hover:text-white transition-colors" href="/servicii/recenzii-online">Recenzii online</a>
           </li>
           <li>
-            <a class="hover:text-white transition-colors" href="/#servicii">Colectare review-uri</a>
+            <a class="hover:text-white transition-colors" href="/servicii/chatbot-ai">Chatbot AI</a>
           </li>
           <li>
-            <a class="hover:text-white transition-colors" href="/#servicii">AI Chatbot</a>
+            <a class="hover:text-white transition-colors" href="/preturi">Prețuri</a>
           </li>
         </ul>
       </div>
 
+      <!-- Company -->
       <div>
-        <h4 class="font-semibold mb-6 text-lg">Contact</h4>
-        <ul class="space-y-3 text-gray-400">
-          <li><i class="fas fa-envelope mr-3"></i>contact@coredigital.ro</li>
-          <li><i class="fas fa-phone mr-3"></i>+40 7XX XXX XXX</li>
+        <p class="u-label mb-5" style="color: hsl(var(--color-muted));">Companie</p>
+        <ul class="space-y-3 text-sm" style="color: hsl(var(--color-muted));">
+          <li>
+            <a class="hover:text-white transition-colors" href="/despre-noi">Despre noi</a>
+          </li>
+          <li>
+            <a class="hover:text-white transition-colors" href="/contact">Contact</a>
+          </li>
+          <li>
+            <a class="hover:text-white transition-colors" href="/intrebari-frecvente">Întrebări frecvente</a>
+          </li>
         </ul>
       </div>
 
+      <!-- Contact -->
       <div>
-        <h4 class="font-semibold mb-6 text-lg">Urmărește-ne</h4>
-        <div class="flex space-x-4">
-          <a class="text-gray-400 hover:text-white transition-colors" href="#" aria-label="Facebook">
-            <i class="fab fa-facebook text-xl"></i>
+        <p class="u-label mb-5" style="color: hsl(var(--color-muted));">Contact</p>
+        <ul class="space-y-3 text-sm" style="color: hsl(var(--color-muted));">
+          <li class="flex items-center gap-2.5">
+            <LucideIcon name="Mail" size={14} />
+            <a href="mailto:contact@coredigital.ro" class="hover:text-white transition-colors">
+              contact@coredigital.ro
+            </a>
+          </li>
+          <li class="flex items-center gap-2.5">
+            <LucideIcon name="Phone" size={14} />
+            <a href="tel:+407XXXXXXXX" class="hover:text-white transition-colors">
+              +40 7XX XXX XXX
+            </a>
+          </li>
+        </ul>
+
+        <div class="flex gap-3 mt-6">
+          <a
+            href="#"
+            aria-label="Facebook"
+            class="w-9 h-9 rounded-lg border border-border flex items-center justify-center transition-colors hover:border-brand-border"
+            style="color: hsl(var(--color-muted));"
+          >
+            <LucideIcon name="Facebook" size={15} />
           </a>
-          <a class="text-gray-400 hover:text-white transition-colors" href="#" aria-label="LinkedIn">
-            <i class="fab fa-linkedin text-xl"></i>
+          <a
+            href="#"
+            aria-label="LinkedIn"
+            class="w-9 h-9 rounded-lg border border-border flex items-center justify-center transition-colors hover:border-brand-border"
+            style="color: hsl(var(--color-muted));"
+          >
+            <LucideIcon name="Linkedin" size={15} />
           </a>
         </div>
       </div>
     </div>
 
-    <div class="border-t border-gray-800 mt-16 pt-8 text-center text-gray-400">
-      <p>© {year} CoreDigital. Toate drepturile rezervate.</p>
+    <div class="border-t border-border mt-14 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-xs" style="color: hsl(var(--color-muted));">
+        © {year} CoreDigital. Toate drepturile rezervate.
+      </p>
+      <p class="text-xs font-mono" style="color: hsl(var(--color-muted) / 0.5);">
+        Construit cu grijă pentru business-uri locale
+      </p>
     </div>
   </div>
 </footer>
-

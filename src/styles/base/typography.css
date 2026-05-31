@@ -8,6 +8,8 @@
     color: hsl(var(--color-text));
     background: hsl(var(--color-bg));
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1,
@@ -17,13 +19,15 @@
   h5,
   h6 {
     font-family: var(--font-display);
-    font-weight: 600;
-    line-height: 1.2;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
     color: hsl(var(--color-text));
   }
 
   h1 {
-    @apply text-4xl md:text-5xl;
+    @apply text-4xl md:text-5xl lg:text-6xl;
+    font-weight: 500;
   }
 
   h2 {
@@ -31,23 +35,28 @@
   }
 
   h3 {
-    @apply text-2xl md:text-3xl;
+    @apply text-xl md:text-2xl;
+    font-weight: 500;
   }
 
   h4 {
-    @apply text-xl;
+    @apply text-lg;
+    font-weight: 500;
   }
 
   h5 {
-    @apply text-lg;
+    @apply text-base;
+    font-weight: 600;
   }
 
   h6 {
-    @apply text-base;
+    @apply text-sm;
+    font-weight: 600;
   }
 
   p {
     color: hsl(var(--color-muted));
+    line-height: 1.65;
   }
 
   a {
@@ -57,7 +66,7 @@
 
   a:hover,
   a:focus-visible {
-    color: hsl(var(--color-brand-blue));
+    color: var(--brand-color);
   }
 
   ul,
@@ -65,18 +74,42 @@
     padding-left: var(--space-6);
   }
 
+  .label-mono {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: hsl(var(--color-muted));
+  }
+
+  .label-lime {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--brand-color);
+  }
+
   .skip-link {
     position: absolute;
     left: -999px;
     top: var(--space-4);
-    background: hsl(var(--color-brand-blue));
-    color: hsl(var(--color-white));
+    background: var(--brand-color);
+    color: hsl(220 14% 10%);
     padding: var(--space-2) var(--space-4);
     border-radius: var(--radius-sm);
     z-index: 1000;
+    font-weight: 600;
   }
 
   .skip-link:focus {
     left: var(--space-4);
+  }
+
+  ::selection {
+    background: hsl(var(--color-lime) / 0.25);
+    color: hsl(var(--color-text));
   }
 }

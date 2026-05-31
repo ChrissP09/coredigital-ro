@@ -47,8 +47,11 @@
     gap: var(--space-2);
     border-radius: 999px;
     padding: var(--space-2) var(--space-4);
-    font-size: 0.875rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
     font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
     background: var(--service-soft);
     color: var(--service-text);
     border: 1px solid var(--service-border);
@@ -69,10 +72,11 @@
   .u-service-cta {
     display: inline-flex;
     align-items: center;
+    gap: var(--space-2);
     border-radius: var(--radius-md);
     padding: var(--space-3) var(--space-5);
     font-weight: 600;
-    transition: transform 0.2s ease, background 0.2s ease;
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
     background: var(--service-color);
     color: var(--service-cta-text);
   }
@@ -81,69 +85,119 @@
   .u-service-cta:focus-visible {
     background: var(--service-accent);
     color: var(--service-cta-text);
+    transform: translateY(-1px);
   }
 
+  /* Primary CTA — lime, dark text */
   .u-brand-cta {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     border-radius: var(--radius-md);
-    padding: 12px 16px;
-    font-weight: 750;
+    padding: 12px 20px;
+    font-weight: 600;
+    font-size: 0.95rem;
     border: none;
-    background: linear-gradient(180deg, var(--brand-color), var(--service-website-accent));
-    color: hsl(var(--color-white));
-    box-shadow: 0 14px 30px rgba(37, 99, 235, 0.2);
+    background: var(--brand-color);
+    color: hsl(220 14% 10%);
+    box-shadow: 0 0 0 0 hsl(var(--color-lime) / 0);
     transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
   }
 
   .u-brand-cta:hover,
   .u-brand-cta:focus-visible {
     transform: translateY(-1px);
-    box-shadow: 0 18px 42px rgba(37, 99, 235, 0.26);
-    filter: saturate(1.05);
-    color: hsl(var(--color-white));
+    box-shadow: var(--shadow-lime);
+    filter: brightness(1.05);
+    color: hsl(220 14% 10%);
   }
 
+  /* Outline button — dark surface, white text, lime border on hover */
   .u-brand-outline {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     border-radius: var(--radius-md);
     border: 1px solid hsl(var(--color-border));
-    padding: 12px 16px;
-    font-weight: 750;
+    padding: 12px 20px;
+    font-weight: 600;
+    font-size: 0.95rem;
     background: hsl(var(--color-surface));
-    box-shadow: var(--shadow-soft);
-    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
     color: hsl(var(--color-text));
+    transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
   }
 
   .u-brand-outline:hover,
   .u-brand-outline:focus-visible {
     transform: translateY(-1px);
     border-color: var(--brand-border);
-    box-shadow: 0 18px 42px rgba(15, 23, 42, 0.12);
+    background: hsl(var(--color-surface-2));
+    color: hsl(var(--color-text));
   }
 
   .u-btn-sm {
-    padding: 10px 14px;
-    border-radius: 12px;
-    font-size: 0.95rem;
+    padding: 9px 14px;
+    border-radius: 10px;
+    font-size: 0.875rem;
   }
 
   .u-btn-lg {
-    padding: 14px 18px;
-    border-radius: 14px;
-    font-size: 1.05rem;
+    padding: 14px 22px;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
   }
 
+  /* Gradient text — lime */
   .u-gradient-text {
     background: var(--brand-gradient-strong);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+
+  /* Card base */
+  .u-card {
+    background: hsl(var(--color-surface));
+    border: 1px solid hsl(var(--color-border));
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+  }
+
+  .u-card-hover {
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .u-card-hover:hover {
+    border-color: var(--brand-border);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lime);
+  }
+
+  /* Mono label */
+  .u-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* Section tag/badge */
+  .u-section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--brand-soft);
+    border: 1px solid var(--brand-border);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--brand-color);
   }
 }

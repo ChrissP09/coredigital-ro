@@ -69,9 +69,9 @@
 
   .contact-card {
     border-radius: var(--radius-2xl);
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    background: rgba(255, 255, 255, 0.92);
-    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background: hsl(var(--color-surface));
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
     padding: clamp(22px, 3vw, 34px);
     display: grid;
     gap: var(--space-3);
@@ -215,9 +215,9 @@
   .contact-final {
     text-align: center;
     border-radius: var(--radius-2xl);
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    background: rgba(255, 255, 255, 0.92);
-    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background: hsl(var(--color-surface));
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
     padding: clamp(24px, 4vw, 44px);
   }
 

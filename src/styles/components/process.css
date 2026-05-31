@@ -16,7 +16,8 @@
 
   .process__title {
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 500;
+    color: hsl(var(--color-text));
   }
 
   .process__lead {
@@ -39,18 +40,17 @@
     gap: var(--space-4);
     align-items: flex-start;
     border-radius: var(--radius-xl);
-    border: 1px solid var(--color-border);
-    background: hsl(var(--color-white));
+    border: 1px solid hsl(var(--color-border));
+    background: hsl(var(--color-surface));
     padding: var(--space-5);
     text-align: left;
-    box-shadow: var(--shadow-soft);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.2s ease, border-color 0.2s ease;
   }
 
   .process__step:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 18px 44px rgba(15, 23, 42, 0.12);
-    border-color: hsl(var(--color-border) / 0.7);
+    transform: translateY(-2px);
+    border-color: var(--brand-border);
   }
 
   .process__number {

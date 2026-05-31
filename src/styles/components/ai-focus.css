@@ -10,7 +10,7 @@
 
   .ai-focus__title {
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 500;
   }
 
   .ai-focus__lead {
@@ -31,7 +31,7 @@
     gap: var(--space-4);
     border-radius: var(--radius-lg);
     border: 1px solid var(--service-border);
-    background: hsl(var(--color-white));
+    background: hsl(var(--color-surface));
     padding: var(--space-4);
     box-shadow: var(--shadow-soft);
   }
@@ -64,7 +64,7 @@
   .ai-focus__chat {
     border-radius: var(--radius-lg);
     border: 1px solid var(--service-border);
-    background: hsl(var(--color-white));
+    background: hsl(var(--color-surface));
     padding: var(--space-4);
     box-shadow: var(--shadow-soft);
   }

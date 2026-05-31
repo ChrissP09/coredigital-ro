@@ -17,7 +17,7 @@
     }
     .hero__title {
         font-size: clamp(2.75rem, 3.2vw, 4rem);
-        font-weight: 700;
+        font-weight: 500;
         line-height: 1.1;
     }
     .hero__lead {
@@ -79,9 +79,9 @@
     }
     .logoPill {
         padding: 8px 12px;
-        border: 1px solid var(--color-border);
+        border: 1px solid hsl(var(--color-border));
         border-radius: 999px;
-        background: hsl(var(--color-white));
+        background: hsl(var(--color-surface));
         font-weight: 800;
         color: hsl(var(--color-text));
         font-size: 12px;
@@ -96,8 +96,8 @@
     }
     .hero__preview-panel {
         border-radius: var(--radius-2xl);
-        border: 1px solid var(--color-border);
-        background: hsl(var(--color-white));
+        border: 1px solid hsl(var(--color-border));
+        background: hsl(var(--color-surface));
         padding: var(--space-6);
         box-shadow: var(--shadow-soft);
     }
@@ -107,7 +107,7 @@
     }
     .hero__preview-panel--tertiary {
         border-color: var(--service-border);
-        background: hsl(var(--color-white));
+        background: hsl(var(--color-surface));
     }
     .hero__preview-header {
         display: flex;
@@ -178,7 +178,7 @@
     .hero__preview-chip {
         border-radius: var(--radius-lg);
         padding: var(--space-2) var(--space-3);
-        background: hsl(var(--color-white));
+        background: hsl(var(--color-surface));
         border: 1px solid var(--service-border);
         font-size: 0.875rem;
         font-weight: 600;
@@ -200,7 +200,7 @@
         font-size: 0.875rem;
     }
     .hero__preview-bubble--alt {
-        background: hsl(var(--color-white));
+        background: hsl(var(--color-surface));
         border: 1px solid var(--service-border);
     }
     .hero__fade {

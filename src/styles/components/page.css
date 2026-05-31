@@ -57,7 +57,7 @@
 
   .page__card {
     border-radius: var(--radius-md);
-    border: 1px solid var(--color-border);
+    border: 1px solid hsl(var(--color-border));
     background: hsl(var(--color-surface));
     padding: var(--space-6);
     box-shadow: var(--shadow-soft);
@@ -72,7 +72,7 @@
 
   .page__cta {
     border-radius: var(--radius-md);
-    border: 1px solid var(--color-border);
+    border: 1px solid hsl(var(--color-border));
     background: hsl(var(--color-surface));
     padding: var(--space-6);
     box-shadow: var(--shadow-soft);
@@ -97,7 +97,7 @@
   .contact-form__input {
     width: 100%;
     border-radius: var(--radius-md);
-    border: 1px solid var(--color-border);
+    border: 1px solid hsl(var(--color-border));
     background: hsl(var(--color-surface));
     padding: var(--space-2) var(--space-3);
     color: hsl(var(--color-text));
@@ -132,7 +132,7 @@
 
   .faq-list__item {
     border-radius: var(--radius-md);
-    border: 1px solid var(--color-border);
+    border: 1px solid hsl(var(--color-border));
     background: hsl(var(--color-surface));
     padding: var(--space-4);
     box-shadow: var(--shadow-soft);

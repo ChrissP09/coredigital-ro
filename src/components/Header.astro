@@ -1,122 +1,131 @@
 ---
+import LucideIcon from './ui/LucideIcon.astro';
 const { pathname } = Astro.url;
 const normalize = (path) => (path.length > 1 && path.endsWith('/') ? path.slice(0, -1) : path);
 const current = normalize(pathname);
 const isActive = (href) => current === normalize(href);
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200/50 shadow-lg">
-  <nav class="max-w-7xl mx-auto px-6 lg:px-8" aria-label="Navigare principală">
-    <div class="flex justify-between items-center h-20">
-      <div class="flex items-center">
-        <a class="flex items-center" href="/" aria-label="CoreDigital">
-          <img
-            src="/core-digital-logo.svg"
-            alt="CoreDigital"
-            class="h-9 w-auto"
-            loading="eager"
-            decoding="async"
-          />
-        </a>
-      </div>
+<header class="site-header fixed top-0 left-0 right-0 z-50">
+  <div class="site-header__inner px-6 lg:px-8 h-18">
+    <div class="flex items-center" style="height: 72px;">
+      <a href="/" aria-label="CoreDigital" class="flex items-center">
+        <img
+          src="/core-digital-logo transparent.svg"
+          alt="CoreDigital"
+          class="h-8 w-auto"
+          loading="eager"
+          decoding="async"
+        />
+      </a>
+    </div>
 
-      <div class="hidden lg:flex items-center space-x-8">
-        <div class="relative group">
-          <a class="text-gray-600 hover:text-primary-600 transition-colors font-medium inline-flex items-center" href="/servicii">
-            Servicii
-            <i class="fa-solid fa-chevron-down ml-2 text-xs"></i>
-          </a>
-          <div class="absolute left-0 top-full mt-3 w-64 rounded-2xl border border-gray-200 bg-white/95 backdrop-blur-lg shadow-xl opacity-0 invisible translate-y-2 transition-all duration-200 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0">
-            <div class="p-2">
-              <a class="block rounded-xl px-4 py-3 text-gray-700 hover:text-primary-600 hover:bg-primary-50 transition-colors" href="/servicii/construire-website">
-                Construire website
-              </a>
-              <a class="block rounded-xl px-4 py-3 text-gray-700 hover:text-primary-600 hover:bg-primary-50 transition-colors" href="/servicii/recenzii-online">
-                Recenzii online
-              </a>
-              <a class="block rounded-xl px-4 py-3 text-gray-700 hover:text-primary-600 hover:bg-primary-50 transition-colors" href="/servicii/chatbot-ai">
-                Chatbot AI
-              </a>
-            </div>
-          </div>
-        </div>
-        <a class="text-gray-600 hover:text-primary-600 transition-colors font-medium" href="/preturi">
-          Prețuri
-        </a>
+    <!-- Desktop nav -->
+    <nav class="hidden lg:flex items-center gap-8" aria-label="Navigare principală">
+      <div class="nav__item nav__item--has-children relative">
         <a
-          class="text-gray-600 hover:text-primary-600 transition-colors font-medium"
-          href="/despre-noi"
-          aria-current={isActive('/despre-noi') ? 'page' : undefined}
+          class="nav__link inline-flex items-center gap-1.5"
+          href="/servicii"
+          aria-haspopup="true"
         >
-          Despre Noi
+          Servicii
+          <LucideIcon name="ChevronDown" size={14} />
         </a>
-        <a class="u-brand-cta u-btn-sm" href="/contact" aria-current={isActive('/contact') ? 'page' : undefined}>
-          Contact
-        </a>
+        <ul class="nav__sublist">
+          <li class="nav__subitem">
+            <a class="nav__sublink" href="/servicii/construire-website">Website modern</a>
+          </li>
+          <li class="nav__subitem">
+            <a class="nav__sublink" href="/servicii/recenzii-online">Recenzii online</a>
+          </li>
+          <li class="nav__subitem">
+            <a class="nav__sublink" href="/servicii/chatbot-ai">Chatbot AI</a>
+          </li>
+        </ul>
       </div>
 
-      <button
-        class="lg:hidden text-gray-600 hover:text-primary-600 transition-colors"
-        id="mobile-menu-button"
-        type="button"
-        aria-controls="mobile-menu"
-        aria-expanded="false"
+      <a
+        class="nav__link"
+        href="/preturi"
+        aria-current={isActive('/preturi') ? 'page' : undefined}
       >
-        <span class="sr-only">Deschide meniul</span>
-        <i class="fa-solid fa-bars text-2xl"></i>
-      </button>
-    </div>
-  </nav>
+        Prețuri
+      </a>
 
-  <div
-    id="mobile-menu"
-    class="lg:hidden fixed inset-0 bg-white/95 backdrop-blur-lg z-50 transform transition-transform duration-300 ease-in-out translate-x-full"
-    aria-hidden="true"
-  >
-    <div class="flex flex-col h-full p-6">
-      <div class="flex justify-between items-center mb-12">
-        <a class="flex items-center" href="/" aria-label="CoreDigital">
-          <img
-            src="/core-digital-logo.svg"
-            alt="CoreDigital"
-            class="h-9 w-auto"
-            loading="eager"
-            decoding="async"
-          />
-        </a>
-        <button class="text-gray-600 hover:text-primary-600 transition-colors" id="mobile-menu-close" type="button">
-          <span class="sr-only">Închide meniul</span>
-          <i class="fa-solid fa-times text-2xl"></i>
-        </button>
-      </div>
+      <a
+        class="nav__link"
+        href="/despre-noi"
+        aria-current={isActive('/despre-noi') ? 'page' : undefined}
+      >
+        Despre noi
+      </a>
 
-      <div class="flex flex-col space-y-8">
-        <div class="space-y-3">
-          <a class="text-gray-600 hover:text-primary-600 transition-colors font-medium py-2" href="/servicii">
-            Servicii
-          </a>
-          <div class="pl-4 flex flex-col space-y-3">
-            <a class="text-gray-500 hover:text-primary-600 transition-colors font-medium" href="/servicii/construire-website">
-              Construire website
-            </a>
-            <a class="text-gray-500 hover:text-primary-600 transition-colors font-medium" href="/servicii/recenzii-online">
-              Recenzii online
-            </a>
-            <a class="text-gray-500 hover:text-primary-600 transition-colors font-medium" href="/servicii/chatbot-ai">
-              Chatbot AI
-            </a>
-          </div>
-        </div>
-        <a class="text-gray-600 hover:text-primary-600 transition-colors font-medium py-2" href="/preturi">
-          Prețuri
-        </a>
-        <a class="text-gray-600 hover:text-primary-600 transition-colors font-medium py-2" href="/despre-noi">
-          Despre Noi
-        </a>
-        <a class="u-brand-cta u-btn-sm text-center" href="/contact">
-          Contact
-        </a>
-      </div>
-    </div>
+      <a
+        class="u-brand-cta u-btn-sm"
+        href="/contact"
+        aria-current={isActive('/contact') ? 'page' : undefined}
+      >
+        Contact
+        <LucideIcon name="ArrowRight" size={14} />
+      </a>
+    </nav>
+
+    <!-- Mobile toggle -->
+    <button
+      class="lg:hidden text-muted-400 hover:text-white transition-colors p-2"
+      id="mobile-menu-button"
+      type="button"
+      aria-controls="mobile-menu"
+      aria-expanded="false"
+    >
+      <span class="sr-only">Deschide meniul</span>
+      <LucideIcon name="Menu" size={22} />
+    </button>
   </div>
 </header>
+
+<!-- Mobile menu -->
+<div
+  id="mobile-menu"
+  class="mobile-menu lg:hidden fixed inset-0 z-50 transform transition-transform duration-300 ease-in-out translate-x-full"
+  aria-hidden="true"
+>
+  <div class="flex flex-col h-full p-6 pt-8">
+    <div class="flex justify-between items-center mb-10">
+      <a href="/" aria-label="CoreDigital">
+        <img
+          src="/core-digital-logo transparent.svg"
+          alt="CoreDigital"
+          class="h-7 w-auto"
+          loading="eager"
+          decoding="async"
+        />
+      </a>
+      <button
+        class="text-muted-400 hover:text-white transition-colors p-2"
+        id="mobile-menu-close"
+        type="button"
+      >
+        <span class="sr-only">Închide meniul</span>
+        <LucideIcon name="X" size={22} />
+      </button>
+    </div>
+
+    <nav class="flex flex-col gap-1" aria-label="Navigare mobilă">
+      <a class="mobile-menu__link" href="/servicii">Servicii</a>
+      <div class="pl-4 flex flex-col gap-1 mb-2">
+        <a class="mobile-menu__sublink" href="/servicii/construire-website">Website modern</a>
+        <a class="mobile-menu__sublink" href="/servicii/recenzii-online">Recenzii online</a>
+        <a class="mobile-menu__sublink" href="/servicii/chatbot-ai">Chatbot AI</a>
+      </div>
+      <a class="mobile-menu__link" href="/preturi">Prețuri</a>
+      <a class="mobile-menu__link" href="/despre-noi">Despre noi</a>
+      <div class="mt-6">
+        <a class="u-brand-cta" href="/contact">
+          Contact
+          <LucideIcon name="ArrowRight" size={14} />
+        </a>
+      </div>
+    </nav>
+  </div>
+</div>

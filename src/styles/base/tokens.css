@@ -1,24 +1,37 @@
 :root {
-  --color-brand-blue: 221 83% 53%;
-  --color-reviews-green: 142 71% 45%;
-  --color-ai-purple: 262 83% 58%;
+  /* Aethel Design System */
 
-  --color-bg: 210 40% 98%;
-  --color-surface: 0 0% 100%;
+  /* Core palette */
+  --color-bg: 217 14% 11%;
+  --color-surface: 240 5% 10%;
+  --color-surface-2: 220 11% 14%;
+  --color-text: 0 0% 100%;
+  --color-muted: 240 5% 65%;
+  --color-border: 240 4% 17%;
   --color-white: 0 0% 100%;
-  --color-text: 222 47% 11%;
-  --color-muted: 215 16% 47%;
-  --color-border: 214 32% 91%;
 
-  --section-blue: hsl(214 100% 96%);
-  --section-blue-soft: hsl(214 100% 98%);
-  --section-green: hsl(142 62% 94%);
-  --section-purple: hsl(262 80% 96%);
-  --section-neutral: hsl(210 40% 98%);
+  /* Accent 1 — Lime #A3E635 */
+  --color-lime: 83 78% 56%;
+  /* Accent 2 — Sky #38BDF8 */
+  --color-sky: 199 93% 60%;
 
+  /* Legacy aliases (used by utilities/components) */
+  --color-brand-blue: 83 78% 56%;
+  --color-reviews-green: 83 78% 56%;
+  --color-ai-purple: 199 93% 60%;
+
+  /* Section backgrounds — all dark */
+  --section-blue: hsl(220 11% 14%);
+  --section-blue-soft: hsl(220 11% 12%);
+  --section-green: hsl(220 11% 14%);
+  --section-purple: hsl(220 11% 14%);
+  --section-neutral: hsl(217 14% 13%);
+
+  /* Layout */
   --content-width: 72rem;
   --gutter: 0;
 
+  /* Spacing */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -38,79 +51,73 @@
   --section-space-s: calc(var(--section-space-m) * 0.75);
   --section-space-l: calc(var(--section-space-m) * 1.25);
 
-  --brand-color: hsl(var(--color-brand-blue));
-  --brand-soft: hsl(var(--color-brand-blue) / 0.12);
-  --brand-border: hsl(var(--color-brand-blue) / 0.2);
-  --brand-text: hsl(var(--color-brand-blue));
-  --brand-gradient: linear-gradient(
-    135deg,
-    hsl(var(--color-brand-blue) / 0.14) 0%,
-    hsl(var(--color-brand-blue) / 0.04) 100%
-  );
-  --brand-gradient-strong: linear-gradient(
-    135deg,
-    hsl(var(--color-brand-blue) / 0.95) 0%,
-    hsl(var(--color-brand-blue) / 0.75) 100%
-  );
-  --gradient-hero: linear-gradient(135deg, var(--section-blue) 0%, var(--section-blue-soft) 100%);
+  /* Brand tokens — lime */
+  --brand-color: hsl(var(--color-lime));
+  --brand-soft: hsl(var(--color-lime) / 0.12);
+  --brand-border: hsl(var(--color-lime) / 0.28);
+  --brand-text: hsl(var(--color-lime));
+  --brand-gradient: linear-gradient(135deg, hsl(var(--color-lime) / 0.10) 0%, hsl(var(--color-lime) / 0.02) 100%);
+  --brand-gradient-strong: linear-gradient(135deg, hsl(var(--color-lime)) 0%, hsl(83 70% 48%) 100%);
+  --gradient-hero: linear-gradient(160deg, hsl(220 11% 14%) 0%, hsl(217 14% 11%) 100%);
 
-  --service-website-h: 221;
-  --service-website-s: 83%;
-  --service-website-l: 53%;
+  /* Sky tokens */
+  --sky-color: hsl(var(--color-sky));
+  --sky-soft: hsl(var(--color-sky) / 0.12);
+  --sky-border: hsl(var(--color-sky) / 0.25);
+
+  /* Service tokens */
+  --service-website-h: 83;
+  --service-website-s: 78%;
+  --service-website-l: 56%;
   --service-website: hsl(var(--service-website-h) var(--service-website-s) var(--service-website-l));
-  --service-website-soft: hsl(var(--service-website-h) var(--service-website-s) 95% / 0.8);
-  --service-website-border: hsl(var(--service-website-h) var(--service-website-s) 44% / 0.25);
-  --service-website-text: hsl(var(--service-website-h) var(--service-website-s) 32%);
-  --service-website-accent: hsl(var(--service-website-h) var(--service-website-s) 46%);
-  --service-website-cta-text: hsl(var(--color-white));
-  --service-website-gradient: linear-gradient(
-    135deg,
-    hsl(var(--service-website-h) var(--service-website-s) 94% / 0.9) 0%,
-    hsl(var(--service-website-h) var(--service-website-s) 98% / 0.95) 100%
-  );
+  --service-website-soft: hsl(var(--service-website-h) var(--service-website-s) var(--service-website-l) / 0.12);
+  --service-website-border: hsl(var(--service-website-h) var(--service-website-s) var(--service-website-l) / 0.25);
+  --service-website-text: hsl(var(--service-website-h) var(--service-website-s) var(--service-website-l));
+  --service-website-accent: hsl(var(--service-website-h) var(--service-website-s) 48%);
+  --service-website-cta-text: hsl(220 14% 10%);
+  --service-website-gradient: linear-gradient(135deg, hsl(var(--service-website-h) var(--service-website-s) var(--service-website-l) / 0.08) 0%, transparent 100%);
 
-  --service-reviews-h: 142;
-  --service-reviews-s: 71%;
-  --service-reviews-l: 45%;
+  --service-reviews-h: 83;
+  --service-reviews-s: 78%;
+  --service-reviews-l: 56%;
   --service-reviews: hsl(var(--service-reviews-h) var(--service-reviews-s) var(--service-reviews-l));
-  --service-reviews-soft: hsl(var(--service-reviews-h) var(--service-reviews-s) 92% / 0.9);
-  --service-reviews-border: hsl(var(--service-reviews-h) var(--service-reviews-s) 42% / 0.25);
-  --service-reviews-text: hsl(var(--service-reviews-h) var(--service-reviews-s) 32%);
-  --service-reviews-accent: hsl(var(--service-reviews-h) var(--service-reviews-s) 38%);
-  --service-reviews-cta-text: hsl(var(--color-white));
-  --service-reviews-gradient: linear-gradient(
-    135deg,
-    hsl(var(--service-reviews-h) var(--service-reviews-s) 92% / 0.95) 0%,
-    hsl(var(--service-reviews-h) var(--service-reviews-s) 97% / 0.95) 100%
-  );
+  --service-reviews-soft: hsl(var(--service-reviews-h) var(--service-reviews-s) var(--service-reviews-l) / 0.10);
+  --service-reviews-border: hsl(var(--service-reviews-h) var(--service-reviews-s) var(--service-reviews-l) / 0.22);
+  --service-reviews-text: hsl(var(--service-reviews-h) var(--service-reviews-s) var(--service-reviews-l));
+  --service-reviews-accent: hsl(var(--service-reviews-h) var(--service-reviews-s) 48%);
+  --service-reviews-cta-text: hsl(220 14% 10%);
+  --service-reviews-gradient: linear-gradient(135deg, hsl(var(--service-reviews-h) var(--service-reviews-s) var(--service-reviews-l) / 0.08) 0%, transparent 100%);
 
-  --service-ai-h: 262;
-  --service-ai-s: 83%;
-  --service-ai-l: 58%;
+  --service-ai-h: 199;
+  --service-ai-s: 93%;
+  --service-ai-l: 60%;
   --service-ai: hsl(var(--service-ai-h) var(--service-ai-s) var(--service-ai-l));
-  --service-ai-soft: hsl(var(--service-ai-h) var(--service-ai-s) 95% / 0.85);
-  --service-ai-border: hsl(var(--service-ai-h) var(--service-ai-s) 52% / 0.25);
-  --service-ai-text: hsl(var(--service-ai-h) var(--service-ai-s) 42%);
-  --service-ai-accent: hsl(var(--service-ai-h) var(--service-ai-s) 48%);
-  --service-ai-cta-text: hsl(var(--color-white));
-  --service-ai-gradient: linear-gradient(
-    135deg,
-    hsl(var(--service-ai-h) var(--service-ai-s) 92% / 0.9) 0%,
-    hsl(var(--service-ai-h) var(--service-ai-s) 98% / 0.95) 100%
-  );
+  --service-ai-soft: hsl(var(--service-ai-h) var(--service-ai-s) var(--service-ai-l) / 0.12);
+  --service-ai-border: hsl(var(--service-ai-h) var(--service-ai-s) var(--service-ai-l) / 0.25);
+  --service-ai-text: hsl(var(--service-ai-h) var(--service-ai-s) var(--service-ai-l));
+  --service-ai-accent: hsl(var(--service-ai-h) var(--service-ai-s) 50%);
+  --service-ai-cta-text: hsl(220 14% 10%);
+  --service-ai-gradient: linear-gradient(135deg, hsl(var(--service-ai-h) var(--service-ai-s) var(--service-ai-l) / 0.10) 0%, transparent 100%);
 
+  /* Typography */
   --font-sans: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   --font-display: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
   --text-base: 1rem;
   --text-lg: 1.125rem;
   --text-xl: 1.25rem;
 
+  /* Radius */
   --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 1rem;
-  --radius-xl: 1.25rem;
-  --radius-2xl: 1.5rem;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
 
-  --shadow-soft: 0 12px 30px rgba(15, 23, 42, 0.08);
+  /* Shadows */
+  --shadow-soft: 0 0 0 1px hsl(var(--color-border)), 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-card: 0 0 0 1px hsl(var(--color-border)), 0 4px 16px rgba(0, 0, 0, 0.3);
+  --shadow-lime: 0 0 32px hsl(var(--color-lime) / 0.18);
+  --shadow-sky: 0 0 32px hsl(var(--color-sky) / 0.18);
 }

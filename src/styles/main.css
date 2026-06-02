@@ -24,6 +24,7 @@
 @import './components/why-core.css';
 @import './components/final-cta.css';
 @import './components/greenspark.css';
+@import './components/aeo-page.css';
 
 @tailwind base;
 @tailwind components;

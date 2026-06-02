@@ -1,0 +1,888 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import LucideIcon from '../../../components/ui/LucideIcon.astro';
+---
+
+<BaseLayout
+  title="Optimizare AI (AEO/GEO) — Apari în ChatGPT și Gemini | CoreDigital"
+  description="Ajutăm companiile să fie înțelese, recomandate și citate de ChatGPT, Gemini, Claude și Perplexity. Audit gratuit de vizibilitate AI."
+>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="relative overflow-hidden" style="background: hsl(var(--color-bg)); padding-top: 7rem; padding-bottom: 5rem;">
+
+  <!-- Dot grid pattern -->
+  <div class="pointer-events-none absolute inset-0" style="background-image: radial-gradient(circle, hsl(var(--color-lime) / 0.18) 1px, transparent 1px); background-size: 28px 28px; opacity: 0.35;"></div>
+
+  <!-- Gradient blobs -->
+  <div class="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px]" style="background: radial-gradient(ellipse 60% 55% at 50% 0%, hsl(var(--color-lime) / 0.13) 0%, transparent 70%);"></div>
+  <div class="pointer-events-none absolute top-1/4 -right-32 w-[450px] h-[400px]" style="background: radial-gradient(ellipse at 80% 50%, hsl(199 93% 60% / 0.06) 0%, transparent 65%);"></div>
+  <div class="pointer-events-none absolute bottom-0 left-0 right-0 h-28" style="background: linear-gradient(to top, hsl(var(--color-bg)), transparent);"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+      <!-- Left: copy -->
+      <div>
+        <span class="website-hero__pill mb-6 inline-flex" aria-label="Serviciu: AEO/GEO">
+          <span class="website-hero__pill-icon"><LucideIcon name="BrainCircuit" size={16} /></span>
+          <span class="website-hero__pill-text">Optimizare AI · AEO / GEO</span>
+        </span>
+
+        <h1 class="mb-6" style="letter-spacing: -0.03em; line-height: 1.06;">
+          Este afacerea ta vizibilă în
+          <span style="color: var(--brand-color);"> ChatGPT și Google AI?</span>
+        </h1>
+
+        <p class="mb-8 max-w-lg" style="color: hsl(var(--color-muted)); font-size: 1.05rem; line-height: 1.7;">
+          Atunci când clienții caută recomandări în ChatGPT, Gemini, Claude sau Perplexity, apare afacerea ta în răspunsuri? Noi ajutăm companiile să fie <strong style="color: hsl(var(--color-text)); font-weight: 600;">înțelese, recomandate și citate</strong> de sistemele AI moderne.
+        </p>
+
+        <div class="flex flex-wrap gap-3 mb-10">
+          {[
+            {icon: 'BrainCircuit', label: 'AEO & GEO'},
+            {icon: 'Eye',         label: 'Vizibilitate AI'},
+            {icon: 'Share2',      label: 'Citări & Mențiuni'},
+          ].map(f => (
+            <span class="inline-flex items-center gap-2 text-sm px-3 py-1.5 rounded-full border" style="background: hsl(var(--color-surface) / 0.6); border-color: hsl(var(--color-border)); color: hsl(var(--color-muted)); backdrop-filter: blur(8px);">
+              <LucideIcon name={f.icon} size={13} style="color: var(--brand-color);" />
+              {f.label}
+            </span>
+          ))}
+        </div>
+
+        <div class="flex flex-wrap gap-3">
+          <a class="u-brand-cta u-btn-lg u-btn-split" href="/contact">
+            Primește Auditul Gratuit
+            <span class="btn-ic"><LucideIcon name="ArrowUpRight" size={16} /></span>
+          </a>
+          <a class="u-brand-outline u-btn-lg u-btn-split" href="#raport">
+            Vezi un Exemplu de Raport
+            <span class="btn-ic"><LucideIcon name="ChevronDown" size={16} /></span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: AI Network visualization -->
+      <div class="relative">
+        <div class="pointer-events-none absolute -inset-4 rounded-3xl" style="background: radial-gradient(ellipse at 55% 45%, hsl(var(--color-lime) / 0.08) 0%, transparent 65%);"></div>
+
+        <div class="aeo-network-card relative rounded-2xl border p-5" style="background: hsl(var(--color-surface)); border-color: hsl(var(--color-border));">
+
+          <!-- Card header -->
+          <div class="flex items-center justify-between mb-4 pb-4 border-b" style="border-color: hsl(var(--color-border));">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background: var(--brand-soft); border: 1px solid var(--brand-border);">
+                <LucideIcon name="Network" size={16} style="color: var(--brand-color);" />
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-white">AI Discovery Network</p>
+                <p class="text-xs font-mono" style="color: hsl(var(--color-muted));">Monitorizare în timp real</p>
+              </div>
+            </div>
+            <span class="text-xs font-mono px-2 py-0.5 rounded-full" style="background: hsl(142 70% 45% / 0.12); color: hsl(142 70% 60%); border: 1px solid hsl(142 70% 45% / 0.25);">● Live</span>
+          </div>
+
+          <!-- SVG AI Network -->
+          <div class="relative">
+            <svg viewBox="0 0 400 290" class="w-full" aria-hidden="true" style="overflow: visible;">
+              <defs>
+                <!-- Glow filters per brand -->
+                <filter id="glow-gpt"    x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                <filter id="glow-gemini" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                <filter id="glow-center" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              </defs>
+
+              <!-- Connection lines (dashed, color-matched) -->
+              <line x1="200" y1="148" x2="200" y2="52" stroke="#10b981" stroke-opacity="0.18" stroke-width="1.2" stroke-dasharray="4 5"/>
+              <line x1="200" y1="148" x2="294" y2="120" stroke="#3b82f6" stroke-opacity="0.18" stroke-width="1.2" stroke-dasharray="4 5"/>
+              <line x1="200" y1="148" x2="258" y2="230" stroke="#8b5cf6" stroke-opacity="0.18" stroke-width="1.2" stroke-dasharray="4 5"/>
+              <line x1="200" y1="148" x2="142" y2="230" stroke="#0ea5e9" stroke-opacity="0.18" stroke-width="1.2" stroke-dasharray="4 5"/>
+              <line x1="200" y1="148" x2="106" y2="120" stroke="#f97316" stroke-opacity="0.18" stroke-width="1.2" stroke-dasharray="4 5"/>
+
+              <!-- Traveling dots -->
+              <circle cx="200" r="2.5" fill="#10b981" filter="url(#glow-gpt)">
+                <animate attributeName="cy" values="148;52;52" dur="2s" repeatCount="indefinite" begin="0s" calcMode="linear"/>
+                <animate attributeName="opacity" values="0;1;1;0" dur="2s" repeatCount="indefinite" begin="0s" keyTimes="0;0.06;0.85;1"/>
+              </circle>
+              <circle r="2.5" fill="#3b82f6">
+                <animate attributeName="cx" values="200;294;294" dur="2.2s" repeatCount="indefinite" begin="0.5s" calcMode="linear"/>
+                <animate attributeName="cy" values="148;120;120" dur="2.2s" repeatCount="indefinite" begin="0.5s" calcMode="linear"/>
+                <animate attributeName="opacity" values="0;1;1;0" dur="2.2s" repeatCount="indefinite" begin="0.5s" keyTimes="0;0.06;0.85;1"/>
+              </circle>
+              <circle r="2.5" fill="#8b5cf6">
+                <animate attributeName="cx" values="200;258;258" dur="2.1s" repeatCount="indefinite" begin="1s" calcMode="linear"/>
+                <animate attributeName="cy" values="148;230;230" dur="2.1s" repeatCount="indefinite" begin="1s" calcMode="linear"/>
+                <animate attributeName="opacity" values="0;1;1;0" dur="2.1s" repeatCount="indefinite" begin="1s" keyTimes="0;0.06;0.85;1"/>
+              </circle>
+              <circle r="2.5" fill="#0ea5e9">
+                <animate attributeName="cx" values="200;142;142" dur="2.3s" repeatCount="indefinite" begin="1.5s" calcMode="linear"/>
+                <animate attributeName="cy" values="148;230;230" dur="2.3s" repeatCount="indefinite" begin="1.5s" calcMode="linear"/>
+                <animate attributeName="opacity" values="0;1;1;0" dur="2.3s" repeatCount="indefinite" begin="1.5s" keyTimes="0;0.06;0.85;1"/>
+              </circle>
+              <circle r="2.5" fill="#f97316">
+                <animate attributeName="cx" values="200;106;106" dur="1.9s" repeatCount="indefinite" begin="0.8s" calcMode="linear"/>
+                <animate attributeName="cy" values="148;120;120" dur="1.9s" repeatCount="indefinite" begin="0.8s" calcMode="linear"/>
+                <animate attributeName="opacity" values="0;1;1;0" dur="1.9s" repeatCount="indefinite" begin="0.8s" keyTimes="0;0.06;0.85;1"/>
+              </circle>
+
+              <!-- ── CENTER NODE ── -->
+              <!-- Outer pulsing ring -->
+              <circle cx="200" cy="148" r="50" fill="none" stroke="hsl(83 78% 56% / 0.1)" stroke-width="1">
+                <animate attributeName="r" values="42;56;42" dur="3.5s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="0.6;0;0.6" dur="3.5s" repeatCount="indefinite"/>
+              </circle>
+              <!-- Center bg -->
+              <circle cx="200" cy="148" r="38" fill="hsl(83 78% 56% / 0.08)" stroke="hsl(83 78% 56% / 0.25)" stroke-width="1"/>
+              <!-- Rotating dashed ring -->
+              <circle cx="200" cy="148" r="38" fill="none" stroke="hsl(83 78% 56% / 0.3)" stroke-width="1" stroke-dasharray="5 6">
+                <animateTransform attributeName="transform" type="rotate" from="0 200 148" to="360 200 148" dur="18s" repeatCount="indefinite"/>
+              </circle>
+              <!-- Center: Globe icon (Lucide-style, scaled to ±10, centered at 200,139) -->
+              <g transform="translate(200,139)" stroke="white" fill="none" stroke-width="1.4" stroke-linecap="round">
+                <circle r="9.5" stroke-opacity="0.75"/>
+                <path d="M0,-9.5 C-4.5,-4 -4.5,4 0,9.5 C4.5,4 4.5,-4 0,-9.5" stroke-opacity="0.45"/>
+                <line x1="-9.5" y1="0" x2="9.5" y2="0" stroke-opacity="0.45"/>
+                <path d="M-8.5,-3.5 Q0,-1.2 8.5,-3.5" stroke-opacity="0.35"/>
+                <path d="M-8.5,3.5 Q0,1.2 8.5,3.5" stroke-opacity="0.35"/>
+              </g>
+              <!-- Center text -->
+              <text x="200" y="158" text-anchor="middle" fill="white" font-size="8.5" font-weight="600" font-family="Inter,sans-serif" letter-spacing="0.01em">Brandul Tău</text>
+
+              <!-- ── CHATGPT NODE (200, 52) ── -->
+              <circle cx="200" cy="52" r="30" fill="none" stroke="#10b981" stroke-opacity="0.3" stroke-width="1"/>
+              <image href="/logos/openai.svg" x="189" y="41" width="22" height="22"/>
+              <circle cx="221" cy="33" r="4" fill="#10b981" fill-opacity="0.9">
+                <animate attributeName="r" values="3.5;5;3.5" dur="2.4s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values="0.9;0.5;0.9" dur="2.4s" repeatCount="indefinite"/>
+              </circle>
+
+              <!-- ── GEMINI NODE (294, 120) ── -->
+              <circle cx="294" cy="120" r="30" fill="none" stroke="#3b82f6" stroke-opacity="0.3" stroke-width="1"/>
+              <image href="/logos/gemini.svg" x="283" y="109" width="22" height="22"/>
+              <circle cx="315" cy="101" r="4" fill="#3b82f6" fill-opacity="0.9">
+                <animate attributeName="r" values="3.5;5;3.5" dur="3.1s" repeatCount="indefinite" begin="0.4s"/>
+                <animate attributeName="opacity" values="0.9;0.5;0.9" dur="3.1s" repeatCount="indefinite" begin="0.4s"/>
+              </circle>
+
+              <!-- ── PERPLEXITY NODE (258, 230) ── -->
+              <circle cx="258" cy="230" r="30" fill="none" stroke="#8b5cf6" stroke-opacity="0.3" stroke-width="1"/>
+              <image href="/logos/perplexity.svg" x="247" y="219" width="22" height="22"/>
+              <circle cx="279" cy="211" r="4" fill="#8b5cf6" fill-opacity="0.9">
+                <animate attributeName="r" values="3.5;5;3.5" dur="2.8s" repeatCount="indefinite" begin="1s"/>
+                <animate attributeName="opacity" values="0.9;0.5;0.9" dur="2.8s" repeatCount="indefinite" begin="1s"/>
+              </circle>
+
+              <!-- ── COPILOT NODE (142, 230) ── -->
+              <circle cx="142" cy="230" r="30" fill="none" stroke="#0ea5e9" stroke-opacity="0.3" stroke-width="1"/>
+              <image href="/logos/copilot.svg" x="131" y="219" width="22" height="22"/>
+              <circle cx="163" cy="211" r="4" fill="#0ea5e9" fill-opacity="0.9">
+                <animate attributeName="r" values="3.5;5;3.5" dur="3.4s" repeatCount="indefinite" begin="1.8s"/>
+                <animate attributeName="opacity" values="0.9;0.5;0.9" dur="3.4s" repeatCount="indefinite" begin="1.8s"/>
+              </circle>
+
+              <!-- ── CLAUDE NODE (106, 120) ── -->
+              <circle cx="106" cy="120" r="30" fill="none" stroke="#f97316" stroke-opacity="0.3" stroke-width="1"/>
+              <image href="/logos/claude.svg" x="95" y="109" width="22" height="22"/>
+              <circle cx="127" cy="101" r="4" fill="#f97316" fill-opacity="0.9">
+                <animate attributeName="r" values="3.5;5;3.5" dur="2.6s" repeatCount="indefinite" begin="0.7s"/>
+                <animate attributeName="opacity" values="0.9;0.5;0.9" dur="2.6s" repeatCount="indefinite" begin="0.7s"/>
+              </circle>
+            </svg>
+          </div>
+
+          <!-- AI engine status rows -->
+          <div class="mt-4 pt-4 border-t space-y-2" style="border-color: hsl(var(--color-border));">
+            {[
+              {name: 'ChatGPT',    score: 82, cls: 'aeo-engine--gpt'},
+              {name: 'Gemini',     score: 67, cls: 'aeo-engine--gemini'},
+              {name: 'Claude',     score: 74, cls: 'aeo-engine--claude'},
+              {name: 'Perplexity', score: 59, cls: 'aeo-engine--pplx'},
+              {name: 'Copilot',    score: 45, cls: 'aeo-engine--copilot'},
+            ].map(e => (
+              <div class={`flex items-center gap-3 ${e.cls}`}>
+                <span class="aeo-engine-dot"></span>
+                <span class="text-xs text-white w-20 flex-shrink-0">{e.name}</span>
+                <div class="flex-1 h-1 rounded-full overflow-hidden" style="background: hsl(var(--color-border));">
+                  <div class="h-full rounded-full" style={`width: ${e.score}%; background: var(--eng-color); opacity: 0.8;`}></div>
+                </div>
+                <span class="text-xs font-mono w-7 text-right" style="color: hsl(var(--color-muted));">{e.score}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Floating badge -->
+        <div class="absolute -bottom-4 -right-4 flex items-center gap-2 rounded-xl border px-3 py-2" style="background: hsl(var(--color-surface)); border-color: hsl(var(--color-border)); box-shadow: 0 8px 24px rgba(0,0,0,0.4);">
+          <LucideIcon name="Zap" size={13} style="color: var(--brand-color);" />
+          <div>
+            <p class="text-xs font-semibold text-white leading-tight">Audit Gratuit</p>
+            <p class="text-[0.6rem] font-mono" style="color: hsl(var(--color-muted));">Răspuns în 24h</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     AI ENGINES TRUST BAND
+     ============================================================ -->
+<section class="py-14 lg:py-20 fade-in-up" style="background: hsl(var(--color-surface)); border-top: 1px solid hsl(var(--color-border));">
+  <div class="max-w-5xl mx-auto px-6 lg:px-8 text-center">
+    <p class="text-xs font-mono tracking-widest uppercase mb-8" style="color: hsl(var(--color-muted) / 0.6);">Optimizăm afaceri pentru noua generație de căutare</p>
+    <div class="flex flex-wrap justify-center items-center gap-4">
+      {[
+        {label: 'ChatGPT',    cls: 'aeo-engine--gpt',     sub: 'OpenAI'},
+        {label: 'Gemini',     cls: 'aeo-engine--gemini',  sub: 'Google'},
+        {label: 'Claude',     cls: 'aeo-engine--claude',  sub: 'Anthropic'},
+        {label: 'Perplexity', cls: 'aeo-engine--pplx',    sub: 'AI Search'},
+        {label: 'Copilot',    cls: 'aeo-engine--copilot', sub: 'Microsoft'},
+      ].map(e => (
+        <div class={`flex items-center gap-2.5 rounded-full border px-4 py-2.5 ${e.cls}`} style="background: hsl(var(--color-surface-2)); border-color: hsl(var(--color-border));">
+          <span class="aeo-engine-dot" style="width: 7px; height: 7px;"></span>
+          <div>
+            <p class="text-sm font-semibold text-white leading-tight">{e.label}</p>
+            <p class="text-[0.6rem] font-mono" style="color: hsl(var(--color-muted));">{e.sub}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROBLEMA — SEO vs AI Search
+     ============================================================ -->
+<section class="py-20 lg:py-32 fade-in-up" style="background: hsl(var(--color-bg));">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <span class="u-section-tag mb-5 inline-flex">
+        <LucideIcon name="AlertTriangle" size={12} />
+        Schimbarea din piață
+      </span>
+      <h2 class="mb-4">SEO Nu Mai Înseamnă<br/>Doar Google</h2>
+      <p class="max-w-2xl mx-auto" style="color: hsl(var(--color-muted));">
+        Milioane de oameni nu mai caută pe Google — întreabă direct ChatGPT sau Gemini. Dacă afacerea ta nu apare în răspunsurile AI, pierzi clienți în fiecare zi.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+
+      <!-- SEO Tradițional -->
+      <div class="u-card relative overflow-hidden" style="border-color: hsl(var(--color-border) / 0.6); opacity: 0.75;">
+        <div class="absolute top-4 right-4 text-xs font-mono px-2 py-0.5 rounded-full" style="background: hsl(0 60% 50% / 0.1); color: hsl(0 60% 65%); border: 1px solid hsl(0 60% 50% / 0.2);">Singur nu mai ajunge</div>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background: hsl(var(--color-surface-2)); border: 1px solid hsl(var(--color-border));">
+            <LucideIcon name="Search" size={18} style="color: hsl(var(--color-muted));" />
+          </div>
+          <h3 class="font-semibold text-white">SEO Tradițional</h3>
+        </div>
+        <div class="space-y-3">
+          {['Poziții în Google', 'Cuvinte cheie', 'Backlink-uri', 'Trafic organic'].map(item => (
+            <div class="flex items-center gap-3">
+              <div class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style="background: hsl(var(--color-surface-2)); border: 1px solid hsl(var(--color-border));">
+                <LucideIcon name="Check" size={10} style="color: hsl(var(--color-muted));" />
+              </div>
+              <span class="text-sm" style="color: hsl(var(--color-muted));">{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- AI Search -->
+      <div class="u-card u-card-hover relative overflow-hidden" style="border-color: var(--brand-border); background: linear-gradient(135deg, hsl(var(--color-surface)) 0%, hsl(var(--color-lime) / 0.03) 100%);">
+        <div class="absolute top-4 right-4 text-xs font-mono px-2 py-0.5 rounded-full" style="background: var(--brand-soft); color: var(--brand-color); border: 1px solid var(--brand-border);">Noua oportunitate</div>
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background: var(--brand-soft); border: 1px solid var(--brand-border);">
+            <LucideIcon name="BrainCircuit" size={18} style="color: var(--brand-color);" />
+          </div>
+          <h3 class="font-semibold text-white">AI Search</h3>
+        </div>
+        <div class="space-y-3">
+          {[
+            'Recomandări AI',
+            'Citări de brand',
+            'Autoritate recunoscută',
+            'Încredere în entitate',
+            'Surse validate',
+            'Descoperire automată',
+          ].map(item => (
+            <div class="flex items-center gap-3">
+              <div class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style="background: var(--brand-soft); border: 1px solid var(--brand-border);">
+                <LucideIcon name="Check" size={10} style="color: var(--brand-color);" />
+              </div>
+              <span class="text-sm text-white">{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CUM FUNCȚIONEAZĂ AI SEARCH — 4 pași
+     ============================================================ -->
+<section class="py-20 lg:py-32 fade-in-up" style="background: hsl(var(--color-surface));" id="cum-functioneaza">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <span class="u-section-tag mb-5 inline-flex">
+        <LucideIcon name="BrainCircuit" size={12} />
+        Cum decide AI-ul
+      </span>
+      <h2 class="mb-4">Cum Decide Inteligența Artificială<br/>Ce Afaceri Recomandă</h2>
+      <p class="max-w-xl mx-auto" style="color: hsl(var(--color-muted));">
+        Sistemele AI urmează un proces clar înainte să includă o afacere în răspunsurile sale.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 relative">
+      <!-- Connector line desktop -->
+      <div class="hidden lg:block absolute top-8 left-[12.5%] right-[12.5%] h-px" style="background: linear-gradient(90deg, transparent, hsl(var(--color-lime) / 0.3), hsl(var(--color-lime) / 0.3), transparent);"></div>
+
+      {[
+        {n: '01', icon: 'Globe',      title: 'Descoperă',   time: 'Continuu',    desc: 'AI analizează website-uri, directoare, recenzii și surse de informații online pentru a găsi afaceri relevante.'},
+        {n: '02', icon: 'Brain',      title: 'Înțelege',    time: 'Automat',     desc: 'Identifică cine este compania, ce servicii oferă, în ce domeniu activează și ce probleme rezolvă.'},
+        {n: '03', icon: 'BarChart2',  title: 'Evaluează',   time: 'Permanent',   desc: 'Măsoară autoritatea, consistența informațiilor, nivelul de încredere și calitatea surselor.'},
+        {n: '04', icon: 'Sparkles',   title: 'Recomandă',   time: 'La cerere',   desc: 'Include afacerea în răspunsurile oferite utilizatorilor care caută soluții relevante.'},
+      ].map(s => (
+        <div class="u-card flex flex-col gap-4 relative z-10">
+          <div class="flex items-center gap-3">
+            <div class="text-3xl font-semibold leading-none" style="color: hsl(var(--color-lime) / 0.25); font-variant-numeric: tabular-nums; letter-spacing: -0.04em;">{s.n}</div>
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background: var(--brand-soft); border: 1px solid var(--brand-border);">
+              <LucideIcon name={s.icon} size={14} style="color: var(--brand-color);" />
+            </div>
+          </div>
+          <div>
+            <p class="text-base font-semibold text-white mb-1">{s.title}</p>
+            <span class="inline-block text-[0.65rem] font-mono px-2 py-0.5 rounded-full mb-3" style="background: var(--brand-soft); color: var(--brand-color); border: 1px solid var(--brand-border);">⏱ {s.time}</span>
+            <p class="text-sm" style="color: hsl(var(--color-muted)); line-height: 1.6;">{s.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CE ESTE AEO / GEO
+     ============================================================ -->
+<section class="py-20 lg:py-32 fade-in-up" style="background: hsl(var(--color-bg));">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Left: copy -->
+      <div>
+        <span class="u-section-tag mb-6 inline-flex">
+          <LucideIcon name="Target" size={12} />
+          Ce este optimizarea AI
+        </span>
+        <h2 class="mb-6">Ce Este AEO și GEO?</h2>
+        <p class="mb-6" style="color: hsl(var(--color-muted)); line-height: 1.75;">
+          <strong style="color: hsl(var(--color-text));">SEO</strong> ajută website-ul să apară în Google.<br/>
+          <strong style="color: var(--brand-color);">AEO și GEO</strong> ajută sistemele AI să înțeleagă afacerea ta și să o recomande atunci când utilizatorii caută soluții.
+        </p>
+
+        <div class="space-y-4">
+          {[
+            {abbr: 'AEO', full: 'Answer Engine Optimization', desc: 'Optimizează conținutul pentru a fi inclus direct în răspunsurile oferite de motoare AI.'},
+            {abbr: 'GEO', full: 'Generative Engine Optimization', desc: 'Construiește autoritatea și semnalele brandului pentru a fi citat de modele generative.'},
+          ].map(item => (
+            <div class="u-card flex items-start gap-4">
+              <div class="px-2.5 py-1 rounded-md font-mono text-xs font-bold flex-shrink-0 mt-0.5" style="background: var(--brand-soft); color: var(--brand-color); border: 1px solid var(--brand-border);">{item.abbr}</div>
+              <div>
+                <p class="text-sm font-semibold text-white mb-1">{item.full}</p>
+                <p class="text-sm" style="color: hsl(var(--color-muted));">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right: comparison diagram card -->
+      <div class="u-card" style="border-color: hsl(var(--color-border));">
+        <p class="text-xs font-mono text-center mb-6 uppercase tracking-widest" style="color: hsl(var(--color-muted));">Comparație vizuală</p>
+
+        <!-- Google search flow -->
+        <div class="mb-5">
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-6 h-6 rounded-md flex items-center justify-center" style="background: hsl(var(--color-surface-2)); border: 1px solid hsl(var(--color-border));">
+              <LucideIcon name="Search" size={11} style="color: hsl(var(--color-muted));" />
+            </div>
+            <p class="text-xs font-semibold" style="color: hsl(var(--color-muted));">Căutare tradițională Google</p>
+          </div>
+          <div class="rounded-xl border p-3 space-y-1.5" style="background: hsl(var(--color-surface-2)); border-color: hsl(var(--color-border));">
+            {['Website → SEO', 'Cuvinte cheie → Pozitie', 'Click → Vizita'].map(step => (
+              <div class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background: hsl(var(--color-muted) / 0.4);"></div>
+                <span class="text-xs font-mono" style="color: hsl(var(--color-muted));">{step}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="flex items-center gap-3 my-5">
+          <div class="flex-1 h-px" style="background: hsl(var(--color-border));"></div>
+          <LucideIcon name="ArrowRight" size={14} style="color: var(--brand-color);" />
+          <div class="flex-1 h-px" style="background: hsl(var(--color-border));"></div>
+        </div>
+
+        <!-- AI search flow -->
+        <div>
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-6 h-6 rounded-md flex items-center justify-center" style="background: var(--brand-soft); border: 1px solid var(--brand-border);">
+              <LucideIcon name="BrainCircuit" size={11} style="color: var(--brand-color);" />
+            </div>
+            <p class="text-xs font-semibold" style="color: var(--brand-color);">AI Search (AEO/GEO)</p>
+          </div>
+          <div class="rounded-xl border p-3 space-y-1.5" style="background: hsl(var(--color-surface-2)); border-color: var(--brand-border);">
+            {[
+              'Entitate → Înțelegere AI',
+              'Brand signals → Autoritate',
+              'Citări → Recomandare directă',
+            ].map(step => (
+              <div class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background: var(--brand-color);"></div>
+                <span class="text-xs font-mono" style="color: hsl(var(--color-text));">{step}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="mt-5 pt-5 border-t flex items-center gap-3" style="border-color: hsl(var(--color-border));">
+          <LucideIcon name="TrendingUp" size={14} style="color: var(--brand-color);" />
+          <p class="text-xs font-mono" style="color: hsl(var(--color-muted));">AEO/GEO completează SEO — nu îl înlocuiește</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICII — 6 carduri
+     ============================================================ -->
+<section class="py-20 lg:py-32 fade-in-up" style="background: hsl(var(--color-surface));">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <span class="u-section-tag mb-5 inline-flex">
+        <LucideIcon name="Layers" size={12} />
+        Servicii
+      </span>
+      <h2 class="mb-4">Cum Te Putem Ajuta</h2>
+      <p class="max-w-xl mx-auto" style="color: hsl(var(--color-muted));">
+        Un pachet complet de optimizare pentru ca afacerea ta să fie recomandată de toate motoarele AI majore.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {[
+        {
+          icon: 'Eye',
+          title: 'Audit de Vizibilitate AI',
+          items: ['Analiză ChatGPT', 'Analiză Gemini', 'Analiză Claude', 'Analiză Perplexity'],
+        },
+        {
+          icon: 'Database',
+          title: 'Optimizare Entitate',
+          items: ['Brand signals', 'Schema markup', 'Knowledge graph', 'Consistent NAP'],
+        },
+        {
+          icon: 'Share2',
+          title: 'Creșterea Autorității',
+          items: ['Mențiuni relevante', 'Citări de calitate', 'Surse de încredere', 'PR digital'],
+        },
+        {
+          icon: 'FileText',
+          title: 'Conținut pentru AI',
+          items: ['FAQ optimizate', 'Structuri AI-friendly', 'Conținut expert', 'E-E-A-T signals'],
+        },
+        {
+          icon: 'Settings',
+          title: 'Optimizare Tehnică',
+          items: ['Date structurate', 'Indexare corectă', 'Descoperire AI', 'Sitemap semantic'],
+        },
+        {
+          icon: 'Gauge',
+          title: 'Monitorizare & Raportare',
+          items: ['Evoluția vizibilității', 'Recomandări lunare', 'Analize periodice', 'Benchmark competitor'],
+        },
+      ].map(card => (
+        <div class="u-card u-card-hover flex flex-col gap-5">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background: var(--brand-soft); border: 1px solid var(--brand-border);">
+            <LucideIcon name={card.icon} size={18} style="color: var(--brand-color);" />
+          </div>
+          <div>
+            <h3 class="text-sm font-semibold text-white mb-3">{card.title}</h3>
+            <div class="space-y-2">
+              {card.items.map(item => (
+                <div class="flex items-center gap-2">
+                  <div class="w-4 h-4 rounded-md flex items-center justify-center flex-shrink-0" style="background: var(--brand-soft); border: 1px solid var(--brand-border);">
+                    <LucideIcon name="Check" size={9} style="color: var(--brand-color);" />
+                  </div>
+                  <span class="text-xs" style="color: hsl(var(--color-muted));">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     RAPORT EXEMPLU
+     ============================================================ -->
+<section class="py-20 lg:py-32 fade-in-up" style="background: hsl(var(--color-bg));" id="raport">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Left: dashboard mockup -->
+      <div class="relative">
+        <div class="pointer-events-none absolute -inset-4 rounded-3xl" style="background: radial-gradient(ellipse at 40% 50%, hsl(var(--color-lime) / 0.08) 0%, transparent 65%);"></div>
+
+        <div class="relative rounded-2xl border p-6" style="background: hsl(var(--color-surface)); border-color: hsl(var(--color-border));">
+          <!-- Header -->
+          <div class="flex items-center justify-between mb-6 pb-5 border-b" style="border-color: hsl(var(--color-border));">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background: var(--brand-soft); border: 1px solid var(--brand-border);">
+                <LucideIcon name="Gauge" size={18} style="color: var(--brand-color);" />
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-white">Raport AI Visibility</p>
+                <p class="text-xs font-mono" style="color: hsl(var(--color-muted));">exemplu.ro · Iunie 2026</p>
+              </div>
+            </div>
+            <span class="text-xs font-mono px-2 py-0.5 rounded-full" style="background: hsl(142 70% 45% / 0.12); color: hsl(142 70% 60%); border: 1px solid hsl(142 70% 45% / 0.25);">Actualizat</span>
+          </div>
+
+          <!-- Overall score -->
+          <div class="text-center mb-6 pb-6 border-b" style="border-color: hsl(var(--color-border));">
+            <p class="text-xs font-mono mb-2 uppercase tracking-widest" style="color: hsl(var(--color-muted));">Scor Vizibilitate AI</p>
+            <p class="text-5xl font-semibold text-white mb-3" style="letter-spacing: -0.04em;">73<span class="text-2xl ml-1" style="color: hsl(var(--color-muted));">/100</span></p>
+            <div class="h-2 rounded-full overflow-hidden max-w-xs mx-auto" style="background: hsl(var(--color-border));">
+              <div class="aeo-bar h-full rounded-full" style="--bar-w: 73%; background: var(--brand-gradient-strong);"></div>
+            </div>
+            <p class="text-xs font-mono mt-2" style="color: hsl(var(--color-muted));">+18 puncte față de luna trecută</p>
+          </div>
+
+          <!-- Metrics -->
+          <div class="space-y-3.5">
+            {[
+              {label: 'Înțelegerea Website-ului', score: 82},
+              {label: 'Încredere în Entitate',    score: 68},
+              {label: 'Autoritate în Piață',      score: 55},
+              {label: 'Puterea Citărilor',        score: 71},
+              {label: 'Descoperire Tehnică',      score: 90},
+              {label: 'Scor General AI',          score: 73},
+            ].map(m => (
+              <div class="flex items-center gap-3">
+                <p class="text-xs flex-shrink-0" style="color: hsl(var(--color-muted)); width: 11rem;">{m.label}</p>
+                <div class="flex-1 h-1.5 rounded-full overflow-hidden" style="background: hsl(var(--color-border));">
+                  <div class="aeo-bar h-full rounded-full" style={`--bar-w: ${m.score}%; background: var(--brand-color); opacity: 0.85;`}></div>
+                </div>
+                <span class="text-xs font-mono font-semibold text-white w-6 text-right">{m.score}</span>
+              </div>
+            ))}
+          </div>
+
+          <!-- Floating badge -->
+          <div class="mt-5 flex items-center gap-3 rounded-xl p-3 border" style="background: hsl(var(--color-surface-2)); border-color: var(--brand-border);">
+            <LucideIcon name="Zap" size={15} style="color: var(--brand-color);" />
+            <p class="text-xs" style="color: hsl(var(--color-muted));">
+              <span class="text-white font-semibold">3 oportunități identificate</span> de creștere imediată a vizibilității
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: copy -->
+      <div>
+        <span class="u-section-tag mb-6 inline-flex">
+          <LucideIcon name="BarChart2" size={12} />
+          Raport premium
+        </span>
+        <h2 class="mb-5">
+          Vezi Exact Cum Este Percepută<br/>
+          <span style="color: var(--brand-color);">Afacerea Ta de AI</span>
+        </h2>
+        <p class="mb-8" style="color: hsl(var(--color-muted)); line-height: 1.7;">
+          Auditul nostru analizează prezența brandului tău în fiecare motor AI major și îți arată exact ce îmbunătățiri sunt necesare pentru a deveni recomandat.
+        </p>
+
+        <div class="space-y-4 mb-8">
+          {[
+            {icon: 'Eye',       title: 'Scor Vizibilitate AI',    desc: 'Cât de bine ești detectat de ChatGPT, Gemini, Claude și Perplexity.'},
+            {icon: 'Brain',     title: 'Înțelegerea Website-ului', desc: 'Cât de clar înțelege AI-ul ce oferi și cui te adresezi.'},
+            {icon: 'Award',     title: 'Autoritate în Piață',      desc: 'Nivelul de credibilitate perceput de modelele AI.'},
+            {icon: 'Share2',    title: 'Puterea Citărilor',        desc: 'Câte surse externe te menționează și cu ce calitate.'},
+          ].map(item => (
+            <div class="flex items-start gap-4">
+              <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background: var(--brand-soft); border: 1px solid var(--brand-border);">
+                <LucideIcon name={item.icon} size={15} style="color: var(--brand-color);" />
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-white mb-0.5">{item.title}</p>
+                <p class="text-sm" style="color: hsl(var(--color-muted));">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <a class="u-brand-cta u-btn-lg u-btn-split" href="/contact">
+          Solicită Auditul Gratuit
+          <span class="btn-ic"><LucideIcon name="ArrowUpRight" size={16} /></span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DE CE ACUM — Statistici
+     ============================================================ -->
+<section class="py-20 lg:py-32 fade-in-up" style="background: hsl(var(--color-surface));">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <span class="u-section-tag mb-5 inline-flex">
+        <LucideIcon name="TrendingUp" size={12} />
+        De ce acum
+      </span>
+      <h2 class="mb-4">De Ce Companiile Investesc<br/>Acum în AI Search</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-5">
+      {[
+        {
+          icon: 'Users',
+          stat: '40%',
+          title: 'Căutări directe în AI',
+          desc: 'Din utilizatorii sub 35 de ani caută produse și servicii direct în ChatGPT sau Gemini, fără a mai folosi Google.',
+        },
+        {
+          icon: 'TrendingUp',
+          stat: '3×',
+          title: 'Conversie mai mare',
+          desc: 'Brandurile recomandate de AI au o rată de conversie de 3 ori mai mare decât cele din rezultatele organice Google.',
+        },
+        {
+          icon: 'Clock',
+          stat: '12 luni',
+          title: 'Avantaj competitiv',
+          desc: 'Companiile care investesc acum în AEO/GEO vor fi extrem de greu de depășit peste 12 luni, când concurența va fi mai mare.',
+        },
+        {
+          icon: 'Award',
+          stat: '85%',
+          title: 'Mențiuni influențează decizia',
+          desc: 'Din utilizatorii AI spun că recomandările primite în chatbot au influențat direct decizia lor de cumpărare.',
+        },
+      ].map(s => (
+        <div class="u-card u-card-hover flex items-start gap-5">
+          <div class="flex-shrink-0">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-3" style="background: var(--brand-soft); border: 1px solid var(--brand-border);">
+              <LucideIcon name={s.icon} size={20} style="color: var(--brand-color);" />
+            </div>
+            <p class="text-3xl font-semibold text-white" style="letter-spacing: -0.04em;">{s.stat}</p>
+          </div>
+          <div class="pt-0.5">
+            <h3 class="text-sm font-semibold text-white mb-2">{s.title}</h3>
+            <p class="text-sm" style="color: hsl(var(--color-muted)); line-height: 1.6;">{s.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     STUDIU DE CAZ — Înainte / După
+     ============================================================ -->
+<section class="py-20 lg:py-32 fade-in-up" style="background: hsl(var(--color-bg));">
+  <div class="max-w-5xl mx-auto px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <span class="u-section-tag mb-5 inline-flex">
+        <LucideIcon name="Activity" size={12} />
+        Exemplu real
+      </span>
+      <h2 class="mb-4">Exemplu de Creștere<br/>a Vizibilității</h2>
+      <p class="max-w-xl mx-auto" style="color: hsl(var(--color-muted));">
+        Cum arată diferența înainte și după o optimizare AEO/GEO completă.
+      </p>
+    </div>
+
+    <div class="flex flex-col md:flex-row items-stretch gap-4 md:gap-6">
+
+      <!-- Înainte -->
+      <div class="flex-1 u-card" style="border-color: hsl(0 60% 50% / 0.2); background: hsl(var(--color-surface));">
+        <div class="flex items-center gap-2 mb-5">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: hsl(0 60% 50% / 0.1); border: 1px solid hsl(0 60% 50% / 0.2);">
+            <LucideIcon name="AlertTriangle" size={14} style="color: hsl(0 60% 60%);" />
+          </div>
+          <span class="text-xs font-mono font-semibold" style="color: hsl(0 60% 60%);">ÎNAINTE</span>
+        </div>
+        <div class="space-y-3">
+          {[
+            {label: 'Scor Vizibilitate AI', val: '12/100', color: 'hsl(0 60% 60%)'},
+            {label: 'ChatGPT',    val: 'Nedetectat', color: 'hsl(var(--color-muted))'},
+            {label: 'Gemini',     val: 'Nedetectat', color: 'hsl(var(--color-muted))'},
+            {label: 'Perplexity', val: 'Nedetectat', color: 'hsl(var(--color-muted))'},
+            {label: 'Citări',     val: '0 surse',    color: 'hsl(var(--color-muted))'},
+          ].map(row => (
+            <div class="flex items-center justify-between py-1.5 border-b" style="border-color: hsl(var(--color-border) / 0.5);">
+              <span class="text-xs" style="color: hsl(var(--color-muted));">{row.label}</span>
+              <span class="text-xs font-semibold font-mono" style={`color: ${row.color};`}>{row.val}</span>
+            </div>
+          ))}
+        </div>
+        <div class="mt-5 h-1.5 rounded-full overflow-hidden" style="background: hsl(var(--color-border));">
+          <div class="h-full rounded-full" style="width: 12%; background: hsl(0 60% 55%);"></div>
+        </div>
+      </div>
+
+      <!-- Arrow -->
+      <div class="flex md:flex-col items-center justify-center gap-2 py-4 md:py-0">
+        <div class="aeo-vs-arrow">
+          <LucideIcon name="ArrowRight" size={16} />
+        </div>
+        <span class="text-[0.65rem] font-mono" style="color: hsl(var(--color-muted));">90 zile</span>
+      </div>
+
+      <!-- După -->
+      <div class="flex-1 u-card" style="border-color: var(--brand-border); background: linear-gradient(135deg, hsl(var(--color-surface)) 0%, hsl(var(--color-lime) / 0.02) 100%);">
+        <div class="flex items-center gap-2 mb-5">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: var(--brand-soft); border: 1px solid var(--brand-border);">
+            <LucideIcon name="TrendingUp" size={14} style="color: var(--brand-color);" />
+          </div>
+          <span class="text-xs font-mono font-semibold" style="color: var(--brand-color);">DUPĂ</span>
+        </div>
+        <div class="space-y-3">
+          {[
+            {label: 'Scor Vizibilitate AI', val: '78/100',    color: 'var(--brand-color)'},
+            {label: 'ChatGPT',    val: 'Recomandat',  color: '#10b981'},
+            {label: 'Gemini',     val: 'Recomandat',  color: '#3b82f6'},
+            {label: 'Perplexity', val: 'Recomandat',  color: '#8b5cf6'},
+            {label: 'Citări',     val: '24 surse',    color: 'var(--brand-color)'},
+          ].map(row => (
+            <div class="flex items-center justify-between py-1.5 border-b" style="border-color: hsl(var(--color-border) / 0.5);">
+              <span class="text-xs" style="color: hsl(var(--color-muted));">{row.label}</span>
+              <span class="text-xs font-semibold font-mono" style={`color: ${row.color};`}>{row.val}</span>
+            </div>
+          ))}
+        </div>
+        <div class="mt-5 h-1.5 rounded-full overflow-hidden" style="background: hsl(var(--color-border));">
+          <div class="aeo-bar h-full rounded-full" style="--bar-w: 78%; background: var(--brand-gradient-strong);"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section class="py-20 lg:py-32 fade-in-up" style="background: hsl(var(--color-surface));">
+  <div class="max-w-3xl mx-auto px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <span class="u-section-tag mb-5 inline-flex">
+        <LucideIcon name="MessageCircle" size={12} />
+        Întrebări frecvente
+      </span>
+      <h2 class="mb-4">Răspunsuri Clare</h2>
+    </div>
+
+    <div class="space-y-0">
+      {[
+        {
+          q: 'Ce este AEO (Answer Engine Optimization)?',
+          a: 'AEO este practica de a optimiza conținutul digital pentru a fi inclus direct în răspunsurile oferite de motoare de căutare AI, cum ar fi ChatGPT, Gemini sau Perplexity. Spre deosebire de SEO clasic care vizează poziții în Google, AEO urmărește ca afacerea ta să fie citată ca sursă de autoritate în răspunsurile generate de AI.',
+        },
+        {
+          q: 'Ce este GEO (Generative Engine Optimization)?',
+          a: 'GEO este o extensie a AEO care se concentrează pe optimizarea prezenței brandului pentru modelele de limbaj generative (LLM-uri). Implică construirea autorității entității, semnalelor de brand și structurii informaționale care ajută AI-ul să "înțeleagă" și să "recunoască" afacerea ta ca relevantă pentru anumite domenii.',
+        },
+        {
+          q: 'Cum diferă AEO/GEO de SEO tradițional?',
+          a: 'SEO tradițional urmărește poziții în motoarele de căutare clasice (Google, Bing) prin cuvinte cheie și linkuri. AEO/GEO urmăresc recunoașterea și recomandarea de către AI. Nu se exclud — sunt complementare. O strategie completă le combină pe ambele pentru a acoperi toate canalele de descoperire online.',
+        },
+        {
+          q: 'Poate cineva garanta apariția în ChatGPT sau Gemini?',
+          a: 'Nu există garanții absolute, deoarece algoritmii AI nu sunt controlați public. Totuși, există factori clari care cresc semnificativ probabilitatea de apariție: autoritatea entității, consistența informațiilor online, calitatea citărilor și structura datelor. Îmbunătățirea acestor factori produce rezultate măsurabile.',
+        },
+        {
+          q: 'Cât durează până apar primele rezultate?',
+          a: 'Primele îmbunătățiri de vizibilitate apar de obicei în 30-60 de zile pentru Perplexity și motoarele mai mici. Pentru ChatGPT și Gemini, care actualizează cunoștințele mai rar, pot dura 60-120 de zile. Rezultatele complete se consolidează în 3-6 luni de optimizare continuă.',
+        },
+        {
+          q: 'Este nevoie de optimizare continuă sau este o lucrare unică?',
+          a: 'Este nevoie de optimizare continuă. Modelele AI se actualizează, competitorii investesc și ei în AEO, iar piața evoluează. La fel ca SEO, AEO/GEO este un efort pe termen lung care produce rezultate crescătoare în timp. Monitorizarea și ajustarea periodică sunt esențiale pentru a menține și îmbunătăți vizibilitatea.',
+        },
+      ].map(item => (
+        <details class="aeo-faq__item">
+          <summary class="aeo-faq__summary">
+            {item.q}
+            <LucideIcon name="ChevronDown" size={16} class="aeo-faq__chevron" />
+          </summary>
+          <p class="aeo-faq__body">{item.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA FINAL
+     ============================================================ -->
+<section class="py-16 lg:py-24 fade-in-up" style="background: hsl(var(--color-bg));">
+  <div class="max-w-5xl mx-auto px-6 lg:px-8">
+    <div class="cta-border-wrap">
+      <div class="cta-border-spin" aria-hidden="true"></div>
+      <div class="cta-border-inner text-center py-14 lg:py-16 px-8">
+
+        <!-- Orbs -->
+        <div class="absolute -top-16 -right-16 w-64 h-64 rounded-full pointer-events-none" style="background: hsl(var(--color-lime)); opacity: 0.10; filter: blur(72px);"></div>
+        <div class="absolute -bottom-16 -left-16 w-56 h-56 rounded-full pointer-events-none" style="background: hsl(var(--color-lime)); opacity: 0.06; filter: blur(72px);"></div>
+
+        <span class="u-section-tag mb-6 inline-flex relative">
+          <LucideIcon name="BrainCircuit" size={12} />
+          Audit gratuit
+        </span>
+
+        <h2 class="mb-4 relative">
+          Află Dacă AI Îți Poate<br/>
+          <span style="color: var(--brand-color);">Recomanda Afacerea</span>
+        </h2>
+
+        <p class="mb-10 mx-auto relative" style="color: hsl(var(--color-muted)); max-width: 44ch; line-height: 1.7;">
+          Primește un audit complet și descoperă cât de bine înțeleg sistemele AI afacerea ta — și ce oportunități există pentru a deveni mai vizibil.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-4 relative">
+          <a class="u-brand-cta u-btn-lg u-btn-split" href="/contact">
+            Solicită Auditul Gratuit
+            <span class="btn-ic"><LucideIcon name="ArrowRight" size={16} /></span>
+          </a>
+          <a class="u-brand-outline u-btn-lg u-btn-split" href="/contact">
+            Programează o Discuție
+            <span class="btn-ic"><LucideIcon name="CalendarDays" size={15} /></span>
+          </a>
+        </div>
+
+        <p class="mt-8 text-xs font-mono relative" style="color: hsl(var(--color-muted) / 0.4);">
+          Fără obligații · Răspuns în 24h · 100% gratuit
+        </p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>

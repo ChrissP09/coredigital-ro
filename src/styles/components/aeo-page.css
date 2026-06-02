@@ -1,0 +1,116 @@
+@layer components {
+  /* FAQ accordion */
+  .aeo-faq__item {
+    border-bottom: 1px solid hsl(var(--color-border));
+  }
+
+  .aeo-faq__item:first-child {
+    border-top: 1px solid hsl(var(--color-border));
+  }
+
+  .aeo-faq__summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 0;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: hsl(var(--color-text));
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s ease;
+  }
+
+  .aeo-faq__summary::-webkit-details-marker { display: none; }
+  .aeo-faq__summary::marker { display: none; }
+
+  .aeo-faq__summary:hover {
+    color: var(--brand-color);
+  }
+
+  .aeo-faq__chevron {
+    flex-shrink: 0;
+    transition: transform 0.25s ease, color 0.2s ease;
+    color: hsl(var(--color-muted));
+  }
+
+  details[open] .aeo-faq__chevron {
+    transform: rotate(180deg);
+    color: var(--brand-color);
+  }
+
+  details[open] .aeo-faq__summary {
+    color: var(--brand-color);
+  }
+
+  .aeo-faq__body {
+    padding-bottom: 1.25rem;
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: hsl(var(--color-muted));
+    max-width: 60ch;
+  }
+
+  /* AI network glow filter */
+  .aeo-network-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .aeo-network-card::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(ellipse, hsl(var(--color-lime) / 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Metric bar animated fill */
+  @keyframes barFill {
+    from { width: 0; }
+    to { width: var(--bar-w); }
+  }
+
+  .aeo-bar {
+    animation: barFill 1s ease-out forwards;
+    animation-delay: 0.3s;
+    width: 0;
+  }
+
+  /* Case study before/after arrow */
+  .aeo-vs-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: hsl(var(--color-surface-2));
+    border: 1px solid hsl(var(--color-border));
+    color: var(--brand-color);
+  }
+
+  /* Engine pill colors */
+  .aeo-engine--gpt    { --eng-color: #10b981; }
+  .aeo-engine--gemini { --eng-color: #3b82f6; }
+  .aeo-engine--claude { --eng-color: #f97316; }
+  .aeo-engine--pplx   { --eng-color: #8b5cf6; }
+  .aeo-engine--copilot{ --eng-color: #0ea5e9; }
+
+  .aeo-engine-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--eng-color);
+    box-shadow: 0 0 6px var(--eng-color);
+    flex-shrink: 0;
+  }
+}

@@ -59,6 +59,15 @@ import users from 'lucide-static/icons/users.svg?raw';
 import shoppingBag from 'lucide-static/icons/shopping-bag.svg?raw';
 import mousePointer from 'lucide-static/icons/mouse-pointer.svg?raw';
 import bell from 'lucide-static/icons/bell.svg?raw';
+import database from 'lucide-static/icons/database.svg?raw';
+import gauge from 'lucide-static/icons/gauge.svg?raw';
+import eye from 'lucide-static/icons/eye.svg?raw';
+import target from 'lucide-static/icons/target.svg?raw';
+import fileText from 'lucide-static/icons/file-text.svg?raw';
+import share2 from 'lucide-static/icons/share-2.svg?raw';
+import network from 'lucide-static/icons/network.svg?raw';
+import circleDot from 'lucide-static/icons/circle-dot.svg?raw';
+import externalLink from 'lucide-static/icons/external-link.svg?raw';
 
 const { name, class: className = '', size = 24, style: inlineStyle = '' } = Astro.props;
 
@@ -124,6 +133,15 @@ const icons: Record<string, string> = {
   ShoppingBag: shoppingBag,
   MousePointer: mousePointer,
   Bell: bell,
+  Database: database,
+  Gauge: gauge,
+  Eye: eye,
+  Target: target,
+  FileText: fileText,
+  Share2: share2,
+  Network: network,
+  CircleDot: circleDot,
+  ExternalLink: externalLink,
 };
 
 const raw = icons[name];

@@ -7,11 +7,19 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "migrate": "node src/lib/db/migrate.js",
+    "start": "node dist/server/entry.mjs"
   },
   "dependencies": {
+    "@astrojs/node": "^9.5.5",
     "astro": "^5.16.15",
-    "lucide-static": "^0.563.0"
+    "cheerio": "^1.2.0",
+    "dotenv": "^17.4.2",
+    "express-rate-limit": "^8.5.2",
+    "fast-xml-parser": "^5.8.0",
+    "lucide-static": "^0.563.0",
+    "sqlite3": "^6.0.1"
   },
   "devDependencies": {
     "@astrojs/tailwind": "^6.0.2",

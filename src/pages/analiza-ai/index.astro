@@ -1,0 +1,122 @@
+---
+export const prerender = false;
+
+import database from '../../lib/config/database.js';
+import env from '../../lib/config/env.js';
+
+const row = await database.get('SELECT COUNT(*) as total FROM analyses').catch(() => ({ total: 0 }));
+const totalScans = row?.total || 0;
+const turnstileSiteKey = env.turnstileSiteKey;
+
+const url = new URL(Astro.request.url);
+const formError = url.searchParams.get('error') || null;
+const lastUrl = url.searchParams.get('url') || '';
+---
+
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Scor de Vizibilitate AI — Afaceri din România</title>
+    <meta name="description" content="Verifică gratuit cât de vizibil este website-ul tău pentru sistemele AI. Analiză completă de conținut, entitate și prezență externă pentru afaceri din România.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/analiza-ai/css/app.css">
+    <link rel="icon" href="/assets/Favicon circle dark.png" type="image/png">
+    {turnstileSiteKey && (
+      <script src="https://challenges.cloudflare.com/turnstile/v1/api.js" async defer></script>
+    )}
+  </head>
+  <body>
+    <main class="home-hero min-h-screen overflow-hidden">
+      <section class="relative mx-auto flex min-h-screen w-full max-w-[1500px] flex-col px-4 py-6 sm:px-8 lg:px-12">
+        <header class="relative z-20 flex items-center justify-between">
+          <a href="/"><img class="hero-logo" src="/analiza-ai/assets/core-digital-logo.svg" alt="Core Digital"></a>
+          <span class="hidden rounded-full border border-limeai/25 bg-black/25 px-4 py-2 font-mono text-xs font-semibold uppercase text-limeai sm:inline-flex">Analiză AI · Afaceri Locale</span>
+        </header>
+
+        <div class="hero-layout relative z-10 grid flex-1 items-center gap-8 py-10 lg:py-6">
+          <div class="hero-copy max-w-3xl lg:pl-4">
+            <p class="mb-5 font-mono text-xs font-semibold uppercase text-limeai">Analiză gratuită pentru România</p>
+            <h1 class="hero-title text-[clamp(2.55rem,5.4vw,5.25rem)] font-bold leading-[0.98] text-white">
+              <span>Afacerea ta este</span>
+              <span>vizibilă pentru</span>
+              <span class="text-limeai">sistemele AI?</span>
+            </h1>
+            <p class="hero-subtitle mt-7 max-w-2xl text-lg leading-8 text-white/70 sm:text-2xl sm:leading-9">
+              Verifică <span class="font-semibold text-limeai">gratuit</span> cât de ușor pot sistemele AI să descopere, să înțeleagă și să verifice afacerea ta.
+            </p>
+
+            <form data-score-form action="/api/scor" method="post" class="hero-search mt-9">
+              <input type="text" name="website_confirm" value="" style="display:none;" tabindex="-1" autocomplete="off">
+              <label class="sr-only" for="websiteUrl">Site web</label>
+              <span class="search-glyph" aria-hidden="true"></span>
+              <input
+                id="websiteUrl"
+                name="websiteUrl"
+                type="text"
+                value={lastUrl}
+                placeholder="Introdu URL-ul site-ului tău..."
+                required
+                class="hero-input"
+              >
+              <button type="submit" class="hero-submit">
+                Analizează gratuit
+                <span aria-hidden="true">&rarr;</span>
+              </button>
+              {turnstileSiteKey && (
+                <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-appearance="interaction-only" data-execution="execute" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;"></div>
+              )}
+            </form>
+
+            {formError && (
+              <p class="mt-4 rounded-lg border border-red-400/30 bg-red-500/10 px-4 py-3 text-sm text-red-200">{formError}</p>
+            )}
+            {totalScans > 0 && (
+              <p class="mt-4 text-xs text-white/40">Alătură-te celor <strong class="text-white">{totalScans.toLocaleString('ro-RO')}</strong> de afaceri analizate până acum.</p>
+            )}
+          </div>
+
+          <aside class="ai-map-panel" aria-label="Hartă vizuală România AI">
+            <img class="ai-map-image" src="/analiza-ai/assets/ai-map-transparent.webp" alt="Hartă digitală România conectată la sisteme AI">
+          </aside>
+        </div>
+
+        <div class="relative z-20 grid overflow-hidden rounded-[28px] border border-limeai/20 bg-black/35 backdrop-blur md:grid-cols-4">
+          <div class="hero-feature">
+            <img class="feature-icon" src="/analiza-ai/assets/monitorizare-ai.webp" alt="" aria-hidden="true">
+            <div>
+              <h2>Monitorizare AI</h2>
+              <p>Verificăm dacă afacerea poate fi descoperită de sisteme AI.</p>
+            </div>
+          </div>
+          <div class="hero-feature">
+            <img class="feature-icon" src="/analiza-ai/assets/gow-icon.webp" alt="" aria-hidden="true">
+            <div>
+              <h2>Analize avansate</h2>
+              <p>Date clare despre website, entitate și surse externe.</p>
+            </div>
+          </div>
+          <div class="hero-feature">
+            <img class="feature-icon" src="/analiza-ai/assets/target-icon.webp" alt="" aria-hidden="true">
+            <div>
+              <h2>Optimizare continuă</h2>
+              <p>Recomandări rapide pentru o structură mai AI-ready.</p>
+            </div>
+          </div>
+          <div class="hero-feature">
+            <img class="feature-icon" src="/analiza-ai/assets/shield.webp" alt="" aria-hidden="true">
+            <div>
+              <h2>Vizibilitate sustenabilă</h2>
+              <p>Construim semnale care ajută AI-ul să înțeleagă afacerea.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script is:inline src="/analiza-ai/js/app.js"></script>
+  </body>
+</html>

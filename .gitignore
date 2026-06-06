@@ -17,7 +17,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+*.log
 
+# sqlite database
+data/
 
 # environment variables
 .env
@@ -31,3 +34,6 @@ pnpm-debug.log*
 
 # editor settings
 .vscode/
+
+# claude memory
+.claude/

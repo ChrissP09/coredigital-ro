@@ -1,0 +1,657 @@
+---
+export const prerender = false;
+
+import { findAnalysisById, findScoreHistory } from '../../../lib/repositories/analysis.repository.js';
+import env from '../../../lib/config/env.js';
+
+const { id } = Astro.params;
+const analysis = await findAnalysisById(id);
+
+if (!analysis) {
+  return Astro.redirect('/analiza-ai?error=Rezultatul+nu+a+fost+gasit');
+}
+
+const scoreHistory = await findScoreHistory(analysis.normalizedDomain);
+const isCached = Astro.url.searchParams.get('cached') === '1';
+const turnstileSiteKey = env.turnstileSiteKey;
+
+const external = analysis.signals.externalPresence || {};
+const foundExternal = external.externalSignalsFound || [];
+const missingExternal = external.externalSignalsMissing || [];
+const pageTypes = analysis.signals.page_types_count || {};
+const aiViz = external.aiVisibility || null;
+
+const pageTypeLabels: Record<string, string> = {
+  homepage: 'Pagină principală', services: 'Servicii', about: 'Despre noi',
+  resource: 'Articole / Resurse', legal: 'Legal / Politici',
+  contact: 'Contact', location: 'Locație', faq: 'Întrebări frecvente',
+  case_study: 'Studii de caz', other: 'Altele'
+};
+
+const score = Number(analysis.finalScore || 0);
+const potentialScore = Number(analysis.signals?.potentialScore || score);
+const externalScore = Number(analysis.signals?.externalPresenceScore || analysis.categoryScores.onlinePresence || 0);
+const aiVizCard = analysis.signals?.externalPresence?.aiVisibility || null;
+const aiMentioned = aiVizCard ? aiVizCard.mentionedCount : null;
+const aiTotal = aiVizCard ? aiVizCard.totalQueries : null;
+
+let level: string;
+if (aiMentioned === 0) {
+  level = score < 40 ? 'Greu de găsit' : 'Prezent online';
+} else if (aiMentioned !== null && aiMentioned < (aiTotal ?? 0)) {
+  level = score < 40 ? 'Greu de găsit' : score < 60 ? 'Prezent online' : score < 85 ? 'Vizibil și activ' : 'Bine reprezentat';
+} else {
+  level = score < 40 ? 'Greu de găsit' : score < 60 ? 'Prezent online' : score < 75 ? 'Vizibil și activ' : score < 85 ? 'Bine reprezentat' : 'Recomandat cu încredere';
+}
+
+const confidence = externalScore >= 75 ? 'Confirmat' : externalScore >= 50 ? 'Parțial confirmat' : 'Date insuficiente';
+const ring = `conic-gradient(#A3E635 ${score * 3.6}deg, rgba(255,255,255,0.08) 0deg)`;
+const pagesDiscovered = analysis.signals?.total_pages_discovered || analysis.pagesAnalyzed;
+const isJsOnly = pagesDiscovered <= 1 && (analysis.signals?.totalWords || 0) < 400;
+
+const categories = [
+  { label: 'Claritatea Ofertei',      value: analysis.categoryScores.businessUnderstanding, weight: '25%', hint: 'Cât de clar explică site-ul ce faci, cui te adresezi și unde activezi.' },
+  { label: 'Prezența Online',         value: analysis.categoryScores.onlinePresence,         weight: '30%', hint: 'Google Business, rețele sociale și recenzii care confirmă că afacerea există.' },
+  { label: 'Reputație Online',        value: analysis.signals.marketAuthorityScore || 0,     weight: '25%', hint: 'Cât de des apare afacerea menționată independent, în afara site-ului propriu.' },
+  { label: 'Credibilitatea Afacerii', value: analysis.categoryScores.trustAuthority,         weight: '15%', hint: 'Telefon, adresă, pagina Despre noi și informații legale vizibile pe site.' },
+  { label: 'Accesibilitate Tehnică',  value: analysis.categoryScores.discoverability,        weight: '5%',  hint: 'Dacă site-ul poate fi găsit și citit corect de sisteme automate și roboți AI.' }
+];
+
+// Score trend
+let trendSvg = '';
+if (scoreHistory.length >= 2) {
+  const W = 420, H = 72, PAD = 12;
+  const scores = scoreHistory.map((h: any) => h.score);
+  const minS = Math.max(0, Math.min(...scores) - 10);
+  const maxS = Math.min(100, Math.max(...scores) + 10);
+  const pts = scoreHistory.map((h: any, i: number) => ({
+    x: PAD + (i / (scoreHistory.length - 1)) * (W - PAD * 2),
+    y: H - PAD - ((h.score - minS) / ((maxS - minS) || 1)) * (H - PAD * 2),
+    score: h.score, date: h.date, id: h.id
+  }));
+  const polyline = pts.map((p: any) => `${p.x},${p.y}`).join(' ');
+  const first = pts[0], last = pts[pts.length - 1];
+  const diff = last.score - first.score;
+  const diffColor = diff > 0 ? '#A3E635' : diff < 0 ? '#f87171' : '#8B949E';
+  const diffText = diff > 0 ? `+${diff}` : `${diff}`;
+  trendSvg = `<div style="margin-bottom:1.25rem;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:0.875rem;padding:1rem 1.25rem;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#8B949E;">Evoluție scor · ${scoreHistory.length} analize</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;font-weight:700;color:${diffColor};">${diffText} pts față de prima analiză</span>
+    </div>
+    <svg viewBox="0 0 ${W} ${H}" style="width:100%;height:72px;overflow:visible;">
+      <polyline points="${polyline}" fill="none" stroke="${diffColor}" stroke-width="1.5" stroke-linejoin="round" opacity="0.4"/>
+      ${pts.map((p: any) => {
+        const isCur = p.id === analysis.id;
+        const d = new Date(p.date);
+        return `<circle cx="${p.x}" cy="${p.y}" r="${isCur ? 5 : 3}" fill="${isCur ? diffColor : '#1e2530'}" stroke="${diffColor}" stroke-width="1.5"/>
+        <text x="${p.x}" y="${p.y - 8}" text-anchor="middle" style="font-size:9px;fill:${isCur ? diffColor : '#8B949E'};font-family:'JetBrains Mono',monospace;font-weight:${isCur ? 700 : 400};">${p.score}</text>
+        <text x="${p.x}" y="${H - 1}" text-anchor="middle" style="font-size:8px;fill:#4a5568;font-family:'JetBrains Mono',monospace;">${d.getDate()}/${d.getMonth()+1}</text>`;
+      }).join('')}
+    </svg>
+  </div>`;
+}
+
+// AI intent suffixes for custom search placeholders
+const intentSuffixes = ['pret', 'recenzii', 'cel mai bun', 'oferta', 'pareri', 'recomandat', 'ieftin', 'de calitate', 'rapid', 'profesionist'];
+const q0 = aiViz?.queries?.[0] || '';
+const q1 = aiViz?.queries?.[1] || '';
+const suf0 = intentSuffixes.find((s: string) => !q0.includes(s)) || 'oferta';
+const suf1 = intentSuffixes.find((s: string) => !q1.includes(s) && s !== suf0) || 'recomandat';
+const placeholder1 = q0 + ' ' + suf0;
+const placeholder2 = q1 + ' ' + suf1;
+
+const analysisWebsiteUrlJson = JSON.stringify(analysis.websiteUrl);
+const normalizedDomainJson = JSON.stringify(analysis.normalizedDomain);
+---
+
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Scor {analysis.finalScore} - {analysis.normalizedDomain}</title>
+    <meta name="description" content={`Scor de vizibilitate AI pentru ${analysis.normalizedDomain}: ${analysis.finalScore}/100.`}>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/analiza-ai/css/app.css">
+    <link rel="icon" href="/analiza-ai/assets/Favicon circle dark.png" type="image/png">
+    {turnstileSiteKey && <script is:inline src="https://challenges.cloudflare.com/turnstile/v1/api.js" async defer></script>}
+    <style>
+      .btn-cta { transition: opacity .15s, transform .1s; }
+      .btn-cta:hover { opacity: .88; }
+      .btn-cta:active { transform: scale(.97); }
+      .btn-submit:hover { opacity: .88; }
+      .btn-submit:active { transform: scale(.98); }
+      .btn-close { transition: color .15s; }
+      .btn-close:hover { color: #fff !important; }
+      .form-input:focus { border-color: rgba(163,230,53,0.4) !important; }
+      @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+  </head>
+  <body>
+    <main class="mx-auto min-h-screen w-full max-w-7xl px-4 py-5 sm:px-6 md:py-8">
+      <nav class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <a href="/analiza-ai" class="w-fit rounded-lg border border-line bg-surface px-4 py-2 text-sm font-semibold text-white transition hover:border-limeai">Analizează alt website</a>
+        <p class="font-mono text-xs font-semibold uppercase text-muted">Raport de vizibilitate AI</p>
+      </nav>
+
+      {isCached && (
+        <div style="margin-bottom:1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:0.75rem;padding:0.75rem 1.25rem;font-size:0.8rem;color:#8B949E;">
+          <span>⏱ Analiză din {new Date(analysis.createdAt).toLocaleDateString('ro-RO', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</span>
+          <button id="open-reanalyze-modal" style="background:none;border:none;color:#A3E635;font-weight:600;font-size:0.8rem;cursor:pointer;padding:0;white-space:nowrap;">Reanalizeaz →</button>
+        </div>
+      )}
+
+      <!-- Score card -->
+      <section class="aura-card p-5 sm:p-6 lg:p-8">
+        <div class="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div class="max-w-4xl">
+            <p class="mono-label text-limeai">Rezultat pentru {analysis.normalizedDomain}</p>
+            <h1 class="mt-4 text-4xl font-medium leading-tight tracking-normal text-white sm:text-5xl lg:text-6xl">Scor de Vizibilitate AI</h1>
+            <p class="mt-5 max-w-2xl text-base leading-7 text-muted">
+              {isJsOnly ? 'Atenție: am putut analiza doar o pagină din site-ul tău — tehnologia folosită (JavaScript framework) limitează crawlerul nostru. Scorul poate fi subestimat.' : 'Scorul estimează cât de ușor pot sistemele AI să descopere, să înțeleagă, să verifice și să aibă încredere în afacerea ta.'}
+            </p>
+            <div class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              <div class="rounded-aura border border-line bg-command p-4">
+                <p class="mono-label text-muted">Stadiu actual</p>
+                <p class="mt-2 text-2xl font-medium">{level}</p>
+                <p class="mt-1.5 text-xs leading-4" style="color:#4a5568;">
+                  {aiMentioned === 0 ? 'Scorul site-ului e ok, dar nu ești recomandat în AI Search.' : aiMentioned !== null && aiMentioned < (aiTotal ?? 0) ? 'Apari parțial în căutările AI — există loc de creștere.' : aiMentioned === aiTotal && aiTotal ? 'Confirmat și de AI Search — ești vizibil activ.' : 'Bazat pe structura și conținutul site-ului tău.'}
+                </p>
+              </div>
+              <div class="rounded-aura border border-line bg-command p-4">
+                <p class="mono-label text-muted">Acuratețea analizei</p>
+                <p class="mt-2 text-2xl font-medium">{confidence}</p>
+                <p class="mt-1.5 text-xs leading-4" style="color:#4a5568;">
+                  {confidence === 'Confirmat' ? 'Am găsit surse externe solide care confirmă afacerea.' : confidence === 'Parțial confirmat' ? 'Am găsit câteva surse, dar nu suficiente pentru confirmare completă.' : 'Nu am găsit suficiente surse externe pentru a verifica afacerea.'}
+                </p>
+              </div>
+              <div class="rounded-aura border border-line bg-command p-4">
+                <p class="mono-label text-muted">Scor posibil</p>
+                <p class="mt-2 text-2xl font-medium">{potentialScore}/100</p>
+                <p class="mt-1.5 text-xs leading-4" style="color:#4a5568;">Scorul pe care îl poți atinge urmând pașii din raport.</p>
+              </div>
+              {aiVizCard && (() => {
+                const aiCardColor = aiVizCard.mentionedCount === 0 ? '#f87171' : aiVizCard.mentionedCount < aiVizCard.totalQueries ? '#fbbf24' : '#A3E635';
+                const aiCardBorder = aiVizCard.mentionedCount === 0 ? 'rgba(248,113,113,0.35)' : aiVizCard.mentionedCount < aiVizCard.totalQueries ? 'rgba(251,191,36,0.35)' : '#1e2530';
+                return (
+                  <div class="rounded-aura bg-command p-4" style={`border:1px solid ${aiCardBorder};`}>
+                    <p class="mono-label text-muted">AI Search live</p>
+                    <p class="mt-2 text-2xl font-medium" style={`color:${aiCardColor};`}>{aiVizCard.mentionedCount}/{aiVizCard.totalQueries} teste</p>
+                    <p class="mt-1.5 text-xs leading-4" style="color:#4a5568;">
+                      {aiVizCard.mentionedCount === 0 ? 'Afacerea ta nu a apărut în niciun test AI real.' : aiVizCard.mentionedCount < aiVizCard.totalQueries ? 'Apari în unele căutări AI, nu în toate.' : 'Apari în toate căutările AI testate.'}
+                    </p>
+                  </div>
+                );
+              })()}
+            </div>
+            {potentialScore > score && (
+              <p class="mt-4 text-sm text-muted">
+                {potentialScore - score >= 20 ? <>Ai potențial semnificativ nevalorificat — poți ajunge la <span class="text-white font-medium">{potentialScore}/100</span> urmând pașii din raport.</> : potentialScore - score >= 10 ? <>Mai ai nevoie de <span class="text-white font-medium">{potentialScore - score} puncte</span> pentru a ajunge la nivelul <em>Bine reprezentat</em>.</> : <>Ești aproape de nivelul maxim. <span class="text-white font-medium">{potentialScore - score} puncte</span> te despart de scorul tău optim.</>}
+              </p>
+            )}
+          </div>
+          <div class="flex items-center justify-center lg:justify-end">
+            <div class="grid h-44 w-44 place-items-center rounded-full p-2.5 sm:h-52 sm:w-52 sm:p-3" style={`background: ${ring};`}>
+              <div class="grid h-full w-full place-items-center rounded-full bg-surface">
+                <div class="text-center">
+                  <div class="text-6xl font-medium leading-none text-white">{score}</div>
+                  <div class="mt-2 font-mono text-xs uppercase text-limeai">din 100</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Score trend -->
+      {scoreHistory.length >= 2 && <Fragment set:html={trendSvg} />}
+
+      <!-- AI visibility alerts -->
+      {aiViz && aiViz.mentionedCount === 0 && (
+        <div style="margin-top:1.25rem;border:1px solid rgba(248,113,113,0.3);background:rgba(248,113,113,0.05);border-radius:0.875rem;padding:1rem 1.25rem;display:flex;align-items:flex-start;gap:0.875rem;">
+          <span style="font-size:1.1rem;flex-shrink:0;margin-top:0.1rem;color:#f87171;">⚠</span>
+          <div>
+            <p style="font-size:0.875rem;font-weight:600;color:#fca5a5;margin:0;">Afacerea ta nu apare când clienții caută pe AI</p>
+            <p style="margin-top:0.3rem;font-size:0.8rem;line-height:1.6;color:#8B949E;">Am testat {aiViz.totalQueries} căutări reale și afacerea ta nu a apărut în niciuna. Scorul de {analysis.finalScore}/100 arată că site-ul tău are potențial — dar testul AI confirmă că nu ești recomandat încă.</p>
+          </div>
+        </div>
+      )}
+      {aiViz && aiViz.mentionedCount > 0 && aiViz.mentionedCount < aiViz.totalQueries && (
+        <div style="margin-top:1.25rem;border:1px solid rgba(251,191,36,0.3);background:rgba(251,191,36,0.04);border-radius:0.875rem;padding:1rem 1.25rem;display:flex;align-items:flex-start;gap:0.875rem;">
+          <span style="font-size:1.1rem;flex-shrink:0;margin-top:0.1rem;color:#fbbf24;">◐</span>
+          <div>
+            <p style="font-size:0.875rem;font-weight:600;color:#fde68a;margin:0;">Apari în unele căutări AI — dar nu în toate</p>
+            <p style="margin-top:0.3rem;font-size:0.8rem;line-height:1.6;color:#8B949E;">Brandul tău a apărut în {aiViz.mentionedCount} din {aiViz.totalQueries} teste. Vizibilitatea ta în AI Search este parțială.</p>
+          </div>
+        </div>
+      )}
+
+      <!-- Category scores -->
+      <div class="mt-5">
+        <section class="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
+          {categories.map(cat => (
+            <article class="flex flex-col rounded-aura border border-line bg-surface p-4 shadow-aura">
+              <div class="flex-1">
+                <div class="flex min-w-0 items-start justify-between gap-3">
+                  <div class="min-w-0">
+                    <p class="mono-label text-muted">{cat.weight} din scor</p>
+                    <h2 class="mt-2 text-lg font-medium leading-snug text-white">{cat.label}</h2>
+                    {cat.hint && <p class="mt-1.5 text-xs leading-5 text-muted">{cat.hint}</p>}
+                  </div>
+                  <div class="shrink-0 rounded-full bg-limeai px-3 py-1.5 font-mono text-xs font-semibold text-[#191C21]">{cat.value}</div>
+                </div>
+              </div>
+              <div class="mt-4 h-2.5 overflow-hidden rounded-full bg-white/10">
+                <div class="h-full rounded-full bg-limeai" style={`width: ${cat.value}%;`}></div>
+              </div>
+            </article>
+          ))}
+        </section>
+      </div>
+
+      <!-- Stats grid -->
+      <section class="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+        <article class="rounded-aura border border-line bg-surface p-4">
+          <p class="mono-label text-muted">Pagini descoperite</p>
+          <p class="mt-2 text-3xl font-medium text-white">{analysis.signals.total_pages_discovered || analysis.pagesAnalyzed}</p>
+        </article>
+        <article class="rounded-aura border border-line bg-surface p-4">
+          <p class="mono-label text-muted">Pagini analizate</p>
+          <p class="mt-2 text-3xl font-medium text-white">{analysis.signals.total_pages_analyzed || analysis.pagesAnalyzed}</p>
+        </article>
+        <article class="rounded-aura border border-line bg-surface p-4">
+          <p class="mono-label text-muted">Servicii găsite</p>
+          <p class="mt-2 text-3xl font-medium text-white">{analysis.signals.service_pages_found || 0}</p>
+        </article>
+        <article class="rounded-aura border border-line bg-surface p-4">
+          <p class="mono-label text-muted">Resurse analizate</p>
+          <p class="mt-2 text-3xl font-medium text-white">{analysis.signals.blog_pages_analyzed || 0}</p>
+        </article>
+      </section>
+
+      <!-- External presence -->
+      <section class="mt-5 grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
+        <article class="aura-card p-5 sm:p-6">
+          <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p class="mono-label text-limeai">Ce am confirmat online</p>
+              <h2 class="mt-2 text-2xl font-medium">Informații verificate despre afacerea ta</h2>
+            </div>
+            <span class="rounded-full bg-limeai px-3 py-1 font-mono text-xs font-semibold text-[#191C21]">{analysis.categoryScores.onlinePresence}/100</span>
+          </div>
+          <div class="mt-5 grid gap-3 sm:grid-cols-2">
+            {!foundExternal.length && <div class="rounded-aura border border-line bg-command p-4 text-sm text-muted">Nu am găsit încă semnale externe puternice conectate la website.</div>}
+            {foundExternal.map((item: string) => <div class="rounded-aura border border-line bg-command p-4 text-sm text-white">{item}</div>)}
+          </div>
+        </article>
+        <article class="rounded-aura border border-line bg-surface p-5 shadow-aura sm:p-6">
+          <p class="mono-label text-limeai">Ce nu am putut confirma</p>
+          <h2 class="mt-2 text-2xl font-medium text-white">Ce poate fi îmbunătățit</h2>
+          <div class="mt-5 space-y-3">
+            {missingExternal.slice(0, 6).map((item: string) => <div class="rounded-aura border border-line bg-command p-4 text-sm text-muted">{item}</div>)}
+          </div>
+        </article>
+      </section>
+
+      <!-- Analyzed pages -->
+      <section class="mt-5">
+        <article class="aura-card p-5 sm:p-6">
+          <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p class="mono-label text-limeai">Pagini analizate</p>
+              <h2 class="mt-2 text-2xl font-medium">Crawl prioritizat</h2>
+            </div>
+            <p class="text-sm text-muted">{analysis.pagesAnalyzed} pagini verificate</p>
+          </div>
+          <div class="mt-5 max-h-[520px] space-y-3 overflow-auto pr-1">
+            {analysis.analyzedPages.map((page: any) => (
+              <article class="rounded-aura border border-line bg-command p-4">
+                <div class="flex min-w-0 flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                  <div class="min-w-0">
+                    <h3 class="break-words text-sm font-semibold leading-6 text-white">{page.title || page.url}</h3>
+                    <p class="mt-1 break-all text-xs leading-5 text-muted">{page.url}</p>
+                  </div>
+                  <span class="w-fit shrink-0 rounded-full bg-limeai px-3 py-1 font-mono text-xs font-semibold text-[#191C21]">{pageTypeLabels[page.pageType?.toLowerCase()] || page.pageType} · {page.status}</span>
+                </div>
+              </article>
+            ))}
+          </div>
+        </article>
+      </section>
+
+      <!-- AI Search section -->
+      {aiViz && (
+        <section class="mt-5">
+          <article class="aura-card p-5 sm:p-6">
+            <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p class="mono-label" style={aiViz.mentionedCount === 0 ? 'color:#f87171;' : 'color:#A3E635;'}>Vizibilitate AI Search · live</p>
+                <h2 class="mt-2 text-2xl font-medium">
+                  {aiViz.mentionedCount === 0 ? 'Afacerea ta nu apare când AI-ul caută pe web' : aiViz.mentionedCount === aiViz.totalQueries ? 'Brandul tău apare în toate căutările AI' : 'Apare brandul când AI-ul caută pe web?'}
+                </h2>
+                <p class="mt-1 text-sm text-muted">Am generat {aiViz.totalQueries} căutări reale și am testat fiecare prin AI search cu acces web în timp real.</p>
+              </div>
+              <span class="rounded-full px-4 py-1.5 font-mono text-sm font-semibold shrink-0" style={aiViz.mentionedCount === aiViz.totalQueries ? 'background:#A3E635;color:#191C21;' : aiViz.mentionedCount > 0 ? 'background:#fbbf24;color:#191C21;' : 'background:rgba(248,113,113,0.12);color:#f87171;border:1px solid rgba(248,113,113,0.3);'}>
+                {aiViz.mentionedCount}/{aiViz.totalQueries} teste
+              </span>
+            </div>
+            <div class="mt-5 grid gap-4 md:grid-cols-2">
+              {aiViz.results.map((result: any, i: number) => (
+                <div class="flex flex-col gap-3 rounded-aura border border-line bg-command p-4">
+                  <div class="flex items-start justify-between gap-2">
+                    <span class="font-mono text-xs text-muted">Query {i + 1}</span>
+                    {result.mentioned ? <span class="rounded-full bg-limeai px-3 py-1 font-mono text-xs font-semibold text-[#191C21]">apare ✓</span> : <span class="rounded-full bg-surface border border-line px-2.5 py-0.5 font-mono text-xs text-muted">absent</span>}
+                  </div>
+                  <p class="text-sm font-medium text-white leading-snug">"{result.query}"</p>
+                  {result.brandSnippet && <p class="text-xs leading-5 text-muted border-l-2 border-limeai pl-3 italic">{result.brandSnippet}</p>}
+                  {result.citedUrls?.length > 0 && (
+                    <div class="mt-auto pt-2 border-t border-line">
+                      <p class="text-xs text-muted mb-1.5">Surse citate de AI:</p>
+                      {result.citedUrls.slice(0, 3).map((cite: any) => (
+                        <p class={`text-xs truncate mb-0.5 ${cite.url.toLowerCase().includes(external.domain?.replace(/^www\./, '') || '') ? 'text-limeai font-semibold' : 'text-muted'}`}>› {cite.title || cite.url}</p>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </article>
+        </section>
+      )}
+
+      <!-- Custom keyword search -->
+      {aiViz && (
+        <section class="mt-4" id="custom-search-section">
+          <div class="rounded-aura border border-line bg-surface p-5">
+            <p class="mono-label text-limeai" style="font-size:0.65rem;letter-spacing:0.1em;">Testează cuvinte cheie proprii</p>
+            <p class="mt-1 text-sm text-muted">Introdu 2 termeni pe care clienții tăi i-ar căuta și verificăm dacă apari în răspunsul AI.</p>
+            <div id="custom-search-form" style="margin-top:1.25rem;display:flex;flex-direction:column;gap:0.75rem;">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;">
+                <input id="cq1" type="text" placeholder={`ex: "${placeholder1}"`} maxlength="80" class="form-input" style="width:100%;box-sizing:border-box;background:#131920;border:1px solid #1e2530;border-radius:0.75rem;padding:0.65rem 1rem;font-size:0.8rem;color:#e6edf3;outline:none;transition:border-color .2s;" />
+                <input id="cq2" type="text" placeholder={`ex: "${placeholder2}"`} maxlength="80" class="form-input" style="width:100%;box-sizing:border-box;background:#131920;border:1px solid #1e2530;border-radius:0.75rem;padding:0.65rem 1rem;font-size:0.8rem;color:#e6edf3;outline:none;transition:border-color .2s;" />
+              </div>
+              <div style="display:flex;align-items:center;gap:0.75rem;">
+                <button id="custom-search-btn" style="background:#A3E635;color:#191C21;font-weight:700;font-size:0.8rem;padding:0.6rem 1.5rem;border-radius:9999px;border:none;cursor:pointer;transition:opacity .15s;" class="btn-cta">Testează gratuit →</button>
+              </div>
+            </div>
+            <div id="custom-search-results" style="display:none;margin-top:1.25rem;"></div>
+          </div>
+        </section>
+      )}
+
+      <!-- Custom search email modal -->
+      {aiViz && (
+        <div id="custom-email-modal" style="display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:1rem;background:rgba(8,10,13,0.85);backdrop-filter:blur(10px);">
+          <div style="width:100%;max-width:400px;background:#0d1014;border:1px solid #1e2530;border-radius:1.25rem;padding:2rem;position:relative;box-shadow:0 32px 64px rgba(0,0,0,0.6);">
+            <button id="close-custom-modal" class="btn-close" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:#8B949E;font-size:1.25rem;cursor:pointer;padding:0.25rem 0.5rem;border-radius:6px;">✕</button>
+            <span style="display:inline-block;font-family:'JetBrains Mono',monospace;font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#A3E635;background:rgba(163,230,53,0.08);border:1px solid rgba(163,230,53,0.2);padding:0.25rem 0.75rem;border-radius:9999px;">O căutare gratuită</span>
+            <h3 style="margin-top:0.875rem;font-size:1.1rem;font-weight:600;color:#fff;line-height:1.3;">Lasă-ne adresa de email</h3>
+            <p style="margin-top:0.4rem;font-size:0.8rem;line-height:1.6;color:#8B949E;">Îți trimitem o listă completă de căutări și rezultatele acestora din zona ta.</p>
+            <div style="margin-top:1.25rem;display:flex;flex-direction:column;gap:0.75rem;">
+              <input id="custom-email-input" type="email" placeholder="adresa@email.ro" class="form-input" style="width:100%;box-sizing:border-box;background:#131920;border:1px solid #1e2530;border-radius:0.75rem;padding:0.75rem 1rem;font-size:0.875rem;color:#e6edf3;outline:none;transition:border-color .2s;" />
+              <p id="custom-email-error" style="display:none;color:#f87171;font-size:0.75rem;margin:0;"></p>
+              {turnstileSiteKey && <div class="cf-turnstile" id="custom-turnstile" data-sitekey={turnstileSiteKey} data-appearance="interaction-only" data-execution="execute" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;"></div>}
+              <button id="custom-email-submit" class="btn-cta" style="background:#A3E635;color:#191C21;font-weight:700;font-size:0.875rem;padding:0.8rem 1rem;border-radius:0.875rem;border:none;cursor:pointer;">Rulează căutările →</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <!-- Lead gate -->
+      <div class="relative mt-5" id="findings-gate">
+        <div id="findings-preview" class="pointer-events-none select-none" style="filter:blur(5px);opacity:0.55;">
+          <section class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            <article class="aura-card p-5 md:p-6">
+              <p class="mono-label text-limeai">Top 3</p>
+              <h2 class="mt-3 text-2xl font-medium">Ce funcționează bine</h2>
+              <ul class="mt-5 space-y-3 text-sm leading-6 text-muted">
+                {!analysis.strengths.length ? <li class="rounded-aura border border-line bg-command p-4">Nu am detectat încă semnale puternice.</li> : analysis.strengths.map((item: string) => <li class="rounded-aura border border-line bg-command p-4">{item}</li>)}
+              </ul>
+            </article>
+            <article class="aura-card p-5 md:p-6">
+              <p class="mono-label text-limeai">Top 3</p>
+              <h2 class="mt-3 text-2xl font-medium">Ce te ține în loc</h2>
+              <ul class="mt-5 space-y-3 text-sm leading-6 text-muted">
+                {!analysis.weaknesses.length ? <li class="rounded-aura border border-line bg-command p-4">Nu am detectat limitări majore.</li> : analysis.weaknesses.map((item: string) => <li class="rounded-aura border border-line bg-command p-4">{item}</li>)}
+              </ul>
+            </article>
+            <article class="rounded-aura border border-limeai/40 bg-limeai p-5 text-[#191C21] shadow-aura md:p-6 md:col-span-2 xl:col-span-1">
+              <p class="mono-label">Pași următori</p>
+              <h2 class="mt-3 text-2xl font-medium">Ce poți îmbunătăți</h2>
+              <ul class="mt-5 space-y-3 text-sm leading-6">
+                {!analysis.recommendations.length ? <li class="rounded-aura bg-white/45 p-4">Menține consistența dintre website și profilurile externe.</li> : analysis.recommendations.map((item: string) => <li class="rounded-aura bg-white/45 p-4">{item}</li>)}
+              </ul>
+            </article>
+          </section>
+        </div>
+        <div id="findings-overlay" style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(to bottom, transparent 0%, #0d1014 55%);">
+          <div style="text-align:center;padding:6rem 1.5rem 3rem;">
+            <p style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#A3E635;">Raport complet</p>
+            <h2 style="margin-top:0.75rem;font-size:1.75rem;font-weight:600;color:#fff;line-height:1.25;">Recomandări personalizate + analiză detaliată</h2>
+            <p style="margin:0.75rem auto 0;max-width:420px;font-size:0.875rem;line-height:1.6;color:#8B949E;">Lasă-ne datele de contact și deblochezi instantaneu recomandările prioritizate și raportul complet al analizei.</p>
+            <button id="open-lead-modal" class="btn-cta" style="margin-top:1.75rem;display:inline-flex;align-items:center;gap:0.5rem;background:#A3E635;color:#191C21;font-weight:700;font-size:0.9rem;padding:0.875rem 2rem;border-radius:9999px;border:none;cursor:pointer;">Vreau raportul complet &nbsp;→</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Lead modal -->
+    <div id="lead-modal" style="display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:1rem;background:rgba(8,10,13,0.82);backdrop-filter:blur(10px);">
+      <div style="width:100%;max-width:460px;background:#0d1014;border:1px solid #1e2530;border-radius:1.25rem;padding:2.25rem;box-shadow:0 0 0 1px rgba(163,230,53,0.07), 0 32px 64px rgba(0,0,0,0.6);position:relative;">
+        <button id="close-lead-modal" class="btn-close" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:#8B949E;font-size:1.25rem;cursor:pointer;line-height:1;padding:0.25rem 0.5rem;border-radius:6px;">✕</button>
+        <div style="margin-bottom:1.75rem;">
+          <span id="modal-badge" style="display:inline-block;font-family:'JetBrains Mono',monospace;font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#A3E635;background:rgba(163,230,53,0.08);border:1px solid rgba(163,230,53,0.2);padding:0.25rem 0.75rem;border-radius:9999px;">Acces imediat</span>
+          <h3 id="modal-title" style="margin-top:0.875rem;font-size:1.25rem;font-weight:600;color:#fff;line-height:1.3;">Deblochează raportul complet</h3>
+          <p id="modal-desc" style="margin-top:0.5rem;font-size:0.85rem;line-height:1.6;color:#8B949E;">Recomandări prioritizate + toate semnalele detectate pentru <strong style="color:#e6edf3;">{analysis.normalizedDomain}</strong>.</p>
+        </div>
+        <form id="lead-form" style="display:flex;flex-direction:column;gap:1rem;">
+          <div>
+            <label style="display:block;margin-bottom:0.4rem;font-family:'JetBrains Mono',monospace;font-size:0.65rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#8B949E;">Nume complet <span style="color:#A3E635;">*</span></label>
+            <input type="text" name="name" required placeholder="Ion Popescu" class="form-input" style="width:100%;box-sizing:border-box;background:#131920;border:1px solid #1e2530;border-radius:0.75rem;padding:0.75rem 1rem;font-size:0.875rem;color:#e6edf3;outline:none;transition:border-color .2s;" />
+          </div>
+          <div>
+            <label style="display:block;margin-bottom:0.4rem;font-family:'JetBrains Mono',monospace;font-size:0.65rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#8B949E;">Număr de telefon <span style="color:#A3E635;">*</span></label>
+            <input type="tel" name="phone" required placeholder="07xx xxx xxx" class="form-input" style="width:100%;box-sizing:border-box;background:#131920;border:1px solid #1e2530;border-radius:0.75rem;padding:0.75rem 1rem;font-size:0.875rem;color:#e6edf3;outline:none;transition:border-color .2s;" />
+          </div>
+          <div>
+            <label style="display:block;margin-bottom:0.4rem;font-family:'JetBrains Mono',monospace;font-size:0.65rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#8B949E;">Adresă email <span style="color:#8B949E;font-weight:400;">(opțional)</span></label>
+            <input type="email" name="email" placeholder="ion@companie.ro" class="form-input" style="width:100%;box-sizing:border-box;background:#131920;border:1px solid #1e2530;border-radius:0.75rem;padding:0.75rem 1rem;font-size:0.875rem;color:#e6edf3;outline:none;transition:border-color .2s;" />
+          </div>
+          <div>
+            <label style="display:block;margin-bottom:0.4rem;font-family:'JetBrains Mono',monospace;font-size:0.65rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#8B949E;">Funcție în companie <span style="color:#8B949E;font-weight:400;">(opțional)</span></label>
+            <input type="text" name="role" placeholder="ex: Fondator, Marketing Manager, CEO" class="form-input" style="width:100%;box-sizing:border-box;background:#131920;border:1px solid #1e2530;border-radius:0.75rem;padding:0.75rem 1rem;font-size:0.875rem;color:#e6edf3;outline:none;transition:border-color .2s;" />
+          </div>
+          <p id="lead-error" style="display:none;color:#f87171;font-size:0.75rem;"></p>
+          <button type="submit" id="lead-submit" class="btn-cta btn-submit" style="width:100%;background:#A3E635;color:#191C21;font-weight:700;font-size:0.9rem;padding:0.9rem 1rem;border-radius:0.875rem;border:none;cursor:pointer;margin-top:0.25rem;">Deblochez raportul complet →</button>
+          {turnstileSiteKey && <div class="cf-turnstile" id="lead-turnstile" data-sitekey={turnstileSiteKey} data-appearance="interaction-only" data-execution="execute" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;"></div>}
+        </form>
+        <p style="margin-top:1rem;text-align:center;font-size:0.72rem;color:#4a5568;">Nu trimitem spam. Datele sunt folosite exclusiv pentru a te contacta cu recomandările.</p>
+      </div>
+    </div>
+
+    <script is:inline define:vars={{ analysisId: analysis.id, normalizedDomain: analysis.normalizedDomain, websiteUrl: analysis.websiteUrl }}>
+      (function () {
+        var modal = document.getElementById('lead-modal');
+        var preview = document.getElementById('findings-preview');
+        var overlay = document.getElementById('findings-overlay');
+        var gate = document.getElementById('findings-gate');
+        var form = document.getElementById('lead-form');
+        var errEl = document.getElementById('lead-error');
+        var btn = document.getElementById('lead-submit');
+        var openBtn = document.getElementById('open-lead-modal');
+        var reanalyzeBtn = document.getElementById('open-reanalyze-modal');
+        var closeBtn = document.getElementById('close-lead-modal');
+        var modalBadge = document.getElementById('modal-badge');
+        var modalTitle = document.getElementById('modal-title');
+        var modalDesc = document.getElementById('modal-desc');
+        var isReanalyzeMode = false;
+
+        function showModal(reanalyze) {
+          isReanalyzeMode = !!reanalyze;
+          if (isReanalyzeMode) {
+            modalBadge.textContent = 'Analiză nouă';
+            modalTitle.textContent = 'Deblochează o nouă analiză';
+            modalDesc.innerHTML = 'Ai efectuat o analiză gratuită în ultimele 24 de ore. Lasă datele de contact și deblochezi mai multe analize gratuite pentru <strong style="color:#e6edf3;">' + normalizedDomain + '</strong>.';
+            btn.textContent = 'Deblochez reanaliza →';
+          } else {
+            modalBadge.textContent = 'Acces imediat';
+            modalTitle.textContent = 'Deblochează raportul complet';
+            modalDesc.innerHTML = 'Recomandări prioritizate + toate semnalele detectate pentru <strong style="color:#e6edf3;">' + normalizedDomain + '</strong>.';
+            btn.textContent = 'Deblochez raportul complet →';
+          }
+          modal.style.display = 'flex';
+        }
+
+        function hideModal() { modal.style.display = 'none'; }
+
+        function showReanalyzeOverlay() {
+          var ov = document.createElement('div');
+          ov.style.cssText = 'position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.88);backdrop-filter:blur(4px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;color:#fff;font-family:inherit';
+          ov.innerHTML = '<svg width="44" height="44" viewBox="0 0 44 44" fill="none" style="animation:spin 1s linear infinite"><circle cx="22" cy="22" r="18" stroke="#ffffff22" stroke-width="4"/><path d="M22 4a18 18 0 0 1 18 18" stroke="#a3e635" stroke-width="4" stroke-linecap="round"/></svg><p id="ov-step" style="font-size:1.1rem;font-weight:600;margin:0">Se pregătește reanaliza...</p><p style="font-size:0.82rem;color:#ffffff55;margin:0">Crawlăm până la 25 de pagini și verificăm prezența externă</p>';
+          document.body.appendChild(ov);
+          var steps = [[3000,'Se verifică robots.txt și sitemap-ul...'],[7000,'Se crawlează paginile importante...'],[13000,'Se analizează conținutul și structura...'],[20000,'Se verifică prezența externă și recenziile...'],[28000,'Se testează vizibilitatea în AI search...'],[38000,'Se calculează scorul final...']];
+          var stepEl = ov.querySelector('#ov-step');
+          steps.forEach(function(s) { setTimeout(function() { stepEl.textContent = s[1]; }, s[0]); });
+        }
+
+        function unlock() {
+          hideModal();
+          if (isReanalyzeMode) {
+            showReanalyzeOverlay();
+            var f = document.createElement('form');
+            f.method = 'post';
+            f.action = '/api/scor?refresh=1';
+            var inp = document.createElement('input');
+            inp.type = 'hidden'; inp.name = 'websiteUrl'; inp.value = websiteUrl;
+            f.appendChild(inp);
+            document.body.appendChild(f);
+            setTimeout(function() { f.submit(); }, 80);
+          } else {
+            preview.style.cssText = 'transition:filter 0.4s,opacity 0.4s;';
+            overlay.style.display = 'none';
+            gate.style.position = 'static';
+          }
+        }
+
+        if (openBtn) openBtn.addEventListener('click', function() { showModal(false); });
+        if (reanalyzeBtn) reanalyzeBtn.addEventListener('click', function() { showModal(true); });
+        if (closeBtn) closeBtn.addEventListener('click', hideModal);
+        modal.addEventListener('click', function(e) { if (e.target === modal) hideModal(); });
+
+        function showError(msg) {
+          errEl.textContent = msg; errEl.style.display = 'block';
+          btn.textContent = isReanalyzeMode ? 'Deblochez reanaliza →' : 'Deblochez raportul complet →';
+          btn.disabled = false;
+        }
+
+        function getTurnstileToken(widgetId) {
+          return new Promise(function(resolve) {
+            var widget = document.getElementById(widgetId);
+            if (!widget || !window.turnstile) return resolve('');
+            window.turnstile.execute(widget, { callback: function(token) { resolve(token); }, 'error-callback': function() { resolve(''); } });
+          });
+        }
+
+        form.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          errEl.style.display = 'none';
+          var nameVal = form.elements['name'].value.trim();
+          var phoneVal = form.elements['phone'].value.trim();
+          var emailVal = form.elements['email'].value.trim();
+          if (!nameVal) return showError('Numele complet este obligatoriu.');
+          if (!phoneVal) return showError('Numărul de telefon este obligatoriu.');
+          if (phoneVal.replace(/\D/g,'').length < 10) return showError('Numărul de telefon pare incomplet.');
+          if (emailVal && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(emailVal)) return showError('Adresa de email nu pare validă.');
+          btn.textContent = 'Se trimite...'; btn.disabled = true;
+          var tsToken = await getTurnstileToken('lead-turnstile');
+          try {
+            var res = await fetch('/api/lead', {
+              method: 'POST', headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ name: nameVal, phone: phoneVal, email: emailVal, role: form.elements['role'].value.trim(), analysisId: analysisId, domain: normalizedDomain, 'cf-turnstile-response': tsToken })
+            });
+            var json = await res.json();
+            if (!res.ok) throw new Error(json.error || 'Eroare server');
+            unlock();
+          } catch(err) { showError(err.message); }
+        });
+      })();
+    </script>
+
+    <script is:inline define:vars={{ analysisId: analysis.id, normalizedDomain: analysis.normalizedDomain, hasAiViz: !!aiViz, placeholder1, placeholder2 }}>
+      if (hasAiViz) {
+        (function() {
+          var btn = document.getElementById('custom-search-btn');
+          var modal = document.getElementById('custom-email-modal');
+          var closeBtn = document.getElementById('close-custom-modal');
+          var submitBtn = document.getElementById('custom-email-submit');
+          var emailInp = document.getElementById('custom-email-input');
+          var errEl = document.getElementById('custom-email-error');
+          var resultsEl = document.getElementById('custom-search-results');
+          if (!btn) return;
+
+          var cq1 = document.getElementById('cq1');
+          var cq2 = document.getElementById('cq2');
+          cq1.addEventListener('input', function() { cq1.style.borderColor = ''; });
+          cq2.addEventListener('input', function() { cq2.style.borderColor = ''; });
+
+          btn.addEventListener('click', function() {
+            var q1 = cq1.value.trim(), q2 = cq2.value.trim();
+            if (!q1 || !q2) { cq1.style.borderColor = q1 ? '' : 'rgba(248,113,113,0.5)'; cq2.style.borderColor = q2 ? '' : 'rgba(248,113,113,0.5)'; return; }
+            modal.style.display = 'flex';
+          });
+
+          closeBtn.addEventListener('click', function() { modal.style.display = 'none'; });
+          modal.addEventListener('click', function(e) { if (e.target === modal) modal.style.display = 'none'; });
+
+          function getTurnstileTokenCustom(widgetId) {
+            return new Promise(function(resolve) {
+              var widget = document.getElementById(widgetId);
+              if (!widget || !window.turnstile) return resolve('');
+              window.turnstile.execute(widget, { callback: function(token) { resolve(token); }, 'error-callback': function() { resolve(''); } });
+            });
+          }
+
+          submitBtn.addEventListener('click', async function() {
+            var email = emailInp.value.trim();
+            errEl.style.display = 'none';
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { errEl.textContent = 'Introdu o adresă de email validă.'; errEl.style.display = 'block'; return; }
+            submitBtn.textContent = 'Se rulează...'; submitBtn.disabled = true;
+            var tsToken = await getTurnstileTokenCustom('custom-turnstile');
+            modal.style.display = 'none';
+            var ov = document.createElement('div');
+            ov.id = 'custom-loading-ov';
+            ov.style.cssText = 'position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,0.88);backdrop-filter:blur(4px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;color:#fff;font-family:inherit';
+            ov.innerHTML = '<svg width="44" height="44" viewBox="0 0 44 44" fill="none" style="animation:spin 1s linear infinite"><circle cx="22" cy="22" r="18" stroke="#ffffff22" stroke-width="4"/><path d="M22 4a18 18 0 0 1 18 18" stroke="#a3e635" stroke-width="4" stroke-linecap="round"/></svg><p style="font-size:1.1rem;font-weight:600;margin:0">Se testează vizibilitatea în AI Search...</p><p style="font-size:0.82rem;color:#ffffff55;margin:0">Verificăm dacă afacerea ta apare pentru cuvintele cheie introduse</p>';
+            document.body.appendChild(ov);
+            try {
+              var res = await fetch('/api/custom-search', {
+                method: 'POST', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ query1: document.getElementById('cq1').value.trim(), query2: document.getElementById('cq2').value.trim(), email: email, brandName: normalizedDomain, domain: normalizedDomain, analysisId: analysisId, 'cf-turnstile-response': tsToken })
+              });
+              var json = await res.json();
+              if (!res.ok) throw new Error(json.error || 'Eroare server');
+              document.body.removeChild(ov);
+              document.getElementById('custom-search-form').style.display = 'none';
+              resultsEl.style.display = 'block';
+              resultsEl.innerHTML = '<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">' + json.results.map(function(r, i) {
+                var appeared = r.mentioned || r.domainCited;
+                var badge = appeared ? '<span style="font-size:0.7rem;font-weight:700;color:#191C21;background:#A3E635;padding:0.2rem 0.6rem;border-radius:9999px;">apare ✓</span>' : '<span style="font-size:0.7rem;font-weight:600;color:#8B949E;">absent</span>';
+                var sources = (r.citedUrls||[]).slice(0,3).map(function(c){return '<li style="font-size:0.72rem;color:#8B949E;">› '+(c.title||c.url)+'</li>';}).join('');
+                return '<div style="border:1px solid #1e2530;border-radius:0.875rem;padding:1rem;background:#0d1117;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;"><span style="font-size:0.65rem;color:#8B949E;font-family:monospace;text-transform:uppercase;letter-spacing:0.08em;">Query '+(i+1)+'</span>'+badge+'</div><p style="font-size:0.82rem;font-weight:600;color:#e6edf3;margin:0 0 0.5rem;">"'+r.query+'"</p>'+(r.brandSnippet?'<p style="font-size:0.75rem;color:#a3e635;margin:0 0 0.5rem;font-style:italic;">'+r.brandSnippet+'</p>':'')+(sources?'<ul style="margin:0;padding:0;list-style:none;">'+sources+'</ul>':'')+'</div>';
+              }).join('') + '</div>';
+            } catch(err) {
+              var ovEl = document.getElementById('custom-loading-ov');
+              if (ovEl) document.body.removeChild(ovEl);
+              modal.style.display = 'flex';
+              errEl.textContent = err.message; errEl.style.display = 'block';
+              submitBtn.textContent = 'Rulează căutările →'; submitBtn.disabled = false;
+            }
+          });
+        })();
+      }
+    </script>
+  </body>
+</html>

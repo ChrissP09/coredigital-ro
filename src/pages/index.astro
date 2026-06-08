@@ -5,80 +5,77 @@ import ProcessSteps from '../components/ui/ProcessSteps.astro';
 ---
 
 <BaseLayout
-  title="CoreDigital — Găsit, ales și contactat online. Prezență digitală completă."
-  description="Construim și îmbunătățim constant website-ul, reputația online și vizibilitatea afacerii tale, astfel încât mai mulți oameni să te găsească și să te aleagă."
+  title="CoreDigital - Prezență online completă pentru business-uri locale"
+  description="Tot ce are nevoie un business local online, într-un singur abonament lunar. Website modern, colectare review-uri și AI chatbot pentru afacerea ta."
 >
 
 <!-- ============================================================
      HERO
      ============================================================ -->
-<section class="relative overflow-hidden" style="background: hsl(var(--color-bg)); padding-top: 6rem; padding-bottom: 4rem;">
+<section class="relative overflow-hidden" style="background: hsl(var(--color-bg)); padding-top: 7rem; padding-bottom: 5rem;">
 
-  <!-- Dot grid with radial mask -->
+  <!-- Dot grid with radial mask — visible in the lit zone, fades at edges -->
   <div class="pointer-events-none absolute inset-0" style="background-image: radial-gradient(circle, hsl(var(--color-border) / 0.9) 1px, transparent 1px); background-size: 28px 28px; -webkit-mask-image: radial-gradient(ellipse 75% 80% at 50% 30%, black 20%, transparent 75%); mask-image: radial-gradient(ellipse 75% 80% at 50% 30%, black 20%, transparent 75%);"></div>
 
-  <!-- Lime glow top center -->
+  <!-- Blob 1: lime — top center, main light source -->
   <div class="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[860px] h-[480px]" style="background: radial-gradient(ellipse 55% 55% at 50% 0%, hsl(var(--color-lime) / 0.18) 0%, transparent 70%);"></div>
+
+  <!-- Blob 2: lime — mid left, secondary depth -->
   <div class="pointer-events-none absolute top-1/3 -left-32 w-[500px] h-[400px]" style="background: radial-gradient(ellipse at 30% 50%, hsl(var(--color-lime) / 0.07) 0%, transparent 65%);"></div>
+
+  <!-- Blob 3: sky — bottom right, cool contrast -->
   <div class="pointer-events-none absolute bottom-0 right-0 w-[400px] h-[300px]" style="background: radial-gradient(ellipse at 80% 100%, hsl(var(--color-sky) / 0.06) 0%, transparent 65%);"></div>
+
+  <!-- Vignette corners -->
   <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(ellipse 130% 110% at 50% 50%, transparent 40%, hsl(var(--color-bg) / 0.85) 100%);"></div>
   <div class="pointer-events-none absolute bottom-0 left-0 right-0 h-24" style="background: linear-gradient(to top, hsl(var(--color-bg)), transparent);"></div>
 
   <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="grid lg:grid-cols-[1fr_1.15fr] gap-8 lg:gap-8 items-center">
+    <div class="grid lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-16 items-center">
 
       <!-- Left: copy -->
       <div>
-        <!-- Badge -->
-        <div class="inline-flex items-center gap-2 rounded-full px-3 py-1.5 mb-8 text-[0.65rem] font-mono tracking-widest uppercase" style="background: hsl(var(--color-surface) / 0.8); border: 1px solid hsl(var(--color-border)); color: hsl(var(--color-muted)); backdrop-filter: blur(8px);">
-          <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background: var(--brand-color);"></span>
-          Creștem vizibilitatea afacerii tale online
+        <div class="inline-flex items-center gap-2 rounded-full px-3 py-1.5 mb-8 text-[0.7rem] font-mono tracking-wider uppercase" style="background: hsl(var(--color-surface) / 0.8); border: 1px solid hsl(var(--color-border)); color: hsl(var(--color-muted)); backdrop-filter: blur(8px);">
+          <span class="w-1.5 h-1.5 rounded-full" style="background: var(--brand-color);"></span>
+          Prezență digitală completă
         </div>
 
-        <h1 class="mb-7" style="font-size: clamp(2.1rem, 4vw, 3.5rem); font-weight: var(--fw-display); letter-spacing: var(--ls-tight); line-height: var(--lh-display);">
-          Tot ce are nevoie<br/>afacerea ta pentru<br/>a fi <span style="color: var(--brand-color); text-shadow: 0 0 60px hsl(var(--color-lime) / 0.4);">găsită, aleasă</span> și<br/><span style="color: var(--brand-color); text-shadow: 0 0 60px hsl(var(--color-lime) / 0.4);">contactată</span> online.
+        <h1 class="mb-7" style="font-size: clamp(2.6rem, 5.5vw, 4rem); font-weight: 600; letter-spacing: -0.03em; line-height: 1.04;">
+          Prezență online<br/>completă prin<br/>
+          <span style="color: var(--brand-color); text-shadow: 0 0 60px hsl(var(--color-lime) / 0.4);">abonament.</span>
         </h1>
 
-        <p class="mb-10 max-w-[460px]" style="color: hsl(var(--color-muted)); font-size: 1.05rem; line-height: 1.75;">
-          Construim și îmbunătățim constant website-ul, reputația online și vizibilitatea afacerii tale, astfel încât mai mulți oameni să te găsească și să te aleagă.
+        <p class="mb-10 max-w-[420px]" style="color: hsl(var(--color-muted)); font-size: 1.05rem; line-height: 1.7;">
+          Website modern, colectare review-uri automate și AI chatbot pentru business-ul tău local — totul într-un singur abonament lunar predictibil.
         </p>
 
-        <!-- Service pills row -->
-        <div class="flex flex-wrap items-center gap-x-5 gap-y-2 mb-10" style="color: hsl(var(--color-muted)); font-size: 0.85rem;">
-          <span class="flex items-center gap-1.5">
-            <LucideIcon name="Monitor" size={13} style="color: var(--brand-color);" />
-            Website
-          </span>
-          <span style="color: hsl(var(--color-border));">·</span>
-          <span class="flex items-center gap-1.5">
-            <LucideIcon name="MapPin" size={13} style="color: var(--brand-color);" />
-            Google Business
-          </span>
-          <span style="color: hsl(var(--color-border));">·</span>
-          <span class="flex items-center gap-1.5">
-            <LucideIcon name="Star" size={13} style="color: var(--brand-color);" />
-            Recenzii
-          </span>
-          <span style="color: hsl(var(--color-border));">·</span>
-          <span class="flex items-center gap-1.5">
-            <LucideIcon name="Zap" size={13} style="color: var(--brand-color);" />
-            Automatizări
-          </span>
+        <!-- Feature pills -->
+        <div class="flex flex-wrap gap-3 mb-10">
+          {[
+            {icon: 'Zap',         label: 'Setup rapid'},
+            {icon: 'CreditCard',  label: 'Abonament lunar'},
+            {icon: 'ShieldCheck', label: 'Cost predictibil'},
+          ].map(f => (
+            <span class="inline-flex items-center gap-2 text-sm px-3 py-1.5 rounded-full border" style="background: hsl(var(--color-surface) / 0.6); border-color: hsl(var(--color-border)); color: hsl(var(--color-muted)); backdrop-filter: blur(8px);">
+              <LucideIcon name={f.icon} size={13} style="color: var(--brand-color);" />
+              {f.label}
+            </span>
+          ))}
         </div>
 
         <div class="flex flex-wrap gap-3">
-          <a class="u-brand-cta u-btn-lg u-btn-split" href="#servicii">
-            Vezi cum te putem ajuta
+          <a class="u-brand-cta u-btn-lg u-btn-split" href="/preturi">
+            Vezi pachetele
             <span class="btn-ic"><LucideIcon name="ArrowRight" size={16} /></span>
           </a>
-          <a class="u-brand-outline u-btn-lg u-btn-split" href="/preturi">
-            Vezi pachetele
+          <a class="u-brand-outline u-btn-lg u-btn-split" href="#cum-functioneaza">
+            Cum funcționează
             <span class="btn-ic"><LucideIcon name="Play" size={14} /></span>
           </a>
         </div>
       </div>
 
-      <!-- Right: dashboard mockup -->
+      <!-- Right: app screenshot mockup -->
       <div class="relative hidden lg:block">
 
         <!-- Glow behind the card -->
@@ -102,10 +99,11 @@ import ProcessSteps from '../components/ui/ProcessSteps.astro';
           </div>
 
           <!-- App shell -->
-          <div class="flex" style="height: 420px;">
+          <div class="flex" style="height: 320px;">
 
             <!-- Sidebar -->
-            <div class="w-44 flex-shrink-0 border-r p-3 flex flex-col gap-0.5" style="background: hsl(215 20% 7%); border-color: hsl(var(--color-border));">
+            <div class="w-44 flex-shrink-0 border-r p-3 flex flex-col gap-1" style="background: hsl(215 20% 7%); border-color: hsl(var(--color-border));">
+              <!-- Logo area -->
               <div class="flex items-center gap-2 px-2 py-2 mb-2">
                 <div class="w-6 h-6 rounded-md flex items-center justify-center" style="background: var(--brand-soft); border: 1px solid var(--brand-border);">
                   <LucideIcon name="Zap" size={12} style="color: var(--brand-color);" />
@@ -113,13 +111,11 @@ import ProcessSteps from '../components/ui/ProcessSteps.astro';
                 <span class="text-xs font-semibold text-white">CoreDigital</span>
               </div>
               {[
-                {icon: 'BarChart2',  label: 'Dashboard',       active: true},
-                {icon: 'Monitor',    label: 'Website',          active: false},
-                {icon: 'MapPin',     label: 'Google Business',  active: false},
-                {icon: 'Star',       label: 'Recenzii',         active: false},
-                {icon: 'Sparkles',   label: 'AI Chatbot',       active: false},
-                {icon: 'FileText',   label: 'Rapoarte',         active: false},
-                {icon: 'Settings',   label: 'Setări',           active: false},
+                {icon: 'BarChart2', label: 'Dashboard', active: true},
+                {icon: 'Monitor',   label: 'Website',   active: false},
+                {icon: 'Star',      label: 'Review-uri',active: false},
+                {icon: 'Sparkles',  label: 'AI Chatbot',active: false},
+                {icon: 'Settings',  label: 'Setări',    active: false},
               ].map(item => (
                 <div class={`flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-xs ${item.active ? 'font-medium' : ''}`} style={item.active ? 'background: var(--brand-soft); color: var(--brand-color);' : 'color: hsl(var(--color-muted));'}>
                   <LucideIcon name={item.icon} size={13} />
@@ -130,54 +126,37 @@ import ProcessSteps from '../components/ui/ProcessSteps.astro';
 
             <!-- Main content -->
             <div class="flex-1 p-4 overflow-hidden">
-              <!-- Header row -->
+              <!-- Top row: title + badge -->
               <div class="flex items-center justify-between mb-4">
-                <span class="text-sm font-semibold text-white">Prezentare generală</span>
+                <span class="text-sm font-semibold text-white">Overview</span>
                 <span class="text-[0.6rem] font-mono px-2 py-0.5 rounded-full" style="background: hsl(142 70% 45% / 0.12); color: hsl(142 70% 60%); border: 1px solid hsl(142 70% 45% / 0.2);">● Live</span>
               </div>
 
-              <!-- Stats row -->
-              <div class="grid grid-cols-3 gap-2 mb-4">
+              <!-- Stats cards -->
+              <div class="grid grid-cols-3 gap-2.5 mb-4">
                 {[
-                  {label: 'Vizibilitate online', val: '+18%'},
-                  {label: 'Review-uri noi',       val: '+27'},
-                  {label: 'Cereri noi',            val: '+12'},
+                  {label: 'Review-uri noi', val: '+47', delta: '+12%'},
+                  {label: 'Rating Google',  val: '4.9★', delta: '+0.2'},
+                  {label: 'Lead-uri AI',    val: '+23',  delta: '+8%'},
                 ].map(s => (
                   <div class="rounded-xl p-3 border" style="background: hsl(var(--color-surface)); border-color: hsl(var(--color-border));">
-                    <p class="text-[0.58rem] font-mono mb-1" style="color: hsl(var(--color-muted));">{s.label}</p>
-                    <p class="text-base font-bold text-white">{s.val}</p>
-                    <!-- Mini sparkline skeleton -->
-                    <svg class="mt-1.5 w-full" height="18" viewBox="0 0 60 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <polyline points="0,14 10,10 20,12 30,6 40,8 50,3 60,5" stroke="hsl(83 78% 56% / 0.5)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <p class="text-[0.55rem] font-mono mt-0.5" style="color: hsl(var(--color-muted) / 0.6);">vs. luna trecută</p>
+                    <p class="text-[0.6rem] font-mono mb-1" style="color: hsl(var(--color-muted));">{s.label}</p>
+                    <p class="text-base font-semibold text-white">{s.val}</p>
+                    <p class="text-[0.6rem] font-mono" style="color: var(--brand-color);">{s.delta}</p>
                   </div>
                 ))}
               </div>
 
-              <!-- Activity feed -->
-              <div class="rounded-xl border p-3.5" style="background: hsl(var(--color-surface)); border-color: hsl(var(--color-border));">
-                <div class="flex items-center justify-between mb-3.5">
-                  <p class="text-[0.65rem] font-mono text-white">Activitate recentă</p>
-                  <p class="text-[0.58rem] font-mono" style="color: hsl(var(--color-muted));">Ultimele 7 zile</p>
+              <!-- Chart area (skeleton) -->
+              <div class="rounded-xl border p-3" style="background: hsl(var(--color-surface)); border-color: hsl(var(--color-border));">
+                <div class="flex items-center justify-between mb-3">
+                  <p class="text-[0.65rem] font-mono text-white">Activitate lunară</p>
+                  <p class="text-[0.6rem] font-mono" style="color: hsl(var(--color-muted));">Ultimele 30 zile</p>
                 </div>
-                <div class="flex flex-col gap-3">
-                  {[
-                    {bg: 'hsl(38 92% 50% / 0.15)', border: 'hsl(38 92% 50% / 0.3)', icon: 'Star', iconColor: 'hsl(38 92% 60%)', title: 'Ai primit un review de 5 stele', sub: 'Clinica Veterinară Happy Pets', time: 'acum 5 min'},
-                    {bg: 'hsl(217 91% 60% / 0.12)', border: 'hsl(217 91% 60% / 0.25)', icon: 'MapPin', iconColor: 'hsl(217 91% 65%)', title: 'Profilul tău Google a fost actualizat', sub: 'Program actualizat', time: 'acum 1 oră'},
-                    {bg: 'var(--brand-soft)', border: 'var(--brand-border)', icon: 'Zap', iconColor: 'var(--brand-color)', title: '3 oportunități noi identificate', sub: 'Vezi recomandările noastre', time: 'acum 3 ore'},
-                    {bg: 'hsl(270 80% 60% / 0.12)', border: 'hsl(270 80% 60% / 0.25)', icon: 'BarChart2', iconColor: 'hsl(270 80% 70%)', title: 'Raport lunar generat automat', sub: 'Descarcă din secțiunea Rapoarte', time: 'acum 6 ore'},
-                  ].map(a => (
-                    <div class="flex items-center gap-2.5">
-                      <div class="w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center" style={`background: ${a.bg}; border: 1px solid ${a.border};`}>
-                        <LucideIcon name={a.icon} size={13} style={`color: ${a.iconColor};`} />
-                      </div>
-                      <div class="flex-1 min-w-0">
-                        <p class="text-[0.63rem] font-semibold text-white truncate">{a.title}</p>
-                        <p class="text-[0.58rem] font-mono truncate" style="color: hsl(var(--color-muted));">{a.sub}</p>
-                      </div>
-                      <p class="text-[0.55rem] font-mono flex-shrink-0" style="color: hsl(var(--color-muted) / 0.6);">{a.time}</p>
-                    </div>
+                <!-- SVG chart bars -->
+                <div class="flex items-end gap-1 h-14">
+                  {[30,45,35,60,50,75,55,80,65,90,70,85,60,95,72,88,65,78,55,92,68,82,58,74,85,70,88,95,80,100].map((h, i) => (
+                    <div class="flex-1 rounded-sm transition-all" style={`height: ${h * 0.56}px; background: ${i === 29 ? 'var(--brand-color)' : `hsl(var(--color-lime) / ${0.15 + h * 0.003})`};`}></div>
                   ))}
                 </div>
               </div>
@@ -190,7 +169,7 @@ import ProcessSteps from '../components/ui/ProcessSteps.astro';
           <span class="w-2 h-2 rounded-full flex-shrink-0 animate-pulse" style="background: hsl(142 70% 50%);"></span>
           <div>
             <p class="text-xs font-semibold text-white leading-tight">Nou review primit</p>
-            <p class="text-[0.6rem] font-mono" style="color: hsl(var(--color-muted));">★★★★★ · acum 5 min</p>
+            <p class="text-[0.6rem] font-mono" style="color: hsl(var(--color-muted));">★★★★★ · acum 3 min</p>
           </div>
         </div>
 
@@ -198,39 +177,6 @@ import ProcessSteps from '../components/ui/ProcessSteps.astro';
     </div>
   </div>
 </section>
-
-<!-- ============================================================
-     SOCIAL PROOF BAR
-     ============================================================ -->
-<div style="background: hsl(var(--color-surface)); border-top: 1px solid hsl(var(--color-border)); border-bottom: 1px solid hsl(var(--color-border));">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-6">
-    <div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-10">
-      <p class="text-xs font-mono whitespace-nowrap flex-shrink-0" style="color: hsl(var(--color-muted));">
-        Peste <strong class="text-white">100+</strong> afaceri locale<br class="hidden sm:block"/>au încredere în noi
-      </p>
-      <div class="w-px h-8 hidden sm:block" style="background: hsl(var(--color-border));"></div>
-      <div class="flex flex-wrap items-center justify-center sm:justify-start gap-4">
-        {[
-          {icon: 'PawPrint',    name: 'Happy Pets',    sub: 'Clinică Veterinară'},
-          {icon: 'Cross',       name: 'Dental Care',   sub: 'Cabinet Stomatologic'},
-          {icon: 'Scissors',    name: 'Beauty Studio', sub: 'Salon'},
-          {icon: 'Wrench',      name: 'Auto Elite',    sub: 'Service Auto'},
-          {icon: 'Activity',    name: 'FizioMove',     sub: 'Kinetoterapie'},
-        ].map(c => (
-          <div class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
-            <div class="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0" style="background: hsl(var(--color-surface-2)); border: 1px solid hsl(var(--color-border));">
-              <LucideIcon name={c.icon} size={11} style="color: hsl(var(--color-muted));" />
-            </div>
-            <div>
-              <p class="text-xs font-semibold text-white leading-none">{c.name}</p>
-              <p class="text-[0.6rem] font-mono leading-none mt-0.5" style="color: hsl(var(--color-muted));">{c.sub}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- ============================================================
      PROBLEMS

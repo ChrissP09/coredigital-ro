@@ -21,10 +21,12 @@ function extractUrlsFromXml(xml) {
 
     const pageUrls = urlEntries.map((entry) => entry?.loc).filter(Boolean);
     const nestedSitemaps = sitemapEntries.map((entry) => entry?.loc).filter(Boolean);
+    const hasLastmod = urlEntries.some((entry) => Boolean(entry?.lastmod));
 
     return {
       pageUrls,
-      nestedSitemaps
+      nestedSitemaps,
+      hasLastmod
     };
   } catch {
     return {
@@ -55,7 +57,8 @@ async function discoverSitemap(websiteUrl, robotsSitemaps = []) {
       return {
         found: true,
         url: response.url || candidate,
-        pageUrls: extracted.pageUrls.slice(0, 200)
+        pageUrls: extracted.pageUrls.slice(0, 200),
+        hasLastmod: extracted.hasLastmod
       };
     }
 
@@ -70,7 +73,8 @@ async function discoverSitemap(websiteUrl, robotsSitemaps = []) {
         return {
           found: true,
           url: response.url || candidate,
-          pageUrls: nestedExtracted.pageUrls.slice(0, 200)
+          pageUrls: nestedExtracted.pageUrls.slice(0, 200),
+          hasLastmod: nestedExtracted.hasLastmod
         };
       }
     }
@@ -79,7 +83,8 @@ async function discoverSitemap(websiteUrl, robotsSitemaps = []) {
   return {
     found: false,
     url: null,
-    pageUrls: []
+    pageUrls: [],
+    hasLastmod: false
   };
 }
 

@@ -8,13 +8,13 @@
   }
 
   .problems__title {
-    font-size: 2rem;
-    font-weight: 500;
+    font-size: var(--text-h2);
+    font-weight: var(--fw-sub);
   }
 
   .problems__lead {
     margin-top: var(--space-2);
-    font-size: 1.125rem;
+    font-size: var(--text-body-lg);
     color: hsl(var(--color-muted));
   }
 

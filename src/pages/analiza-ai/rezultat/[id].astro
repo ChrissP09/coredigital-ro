@@ -112,9 +112,8 @@ const normalizedDomainJson = JSON.stringify(analysis.normalizedDomain);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Scor {analysis.finalScore} - {analysis.normalizedDomain}</title>
     <meta name="description" content={`Scor de vizibilitate AI pentru ${analysis.normalizedDomain}: ${analysis.finalScore}/100.`}>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/fonts/fonts.css">
+    <style>:root{--font-sans:'Inter','Segoe UI','Helvetica Neue',Arial,sans-serif;--font-display:'Inter','Segoe UI','Helvetica Neue',Arial,sans-serif;--font-mono:'JetBrains Mono','Fira Code',monospace;--text-display:clamp(2.6rem,5vw,4.25rem);--text-h1:clamp(2rem,3.5vw,3.25rem);--text-h2:clamp(1.75rem,2.5vw,2.25rem);--text-h3:clamp(1.15rem,1.5vw,1.5rem);--text-h4:1.125rem;--text-body-lg:1.125rem;--text-body:1rem;--text-sm:0.875rem;--text-xs:0.75rem;--fw-display:700;--fw-heading:600;--fw-sub:500;--fw-body:400;--lh-display:1.02;--lh-heading:1.1;--lh-body:1.65;--lh-relaxed:1.75;--ls-tight:-0.03em;--ls-heading:-0.02em;--ls-normal:0em;--ls-wide:0.05em;}</style>
     <link rel="stylesheet" href="/analiza-ai/css/app.css">
     <link rel="icon" href="/analiza-ai/assets/Favicon circle dark.png" type="image/png">
     {turnstileSiteKey && <script is:inline src="https://challenges.cloudflare.com/turnstile/v1/api.js" async defer></script>}

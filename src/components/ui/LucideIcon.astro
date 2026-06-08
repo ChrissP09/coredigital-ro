@@ -68,6 +68,10 @@ import share2 from 'lucide-static/icons/share-2.svg?raw';
 import network from 'lucide-static/icons/network.svg?raw';
 import circleDot from 'lucide-static/icons/circle-dot.svg?raw';
 import externalLink from 'lucide-static/icons/external-link.svg?raw';
+import pawPrint from 'lucide-static/icons/paw-print.svg?raw';
+import cross from 'lucide-static/icons/cross.svg?raw';
+import scissors from 'lucide-static/icons/scissors.svg?raw';
+import wrench from 'lucide-static/icons/wrench.svg?raw';
 
 const { name, class: className = '', size = 24, style: inlineStyle = '' } = Astro.props;
 
@@ -142,6 +146,10 @@ const icons: Record<string, string> = {
   Network: network,
   CircleDot: circleDot,
   ExternalLink: externalLink,
+  PawPrint: pawPrint,
+  Cross: cross,
+  Scissors: scissors,
+  Wrench: wrench,
 };
 
 const raw = icons[name];

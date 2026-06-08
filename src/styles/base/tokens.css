@@ -99,11 +99,41 @@
   --service-ai-cta-text: hsl(220 14% 10%);
   --service-ai-gradient: linear-gradient(135deg, hsl(var(--service-ai-h) var(--service-ai-s) var(--service-ai-l) / 0.10) 0%, transparent 100%);
 
-  /* Typography */
+  /* Typography — font families */
   --font-sans: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   --font-display: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
+  /* Type scale — fluid */
+  --text-display: clamp(2.6rem, 5vw, 4.25rem);   /* hero h1 */
+  --text-h1:      clamp(2rem, 3.5vw, 3.25rem);   /* page title */
+  --text-h2:      clamp(1.75rem, 2.5vw, 2.25rem); /* section heading */
+  --text-h3:      clamp(1.15rem, 1.5vw, 1.5rem);  /* card / feature heading */
+  --text-h4:      1.125rem;                        /* minor heading */
+  --text-body-lg: 1.125rem;                        /* lead / subtitle */
+  --text-body:    1rem;
+  --text-sm:      0.875rem;
+  --text-xs:      0.75rem;
+
+  /* Font weights */
+  --fw-display:  700;
+  --fw-heading:  600;
+  --fw-sub:      500;
+  --fw-body:     400;
+
+  /* Line heights */
+  --lh-display:  1.02;
+  --lh-heading:  1.1;
+  --lh-body:     1.65;
+  --lh-relaxed:  1.75;
+
+  /* Letter spacing */
+  --ls-tight:    -0.03em;
+  --ls-heading:  -0.02em;
+  --ls-normal:   0em;
+  --ls-wide:     0.05em;
+
+  /* Legacy aliases kept for backward compat */
   --text-base: 1rem;
   --text-lg: 1.125rem;
   --text-xl: 1.25rem;

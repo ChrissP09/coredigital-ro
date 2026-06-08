@@ -79,6 +79,27 @@ function collectNamesFromJsonLd(node, names = []) {
   return names;
 }
 
+function collectArticleDataFromJsonLd(node, result = { hasArticle: false, hasAuthor: false, hasDateModified: false }) {
+  if (!node) return result;
+
+  if (Array.isArray(node)) {
+    node.forEach((item) => collectArticleDataFromJsonLd(item, result));
+    return result;
+  }
+
+  if (typeof node === "object") {
+    const type = String(node["@type"] || "").toLowerCase();
+    if (/article|blogposting|newsarticle|technicalarticle/i.test(type)) {
+      result.hasArticle = true;
+      if (node.author) result.hasAuthor = true;
+      if (node.dateModified || node.datePublished) result.hasDateModified = true;
+    }
+    if (node["@graph"]) collectArticleDataFromJsonLd(node["@graph"], result);
+  }
+
+  return result;
+}
+
 function collectRatingsFromJsonLd(node, ratings = []) {
   if (!node) {
     return ratings;
@@ -127,6 +148,8 @@ function detectSchema($) {
   const names = [];
   const ratings = [];
 
+  const articleData = { hasArticle: false, hasAuthor: false, hasDateModified: false };
+
   $("script[type='application/ld+json']").each((_, element) => {
     const raw = $(element).contents().text();
 
@@ -136,6 +159,7 @@ function detectSchema($) {
       collectSameAsFromJsonLd(parsed, sameAs);
       collectNamesFromJsonLd(parsed, names);
       collectRatingsFromJsonLd(parsed, ratings);
+      collectArticleDataFromJsonLd(parsed, articleData);
     } catch {
       const matches = raw.match(/"@type"\s*:\s*"([^"]+)"/g) || [];
       matches.forEach((match) => {
@@ -166,6 +190,10 @@ function detectSchema($) {
     hasOrganization: normalizedTypes.some((type) => /organization/i.test(type)),
     hasLocalBusiness: normalizedTypes.some((type) => /localbusiness|restaurant|dentist|store|hotel|medicalbusiness/i.test(type)),
     hasAggregateRating: normalizedTypes.some((type) => /aggregaterating|review/i.test(type)) || ratings.length > 0,
+    hasBreadcrumb: normalizedTypes.some((type) => /breadcrumb/i.test(type)),
+    hasArticle: articleData.hasArticle,
+    hasAuthor: articleData.hasAuthor,
+    hasDateModified: articleData.hasDateModified,
     ratingValue: ratingValues.length ? Math.max(...ratingValues) : null,
     reviewCount: reviewCounts.length ? Math.max(...reviewCounts) : null,
     sameAs: Array.from(new Set(sameAs.filter(Boolean))),

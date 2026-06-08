@@ -19,39 +19,41 @@
   h5,
   h6 {
     font-family: var(--font-display);
-    font-weight: 500;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
+    line-height: var(--lh-heading);
+    letter-spacing: var(--ls-heading);
     color: hsl(var(--color-text));
   }
 
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl;
-    font-weight: 500;
+    font-size: var(--text-h1);
+    font-weight: var(--fw-display);
+    line-height: var(--lh-display);
+    letter-spacing: var(--ls-tight);
   }
 
   h2 {
-    @apply text-3xl md:text-4xl;
+    font-size: var(--text-h2);
+    font-weight: var(--fw-heading);
   }
 
   h3 {
-    @apply text-xl md:text-2xl;
-    font-weight: 500;
+    font-size: var(--text-h3);
+    font-weight: var(--fw-sub);
   }
 
   h4 {
-    @apply text-lg;
-    font-weight: 500;
+    font-size: var(--text-h4);
+    font-weight: var(--fw-sub);
   }
 
   h5 {
-    @apply text-base;
-    font-weight: 600;
+    font-size: var(--text-body);
+    font-weight: var(--fw-heading);
   }
 
   h6 {
-    @apply text-sm;
-    font-weight: 600;
+    font-size: var(--text-sm);
+    font-weight: var(--fw-heading);
   }
 
   p {

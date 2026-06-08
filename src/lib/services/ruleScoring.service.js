@@ -228,7 +228,16 @@ function getAggregateSignals(context) {
     passiveRatingValue: ratingValues.length ? Math.max(...ratingValues) : null,
     passiveReviewCount: reviewCounts.length ? Math.max(...reviewCounts) : null,
     hasExternalMentions: externalLinks.some((link) => !/facebook|instagram|linkedin|tiktok|youtube|youtu\.be|google\./i.test(link)),
-    schemaTypes
+    schemaTypes,
+
+    hasNoindex: any(pages, (page) => page.signals.hasNoindex),
+    homepageHasNoindex: Boolean(pages[0]?.signals?.hasNoindex),
+    hasCanonical: any(pages, (page) => page.signals.hasCanonical),
+    hasDirectAnswerPositioning: Boolean(pages[0]?.signals?.hasDirectAnswerPositioning),
+    hasBreadcrumbSchema: any(pages, (page) => page.signals.hasBreadcrumbSchema),
+    hasArticleWithAuthor: any(pages, (page) => page.signals.hasArticleSchema && page.signals.hasAuthorSchema),
+    hasDateModifiedSchema: any(pages, (page) => page.signals.hasDateModifiedSchema),
+    sitemapHasLastmod: Boolean(context.sitemap.hasLastmod)
   };
 }
 
@@ -274,7 +283,12 @@ function getTechnicalDiscoveryDebug(signals) {
     robots: signals.robotsFound ? 2 : 0,
     aiReadyFiles: signals.aiReadinessFiles?.found ? Math.min(6, Math.ceil((signals.aiReadinessFiles.score || 0) * 0.3)) : 0,
     pageTypeDiversity: analyzedTypesCount >= 6 ? 14 : analyzedTypesCount >= 4 ? 10 : analyzedTypesCount >= 3 ? 6 : analyzedTypesCount >= 2 ? 3 : 0,
-    crawlDepth: signals.total_pages_discovered >= 50 && signals.pagesAnalyzed >= 20 ? 10 : signals.total_pages_discovered >= 10 && signals.pagesAnalyzed >= 10 ? 6 : 0
+    crawlDepth: signals.total_pages_discovered >= 50 && signals.pagesAnalyzed >= 20 ? 10 : signals.total_pages_discovered >= 10 && signals.pagesAnalyzed >= 10 ? 6 : 0,
+    canonical: signals.hasCanonical ? 3 : 0,
+    sitemapLastmod: signals.sitemapHasLastmod ? 2 : 0,
+    breadcrumbSchema: signals.hasBreadcrumbSchema ? 2 : 0,
+    dateModified: signals.hasDateModifiedSchema ? 2 : 0,
+    noindexPenalty: signals.homepageHasNoindex ? -15 : signals.hasNoindex ? -5 : 0
   };
 
   const total = Object.values(debug).reduce((sum, value) => sum + value, 0);
@@ -610,7 +624,9 @@ function calculateCategoryScores(signals) {
     (signals.hasFaq ? 8 : 0) +
     (signals.headingCoverage >= 0.75 ? 6 : signals.headingCoverage >= 0.45 ? 3 : 0) +
     (signals.totalWords >= 5000 ? 8 : signals.totalWords >= 2500 ? 6 : signals.totalWords >= 1200 ? 4 : signals.totalWords >= 650 ? 2 : 0) +
-    (signals.distinctPageTypes >= 6 ? 4 : signals.distinctPageTypes >= 4 ? 3 : signals.distinctPageTypes >= 3 ? 1 : 0);
+    (signals.distinctPageTypes >= 6 ? 4 : signals.distinctPageTypes >= 4 ? 3 : signals.distinctPageTypes >= 3 ? 1 : 0) +
+    (signals.hasDirectAnswerPositioning ? 5 : 0) +
+    (signals.hasArticleWithAuthor ? 3 : 0);
 
   const trustAuthorityDebug = getTrustAuthorityDebug(signals);
   const trustAuthority = trustAuthorityDebug.total;
@@ -841,6 +857,34 @@ function getImprovementIssues(signals, categoryScores) {
     "Adaugă un fișier /llms.txt cu descrierea afacerii, serviciile principale, paginile importante, FAQ-ul, resursele utile și datele de contact. Opțional, menționează-l în robots.txt."
   );
 
+  addIssue(
+    signals.homepageHasNoindex,
+    12,
+    "Homepage-ul blochează indexarea prin meta robots noindex — sistemele AI nu pot citi sau cita conținutul.",
+    "Elimină tag-ul <meta name='robots' content='noindex'> de pe homepage și paginile importante."
+  );
+
+  addIssue(
+    !signals.hasDirectAnswerPositioning,
+    6,
+    "Primul paragraf al homepage-ului este prea scurt sau prea lung pentru extragere directă de către sistemele AI (optim: 20-150 de cuvinte).",
+    "Rescrie primul paragraf ca un răspuns direct și complet: ce face afacerea, pentru cine și unde, în 2-4 propoziții clare."
+  );
+
+  addIssue(
+    !signals.hasBreadcrumbSchema,
+    4,
+    "Nu am găsit schema BreadcrumbList — semnalul de navigație ierarhică lipsește pentru motoarele AI.",
+    "Adaugă schema BreadcrumbList pe paginile interioare pentru a clarifica structura site-ului față de sistemele automate."
+  );
+
+  addIssue(
+    signals.hasResourcePage && !signals.hasArticleWithAuthor,
+    4,
+    "Paginile de blog sau resurse nu au schema Article cu informații despre autor — reduce credibilitatea conținutului în ochii AI.",
+    "Adaugă schema Article sau BlogPosting cu câmpul 'author' pe articolele și resursele publicate."
+  );
+
   return issues.sort((a, b) => b.impact - a.impact);
 }
 
@@ -867,6 +911,10 @@ function buildFindings(signals, categoryScores, currentScore) {
   addStrength(signals.externalPresence?.subScores.externalValidation >= 70, "Am detectat indicatori de validare externă precum Google Maps, recenzii sau platforme relevante.");
   addStrength(signals.marketAuthorityScore >= 70, "Afacerea are semnale de autoritate locală sau de nișă peste nivelul de bază al unei entități verificabile.");
   addStrength(signals.totalWords >= 1800, "Conținutul analizat oferă suficient context pentru înțelegerea afacerii.");
+  addStrength(signals.hasDirectAnswerPositioning, "Homepage-ul are un prim paragraf optim pentru extragere directă de către sistemele AI.");
+  addStrength(signals.hasBreadcrumbSchema, "Schema BreadcrumbList este prezentă — ajută AI să înțeleagă structura site-ului.");
+  addStrength(signals.hasArticleWithAuthor, "Conținutul editorial include schema Article cu autor — semnal de credibilitate pentru AI.");
+  addStrength(signals.sitemapHasLastmod, "Sitemapul include date lastmod — ajută sistemele AI să prioritizeze conținutul proaspăt.");
 
   const improvementIssues = getImprovementIssues(signals, categoryScores);
 

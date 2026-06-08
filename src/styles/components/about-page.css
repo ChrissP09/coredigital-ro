@@ -29,18 +29,18 @@
   }
 
   .about-hero__title {
-    letter-spacing: -0.04em;
-    font-weight: 650;
-    font-size: clamp(2.6rem, 4.3vw, 4.25rem);
-    line-height: 1.04;
+    letter-spacing: var(--ls-tight);
+    font-weight: var(--fw-display);
+    font-size: var(--text-display);
+    line-height: var(--lh-display);
     margin: 0;
   }
 
   .about-hero__lead {
     max-inline-size: 46rem;
     margin: 0;
-    font-size: 1.125rem;
-    line-height: 1.7;
+    font-size: var(--text-body-lg);
+    line-height: var(--lh-relaxed);
   }
 
   .about-hero__actions {

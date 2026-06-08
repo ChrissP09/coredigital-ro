@@ -8,6 +8,7 @@ greenspark/
 index.html
 src/pages/_tmp_*.txt
 temp/
+content-export.txt
 
 # dependencies
 node_modules/

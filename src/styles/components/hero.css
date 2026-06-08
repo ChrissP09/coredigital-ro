@@ -16,12 +16,12 @@
         color: var(--brand-text);
     }
     .hero__title {
-        font-size: clamp(2.75rem, 3.2vw, 4rem);
-        font-weight: 500;
-        line-height: 1.1;
+        font-size: var(--text-display);
+        font-weight: var(--fw-display);
+        line-height: var(--lh-display);
     }
     .hero__lead {
-        font-size: 1.125rem;
+        font-size: var(--text-body-lg);
         color: hsl(var(--color-muted));
     }
     .hero__actions {

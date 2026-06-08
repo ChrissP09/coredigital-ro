@@ -1,3 +1,4 @@
+@import './base/fonts.css';
 @import './base/tokens.css';
 @import './base/reset.css';
 @import './base/typography.css';
@@ -23,7 +24,6 @@
 @import './components/contact-page.css';
 @import './components/why-core.css';
 @import './components/final-cta.css';
-@import './components/greenspark.css';
 @import './components/aeo-page.css';
 
 @tailwind base;

@@ -11,13 +11,13 @@
   }
 
   .final-cta__title {
-    font-size: clamp(2rem, 3vw, 3rem);
-    font-weight: 500;
+    font-size: var(--text-h1);
+    font-weight: var(--fw-heading);
   }
 
   .final-cta__lead {
     margin-top: var(--space-4);
-    font-size: 1.125rem;
+    font-size: var(--text-body-lg);
     color: hsl(var(--color-white) / 0.85);
   }
 

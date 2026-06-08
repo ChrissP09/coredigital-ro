@@ -220,9 +220,23 @@ function extractRatingData(text, schema) {
   };
 }
 
+function extractFirstParagraph($) {
+  const candidates = $("main p, article p, section p, .content p, p").filter((_, el) => {
+    const text = $(el).text().trim();
+    return text.length > 60;
+  });
+  return compactWhitespace(candidates.first().text());
+}
+
 function extractPage(fetchResult, baseUrl) {
   const $ = cheerio.load(fetchResult.html || "");
   const schema = detectSchema($);
+
+  const robotsMeta = $("meta[name='robots'], meta[name='googlebot']").attr("content") || "";
+  const hasNoindex = /noindex/i.test(robotsMeta);
+  const canonicalUrl = $("link[rel='canonical']").attr("href") || null;
+  const firstParagraph = extractFirstParagraph($);
+  const firstParaWordCount = countWords(firstParagraph);
 
   $("script, style, noscript, svg").remove();
 
@@ -283,7 +297,14 @@ function extractPage(fetchResult, baseUrl) {
     hasReviewSignal:
       containsAny(lowerText, ["recenzii google", "google reviews", "trustpilot", "review-uri", "evaluari", "evaluări", "rating", "stele"]) ||
       ratingData.hasRatingSignal ||
-      ratingData.hasReviewCountSignal
+      ratingData.hasReviewCountSignal,
+    hasNoindex,
+    hasCanonical: Boolean(canonicalUrl),
+    hasDirectAnswerPositioning: firstParaWordCount >= 20 && firstParaWordCount <= 150,
+    hasBreadcrumbSchema: schema.hasBreadcrumb,
+    hasArticleSchema: schema.hasArticle,
+    hasAuthorSchema: schema.hasAuthor,
+    hasDateModifiedSchema: schema.hasDateModified
   };
 
   return {
@@ -306,6 +327,7 @@ function extractPage(fetchResult, baseUrl) {
     ratingData,
     emails: emailMatches,
     phones: phoneMatches,
+    canonicalUrl,
     signals
   };
 }

@@ -15,16 +15,16 @@
 
   .services-overview__title {
     margin-top: var(--space-3);
-    font-size: clamp(2.2rem, 1.7rem + 1.6vw, 3.2rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    line-height: 1.05;
+    font-size: var(--text-h1);
+    font-weight: var(--fw-display);
+    letter-spacing: var(--ls-tight);
+    line-height: var(--lh-display);
     max-inline-size: 22ch;
   }
 
   .services-overview__lead {
     margin-top: var(--space-2);
-    font-size: 1.125rem;
+    font-size: var(--text-body-lg);
     color: hsl(var(--color-muted));
     max-inline-size: 56ch;
   }

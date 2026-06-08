@@ -15,18 +15,18 @@
 
   .contact-hero__title {
     margin-top: var(--space-3);
-    font-size: clamp(2.4rem, 1.8rem + 2vw, 3.6rem);
-    font-weight: 850;
-    letter-spacing: -0.04em;
-    line-height: 1.02;
+    font-size: var(--text-display);
+    font-weight: var(--fw-display);
+    letter-spacing: var(--ls-tight);
+    line-height: var(--lh-display);
     max-inline-size: 24ch;
   }
 
   .contact-hero__lead {
     margin-top: var(--space-3);
     color: hsl(var(--color-muted));
-    font-size: 1.125rem;
-    line-height: 1.7;
+    font-size: var(--text-body-lg);
+    line-height: var(--lh-relaxed);
     max-inline-size: 68ch;
   }
 

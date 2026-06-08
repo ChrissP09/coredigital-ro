@@ -10,227 +10,793 @@ import ProcessSteps from '../components/ui/ProcessSteps.astro';
 >
 
 <!-- ============================================================
-     HERO
+     HERO — Interactive Dashboard
      ============================================================ -->
-<section class="relative overflow-hidden" style="background: hsl(var(--color-bg)); padding-top: 6rem; padding-bottom: 4rem;">
+<section class="hero-v2">
 
-  <!-- Dot grid with radial mask -->
-  <div class="pointer-events-none absolute inset-0" style="background-image: radial-gradient(circle, hsl(var(--color-border) / 0.9) 1px, transparent 1px); background-size: 28px 28px; -webkit-mask-image: radial-gradient(ellipse 75% 80% at 50% 30%, black 20%, transparent 75%); mask-image: radial-gradient(ellipse 75% 80% at 50% 30%, black 20%, transparent 75%);"></div>
+  <!-- Star canvas -->
+  <canvas id="hero-star-canvas" aria-hidden="true"></canvas>
 
-  <!-- Lime glow top center -->
-  <div class="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[860px] h-[480px]" style="background: radial-gradient(ellipse 55% 55% at 50% 0%, hsl(var(--color-lime) / 0.18) 0%, transparent 70%);"></div>
-  <div class="pointer-events-none absolute top-1/3 -left-32 w-[500px] h-[400px]" style="background: radial-gradient(ellipse at 30% 50%, hsl(var(--color-lime) / 0.07) 0%, transparent 65%);"></div>
-  <div class="pointer-events-none absolute bottom-0 right-0 w-[400px] h-[300px]" style="background: radial-gradient(ellipse at 80% 100%, hsl(var(--color-sky) / 0.06) 0%, transparent 65%);"></div>
-  <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(ellipse 130% 110% at 50% 50%, transparent 40%, hsl(var(--color-bg) / 0.85) 100%);"></div>
-  <div class="pointer-events-none absolute bottom-0 left-0 right-0 h-24" style="background: linear-gradient(to top, hsl(var(--color-bg)), transparent);"></div>
+  <!-- Bottom fade -->
+  <div class="pointer-events-none absolute bottom-0 left-0 right-0 h-32" style="background: linear-gradient(to top, #071014, transparent); z-index:0;"></div>
 
-  <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="grid lg:grid-cols-[1fr_1.15fr] gap-8 lg:gap-8 items-center">
+  <!-- Centered copy -->
+  <div class="hero-v2__copy">
+    <div class="hero-v2__badge">
+      <span class="hero-v2__badge-dot"></span>
+      Creștem vizibilitatea afacerii tale online
+    </div>
+    <h1 class="hero-v2__heading">
+      Ajutăm afacerea ta să fie <mark>găsită, aleasă</mark> și <mark>contactată</mark> online.
+    </h1>
+    <p class="hero-v2__sub">
+      Construim și îmbunătățim constant website-ul, reputația online și vizibilitatea afacerii tale pentru a atrage mai mulți clienți și a genera mai multe oportunități.
+    </p>
+    <div class="hero-v2__actions">
+      <a class="u-brand-cta u-btn-lg u-btn-split" href="#servicii">
+        Vezi cum te putem ajuta
+        <span class="btn-ic"><LucideIcon name="ArrowRight" size={16} /></span>
+      </a>
+      <a class="u-brand-outline u-btn-lg u-btn-split" href="/preturi">
+        Vezi pachetele
+        <span class="btn-ic"><LucideIcon name="Play" size={14} /></span>
+      </a>
+    </div>
+  </div>
 
-      <!-- Left: copy -->
-      <div>
-        <!-- Badge -->
-        <div class="inline-flex items-center gap-2 rounded-full px-3 py-1.5 mb-8 text-[0.65rem] font-mono tracking-widest uppercase" style="background: hsl(var(--color-surface) / 0.8); border: 1px solid hsl(var(--color-border)); color: hsl(var(--color-muted)); backdrop-filter: blur(8px);">
-          <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background: var(--brand-color);"></span>
-          Creștem vizibilitatea afacerii tale online
+  <!-- Interactive Dashboard -->
+  <div class="hero-dash-wrap">
+    <div class="hero-dash-glow hero-dash-glow--l"></div>
+    <div class="hero-dash-glow hero-dash-glow--r"></div>
+    <div class="hero-dash-glow hero-dash-glow--b"></div>
+
+    <div class="hero-dash">
+
+      <!-- Browser chrome -->
+      <div class="hero-dash__chrome">
+        <div class="hero-dash__dots">
+          <div class="hero-dash__dot" style="background:#ef4444;opacity:0.75;"></div>
+          <div class="hero-dash__dot" style="background:#eab308;opacity:0.75;"></div>
+          <div class="hero-dash__dot" style="background:var(--brand-color);opacity:0.75;"></div>
         </div>
-
-        <h1 class="mb-7" style="font-size: clamp(2.1rem, 4vw, 3.5rem); font-weight: var(--fw-display); letter-spacing: var(--ls-tight); line-height: var(--lh-display);">
-          Tot ce are nevoie<br/>afacerea ta pentru<br/>a fi <span style="color: var(--brand-color); text-shadow: 0 0 60px hsl(var(--color-lime) / 0.4);">găsită, aleasă</span> și<br/><span style="color: var(--brand-color); text-shadow: 0 0 60px hsl(var(--color-lime) / 0.4);">contactată</span> online.
-        </h1>
-
-        <p class="mb-10 max-w-[460px]" style="color: hsl(var(--color-muted)); font-size: 1.05rem; line-height: 1.75;">
-          Construim și îmbunătățim constant website-ul, reputația online și vizibilitatea afacerii tale, astfel încât mai mulți oameni să te găsească și să te aleagă.
-        </p>
-
-        <!-- Service pills row -->
-        <div class="flex flex-wrap items-center gap-x-5 gap-y-2 mb-10" style="color: hsl(var(--color-muted)); font-size: 0.85rem;">
-          <span class="flex items-center gap-1.5">
-            <LucideIcon name="Monitor" size={13} style="color: var(--brand-color);" />
-            Website
-          </span>
-          <span style="color: hsl(var(--color-border));">·</span>
-          <span class="flex items-center gap-1.5">
-            <LucideIcon name="MapPin" size={13} style="color: var(--brand-color);" />
-            Google Business
-          </span>
-          <span style="color: hsl(var(--color-border));">·</span>
-          <span class="flex items-center gap-1.5">
-            <LucideIcon name="Star" size={13} style="color: var(--brand-color);" />
-            Recenzii
-          </span>
-          <span style="color: hsl(var(--color-border));">·</span>
-          <span class="flex items-center gap-1.5">
-            <LucideIcon name="Zap" size={13} style="color: var(--brand-color);" />
-            Automatizări
-          </span>
+        <div class="hero-dash__url">
+          <div class="hero-dash__url-pill">
+            <LucideIcon name="Lock" size={9} /> dashboard.coredigital.ro
+          </div>
         </div>
-
-        <div class="flex flex-wrap gap-3">
-          <a class="u-brand-cta u-btn-lg u-btn-split" href="#servicii">
-            Vezi cum te putem ajuta
-            <span class="btn-ic"><LucideIcon name="ArrowRight" size={16} /></span>
-          </a>
-          <a class="u-brand-outline u-btn-lg u-btn-split" href="/preturi">
-            Vezi pachetele
-            <span class="btn-ic"><LucideIcon name="Play" size={14} /></span>
-          </a>
+        <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
+          <div style="width:20px;height:20px;border-radius:6px;display:flex;align-items:center;justify-content:center;background:hsl(var(--color-surface));border:1px solid hsl(var(--color-border));">
+            <LucideIcon name="Bell" size={9} style="color:hsl(var(--color-muted));" />
+          </div>
+          <div style="width:20px;height:20px;border-radius:50%;background:var(--brand-soft);border:1px solid var(--brand-border);"></div>
         </div>
       </div>
 
-      <!-- Right: dashboard mockup -->
-      <div class="relative hidden lg:block">
+      <!-- App shell -->
+      <div class="dash-app">
 
-        <!-- Glow behind the card -->
-        <div class="pointer-events-none absolute -inset-4 rounded-3xl" style="background: radial-gradient(ellipse at 55% 45%, hsl(var(--color-lime) / 0.12) 0%, transparent 65%);"></div>
-
-        <!-- App frame -->
-        <div class="relative rounded-2xl overflow-hidden border" style="background: hsl(215 20% 8%); border-color: hsl(var(--color-border));">
-
-          <!-- Browser chrome -->
-          <div class="flex items-center gap-3 px-4 py-3 border-b" style="background: hsl(215 20% 6%); border-color: hsl(var(--color-border));">
-            <div class="flex gap-1.5">
-              <div class="w-3 h-3 rounded-full bg-red-500 opacity-70"></div>
-              <div class="w-3 h-3 rounded-full bg-yellow-500 opacity-70"></div>
-              <div class="w-3 h-3 rounded-full opacity-70" style="background: var(--brand-color);"></div>
+        <!-- ── SIDEBAR ── -->
+        <aside class="dash-sidebar">
+          <div class="dash-logo-row">
+            <div class="dash-logo-icon">
+              <LucideIcon name="Zap" size={12} style="color:var(--brand-color);" />
             </div>
-            <div class="flex-1 flex justify-center">
-              <div class="flex items-center gap-2 rounded-md px-3 py-1 text-xs font-mono border" style="background: hsl(var(--color-bg)); border-color: hsl(var(--color-border)); color: hsl(var(--color-muted));">
-                <LucideIcon name="Lock" size={9} /> dashboard.coredigital.ro
-              </div>
+            <span class="dash-logo-name">CoreDigital</span>
+          </div>
+          <nav class="dash-nav" role="tablist" aria-label="Secțiuni">
+            {[
+              {id:'overview', icon:'BarChart2', label:'Prezentare generală'},
+              {id:'website',  icon:'Monitor',   label:'Website'},
+              {id:'google',   icon:'MapPin',    label:'Google Business'},
+              {id:'recenzii', icon:'Star',      label:'Recenzii'},
+              {id:'chatbot',  icon:'Sparkles',  label:'AI Chatbot'},
+            ].map((item, i) => (
+              <button
+                class={`dash-nav__btn${i === 0 ? ' is-active' : ''}`}
+                role="tab"
+                aria-selected={i === 0 ? 'true' : 'false'}
+                aria-controls={`panel-${item.id}`}
+                data-tab={item.id}
+              >
+                <LucideIcon name={item.icon} size={13} />
+                {item.label}
+              </button>
+            ))}
+          </nav>
+          <div class="dash-help-box">
+            <div class="dash-help-inner">
+              <p class="dash-help-title">Ai întrebări?</p>
+              <p class="dash-help-sub">Suntem disponibili pentru orice problemă sau solicitare.</p>
+              <a href="/contact" class="dash-help-link">
+                Contactează-ne <LucideIcon name="ArrowRight" size={10} />
+              </a>
+            </div>
+          </div>
+        </aside>
+
+        <!-- ── MAIN ── -->
+        <div class="dash-main">
+
+          <!-- Mobile tab bar -->
+          <div class="dash-mobile-tabs" role="tablist">
+            <div class="dash-mobile-tabs__row">
+              {[
+                {id:'overview', icon:'BarChart2', label:'Overview'},
+                {id:'website',  icon:'Monitor',   label:'Website'},
+                {id:'google',   icon:'MapPin',    label:'Google'},
+                {id:'recenzii', icon:'Star',      label:'Recenzii'},
+                {id:'chatbot',  icon:'Sparkles',  label:'AI Chat'},
+              ].map((t, i) => (
+                <button
+                  class={`dash-mobile-tab${i === 0 ? ' is-active' : ''}`}
+                  role="tab"
+                  aria-selected={i === 0 ? 'true' : 'false'}
+                  aria-controls={`panel-${t.id}`}
+                  data-tab={t.id}
+                >
+                  <LucideIcon name={t.icon} size={13} />
+                  {t.label}
+                </button>
+              ))}
             </div>
           </div>
 
-          <!-- App shell -->
-          <div class="flex" style="height: 420px;">
+          <!-- Panels container -->
+          <div class="dash-panels" id="dash-panels-container">
 
-            <!-- Sidebar -->
-            <div class="w-44 flex-shrink-0 border-r p-3 flex flex-col gap-0.5" style="background: hsl(215 20% 7%); border-color: hsl(var(--color-border));">
-              <div class="flex items-center gap-2 px-2 py-2 mb-2">
-                <div class="w-6 h-6 rounded-md flex items-center justify-center" style="background: var(--brand-soft); border: 1px solid var(--brand-border);">
-                  <LucideIcon name="Zap" size={12} style="color: var(--brand-color);" />
-                </div>
-                <span class="text-xs font-semibold text-white">CoreDigital</span>
-              </div>
-              {[
-                {icon: 'BarChart2',  label: 'Dashboard',       active: true},
-                {icon: 'Monitor',    label: 'Website',          active: false},
-                {icon: 'MapPin',     label: 'Google Business',  active: false},
-                {icon: 'Star',       label: 'Recenzii',         active: false},
-                {icon: 'Sparkles',   label: 'AI Chatbot',       active: false},
-                {icon: 'FileText',   label: 'Rapoarte',         active: false},
-                {icon: 'Settings',   label: 'Setări',           active: false},
-              ].map(item => (
-                <div class={`flex items-center gap-2.5 px-2 py-1.5 rounded-lg text-xs ${item.active ? 'font-medium' : ''}`} style={item.active ? 'background: var(--brand-soft); color: var(--brand-color);' : 'color: hsl(var(--color-muted));'}>
-                  <LucideIcon name={item.icon} size={13} />
-                  {item.label}
-                </div>
-              ))}
-            </div>
+            <!-- ════ PANEL: Overview ════ -->
+            <div id="panel-overview" class="dash-panel is-active" role="tabpanel">
 
-            <!-- Main content -->
-            <div class="flex-1 p-4 overflow-hidden">
-              <!-- Header row -->
-              <div class="flex items-center justify-between mb-4">
-                <span class="text-sm font-semibold text-white">Prezentare generală</span>
-                <span class="text-[0.6rem] font-mono px-2 py-0.5 rounded-full" style="background: hsl(142 70% 45% / 0.12); color: hsl(142 70% 60%); border: 1px solid hsl(142 70% 45% / 0.2);">● Live</span>
+              <div class="dp-header">
+                <div>
+                  <p class="dp-title">Prezentare generală</p>
+                  <p class="dp-sub">Toate serviciile · Performanță combinată</p>
+                </div>
+                <div class="dp-controls">
+                  <div class="dp-date-pill"><LucideIcon name="Calendar" size={9} /> Iunie 2025</div>
+                  <div class="dp-online">● Online</div>
+                </div>
               </div>
 
-              <!-- Stats row -->
-              <div class="grid grid-cols-3 gap-2 mb-4">
+              <div class="dp-stats dp-stats--4" style="flex-shrink:0;">
                 {[
-                  {label: 'Vizibilitate online', val: '+18%'},
-                  {label: 'Review-uri noi',       val: '+27'},
-                  {label: 'Cereri noi',            val: '+12'},
-                ].map(s => (
-                  <div class="rounded-xl p-3 border" style="background: hsl(var(--color-surface)); border-color: hsl(var(--color-border));">
-                    <p class="text-[0.58rem] font-mono mb-1" style="color: hsl(var(--color-muted));">{s.label}</p>
-                    <p class="text-base font-bold text-white">{s.val}</p>
-                    <!-- Mini sparkline skeleton -->
-                    <svg class="mt-1.5 w-full" height="18" viewBox="0 0 60 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <polyline points="0,14 10,10 20,12 30,6 40,8 50,3 60,5" stroke="hsl(83 78% 56% / 0.5)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                  {label:'Clienți noi',     cnt:'32', pre:'',  suf:'%', foot:'+32% față de mai'},
+                  {label:'Review-uri noi',  cnt:'27', pre:'+', suf:'',  foot:'+8 față de mai'},
+                  {label:'Cereri direcții', cnt:'18', pre:'+', suf:'',  foot:'vs. luna trecută'},
+                  {label:'Apeluri primite', cnt:'43', pre:'+', suf:'%', foot:'+43% față de mai'},
+                ].map((s, i) => (
+                  <div class="dp-stat">
+                    <p class="dp-stat__label">{s.label}</p>
+                    <p class="dp-stat__value">{s.pre}<span data-count={s.cnt}>0</span>{s.suf}</p>
+                    <svg class="dp-stat__sparkline" viewBox="0 0 60 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      {i === 0 && <polyline points="0,16 10,12 20,13 30,7 40,9 50,4 60,2" stroke="hsl(83 78% 56% / 0.65)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>}
+                      {i === 1 && <polyline points="0,15 10,11 22,13 32,7 42,9 52,5 60,3" stroke="hsl(83 78% 56% / 0.65)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>}
+                      {i === 2 && <polyline points="0,14 12,10 22,12 32,6 44,8 52,4 60,2" stroke="hsl(83 78% 56% / 0.65)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>}
+                      {i === 3 && <polyline points="0,16 8,13 18,14 28,9 36,11 46,5 60,3" stroke="hsl(83 78% 56% / 0.65)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>}
                     </svg>
-                    <p class="text-[0.55rem] font-mono mt-0.5" style="color: hsl(var(--color-muted) / 0.6);">vs. luna trecută</p>
+                    <p class="dp-stat__foot">{s.foot}</p>
                   </div>
                 ))}
               </div>
 
-              <!-- Activity feed -->
-              <div class="rounded-xl border p-3.5" style="background: hsl(var(--color-surface)); border-color: hsl(var(--color-border));">
-                <div class="flex items-center justify-between mb-3.5">
-                  <p class="text-[0.65rem] font-mono text-white">Activitate recentă</p>
-                  <p class="text-[0.58rem] font-mono" style="color: hsl(var(--color-muted));">Ultimele 7 zile</p>
+              <div class="dp-bottom" style="flex:1;min-height:0;">
+                <!-- Activity -->
+                <div class="dp-card">
+                  <div class="dp-card__hd">
+                    <span class="dp-card__ttl">Activitate recentă</span>
+                    <span class="dp-card__meta">Ultimele 7 zile</span>
+                  </div>
+                  <div class="dp-feed">
+                    {[
+                      {bg:'hsl(38 92% 50% / 0.15)',  br:'hsl(38 92% 50% / 0.3)',   icon:'Star',    ic:'hsl(38 92% 60%)',   ttl:'Review 5★ de la Andrei M.', sub:'Happy Pets Veterinar',     t:'5 min'},
+                      {bg:'hsl(217 91% 60% / 0.12)', br:'hsl(217 91% 60% / 0.25)', icon:'MapPin',  ic:'hsl(217 91% 65%)',  ttl:'Profil Google actualizat',  sub:'Program orar modificat',   t:'1 oră'},
+                      {bg:'var(--brand-soft)',         br:'var(--brand-border)',      icon:'Zap',     ic:'var(--brand-color)',ttl:'3 oportunități noi găsite', sub:'Vezi recomandările AI',   t:'3 ore'},
+                    ].map(a => (
+                      <div class="dp-feed__item">
+                        <div class="dp-feed__icon" style={`background:${a.bg};border:1px solid ${a.br};`}>
+                          <LucideIcon name={a.icon} size={12} style={`color:${a.ic};`} />
+                        </div>
+                        <div class="dp-feed__body">
+                          <p class="dp-feed__ttl">{a.ttl}</p>
+                          <p class="dp-feed__sub">{a.sub}</p>
+                        </div>
+                        <span class="dp-feed__time">{a.t}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div class="flex flex-col gap-3">
+
+                <!-- Chart -->
+                <div class="dp-card">
+                  <div class="dp-card__hd">
+                    <span class="dp-card__ttl">Vizibilitate online</span>
+                    <span class="dp-card__meta">Ultimele 6 luni</span>
+                  </div>
+                  <div class="dp-chart">
+                    <div class="dp-chart__inner">
+                      <div class="dp-chart__badge">+68%</div>
+                      <svg class="dp-chart__svg" viewBox="0 0 200 95" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                        <defs>
+                          <linearGradient id="chartGradOv" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="hsl(83 78% 56%)" stop-opacity="0.7"/>
+                            <stop offset="100%" stop-color="hsl(83 78% 56%)" stop-opacity="0"/>
+                          </linearGradient>
+                        </defs>
+                        <text x="1"  y="14" font-size="7" fill="hsl(217 14% 45%)" font-family="monospace">100</text>
+                        <text x="1"  y="38" font-size="7" fill="hsl(217 14% 45%)" font-family="monospace">75</text>
+                        <text x="1"  y="62" font-size="7" fill="hsl(217 14% 45%)" font-family="monospace">50</text>
+                        <text x="1"  y="86" font-size="7" fill="hsl(217 14% 45%)" font-family="monospace">25</text>
+                        <line x1="24" y1="10" x2="200" y2="10" stroke="hsl(217 14% 22%)" stroke-width="0.5"/>
+                        <line x1="24" y1="34" x2="200" y2="34" stroke="hsl(217 14% 22%)" stroke-width="0.5"/>
+                        <line x1="24" y1="58" x2="200" y2="58" stroke="hsl(217 14% 22%)" stroke-width="0.5"/>
+                        <line x1="24" y1="82" x2="200" y2="82" stroke="hsl(217 14% 22%)" stroke-width="0.5"/>
+                        <path d="M24,78 C55,74 80,66 104,54 S148,32 168,22 S188,12 200,8 L200,88 L24,88 Z" fill="url(#chartGradOv)" opacity="0.3"/>
+                        <path id="chart-line-overview" d="M24,78 C55,74 80,66 104,54 S148,32 168,22 S188,12 200,8"
+                          stroke="hsl(83 78% 56%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"
+                          style="stroke-dasharray:300;stroke-dashoffset:300;"/>
+                        <circle cx="200" cy="8" r="3.5" fill="hsl(83 78% 56%)"/>
+                        <circle cx="200" cy="8" r="6" fill="hsl(83 78% 56%)" opacity="0.2"/>
+                      </svg>
+                    </div>
+                    <div class="dp-chart__xaxis">
+                      {['Ian','Feb','Mar','Apr','Mai','Iun'].map(m => (
+                        <span class="dp-chart__xl">{m}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- ════ PANEL: Website ════ -->
+            <div id="panel-website" class="dash-panel" role="tabpanel">
+
+              <div class="dp-header">
+                <div>
+                  <p class="dp-title">Performanță Website</p>
+                  <p class="dp-sub">Core Web Vitals · Audit complet</p>
+                </div>
+                <div class="dp-controls">
+                  <div class="dp-date-pill"><LucideIcon name="RefreshCw" size={9} /> Actualizat azi</div>
+                </div>
+              </div>
+
+              <!-- Score ring + metric bars -->
+              <div class="dp-score-row" style="flex-shrink:0;background:hsl(var(--color-surface));border:1px solid hsl(var(--color-border));border-radius:11px;padding:14px;margin-bottom:12px;">
+                <div class="dp-score-ring">
+                  <svg class="dp-score-ring__svg" viewBox="0 0 76 76">
+                    <circle class="dp-score-ring__track" cx="38" cy="38" r="30"/>
+                    <circle class="dp-score-ring__fill" id="score-ring-fill" cx="38" cy="38" r="30"
+                      stroke-dasharray="188.5" stroke-dashoffset="188.5"/>
+                  </svg>
+                  <div class="dp-score-ring__label">
+                    <span class="dp-score-ring__num" data-count="92">0</span>
+                    <span class="dp-score-ring__max">/100</span>
+                  </div>
+                </div>
+                <div class="dp-metrics">
                   {[
-                    {bg: 'hsl(38 92% 50% / 0.15)', border: 'hsl(38 92% 50% / 0.3)', icon: 'Star', iconColor: 'hsl(38 92% 60%)', title: 'Ai primit un review de 5 stele', sub: 'Clinica Veterinară Happy Pets', time: 'acum 5 min'},
-                    {bg: 'hsl(217 91% 60% / 0.12)', border: 'hsl(217 91% 60% / 0.25)', icon: 'MapPin', iconColor: 'hsl(217 91% 65%)', title: 'Profilul tău Google a fost actualizat', sub: 'Program actualizat', time: 'acum 1 oră'},
-                    {bg: 'var(--brand-soft)', border: 'var(--brand-border)', icon: 'Zap', iconColor: 'var(--brand-color)', title: '3 oportunități noi identificate', sub: 'Vezi recomandările noastre', time: 'acum 3 ore'},
-                    {bg: 'hsl(270 80% 60% / 0.12)', border: 'hsl(270 80% 60% / 0.25)', icon: 'BarChart2', iconColor: 'hsl(270 80% 70%)', title: 'Raport lunar generat automat', sub: 'Descarcă din secțiunea Rapoarte', time: 'acum 6 ore'},
-                  ].map(a => (
-                    <div class="flex items-center gap-2.5">
-                      <div class="w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center" style={`background: ${a.bg}; border: 1px solid ${a.border};`}>
-                        <LucideIcon name={a.icon} size={13} style={`color: ${a.iconColor};`} />
+                    {label:'Performanță', val:98},
+                    {label:'Mobil',       val:95},
+                    {label:'SEO',         val:89},
+                    {label:'Securitate',  val:94},
+                  ].map(m => (
+                    <div class="dp-metric">
+                      <div class="dp-metric__row">
+                        <span class="dp-metric__label">{m.label}</span>
+                        <span class="dp-metric__val">{m.val}</span>
                       </div>
-                      <div class="flex-1 min-w-0">
-                        <p class="text-[0.63rem] font-semibold text-white truncate">{a.title}</p>
-                        <p class="text-[0.58rem] font-mono truncate" style="color: hsl(var(--color-muted));">{a.sub}</p>
+                      <div class="dp-metric__bar">
+                        <div class="dp-metric__fill" data-width={`${m.val}%`} style="width:0%;"></div>
                       </div>
-                      <p class="text-[0.55rem] font-mono flex-shrink-0" style="color: hsl(var(--color-muted) / 0.6);">{a.time}</p>
                     </div>
                   ))}
                 </div>
               </div>
+
+              <div class="dp-bottom" style="flex:1;min-height:0;">
+                <!-- Site preview -->
+                <div class="dp-card">
+                  <div class="dp-card__hd">
+                    <span class="dp-card__ttl">Previzualizare site</span>
+                    <span class="dp-card__meta" style="color:hsl(83 78% 60%);font-weight:600;">● Live</span>
+                  </div>
+                  <div class="dp-site-preview">
+                    <div class="dp-site-preview__bar">
+                      <div class="dp-site-dot" style="background:#ef4444;opacity:0.7;"></div>
+                      <div class="dp-site-dot" style="background:#eab308;opacity:0.7;"></div>
+                      <div class="dp-site-dot" style="background:var(--brand-color);opacity:0.7;"></div>
+                      <span style="font-size:0.52rem;font-family:var(--font-mono);color:hsl(var(--color-muted));margin-left:6px;">www.afacereata.ro</span>
+                    </div>
+                    <div class="dp-site-preview__body" style="display:flex;flex-direction:column;gap:6px;">
+                      <div style="height:4px;border-radius:4px;background:hsl(var(--color-border));width:65%;"></div>
+                      <div style="height:3px;border-radius:4px;background:hsl(var(--color-border));width:82%;"></div>
+                      <div style="height:3px;border-radius:4px;background:hsl(var(--color-border));width:50%;"></div>
+                      <div style="height:22px;border-radius:6px;margin-top:4px;background:var(--brand-soft);border:1px solid var(--brand-border);width:42%;display:flex;align-items:center;justify-content:center;">
+                        <span style="font-size:0.5rem;color:var(--brand-color);font-weight:600;">Contactează-ne</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Stats -->
+                <div class="dp-card">
+                  <div class="dp-card__hd"><span class="dp-card__ttl">Luna aceasta</span></div>
+                  <div style="display:flex;flex-direction:column;gap:12px;flex:1;justify-content:center;">
+                    {[
+                      {label:'Vizitatori unici',     val:'1.847', foot:'+24%'},
+                      {label:'Lead-uri generate',    val:'34',    foot:'+12 față de mai'},
+                      {label:'Timp mediu pe site',   val:'3:42',  foot:'+18s față de mai'},
+                    ].map(s => (
+                      <div>
+                        <p class="dp-stat__label">{s.label}</p>
+                        <p class="dp-stat__value" style="font-size:0.95rem;">{s.val}</p>
+                        <p class="dp-stat__foot">{s.foot}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
             </div>
-          </div>
-        </div>
 
-        <!-- Floating notification -->
-        <div class="absolute -bottom-4 -left-4 flex items-center gap-2.5 rounded-xl border px-3 py-2" style="background: hsl(var(--color-surface)); border-color: hsl(var(--color-border)); box-shadow: 0 8px 24px rgba(0,0,0,0.4);">
-          <span class="w-2 h-2 rounded-full flex-shrink-0 animate-pulse" style="background: hsl(142 70% 50%);"></span>
-          <div>
-            <p class="text-xs font-semibold text-white leading-tight">Nou review primit</p>
-            <p class="text-[0.6rem] font-mono" style="color: hsl(var(--color-muted));">★★★★★ · acum 5 min</p>
-          </div>
-        </div>
+            <!-- ════ PANEL: Google Business ════ -->
+            <div id="panel-google" class="dash-panel" role="tabpanel">
 
+              <div class="dp-header">
+                <div>
+                  <p class="dp-title">Google Business Profile</p>
+                  <p class="dp-sub">Vizibilitate locală · Iunie 2025</p>
+                </div>
+                <div class="dp-controls">
+                  <div class="dp-date-pill"><LucideIcon name="TrendingUp" size={9} /> +31% față de mai</div>
+                </div>
+              </div>
+
+              <div class="dp-stats dp-stats--4" style="flex-shrink:0;">
+                {[
+                  {label:'Vizualizări profil', val:'1.284', foot:'+31% față de mai', lime:false},
+                  {label:'Apeluri directe',    val:'37',    foot:'+8 față de mai',   lime:false},
+                  {label:'Cereri direcții',    val:'29',    foot:'+11 față de mai',  lime:false},
+                  {label:'Poziție locală',     val:'Top 3', foot:'Cuvinte cheie principale', lime:true},
+                ].map(s => (
+                  <div class="dp-stat">
+                    <p class="dp-stat__label">{s.label}</p>
+                    <p class="dp-stat__value" style={s.lime ? 'color:var(--brand-color);font-size:1rem;' : ''}>{s.val}</p>
+                    <p class="dp-stat__foot">{s.foot}</p>
+                  </div>
+                ))}
+              </div>
+
+              <!-- Coverage map (full width) -->
+              <div class="dp-coverage-map" style="flex:1;min-height:0;">
+                <!-- City map background -->
+                <img src="/media/city-map-bg.webp" alt="" class="dp-coverage-map__bg" aria-hidden="true" />
+                <!-- Center glow -->
+                <div class="dp-coverage-map__glow"></div>
+                <!-- Header -->
+                <div class="dp-coverage-map__hd">
+                  <span class="dp-coverage-map__title">COVERAGE MAP</span>
+                  <span class="dp-coverage-map__live">● Live</span>
+                </div>
+                <!-- 5×3 grid -->
+                <div class="dp-cov-grid">
+                  {[
+                    {r:1,t:true}, {r:1,t:true}, {r:2,t:true}, {r:1,t:true}, {r:3,t:false},
+                    {r:2,t:true}, {r:1,t:true}, {you:true},   {r:1,t:true}, {r:4,t:false},
+                    {r:1,t:true}, {r:2,t:true}, {r:2,t:true}, {r:1,t:true}, {r:2,t:true},
+                  ].map(c => c.you ? (
+                    <div class="dp-cov-cell dp-cov-cell--you">
+                      <span class="dp-cov-cell__pulse"></span>
+                    </div>
+                  ) : (
+                    <div class={`dp-cov-cell ${c.t ? 'dp-cov-cell--top3' : 'dp-cov-cell--top5'}`}>
+                      {c.r}
+                    </div>
+                  ))}
+                </div>
+                <!-- Legend -->
+                <div class="dp-coverage-map__legend">
+                  <span class="dp-cov-legend-item"><span class="dp-cov-legend-dot dp-cov-legend-dot--top3"></span> Top 3</span>
+                  <span class="dp-cov-legend-item"><span class="dp-cov-legend-dot dp-cov-legend-dot--top5"></span> Top 5</span>
+                  <span class="dp-cov-legend-item"><span class="dp-cov-legend-dot dp-cov-legend-dot--you"></span> Tu</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- ════ PANEL: Recenzii ════ -->
+            <div id="panel-recenzii" class="dash-panel" role="tabpanel">
+
+              <div class="dp-header">
+                <div>
+                  <p class="dp-title">Reputație Online</p>
+                  <p class="dp-sub">Google Reviews · Toate platformele</p>
+                </div>
+                <div class="dp-controls">
+                  <div class="dp-date-pill" style="color:hsl(38 92% 60%);border-color:hsl(38 92% 50% / 0.3);">
+                    <svg width="9" height="9" viewBox="0 0 24 24" fill="hsl(38 92% 60%)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    4.9 medie
+                  </div>
+                </div>
+              </div>
+
+              <!-- Rating hero -->
+              <div style="flex-shrink:0;display:grid;grid-template-columns:auto 1fr;gap:14px;background:hsl(var(--color-surface));border:1px solid hsl(var(--color-border));border-radius:11px;padding:14px;margin-bottom:12px;align-items:center;">
+                <div>
+                  <p class="dp-rating-num" data-count-float="4.9">0</p>
+                  <div class="dp-stars">
+                    {[1,2,3,4,5].map(() => (
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="hsl(38 92% 60%)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    ))}
+                  </div>
+                  <p class="dp-rating-sub">127 recenzii</p>
+                </div>
+                <div class="dp-rankings">
+                  {[
+                    {val:'+27',   label:'Recenzii noi\nluna aceasta', lime:true},
+                    {val:'127',   label:'Total\nrecenzii',            lime:false},
+                    {val:'100%',  label:'Rată de\nrăspuns',          lime:true},
+                    {val:'4.9★',  label:'Medie\ngenerală',           lime:true},
+                  ].map(r => (
+                    <div class="dp-rank-item">
+                      <p class={`dp-rank-item__val${r.lime ? ' dp-rank-item__val--lime' : ''}`}>{r.val}</p>
+                      <p class="dp-rank-item__label">{r.label}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <!-- Review cards -->
+              <div style="display:flex;flex-direction:column;gap:8px;flex:1;overflow:hidden;">
+                {[
+                  {init:'AM', name:'Andrei M.', when:'acum 3 zile', text:'Servicii excelente! Am observat o creștere semnificativă a vizibilității online în primele 2 luni de colaborare.'},
+                  {init:'MC', name:'Maria C.',  when:'acum 1 săptămână', text:'Echipă profesionistă și rezultate reale. Recomand cu căldură tuturor afacerilor locale!'},
+                ].map(r => (
+                  <div class="dp-review-card">
+                    <div class="dp-review-card__top">
+                      <div class="dp-review-card__author">
+                        <div class="dp-review-card__av">{r.init}</div>
+                        <span class="dp-review-card__name">{r.name}</span>
+                      </div>
+                      <div style="display:flex;align-items:center;gap:3px;">
+                        {[1,2,3,4,5].map(() => (
+                          <svg width="9" height="9" viewBox="0 0 24 24" fill="hsl(38 92% 60%)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        ))}
+                      </div>
+                    </div>
+                    <p class="dp-review-card__text">{r.text}</p>
+                    <p style="font-size:0.52rem;font-family:var(--font-mono);color:hsl(var(--color-muted));margin-top:4px;">{r.when}</p>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+
+            <!-- ════ PANEL: AI Chatbot ════ -->
+            <div id="panel-chatbot" class="dash-panel" role="tabpanel">
+
+              <div class="dp-header">
+                <div>
+                  <p class="dp-title">AI Chatbot</p>
+                  <p class="dp-sub">Asistentul tău digital · Activ 24/7</p>
+                </div>
+                <div class="dp-controls">
+                  <div class="dp-online chat-live-badge">● Activ acum</div>
+                </div>
+              </div>
+
+              <div class="dp-stats dp-stats--4" style="flex-shrink:0;">
+                {[
+                  {label:'Conversații',     val:'183', foot:'Luna aceasta'},
+                  {label:'Lead-uri captate',val:'23',  foot:'+7 față de mai'},
+                  {label:'Programări',      val:'11',  foot:'Confirmate'},
+                  {label:'Timp economisit', val:'14h', foot:'Echivalent muncă'},
+                ].map(s => (
+                  <div class="dp-stat">
+                    <p class="dp-stat__label">{s.label}</p>
+                    <p class="dp-stat__value">{s.val}</p>
+                    <p class="dp-stat__foot">{s.foot}</p>
+                  </div>
+                ))}
+              </div>
+
+              <!-- Chat preview (full width) -->
+              <div class="dp-card" style="flex:1;min-height:0;margin-top:10px;">
+                <div class="dp-card__hd">
+                  <span class="dp-card__ttl">Conversație live</span>
+                  <span class="dp-card__meta" style="color:hsl(83 78% 60%);">● Online acum</span>
+                </div>
+                <div class="dp-chat" style="flex:1;overflow:hidden;">
+                  <!-- AI -->
+                  <div class="dp-chat__bubble">
+                    <div class="dp-chat__av" style="background:var(--brand-soft);border:1px solid var(--brand-border);">
+                      <LucideIcon name="Sparkles" size={12} style="color:var(--brand-color);" />
+                    </div>
+                    <div class="dp-chat__msg dp-chat__msg--ai">Bună ziua! Sunt asistentul digital al afacerii dvs. Cu ce vă pot ajuta astăzi?</div>
+                  </div>
+                  <!-- User -->
+                  <div class="dp-chat__bubble dp-chat__bubble--user">
+                    <div class="dp-chat__av" style="background:hsl(217 30% 20%);border:1px solid hsl(var(--color-border));">
+                      <LucideIcon name="User" size={12} style="color:hsl(var(--color-muted));" />
+                    </div>
+                    <div class="dp-chat__msg dp-chat__msg--user">Aș dori să fac o programare pentru mâine dacă e posibil.</div>
+                  </div>
+                  <!-- AI response -->
+                  <div class="dp-chat__bubble">
+                    <div class="dp-chat__av" style="background:var(--brand-soft);border:1px solid var(--brand-border);">
+                      <LucideIcon name="Sparkles" size={12} style="color:var(--brand-color);" />
+                    </div>
+                    <div class="dp-chat__msg dp-chat__msg--ai">Desigur! Avem disponibilitate mâine între 10:00-12:00 și 15:00-17:00. Care interval vă convine?</div>
+                  </div>
+                  <!-- Typing -->
+                  <div class="dp-chat__typing">
+                    <div class="dp-chat__av" style="background:hsl(217 30% 20%);border:1px solid hsl(var(--color-border));">
+                      <LucideIcon name="User" size={12} style="color:hsl(var(--color-muted));" />
+                    </div>
+                    <div class="dp-chat__typing-dots">
+                      <div class="dp-chat__dot"></div>
+                      <div class="dp-chat__dot"></div>
+                      <div class="dp-chat__dot"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div><!-- /dash-panels -->
+        </div><!-- /dash-main -->
+      </div><!-- /dash-app -->
+    </div><!-- /hero-dash -->
+  </div><!-- /hero-dash-wrap -->
+
+  <!-- Service pills -->
+  <div class="hero-service-pills">
+    {[
+      {icon:'Monitor',  label:'Website profesional',   desc:'Design & performanță'},
+      {icon:'MapPin',   label:'Google Business',        desc:'Vizibilitate locală'},
+      {icon:'Star',     label:'Recenzii online',        desc:'Reputație gestionată'},
+      {icon:'Sparkles', label:'AI Chatbot',             desc:'Conversații automate'},
+    ].map(p => (
+      <div class="hero-service-pill">
+        <div class="hero-service-pill__icon">
+          <LucideIcon name={p.icon} size={14} style="color: var(--brand-color);" />
+        </div>
+        <div>
+          <p class="hero-service-pill__label">{p.label}</p>
+          <p class="hero-service-pill__desc">{p.desc}</p>
+        </div>
       </div>
-    </div>
+    ))}
   </div>
+
 </section>
 
-<!-- ============================================================
-     SOCIAL PROOF BAR
-     ============================================================ -->
-<div style="background: hsl(var(--color-surface)); border-top: 1px solid hsl(var(--color-border)); border-bottom: 1px solid hsl(var(--color-border));">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-6">
-    <div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-10">
-      <p class="text-xs font-mono whitespace-nowrap flex-shrink-0" style="color: hsl(var(--color-muted));">
-        Peste <strong class="text-white">100+</strong> afaceri locale<br class="hidden sm:block"/>au încredere în noi
-      </p>
-      <div class="w-px h-8 hidden sm:block" style="background: hsl(var(--color-border));"></div>
-      <div class="flex flex-wrap items-center justify-center sm:justify-start gap-4">
-        {[
-          {icon: 'PawPrint',    name: 'Happy Pets',    sub: 'Clinică Veterinară'},
-          {icon: 'Cross',       name: 'Dental Care',   sub: 'Cabinet Stomatologic'},
-          {icon: 'Scissors',    name: 'Beauty Studio', sub: 'Salon'},
-          {icon: 'Wrench',      name: 'Auto Elite',    sub: 'Service Auto'},
-          {icon: 'Activity',    name: 'FizioMove',     sub: 'Kinetoterapie'},
-        ].map(c => (
-          <div class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
-            <div class="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0" style="background: hsl(var(--color-surface-2)); border: 1px solid hsl(var(--color-border));">
-              <LucideIcon name={c.icon} size={11} style="color: hsl(var(--color-muted));" />
-            </div>
-            <div>
-              <p class="text-xs font-semibold text-white leading-none">{c.name}</p>
-              <p class="text-[0.6rem] font-mono leading-none mt-0.5" style="color: hsl(var(--color-muted));">{c.sub}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </div>
-</div>
+<script>
+/* ── Star canvas ── */
+(function () {
+  const canvas = document.getElementById('hero-star-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const SPACING = 96;
+  let stars = [];
+
+  function resize() {
+    canvas.width  = canvas.parentElement.offsetWidth;
+    canvas.height = canvas.parentElement.offsetHeight;
+    buildStars();
+  }
+
+  function buildStars() {
+    stars = [];
+    const cols = Math.ceil(canvas.width  / SPACING) + 2;
+    const rows = Math.ceil(canvas.height / SPACING) + 2;
+    // exclusion zone in parent-relative coords (canvas top-left = parent top-left)
+    const copyEl = canvas.parentElement.querySelector('.hero-v2__copy');
+    let ex = null;
+    if (copyEl) {
+      const pRect = canvas.parentElement.getBoundingClientRect();
+      const cRect = copyEl.getBoundingClientRect();
+      const PAD   = 32;
+      ex = { l: cRect.left - pRect.left - PAD, r: cRect.right  - pRect.left + PAD,
+             t: cRect.top  - pRect.top  - PAD, b: cRect.bottom - pRect.top  + PAD };
+    }
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        if (Math.random() > 0.22) continue;
+        const sx = col * SPACING + (Math.random() - 0.5) * 32;
+        const sy = row * SPACING + (Math.random() - 0.5) * 32;
+        if (ex && sx > ex.l && sx < ex.r && sy > ex.t && sy < ex.b) continue;
+        stars.push({
+          x: sx, y: sy,
+          phase:    Math.random() * Math.PI * 2,
+          speed:    0.25 + Math.random() * 0.55,
+          maxAlpha: 0.45 + Math.random() * 0.55,
+          radius:   0.8  + Math.random() * 1.0,
+        });
+      }
+    }
+  }
+
+  function draw(now) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const t = now / 1000;
+    for (const s of stars) {
+      const alpha = s.maxAlpha * (0.5 + 0.5 * Math.sin(t * s.speed + s.phase));
+      ctx.shadowBlur  = s.radius * 12;
+      ctx.shadowColor = `rgba(163,230,53,${alpha})`;
+      ctx.fillStyle   = `rgba(163,230,53,${alpha})`;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.shadowBlur = 0;
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  window.addEventListener('resize', resize, { passive: true });
+  requestAnimationFrame(draw);
+})();
+
+/* ── Dashboard tabs ── */
+(function () {
+  const TABS = ['overview', 'website', 'google', 'recenzii', 'chatbot'];
+  let current = 'overview';
+  const animated = new Set();
+
+  function switchTab(id) {
+    if (id === current) return;
+    TABS.forEach(tab => {
+      const panel = document.getElementById('panel-' + tab);
+      if (panel) {
+        panel.classList.toggle('is-active', tab === id);
+        panel.setAttribute('aria-hidden', tab !== id ? 'true' : 'false');
+      }
+    });
+    document.querySelectorAll('[data-tab]').forEach(btn => {
+      const active = btn.dataset.tab === id;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-selected', String(active));
+    });
+    current = id;
+    if (!animated.has(id)) {
+      animated.add(id);
+      setTimeout(() => animatePanel(id), 60);
+    }
+    // scroll mobile tab into view
+    const mobileTab = document.querySelector('.dash-mobile-tab.is-active');
+    if (mobileTab) mobileTab.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+  }
+
+  function animatePanel(id) {
+    const panel = document.getElementById('panel-' + id);
+    if (!panel) return;
+
+    // Count-up integers
+    panel.querySelectorAll('[data-count]').forEach(el => {
+      const target = parseInt(el.dataset.count, 10);
+      countUp(el, target, 900);
+    });
+
+    // Count-up float
+    panel.querySelectorAll('[data-count-float]').forEach(el => {
+      const target = parseFloat(el.dataset.countFloat);
+      countUpFloat(el, target, 1100);
+    });
+
+    // Metric bar fill animation
+    panel.querySelectorAll('.dp-metric__fill[data-width]').forEach(el => {
+      el.style.width = el.dataset.width;
+    });
+
+    // Score ring animation
+    const ring = panel.querySelector('#score-ring-fill');
+    if (ring) {
+      const circumference = 188.5;
+      const offset = circumference - (92 / 100) * circumference;
+      ring.style.transition = 'stroke-dashoffset 900ms cubic-bezier(0.22,1,0.36,1)';
+      ring.style.strokeDashoffset = String(offset);
+    }
+
+    // Chart draw animation
+    const chartLine = panel.querySelector('#chart-line-overview');
+    if (chartLine) {
+      chartLine.style.transition = 'stroke-dashoffset 1.3s cubic-bezier(0.22,1,0.36,1)';
+      chartLine.style.strokeDashoffset = '0';
+    }
+  }
+
+  function countUp(el, target, duration) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.textContent = String(target); return;
+    }
+    const start = performance.now();
+    (function step(now) {
+      const p = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = String(Math.round(ease * target));
+      if (p < 1) requestAnimationFrame(step);
+    })(start);
+  }
+
+  function countUpFloat(el, target, duration) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.textContent = target.toFixed(1); return;
+    }
+    const start = performance.now();
+    (function step(now) {
+      const p = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = (ease * target).toFixed(1);
+      if (p < 1) requestAnimationFrame(step);
+    })(start);
+  }
+
+  function init() {
+    // Wire all tab buttons
+    document.querySelectorAll('[data-tab]').forEach(btn => {
+      btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+      btn.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); switchTab(btn.dataset.tab); }
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+          e.preventDefault();
+          const idx = TABS.indexOf(current);
+          if (idx < TABS.length - 1) switchTab(TABS[idx + 1]);
+        }
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          const idx = TABS.indexOf(current);
+          if (idx > 0) switchTab(TABS[idx - 1]);
+        }
+      });
+    });
+
+    // Touch swipe on the panels container
+    const container = document.getElementById('dash-panels-container');
+    if (container) {
+      let sx = 0, sy = 0;
+      container.addEventListener('touchstart', e => {
+        sx = e.touches[0].clientX; sy = e.touches[0].clientY;
+      }, {passive: true});
+      container.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - sx;
+        const dy = e.changedTouches[0].clientY - sy;
+        if (Math.abs(dx) < 40 || Math.abs(dy) > Math.abs(dx)) return;
+        const idx = TABS.indexOf(current);
+        if (dx < 0 && idx < TABS.length - 1) switchTab(TABS[idx + 1]);
+        if (dx > 0 && idx > 0) switchTab(TABS[idx - 1]);
+      }, {passive: true});
+    }
+
+    // Trigger overview animations when dashboard enters viewport
+    const dash = document.querySelector('.hero-dash');
+    if (dash && 'IntersectionObserver' in window) {
+      const obs = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+          if (!animated.has('overview')) {
+            animated.add('overview');
+            animatePanel('overview');
+          }
+          obs.disconnect();
+        }
+      }, {threshold: 0.25});
+      obs.observe(dash);
+    } else {
+      // fallback — run immediately
+      if (!animated.has('overview')) { animated.add('overview'); animatePanel('overview'); }
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
 
 <!-- ============================================================
      PROBLEMS

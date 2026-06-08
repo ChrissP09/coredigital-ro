@@ -72,6 +72,9 @@ import pawPrint from 'lucide-static/icons/paw-print.svg?raw';
 import cross from 'lucide-static/icons/cross.svg?raw';
 import scissors from 'lucide-static/icons/scissors.svg?raw';
 import wrench from 'lucide-static/icons/wrench.svg?raw';
+import refreshCw from 'lucide-static/icons/refresh-cw.svg?raw';
+import user from 'lucide-static/icons/user.svg?raw';
+import calendar from 'lucide-static/icons/calendar.svg?raw';
 
 const { name, class: className = '', size = 24, style: inlineStyle = '' } = Astro.props;
 
@@ -150,6 +153,9 @@ const icons: Record<string, string> = {
   Cross: cross,
   Scissors: scissors,
   Wrench: wrench,
+  RefreshCw: refreshCw,
+  User: user,
+  Calendar: calendar,
 };
 
 const raw = icons[name];

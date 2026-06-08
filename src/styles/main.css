@@ -24,6 +24,7 @@
 @import './components/contact-page.css';
 @import './components/why-core.css';
 @import './components/final-cta.css';
+@import './components/animations.css';
 @import './components/aeo-page.css';
 
 @tailwind base;

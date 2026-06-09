@@ -1,5 +1,15 @@
 import env from '../config/env.js';
 
+// Escape user-supplied text before it goes into a parse_mode:'HTML' message,
+// so '<', '>' or '&' can't break formatting, inject links, or make the
+// Telegram API reject the whole message.
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
 async function sendTelegramMessage(text) {
   if (!env.telegramBotToken || !env.telegramChatId) return;
   try {
@@ -11,4 +21,4 @@ async function sendTelegramMessage(text) {
   } catch { }
 }
 
-export { sendTelegramMessage };
+export { sendTelegramMessage, escapeHtml };

@@ -1,22 +1,42 @@
 import env from "../config/env.js";
+import { assertHostAllowed } from "../utils/ssrf.js";
 
 const USER_AGENT =
   "AIVisibilityGrader/1.0 (+https://localhost; rule-based website readiness check)";
 
+const MAX_REDIRECTS = 5;
+
+// SSRF-safe fetch: validates the host (no private/loopback/link-local targets)
+// before every hop and follows redirects manually so a public URL can't bounce
+// us into the internal network.
 async function fetchWithTimeout(url, options = {}) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), options.timeout || env.requestTimeoutMs);
 
   try {
-    const response = await fetch(url, {
-      method: options.method || "GET",
-      redirect: "follow",
-      signal: controller.signal,
-      headers: {
-        "user-agent": USER_AGENT,
-        accept: options.accept || "text/html,application/xhtml+xml,application/xml,text/xml;q=0.9,*/*;q=0.8"
+    let currentUrl = url;
+    let response;
+
+    for (let hop = 0; hop <= MAX_REDIRECTS; hop++) {
+      await assertHostAllowed(new URL(currentUrl).hostname);
+
+      response = await fetch(currentUrl, {
+        method: options.method || "GET",
+        redirect: "manual",
+        signal: controller.signal,
+        headers: {
+          "user-agent": USER_AGENT,
+          accept: options.accept || "text/html,application/xhtml+xml,application/xml,text/xml;q=0.9,*/*;q=0.8"
+        }
+      });
+
+      const location = response.headers.get("location");
+      if (response.status >= 300 && response.status < 400 && location) {
+        currentUrl = new URL(location, currentUrl).toString();
+        continue;
       }
-    });
+      break;
+    }
 
     return response;
   } finally {

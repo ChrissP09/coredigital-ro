@@ -1,7 +1,7 @@
 export const prerender = false;
 
 import type { APIRoute } from 'astro';
-import { sendTelegramMessage } from '../../lib/utils/telegram.js';
+import { sendTelegramMessage, escapeHtml } from '../../lib/utils/telegram.js';
 
 export const POST: APIRoute = async ({ request }) => {
   let body: any;
@@ -30,11 +30,11 @@ export const POST: APIRoute = async ({ request }) => {
 
   const lines = [
     `📩 <b>Mesaj nou din Contact</b>`,
-    `👤 ${name.trim()}${company?.trim() ? ` · ${company.trim()}` : ''}`,
-    `📧 ${email.trim()}`,
-    phone?.trim() ? `📞 ${phone.trim()}` : null,
-    service ? `🎯 ${serviceLabels[service] || service}` : null,
-    message?.trim() ? `💬 ${message.trim().slice(0, 800)}` : null,
+    `👤 ${escapeHtml(name.trim())}${company?.trim() ? ` · ${escapeHtml(company.trim())}` : ''}`,
+    `📧 ${escapeHtml(email.trim())}`,
+    phone?.trim() ? `📞 ${escapeHtml(phone.trim())}` : null,
+    service ? `🎯 ${escapeHtml(serviceLabels[service] || service)}` : null,
+    message?.trim() ? `💬 ${escapeHtml(message.trim().slice(0, 800))}` : null,
   ].filter(Boolean).join('\n');
 
   sendTelegramMessage(lines);

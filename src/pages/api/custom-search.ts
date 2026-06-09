@@ -2,11 +2,12 @@ export const prerender = false;
 
 import type { APIRoute } from 'astro';
 import database from '../../lib/config/database.js';
-import { sendTelegramMessage } from '../../lib/utils/telegram.js';
+import { sendTelegramMessage, escapeHtml } from '../../lib/utils/telegram.js';
 import { checkBrandInAiResponse } from '../../lib/services/aiVisibility.service.js';
+import { verifyTurnstile } from '../../lib/utils/turnstile.js';
 import env from '../../lib/config/env.js';
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request, clientAddress }) => {
   let body: any;
   try { body = await request.json(); } catch { return Response.json({ error: 'Invalid JSON' }, { status: 400 }); }
 
@@ -19,6 +20,11 @@ export const POST: APIRoute = async ({ request }) => {
     return Response.json({ error: 'Adresa de email nu este validă.' }, { status: 400 });
   }
 
+  const ip = request.headers.get('x-forwarded-for')?.split(',')[0].trim() || clientAddress;
+  if (!(await verifyTurnstile(body['cf-turnstile-response'], ip))) {
+    return Response.json({ error: 'Verificarea anti-bot a eșuat. Reîncarcă pagina.' }, { status: 403 });
+  }
+
   await database.run(
     'INSERT INTO leads (analysis_id, domain, name, phone, email, role) VALUES (?, ?, ?, ?, ?, ?)',
     [analysisId || null, domain || null, 'Custom Search', '-', email.trim(), 'custom-search']
@@ -26,11 +32,11 @@ export const POST: APIRoute = async ({ request }) => {
 
   const lines = [
     `🔍 <b>Custom Search</b>`,
-    `📧 ${email.trim()}`,
-    domain ? `🌐 ${domain}` : null,
-    `❓ ${query1.trim()}`,
-    `❓ ${query2.trim()}`,
-    analysisId ? `📊 Raport: /analiza-ai/rezultat/${analysisId}` : null
+    `📧 ${escapeHtml(email.trim())}`,
+    domain ? `🌐 ${escapeHtml(domain)}` : null,
+    `❓ ${escapeHtml(query1.trim())}`,
+    `❓ ${escapeHtml(query2.trim())}`,
+    analysisId ? `📊 Raport: /analiza-ai/rezultat/${escapeHtml(analysisId)}` : null
   ].filter(Boolean).join('\n');
   sendTelegramMessage(lines);
 

@@ -19,6 +19,33 @@ const child = spawn(
 child.on('error', err => process.stderr.write('Child error: ' + err.message + '\n'));
 child.on('exit', code => process.exit(code ?? 0));
 
+// Security headers applied to every response (static pages + SSR). CSP allows
+// our own inline styles/scripts and the Cloudflare Turnstile widget/iframe.
+const CSP = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: https:",
+  "font-src 'self'",
+  "connect-src 'self'",
+  "frame-src https://challenges.cloudflare.com",
+  "frame-ancestors 'none'",
+  "base-uri 'self'",
+  "object-src 'none'",
+].join('; ');
+
+function withSecurityHeaders(headers) {
+  return {
+    ...headers,
+    'x-frame-options': 'DENY',
+    'x-content-type-options': 'nosniff',
+    'referrer-policy': 'strict-origin-when-cross-origin',
+    'permissions-policy': 'geolocation=(), microphone=(), camera=()',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains',
+    'content-security-policy': CSP,
+  };
+}
+
 // Forward request to child, retry up to `retries` times if child isn't ready yet
 function forward(req, res, body, retries) {
   const pr = httpRequest(
@@ -35,7 +62,7 @@ function forward(req, res, body, retries) {
         'x-forwarded-proto': req.headers['x-forwarded-proto'] || 'https',
       },
     },
-    r => { res.writeHead(r.statusCode, r.headers); r.pipe(res); }
+    r => { res.writeHead(r.statusCode, withSecurityHeaders(r.headers)); r.pipe(res); }
   );
   pr.write(body);
   pr.end();

@@ -23,6 +23,13 @@ const lastUrl = url.searchParams.get('url') || '';
     <link rel="stylesheet" href="/fonts/fonts.css">
     <style>:root{--font-sans:'Inter','Segoe UI','Helvetica Neue',Arial,sans-serif;--font-display:'Inter','Segoe UI','Helvetica Neue',Arial,sans-serif;--font-mono:'JetBrains Mono','Fira Code',monospace;--text-display:clamp(2.6rem,5vw,4.25rem);--text-h1:clamp(2rem,3.5vw,3.25rem);--text-h2:clamp(1.75rem,2.5vw,2.25rem);--text-h3:clamp(1.15rem,1.5vw,1.5rem);--text-h4:1.125rem;--text-body-lg:1.125rem;--text-body:1rem;--text-sm:0.875rem;--text-xs:0.75rem;--fw-display:700;--fw-heading:600;--fw-sub:500;--fw-body:400;--lh-display:1.02;--lh-heading:1.1;--lh-body:1.65;--lh-relaxed:1.75;--ls-tight:-0.03em;--ls-heading:-0.02em;--ls-normal:0em;--ls-wide:0.05em;}</style>
     <link rel="stylesheet" href="/analiza-ai/css/app.css">
+    <style>
+      .hero-search-form { display: block; width: 100%; }
+      /* Turnstile container: no space until the widget actually renders something
+         (interaction-only stays empty/collapsed unless a challenge is needed). */
+      .hero-turnstile:empty { display: none; }
+      .hero-turnstile:not(:empty) { margin-top: 0.85rem; }
+    </style>
     <link rel="icon" href="/assets/Favicon circle dark.png" type="image/png">
     {turnstileSiteKey && (
       <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
@@ -48,25 +55,27 @@ const lastUrl = url.searchParams.get('url') || '';
               Verifică <span class="font-semibold text-limeai">gratuit</span> cât de ușor pot sistemele AI să descopere, să înțeleagă și să verifice afacerea ta.
             </p>
 
-            <form data-score-form action="/api/scor" method="post" class="hero-search mt-9">
+            <form data-score-form action="/api/scor" method="post" class="hero-search-form mt-9">
               <input type="text" name="website_confirm" value="" style="display:none;" tabindex="-1" autocomplete="off">
-              <label class="sr-only" for="websiteUrl">Site web</label>
-              <span class="search-glyph" aria-hidden="true"></span>
-              <input
-                id="websiteUrl"
-                name="websiteUrl"
-                type="text"
-                value={lastUrl}
-                placeholder="Introdu URL-ul site-ului tău..."
-                required
-                class="hero-input"
-              >
-              <button type="submit" class="hero-submit">
-                Analizează gratuit
-                <span aria-hidden="true">&rarr;</span>
-              </button>
+              <div class="hero-search">
+                <label class="sr-only" for="websiteUrl">Site web</label>
+                <span class="search-glyph" aria-hidden="true"></span>
+                <input
+                  id="websiteUrl"
+                  name="websiteUrl"
+                  type="text"
+                  value={lastUrl}
+                  placeholder="Introdu URL-ul site-ului tău..."
+                  required
+                  class="hero-input"
+                >
+                <button type="submit" class="hero-submit">
+                  Analizează gratuit
+                  <span aria-hidden="true">&rarr;</span>
+                </button>
+              </div>
               {turnstileSiteKey && (
-                <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-appearance="interaction-only" style="margin-top:0.75rem;"></div>
+                <div class="cf-turnstile hero-turnstile" data-sitekey={turnstileSiteKey} data-appearance="interaction-only"></div>
               )}
             </form>
 

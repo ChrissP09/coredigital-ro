@@ -1,12 +1,11 @@
-import Database from 'better-sqlite3';
+import { DatabaseSync } from 'node:sqlite';
 import fs from 'fs';
 import path from 'path';
 import env from './env.js';
 
 fs.mkdirSync(path.dirname(env.sqliteAbsolutePath), { recursive: true });
 
-const db = new Database(env.sqliteAbsolutePath);
-db.pragma('journal_mode = WAL');
+const db = new DatabaseSync(env.sqliteAbsolutePath);
 
 function run(sql, params = []) {
   try {

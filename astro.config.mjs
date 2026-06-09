@@ -8,9 +8,4 @@ export default defineConfig({
   output: 'static',
   adapter: node({ mode: 'standalone' }),
   integrations: [tailwind()],
-  vite: {
-    ssr: {
-      external: ['better-sqlite3'],
-    },
-  },
 });

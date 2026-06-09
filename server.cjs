@@ -27,7 +27,13 @@ function forward(req, res, body, retries) {
       port: CHILD_PORT,
       path: req.url,
       method: req.method,
-      headers: { ...req.headers, 'content-length': body.length },
+      headers: {
+        ...req.headers,
+        'content-length': body.length,
+        // Hostinger terminates SSL up front; tell the child the real scheme
+        // so Astro builds https:// origins (canonical, og:url, redirects).
+        'x-forwarded-proto': req.headers['x-forwarded-proto'] || 'https',
+      },
     },
     r => { res.writeHead(r.statusCode, r.headers); r.pipe(res); }
   );

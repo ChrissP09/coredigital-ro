@@ -6,10 +6,11 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "postbuild": "node src/lib/db/migrate.js",
     "preview": "astro preview",
     "astro": "astro",
     "migrate": "node src/lib/db/migrate.js",
-    "start": "node src/lib/db/migrate.js && HOST=0.0.0.0 node dist/server/entry.mjs"
+    "start": "HOST=0.0.0.0 node dist/server/entry.mjs"
   },
   "dependencies": {
     "@astrojs/node": "^9.5.5",

@@ -799,122 +799,418 @@ import ProcessSteps from '../components/ui/ProcessSteps.astro';
 
 
 <!-- ============================================================
-     PROBLEMS
+     PROBLEMS (pain points + UI mockups)
      ============================================================ -->
-<section class="py-20 lg:py-32" style="background: hsl(var(--color-surface));">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="text-center mb-14">
-      <span class="u-section-tag mb-5 inline-flex">
-        <LucideIcon name="AlertTriangle" size={12} />
-        Provocări reale
+<section class="pv2">
+  <div class="pv2__container">
+
+    <header class="pv2__head">
+      <span class="pv2__eyebrow">
+        <span class="pv2__eyebrow-dot"></span>
+        Probleme care te țin pe loc
       </span>
-      <h2 class="mb-4">Problemele business-urilor<br/>locale online</h2>
-      <p class="max-w-xl mx-auto">
-        Majoritatea afacerilor locale pierd clienți din cauza prezenței online inadecvate.
+      <h2 class="pv2__title">
+        De ce multe afaceri bune<br>
+        sunt aproape <span class="pv2__title-accent">invizibile online?</span>
+      </h2>
+      <p class="pv2__sub">
+        O prezență online neglijată îți poate costa clienți, încredere și oportunități de creștere.<br>
+        Iată cele mai frecvente probleme cu care se confruntă afacerile locale.
       </p>
+    </header>
+
+    <div class="pv2__grid">
+
+      <!-- ── CARD 01 — Search ── -->
+      <article class="pcard">
+        <div class="pcard__head">
+          <span class="pcard__icon"><LucideIcon name="Search" size={18} /></span>
+          <h3 class="pcard__title">Nu ești găsit de clienții tăi ideali</h3>
+        </div>
+        <p class="pcard__desc">Apari prea jos în Google, nu ești prezent în căutările locale sau concurenții tăi sunt înaintea ta.</p>
+
+        <div class="pmock">
+          <div class="pmock__search">
+            <span class="pmock__google" aria-hidden="true"><b style="color:#4285F4">G</b><b style="color:#EA4335">o</b><b style="color:#FBBC05">o</b><b style="color:#4285F4">g</b><b style="color:#34A853">l</b><b style="color:#EA4335">e</b></span>
+            <span class="pmock__query">servicii contabilitate Cluj</span>
+            <svg class="pmock__mic" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
+          </div>
+          <div class="pmock__result">
+            <span class="pmock__rank">1.</span>
+            <div class="pmock__rbody">
+              <p class="pmock__rname">Competitor SRL</p>
+              <p class="pmock__rmeta">4.8 <span class="pmock__stars">{[1,1,1,1,1].map(() => (<svg width="9" height="9" viewBox="0 0 24 24" fill="hsl(38 92% 60%)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>))}</span> (128)</p>
+            </div>
+            <span class="pmock__pin"><LucideIcon name="MapPin" size={12} /></span>
+          </div>
+          <div class="pmock__result">
+            <span class="pmock__rank">2.</span>
+            <div class="pmock__rbody">
+              <p class="pmock__rname">Altă Firmă SRL</p>
+              <p class="pmock__rmeta">4.6 <span class="pmock__stars">{[1,1,1,1].map(() => (<svg width="9" height="9" viewBox="0 0 24 24" fill="hsl(38 92% 60%)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>))}<svg width="9" height="9" viewBox="0 0 24 24" fill="hsl(240 5% 35%)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span> (97)</p>
+            </div>
+            <span class="pmock__pin"><LucideIcon name="MapPin" size={12} /></span>
+          </div>
+          <div class="pmock__result pmock__result--you">
+            <span class="pmock__rank">T.</span>
+            <div class="pmock__rbody">
+              <p class="pmock__rname">Tu – Afacerea ta</p>
+              <p class="pmock__rmeta pmock__rmeta--warn">Pagina 3</p>
+            </div>
+            <span class="pmock__sad" aria-hidden="true">😟</span>
+          </div>
+        </div>
+
+        <p class="pcard__result"><LucideIcon name="AlertTriangle" size={13} /> <strong>Rezultat:</strong> pierzi clienți în fiecare zi fără să știi.</p>
+      </article>
+
+      <!-- ── CARD 02 — Trust ── -->
+      <article class="pcard">
+        <div class="pcard__head">
+          <span class="pcard__icon"><LucideIcon name="ShieldCheck" size={18} /></span>
+          <h3 class="pcard__title">Nu inspiri suficientă încredere</h3>
+        </div>
+        <p class="pcard__desc">Recenzii puține sau negative, informații incomplete și un website învechit îi fac pe oameni să aleagă altă afacere.</p>
+
+        <div class="pmock">
+          <div class="pmock__ratinghd">
+            <span class="pmock__rlabel">Rating mediu actual</span>
+          </div>
+          <div class="pmock__ratingrow">
+            <span class="pmock__rnum">2.9</span>
+            <span class="pmock__stars">
+              {[1,1].map(() => (<svg width="13" height="13" viewBox="0 0 24 24" fill="hsl(38 92% 60%)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>))}
+              <svg width="13" height="13" viewBox="0 0 24 24"><defs><linearGradient id="half29"><stop offset="50%" stop-color="hsl(38 92% 60%)"/><stop offset="50%" stop-color="hsl(240 5% 35%)"/></linearGradient></defs><path fill="url(#half29)" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              {[1,1].map(() => (<svg width="13" height="13" viewBox="0 0 24 24" fill="hsl(240 5% 35%)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>))}
+            </span>
+            <span class="pmock__rcount">(18 recenzii)</span>
+          </div>
+          <div class="pmock__quote">
+            <span class="pmock__av" aria-hidden="true"></span>
+            <div class="pmock__qbody">
+              <p class="pmock__qtext">„Serviciu ok, dar nu am primit răspuns la mesaj.”</p>
+              <span class="pmock__qtime">acum 3 zile</span>
+            </div>
+          </div>
+          <div class="pmock__quote">
+            <span class="pmock__av" aria-hidden="true"></span>
+            <div class="pmock__qbody">
+              <p class="pmock__qtext">„Programul afișat nu este actualizat.”</p>
+              <span class="pmock__qtime">acum 1 săptămână</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="pcard__result"><LucideIcon name="AlertTriangle" size={13} /> <strong>Rezultat:</strong> lipsa de încredere înseamnă mai puțini clienți.</p>
+      </article>
+
+      <!-- ── CARD 03 — Contact ── -->
+      <article class="pcard">
+        <div class="pcard__head">
+          <span class="pcard__icon"><LucideIcon name="MessageCircle" size={18} /></span>
+          <h3 class="pcard__title">Pierzi oportunități de contact</h3>
+        </div>
+        <p class="pcard__desc">Mesaje fără răspuns, apeluri ratate și întrebări repetitive înseamnă clienți pierduți și venituri ratate.</p>
+
+        <div class="pmock">
+          <div class="pmock__tabs">
+            <span class="pmock__tab">Toate</span>
+            <span class="pmock__tab is-active">Mesaje</span>
+            <span class="pmock__tab">Apeluri</span>
+            <span class="pmock__tab">Formulare</span>
+          </div>
+          {[
+            {n:'Andrei M.', m:'Aveți program sâmbătă?', t:'2h'},
+            {n:'Maria P.',  m:'Cât costă serviciul?',   t:'5h'},
+            {n:'Ion D.',    m:'Aș dori mai multe informații', t:'1z'},
+          ].map(msg => (
+            <div class="pmock__msg">
+              <span class="pmock__av" aria-hidden="true"></span>
+              <div class="pmock__mbody">
+                <p class="pmock__mname">{msg.n}</p>
+                <p class="pmock__mtext">{msg.m}</p>
+              </div>
+              <div class="pmock__mright">
+                <span class="pmock__badge">Nerăspuns</span>
+                <span class="pmock__mtime">{msg.t}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <p class="pcard__result"><LucideIcon name="AlertTriangle" size={13} /> <strong>Rezultat:</strong> fiecare mesaj ignorat poate fi un client pierdut.</p>
+      </article>
+
+      <!-- ── CARD 04 — Time ── -->
+      <article class="pcard">
+        <div class="pcard__head">
+          <span class="pcard__icon"><LucideIcon name="Clock" size={18} /></span>
+          <h3 class="pcard__title">Nu ai timp să te ocupi de toate</h3>
+        </div>
+        <p class="pcard__desc">Website, Google Business, recenzii, conținut, actualizări. Toate sunt importante, dar consumă timp.</p>
+
+        <div class="pmock">
+          {[
+            {label:'Actualizează Google Business', t:'2h'},
+            {label:'Răspunde la recenzii',         t:'1h'},
+            {label:'Publică postări',               t:'2h'},
+            {label:'Verifică statistici website',   t:'1h'},
+          ].map(task => (
+            <div class="pmock__task">
+              <span class="pmock__tlabel">{task.label}</span>
+              <span class="pmock__tright">
+                <span class="pmock__ttime"><LucideIcon name="Clock" size={10} /> {task.t}</span>
+                <span class="pmock__check" aria-hidden="true"></span>
+              </span>
+            </div>
+          ))}
+          <div class="pmock__task">
+            <span class="pmock__tlabel">Răspunde la mesaje</span>
+            <span class="pmock__tright">
+              <span class="pmock__count">11</span>
+              <span class="pmock__dash">—</span>
+            </span>
+          </div>
+        </div>
+
+        <p class="pcard__result"><LucideIcon name="AlertTriangle" size={13} /> <strong>Rezultat:</strong> te concentrezi pe afacere, nu pe creștere.</p>
+      </article>
+
     </div>
 
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="u-card u-card-hover">
-        <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-5" style="background: hsl(0 70% 50% / 0.12); border: 1px solid hsl(0 70% 50% / 0.25);">
-          <LucideIcon name="AlertOctagon" size={18} style="color: hsl(0 70% 60%);" />
-        </div>
-        <h3 class="text-base font-semibold text-white mb-2">Website-uri învechite</h3>
-        <p class="text-sm leading-relaxed">
-          Site-uri vechi, neoptimizate pentru mobil, care îndepărtează clienții potențiali și reduc încrederea în brand.
-        </p>
-      </div>
+    <a class="pv2__cta" href="#servicii">
+      <span class="pv2__cta-icon"><LucideIcon name="TrendingUp" size={20} /></span>
+      <span class="pv2__cta-text">
+        <span class="pv2__cta-line">Degeaba ești bun la ce faci dacă oamenii nu te găsesc online.</span>
+        <span class="pv2__cta-accent">Vestea bună? Există o soluție.</span>
+      </span>
+      <span class="pv2__cta-arrow"><LucideIcon name="ArrowRight" size={18} /></span>
+    </a>
 
-      <div class="u-card u-card-hover">
-        <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-5" style="background: hsl(38 92% 50% / 0.12); border: 1px solid hsl(38 92% 50% / 0.25);">
-          <LucideIcon name="StarOff" size={18} style="color: hsl(38 92% 60%);" />
-        </div>
-        <h3 class="text-base font-semibold text-white mb-2">Lipsa review-urilor</h3>
-        <p class="text-sm leading-relaxed">
-          Clienții mulțumiți nu lasă review-uri, iar cei nemulțumiți influențează negativ reputația online.
-        </p>
-      </div>
-
-      <div class="u-card u-card-hover">
-        <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-5" style="background: var(--sky-soft); border: 1px solid var(--sky-border);">
-          <LucideIcon name="Clock" size={18} style="color: var(--sky-color);" />
-        </div>
-        <h3 class="text-base font-semibold text-white mb-2">Lipsa automatizării</h3>
-        <p class="text-sm leading-relaxed">
-          Ore pierdute cu răspunsuri la întrebări repetitive și procese manuale care pot fi automatizate.
-        </p>
-      </div>
-    </div>
   </div>
 </section>
 
 <!-- ============================================================
-     SERVICES OVERVIEW
+     HOME SYSTEM — services working together
      ============================================================ -->
-<section id="servicii" class="py-20 lg:py-32">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="text-center mb-14">
-      <span class="u-section-tag mb-5 inline-flex">
-        <LucideIcon name="Layers" size={12} />
-        Soluțiile noastre
+<section class="home-system">
+  <div class="home-system__container">
+    <header class="home-system__head">
+      <span class="home-system__eyebrow">
+        <span class="home-system__eyebrow-dot"></span>
+        Cum rezolvăm aceste probleme
       </span>
-      <h2 class="mb-4">Trei servicii esențiale,<br/>un singur partener</h2>
-      <p class="max-w-xl mx-auto">
-        Website, review-uri și AI chatbot — totul gestionat de CoreDigital, fără bătăi de cap.
+      <h2 class="home-system__title">
+        Toate elementele care influențează prezența ta online
+        <span>lucrează împreună.</span>
+      </h2>
+      <p class="home-system__sub">
+        Un sistem complet care crește vizibilitatea, construiește încrederea și transformă vizitatorii în clienți.
+        Noi ne ocupăm de toate, tu te concentrezi pe ceea ce faci cel mai bine.
       </p>
+      <div class="home-system__actions">
+        <a class="u-brand-cta u-btn-lg" href="#servicii">Vrei să vezi cum funcționează? <LucideIcon name="ArrowRight" size={16} /></a>
+        <a class="u-brand-outline u-btn-lg" href="/contact">Programează un call</a>
+      </div>
+    </header>
+
+    <div class="hs2-grid">
+      <article class="hs2-card hs2-card--wide hs2-card--website">
+        <div class="hs2-copy">
+          <span class="hs2-kicker"><b>01</b> Website &amp; vizibilitate</span>
+          <h3>Fii găsit înaintea concurenței.</h3>
+          <p>Website-ul tău este fundația întregii prezențe online. Construim website-uri rapide, optimizate și ușor de înțeles pentru clienți, Google și sistemele AI.</p>
+          <ul class="hs2-list">
+            {['Design modern și responsive','Performanță și experiență optimizată','Structură SEO și AI-friendly','Conținut clar și orientat spre conversii'].map(item => (
+              <li><span><LucideIcon name="Check" size={12} /></span>{item}</li>
+            ))}
+          </ul>
+          <p class="hs2-result"><LucideIcon name="TrendingUp" size={16} /><strong>Rezultat:</strong> mai mulți oameni descoperă afacerea ta online.</p>
+        </div>
+
+        <div class="hs2-site">
+          <div class="hs2-site__chrome">
+            <span class="hs2-dot hs2-dot--red"></span><span class="hs2-dot hs2-dot--yellow"></span><span class="hs2-dot hs2-dot--green"></span>
+            <span class="hs2-url"><LucideIcon name="Lock" size={8} /> cafessano.ro</span>
+            <span class="hs2-nav">Acasă&nbsp;&nbsp; Meniu&nbsp;&nbsp; Contact</span>
+            <span class="hs2-pill">Rezervă o masă</span>
+          </div>
+          <div class="hs2-site__body">
+            <div>
+              <h4>Bucătărie autentică. Experiențe memorabile.</h4>
+              <p>Restaurant cu specific mediteranean în inima orașului.</p>
+              <div class="hs2-site__actions"><span>Vezi meniul</span><span>Despre noi</span></div>
+            </div>
+            <div class="hs2-score">
+              <svg viewBox="0 0 92 92" aria-hidden="true"><circle cx="46" cy="46" r="34"></circle><circle cx="46" cy="46" r="34"></circle></svg>
+              <strong>92</strong><small>Performanță excelentă</small>
+            </div>
+          </div>
+          <div class="hs2-site__metrics">
+            <span><LucideIcon name="Gauge" size={13} /> Viteză <b>96/100</b></span>
+            <span><LucideIcon name="Search" size={13} /> SEO <b>94/100</b></span>
+            <span><LucideIcon name="ShieldCheck" size={13} /> Securitate <b>96/100</b></span>
+          </div>
+          <div class="hs2-phone">
+            <span><LucideIcon name="Lock" size={7} /> cafessano.ro</span>
+            <h4>Bucătărie autentică.</h4>
+            <div class="hs2-phone__photo"></div>
+            <p>Rezervă o masă</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="hs2-card hs2-map">
+        <div class="hs2-map__panel">
+          <div class="hs2-map__info">
+            <div class="hs2-map__bar"><span>G</span> Profil Google Business <LucideIcon name="X" size={13} /></div>
+            <h4>Café Sano</h4>
+            <p>4.9 <span class="hs2-stars">★★★★★</span> <small>(128)</small></p>
+            <p><strong>Deschis</strong> · Închide la 22:00</p>
+            <div class="hs2-map__actions">
+              <span><LucideIcon name="Phone" size={14} /> Apel</span>
+              <span><LucideIcon name="Target" size={14} /> Direcții</span>
+              <span><LucideIcon name="Bookmark" size={14} /> Salvează</span>
+              <span><LucideIcon name="Globe" size={14} /> Site</span>
+            </div>
+            <div class="hs2-map__rank">Poziție în Maps <b>Locul 1 din 37</b><em>+85% vizibilitate</em></div>
+          </div>
+          <div class="hs2-map__visual">
+            <img src="/media/city-map-bg.webp" alt="" loading="lazy" />
+            <span><LucideIcon name="MapPin" size={34} /></span>
+            <b>Locul 1 <small>în căutările locale</small></b>
+          </div>
+        </div>
+      </article>
+
+      <article class="hs2-card">
+        <div class="hs2-copy">
+          <span class="hs2-kicker"><b>02</b> Google Business</span>
+          <h3>Fii alegerea <span>evidentă</span> în căutările locale.</h3>
+          <p>Optimizăm și gestionăm profilul tău Google Business pentru mai multă vizibilitate în căutările locale și în Maps.</p>
+          <ul class="hs2-list">
+            {['Profil complet și optimizat','Actualizări și postări regulate','Monitorizare performanță locală','Mai multe apeluri și cereri de direcții'].map(item => (
+              <li><span><LucideIcon name="Check" size={12} /></span>{item}</li>
+            ))}
+          </ul>
+          <p class="hs2-result"><LucideIcon name="TrendingUp" size={16} /><strong>Rezultat:</strong> mai multă vizibilitate exact în zona în care activezi.</p>
+        </div>
+      </article>
+
+      <article class="hs2-card hs2-card--wide hs2-card--reviews">
+        <div class="hs2-copy">
+          <span class="hs2-kicker"><b>03</b> Recenzii &amp; reputație</span>
+          <h3>Transformă clienții mulțumiți în cel mai bun <span>argument de vânzare.</span></h3>
+          <p>Oamenii au încredere în experiențele altor clienți. Implementăm procese automate care generează recenzii noi și îți consolidează reputația online.</p>
+          <ul class="hs2-list">
+            {['Colectare automată de review-uri','Reactivarea clienților existenți','Monitorizare reputație online','Răspunsuri rapide și profesioniste'].map(item => (
+              <li><span><LucideIcon name="Check" size={12} /></span>{item}</li>
+            ))}
+          </ul>
+          <p class="hs2-result"><LucideIcon name="Star" size={16} /><strong>Rezultat:</strong> mai multă încredere și o rată de conversie mai mare.</p>
+        </div>
+        <div class="hs2-reviews">
+          <div class="hs2-reviews__score"><span>Rating mediu</span><strong>4.9</strong><p class="hs2-stars">★★★★★</p><small>127 recenzii</small><b>+27 în ultima lună</b></div>
+          <div class="hs2-reviews__list">
+            {[
+              ['Andrei M.', 'Servicii excelente! Recomand cu încredere.', 'acum 2 zile'],
+              ['Maria P.', 'Profesionalism și atenție la detalii.', 'acum 5 zile'],
+              ['Ion D.', 'Comunicare excelentă și rezultate foarte bune.', 'acum 1 săptămână'],
+            ].map((r) => (
+              <div class="hs2-review"><span></span><div><p>{r[0]}</p><em>★★★★★</em><small>{r[1]}</small></div><time>{r[2]}</time></div>
+            ))}
+            <div class="hs2-reviews__bar">+127 review-uri noi luna aceasta</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="hs2-card hs2-ai-visual">
+        <div class="hs2-ai-orbit">
+          <span class="hs2-ai-core">AI<br />Visibility</span>
+          {['ChatGPT','Perplexity','Bing Copilot','Claude','Gemini','Google AI Overviews'].map(label => (
+            <span class="hs2-ai-chip">{label}</span>
+          ))}
+        </div>
+      </article>
+
+      <article class="hs2-card">
+        <div class="hs2-copy">
+          <span class="hs2-kicker"><b>04</b> AI Visibility</span>
+          <h3>Pregătește afacerea ta pentru noua <span>generație</span> de căutări.</h3>
+          <p>Tot mai mulți oameni folosesc ChatGPT, Gemini, Claude și alte sisteme AI pentru a găsi recomandări și servicii locale.</p>
+          <ul class="hs2-list">
+            {['Structură și date ușor de interpretat de AI','Semnale de încredere și autoritate','Consistență între website și profile','Monitorizarea vizibilității în ecosistemul AI'].map(item => (
+              <li><span><LucideIcon name="Check" size={12} /></span>{item}</li>
+            ))}
+          </ul>
+          <p class="hs2-result"><LucideIcon name="Brain" size={16} /><strong>Rezultat:</strong> mai multe șanse să fii recomandat de sistemele AI.</p>
+        </div>
+      </article>
+
+      <article class="hs2-card hs2-card--wide hs2-card--chat">
+        <div class="hs2-copy">
+          <span class="hs2-kicker"><b>05</b> AI Chatbot &amp; automatizări</span>
+          <h3>Răspunde <span>instant</span> și nu pierde oportunități.</h3>
+          <p>Automatizăm întrebările repetitive și captarea lead-urilor astfel încât afacerea ta să fie disponibilă chiar și atunci când nu ești.</p>
+          <ul class="hs2-list">
+            {['Asistent disponibil 24/7','Calificare automată a lead-urilor','Programări și solicitări automate','Integrare cu procesele existente'].map(item => (
+              <li><span><LucideIcon name="Check" size={12} /></span>{item}</li>
+            ))}
+          </ul>
+          <p class="hs2-result"><LucideIcon name="MessageCircle" size={16} /><strong>Rezultat:</strong> mai puține oportunități ratate și mai mult timp pentru afacere.</p>
+        </div>
+        <div class="hs2-chat-wrap">
+          <div class="hs2-chat">
+            <div class="hs2-chat__head"><span><LucideIcon name="Sparkles" size={14} /></span><div><p>AI Asistent CoreDigital</p><small>Online acum · Răspunde instant</small></div></div>
+            <div class="hs2-chat__msg hs2-chat__msg--in">Aveți program sâmbătă?<time>10:21</time></div>
+            <div class="hs2-chat__msg hs2-chat__msg--out">Da, suntem disponibili între 09:00 și 14:00.<time>10:22</time></div>
+            <div class="hs2-chat__msg hs2-chat__msg--in">Perfect. Aș vrea o programare.<time>10:22</time></div>
+            <div class="hs2-chat__msg hs2-chat__msg--out">Sigur! Pentru ce serviciu doriți o programare?<time>10:23</time></div>
+            <div class="hs2-chat__input">Scrie un mesaj... <LucideIcon name="ArrowRight" size={15} /></div>
+          </div>
+          <div class="hs2-chat-stats">
+            <span>Conversații azi <b>24</b><small>+35% față de ieri</small></span>
+            <span>Lead-uri calificate <b>17</b><small>+28% față de ieri</small></span>
+          </div>
+        </div>
+      </article>
+
+      <article class="hs2-card hs2-chart-card">
+        <div class="hs2-chart">
+          <div class="hs2-chart__top"><span>Evoluție performanță</span><small>Ultimele 6 luni</small></div>
+          <div class="hs2-chart__body">
+            <div><strong>+68%</strong><span>creștere vizibilitate online</span></div>
+            <svg viewBox="0 0 320 145" preserveAspectRatio="none" aria-hidden="true">
+              <defs><linearGradient id="hs2ChartGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="hsl(var(--color-lime) / 0.38)" /><stop offset="100%" stop-color="hsl(var(--color-lime) / 0)" /></linearGradient></defs>
+              <path d="M0,122 L40,108 L80,111 L120,78 L160,96 L200,62 L240,45 L280,54 L320,18 L320,145 L0,145 Z" fill="url(#hs2ChartGrad)" />
+              <polyline points="0,122 40,108 80,111 120,78 160,96 200,62 240,45 280,54 320,18" fill="none" stroke="hsl(var(--color-lime))" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div class="hs2-chart__metrics">
+            {['Vizualizări 12.4K +38%','Apeluri 482 +29%','Cereri direcții 293 +41%','Lead-uri 156 +36%'].map(item => <span>{item}</span>)}
+          </div>
+        </div>
+      </article>
+
+      <article class="hs2-card">
+        <div class="hs2-copy">
+          <span class="hs2-kicker"><b>06</b> Monitorizare &amp; optimizare continuă</span>
+          <h3>Nu lansăm proiecte. Construim <span>rezultate</span> în timp.</h3>
+          <p>Diferența dintre o prezență online obișnuită și una care domină piața este îmbunătățirea constantă.</p>
+          <ul class="hs2-list hs2-list--cols">
+            {['Rapoarte clare și ușor de înțeles','Analiză lunară a performanței','Identificarea oportunităților noi','Optimizare continuă'].map(item => (
+              <li><span><LucideIcon name="Check" size={12} /></span>{item}</li>
+            ))}
+          </ul>
+          <p class="hs2-result"><LucideIcon name="BarChart2" size={16} /><strong>Rezultat:</strong> vizibilitate, încredere și rezultate care se acumulează lunar.</p>
+        </div>
+      </article>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-6">
-      <!-- Website -->
-      <div class="u-card u-card-hover flex flex-col" data-service="website">
-        <div class="u-service-icon mb-5">
-          <LucideIcon name="Monitor" size={20} />
-        </div>
-        <h3 class="text-base font-semibold text-white mb-3">Website Modern</h3>
-        <p class="text-sm leading-relaxed flex-1 mb-6">
-          Website profesional, optimizat pentru mobil, cu hosting și mentenanță incluse. Fără costuri ascunse.
-        </p>
-        <div class="flex items-center justify-between pt-4 border-t border-border">
-          <span class="font-mono text-sm font-semibold" style="color: var(--brand-color);">de la 200 RON/lună</span>
-          <a href="/servicii/construire-website" class="text-xs font-medium flex items-center gap-1" style="color: hsl(var(--color-muted));">
-            Detalii <LucideIcon name="ArrowRight" size={12} />
-          </a>
-        </div>
-      </div>
-
-      <!-- Reviews -->
-      <div class="u-card u-card-hover flex flex-col" data-service="reviews">
-        <div class="u-service-icon mb-5">
-          <LucideIcon name="Star" size={20} />
-        </div>
-        <h3 class="text-base font-semibold text-white mb-3">Colectare Review-uri</h3>
-        <p class="text-sm leading-relaxed flex-1 mb-6">
-          Sistem automat de colectare și reactivare a clienților pentru a crește reputația online și încrederea.
-        </p>
-        <div class="flex items-center justify-between pt-4 border-t border-border">
-          <span class="font-mono text-sm font-semibold" style="color: var(--brand-color);">400 RON/lună</span>
-          <a href="/servicii/recenzii-online" class="text-xs font-medium flex items-center gap-1" style="color: hsl(var(--color-muted));">
-            Detalii <LucideIcon name="ArrowRight" size={12} />
-          </a>
-        </div>
-      </div>
-
-      <!-- AI -->
-      <div class="u-card u-card-hover flex flex-col" data-service="ai">
-        <div class="u-service-icon mb-5">
-          <LucideIcon name="MessagesSquare" size={20} />
-        </div>
-        <h3 class="text-base font-semibold text-white mb-3">AI Chatbot</h3>
-        <p class="text-sm leading-relaxed flex-1 mb-6">
-          Asistent virtual inteligent care răspunde la întrebări și colectează lead-uri 24/7 pentru business-ul tău.
-        </p>
-        <div class="flex items-center justify-between pt-4 border-t border-border">
-          <span class="font-mono text-sm font-semibold" style="color: var(--sky-color);">100 RON/lună</span>
-          <a href="/servicii/chatbot-ai" class="text-xs font-medium flex items-center gap-1" style="color: hsl(var(--color-muted));">
-            Detalii <LucideIcon name="ArrowRight" size={12} />
-          </a>
-        </div>
-      </div>
+    <div class="hs2-final">
+      <span><LucideIcon name="Target" size={28} /></span>
+      <p><strong>Un sistem complet. O singură echipă. Rezultate reale.</strong><small>Hai să discutăm despre obiectivele tale și cum te putem ajuta să crești.</small></p>
+      <a class="u-brand-cta u-btn-lg" href="/contact">Vrei să vezi cum funcționează? <LucideIcon name="ArrowRight" size={16} /></a>
     </div>
   </div>
 </section>
@@ -922,7 +1218,7 @@ import ProcessSteps from '../components/ui/ProcessSteps.astro';
 <!-- ============================================================
      WEBSITE FOCUS
      ============================================================ -->
-<section class="py-20 lg:py-32" style="background: hsl(var(--color-surface));">
+<section id="servicii" class="py-20 lg:py-32" style="background: hsl(var(--color-surface));">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="grid lg:grid-cols-2 gap-16 items-center">
       <div>

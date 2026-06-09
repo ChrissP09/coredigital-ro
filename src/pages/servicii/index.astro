@@ -31,7 +31,7 @@ import LucideIcon from '../../components/ui/LucideIcon.astro';
             Vreau integrare completă <LucideIcon name="ArrowUpRight" size={18} />
           </a>
           <a class="u-brand-outline u-btn-lg" href="#servicii">
-            Vezi cele 3 servicii <LucideIcon name="ChevronDown" size={18} />
+            Vezi cum funcționează <LucideIcon name="ChevronDown" size={18} />
           </a>
         </div>
 
@@ -49,114 +49,270 @@ import LucideIcon from '../../components/ui/LucideIcon.astro';
     </div>
   </section>
 
-  <!-- Servicii -->
-  <section class="section section--s fade-in-up" id="servicii">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="website-section__header website-section__header--center">
-        <h2 class="page__section-title">Alege serviciul potrivit</h2>
-        <p class="page__lead website-section__lead">
-          Fiecare serviciu e gândit să rezolve o problemă reală: conversii, încredere sau automatizare. Poți începe cu unul
-          singur și scala pe parcurs.
-        </p>
-      </div>
+  <!-- System — how we solve it -->
+  <section class="sys fade-in-up" id="servicii">
+    <div class="sys__container">
 
-      <div class="services-overview__grid" role="list" aria-label="Servicii">
-        <article class="services-overview__card services-card" data-service="website" role="listitem">
-          <div class="services-overview__card-head">
-            <span class="services-card__icon" aria-hidden="true">
-              <LucideIcon name="LayoutTemplate" size={20} />
-            </span>
-            <span class="services-card__tag">Website</span>
-          </div>
-            <div>
-              <div class="services-overview__card-title">Construire website</div>
-              <p class="services-overview__card-text">
-              Website modern pe abonament, fără cost inițial. Construit pentru cereri reale: structură, copy și SEO.
-              </p>
+      <header class="sys__head">
+        <span class="sys__eyebrow">
+          <span class="sys__eyebrow-dot"></span>
+          Cum rezolvăm aceste probleme
+        </span>
+        <h2 class="sys__title">
+          Toate elementele care influențează prezența ta online
+          <span class="sys__title-accent">lucrează împreună.</span>
+        </h2>
+        <p class="sys__sub">
+          Nu există o singură soluție care să rezolve totul. Rezultatele apar atunci când website-ul,
+          profilul Google, reputația online și automatizările funcționează ca un sistem.
+        </p>
+      </header>
+
+      <div class="sys__grid">
+
+        <!-- ── 01 Website ── -->
+        <article class="syscard">
+          <div class="syscard__head">
+            <span class="syscard__icon"><LucideIcon name="Monitor" size={20} /></span>
+            <div class="syscard__heading">
+              <h3 class="syscard__title">Website performant</h3>
+              <p class="syscard__desc">Transformă vizitatorii în clienți cu un design modern și rapid.</p>
             </div>
-          <ul class="page__list website-list--ticks services-card__list">
-            <li>design premium + responsive</li>
-            <li>lansare rapidă + mentenanță</li>
-            <li>optimizat pentru conversii</li>
+          </div>
+
+          <div class="sysmock">
+            <div class="sysmock__chrome">
+              <span class="sysmock__dot" style="background:#ef4444"></span>
+              <span class="sysmock__dot" style="background:#eab308"></span>
+              <span class="sysmock__dot" style="background:var(--brand-color)"></span>
+              <span class="sysmock__url"><LucideIcon name="Globe" size={9} /> tuafacere.ro</span>
+              <span class="sysmock__x" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+            </div>
+            <div class="sysweb">
+              <div class="sysweb__copy">
+                <p class="sysweb__h">Servicii profesionale de care te poți baza</p>
+                <p class="sysweb__p">Soluții personalizate pentru rezultate reale și durabile.</p>
+                <div class="sysweb__btns">
+                  <span class="sysweb__btn sysweb__btn--solid">Solicită ofertă</span>
+                  <span class="sysweb__btn">Află mai mult</span>
+                </div>
+              </div>
+              <div class="sysweb__gauge">
+                <div class="sysweb__gaugetop">
+                  <svg viewBox="0 0 80 80" class="sysgauge">
+                    <circle cx="40" cy="40" r="30" class="sysgauge__track" stroke-dasharray="141.4 188.5" transform="rotate(135 40 40)"/>
+                    <circle cx="40" cy="40" r="30" class="sysgauge__fill" stroke-dasharray="130 188.5" transform="rotate(135 40 40)"/>
+                  </svg>
+                  <span class="sysweb__gauge-num">92</span>
+                  <span class="sysweb__gauge-lbl">Performanță</span>
+                </div>
+                <svg viewBox="0 0 110 30" preserveAspectRatio="none" class="sysspark">
+                  <defs><linearGradient id="sparkG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="hsl(var(--color-lime) / 0.32)"/><stop offset="100%" stop-color="hsl(var(--color-lime) / 0)"/></linearGradient></defs>
+                  <path d="M0,26 L18,22 L36,24 L55,15 L73,17 L91,8 L110,4 L110,30 L0,30 Z" fill="url(#sparkG)"/>
+                  <polyline points="0,26 18,22 36,24 55,15 73,17 91,8 110,4" fill="none" stroke="hsl(var(--color-lime))" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <ul class="syscard__list">
+            {['Design modern și responsive','Viteză de încărcare optimizată','Structură SEO friendly','CTA clare și conversii mai bune'].map(f => (
+              <li><span class="syscard__tick"><LucideIcon name="Check" size={11} /></span>{f}</li>
+            ))}
           </ul>
-          <div class="services-card__actions">
-            <a class="u-brand-cta u-btn-sm" href="/servicii/construire-website">
-              Vezi detalii <LucideIcon name="ArrowUpRight" size={16} />
-            </a>
+        </article>
+
+        <!-- ── 02 Google Business ── -->
+        <article class="syscard">
+          <div class="syscard__head">
+            <span class="syscard__icon"><LucideIcon name="MapPin" size={20} /></span>
+            <div class="syscard__heading">
+              <h3 class="syscard__title">Google Business optimizat</h3>
+              <p class="syscard__desc">Te ajută să fii găsit local și să primești mai multe apeluri.</p>
+            </div>
+          </div>
+
+          <div class="sysmock sysgb">
+            <div class="sysgb__info">
+              <div class="sysgb__top">
+                <p class="sysgb__name">Afacerea ta</p>
+                <p class="sysgb__cat">Contabilitate · Cluj-Napoca</p>
+                <p class="sysgb__rating">4.9
+                  <span class="sysstars">{[1,1,1,1,1].map(() => (<svg width="11" height="11" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>))}</span>
+                  <span class="sysgb__count">(128)</span>
+                </p>
+                <p class="sysgb__open"><b>Deschis</b> · Închide la 18:00</p>
+              </div>
+              <div class="sysgb__actions">
+                <span class="sysgb__act"><LucideIcon name="Phone" size={14} /> Apel</span>
+                <span class="sysgb__act"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg> Direcții</span>
+                <span class="sysgb__act"><LucideIcon name="Globe" size={14} /> Site</span>
+              </div>
+            </div>
+            <div class="sysgb__map">
+              <img src="/media/city-map-bg.webp" alt="" loading="lazy" />
+              <span class="sysgb__pin"><LucideIcon name="MapPin" size={20} /></span>
+            </div>
+          </div>
+
+          <ul class="syscard__list">
+            {['Optimizare completă a profilului','Postări și actualizări regulate','Poziții mai bune în Maps','Mai multe apeluri și cereri de direcții'].map(f => (
+              <li><span class="syscard__tick"><LucideIcon name="Check" size={11} /></span>{f}</li>
+            ))}
+          </ul>
+        </article>
+
+        <!-- ── 03 Recenzii ── -->
+        <article class="syscard">
+          <div class="syscard__head">
+            <span class="syscard__icon"><LucideIcon name="Star" size={20} /></span>
+            <div class="syscard__heading">
+              <h3 class="syscard__title">Recenzii online care vând</h3>
+              <p class="syscard__desc">Construiește încredere și diferențiază-te prin recenzii reale de la clienți.</p>
+            </div>
+          </div>
+
+          <div class="sysmock sysrev">
+            <div class="sysrev__score">
+              <div>
+                <p class="sysrev__lbl">Rating mediu</p>
+                <p class="sysrev__num">4.9</p>
+                <span class="sysstars">{[1,1,1,1,1].map(() => (<svg width="13" height="13" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>))}</span>
+              </div>
+              <div>
+                <p class="sysrev__meta">127 recenzii</p>
+                <p class="sysrev__delta">+27 în ultima lună</p>
+                <p class="sysrev__src">pe Google și Facebook</p>
+              </div>
+            </div>
+            <div class="sysrev__card">
+              <div class="sysrev__card-top">
+                <p class="sysrev__rlbl">Recenzie recentă</p>
+                <span class="sysrev__rating-badge">5.0</span>
+              </div>
+              <div class="sysrev__author">
+                <span class="sysrev__av">AM</span>
+                <div>
+                  <p class="sysrev__name">Andrei M.</p>
+                  <p class="sysrev__text">Servicii excelente! Recomand cu încredere.</p>
+                </div>
+              </div>
+              <div class="sysrev__card-foot">
+                <span class="sysstars">{[1,1,1,1,1].map(() => (<svg width="11" height="11" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>))}</span>
+                <p class="sysrev__when">acum 2 zile</p>
+              </div>
+            </div>
+          </div>
+
+          <ul class="syscard__list">
+            {['Generare automată de recenzii','Răspunsuri rapide și profesionale','Managementul reputației online','Rating mai mare, încredere mai mare'].map(f => (
+              <li><span class="syscard__tick"><LucideIcon name="Check" size={11} /></span>{f}</li>
+            ))}
+          </ul>
+        </article>
+
+        <!-- ── 04 AI Chatbot (wide) ── -->
+        <article class="syscard syscard--wide syscard--ai">
+          <div class="syscard__head">
+            <span class="syscard__icon"><LucideIcon name="MessageCircle" size={20} /></span>
+            <div class="syscard__heading">
+              <h3 class="syscard__title">AI Chatbot &amp; Automatizări</h3>
+              <p class="syscard__desc">Răspunde instant și nu ratezi niciun client potențial, nici ziua, nici noaptea.</p>
+            </div>
+          </div>
+
+          <div class="syscard__wbody">
+            <div class="syschan">
+              <p class="syschan__t">Conversații</p>
+              {[
+                {icon:'Globe', label:'Site web', n:'', channel:'site'},
+                {icon:'MessageCircle', label:'Messenger', n:'2', channel:'messenger'},
+                {icon:'Instagram', label:'Instagram', n:'1', channel:'instagram'},
+                {icon:'Phone', label:'WhatsApp', n:'0', channel:'whatsapp'},
+              ].map(c => (
+                <div class="syschan__row">
+                  <span class:list={['syschan__ic', `syschan__ic--${c.channel}`]}><LucideIcon name={c.icon} size={13} /></span>
+                  <span class="syschan__lbl">{c.label}</span>
+                  {c.n && <span class="syschan__n">{c.n}</span>}
+                </div>
+              ))}
+            </div>
+
+            <div class="syschat">
+              <p class="syschat__t">Vizitator</p>
+              <div class="syschat__msg syschat__msg--in"><span>Aveți program sâmbătă?</span><time>10:21</time></div>
+              <div class="syschat__msg syschat__msg--out"><span>Da, suntem disponibili între 09:00 și 14.00</span><time>10:03</time></div>
+              <div class="syschat__input">Scrie un mesaj...<span class="syschat__send"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div>
+            </div>
+
+            <div class="sysfeat">
+              <ul class="syscard__list">
+                {['Răspunsuri 24/7','Qualifică lead-uri automat','Programează întâlniri','Integrare cu calendarul'].map(f => (
+                  <li><span class="syscard__tick"><LucideIcon name="Check" size={11} /></span>{f}</li>
+                ))}
+              </ul>
+              <div class="sysfeat__socials">
+                <span class="sysfeat__soc sysfeat__soc--whatsapp"><LucideIcon name="Phone" size={15} /></span>
+                <span class="sysfeat__soc sysfeat__soc--messenger"><LucideIcon name="MessageCircle" size={15} /></span>
+                <span class="sysfeat__soc sysfeat__soc--instagram"><LucideIcon name="Instagram" size={15} /></span>
+                <span class="sysfeat__soc sysfeat__soc--plus"><LucideIcon name="Plus" size={15} /></span>
+              </div>
+            </div>
           </div>
         </article>
 
-        <article class="services-overview__card services-card" data-service="reviews" role="listitem">
-          <div class="services-overview__card-head">
-            <span class="services-card__icon" aria-hidden="true">
-              <LucideIcon name="MessagesSquare" size={20} />
-            </span>
-            <span class="services-card__tag">Recenzii</span>
+        <!-- ── 05 Monitorizare (wide) ── -->
+        <article class="syscard syscard--wide">
+          <div class="syscard__head">
+            <span class="syscard__icon"><LucideIcon name="BarChart2" size={20} /></span>
+            <div class="syscard__heading">
+              <h3 class="syscard__title">Monitorizare &amp; Rapoarte</h3>
+              <p class="syscard__desc">Urmărim constant performanța și identificăm oportunități de creștere.</p>
+            </div>
           </div>
-          <div>
-            <div class="services-overview__card-title">Recenzii online</div>
-            <p class="services-overview__card-text">
-              Automatizezi cererea de recenzii și crești încrederea. Sistem simplu, fără fricțiune, orientat pe Google.
-            </p>
-          </div>
-          <ul class="page__list website-list--ticks services-card__list">
-            <li>flux automat pentru recenzii</li>
-            <li>protejare reputație</li>
-            <li>rezultate măsurabile</li>
-          </ul>
-          <div class="services-card__actions">
-            <a class="u-brand-cta u-btn-sm" href="/servicii/recenzii-online">
-              Vezi detalii <LucideIcon name="ArrowUpRight" size={16} />
-            </a>
+
+          <div class="syscard__wbody syscard__wbody--col">
+            <div class="sysmock syschart">
+              <div class="syschart__hd">
+                <span class="syschart__t">Evoluție vizibilitate online</span>
+                <span class="syschart__meta">Ultimele 6 luni</span>
+              </div>
+              <div class="syschart__body">
+                <div class="syschart__num">
+                  <p class="syschart__pct">+68%</p>
+                  <p class="syschart__lbl">creștere</p>
+                </div>
+                <div class="syschart__graph">
+                  <svg viewBox="0 0 260 90" preserveAspectRatio="none" class="syschart__svg">
+                    <defs><linearGradient id="sysGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="hsl(var(--color-lime) / 0.4)"/><stop offset="100%" stop-color="hsl(var(--color-lime) / 0)"/></linearGradient></defs>
+                    <path d="M0,72 L43,64 L86,68 L130,50 L173,40 L216,30 L260,10 L260,90 L0,90 Z" fill="url(#sysGrad)"/>
+                    <polyline points="0,72 43,64 86,68 130,50 173,40 216,30 260,10" fill="none" stroke="hsl(var(--color-lime))" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    {[[0,72],[43,64],[86,68],[130,50],[173,40],[216,30],[260,10]].map(p => (<circle cx={p[0]} cy={p[1]} r="3" fill="hsl(var(--color-lime))"/>))}
+                  </svg>
+                  <div class="syschart__x">{['Ian','Feb','Mar','Apr','Mai','Iun'].map(m => (<span>{m}</span>))}</div>
+                </div>
+              </div>
+            </div>
+            <ul class="syscard__list syscard__list--2col">
+              {['Rapoarte clare și ușor de înțeles','Optimizare continuă','Identificăm oportunități noi','Rezultate care se acumulează în timp'].map(f => (
+                <li><span class="syscard__tick"><LucideIcon name="Check" size={11} /></span>{f}</li>
+              ))}
+            </ul>
           </div>
         </article>
 
-        <article class="services-overview__card services-card" data-service="ai" role="listitem">
-          <div class="services-overview__card-head">
-            <span class="services-card__icon" aria-hidden="true">
-              <LucideIcon name="WandSparkles" size={20} />
-            </span>
-            <span class="services-card__tag">AI</span>
-          </div>
-          <div>
-            <div class="services-overview__card-title">AI Chatbot</div>
-            <p class="services-overview__card-text">
-              Răspunde non-stop, califică lead-uri și reduce suportul manual. De la 100 RON/lună până la automatizări avansate.
-            </p>
-          </div>
-          <ul class="page__list website-list--ticks services-card__list">
-            <li>FAQ + colectare date</li>
-            <li>follow-up & canale (Pro)</li>
-            <li>integrare CRM/booking</li>
-          </ul>
-          <div class="services-card__actions">
-            <a class="u-brand-cta u-btn-sm" href="/servicii/chatbot-ai">
-              Vezi detalii <LucideIcon name="ArrowUpRight" size={16} />
-            </a>
-          </div>
-        </article>
       </div>
+
+      <a class="sys__cta" href="/contact">
+        <span class="sys__cta-icon"><LucideIcon name="Target" size={22} /></span>
+        <span class="sys__cta-text">
+          <span class="sys__cta-h">Un sistem complet. O singură echipă. Rezultate reale.</span>
+          <span class="sys__cta-p">Ne ocupăm de tot, tu te concentrezi pe ceea ce faci cel mai bine: afacerea ta.</span>
+        </span>
+        <span class="sys__cta-btn">Vezi cum funcționează <LucideIcon name="ArrowRight" size={16} /></span>
+      </a>
+
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section section--s fade-in-up">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="page__cta services-cta" aria-labelledby="services-cta">
-        <h2 id="services-cta" class="page__section-title">Nu știi cu ce să începi?</h2>
-        <p>
-          Spune-ne obiectivul (mai multe cereri, mai multă încredere sau automatizare), iar noi îți recomandăm serviciul
-          potrivit.
-        </p>
-        <div class="services-cta__actions">
-          <a class="u-brand-cta u-btn-lg" href="/contact">
-            Programează o discuție <LucideIcon name="ArrowUpRight" size={18} />
-          </a>
-          <a class="u-brand-outline u-btn-lg" href="/preturi">
-            Vezi prețurile <LucideIcon name="ArrowUpRight" size={18} />
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
 </BaseLayout>

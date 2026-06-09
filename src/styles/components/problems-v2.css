@@ -1,0 +1,429 @@
+@layer components {
+  /* ============================================================
+     PROBLEMS v2 — pain points with UI mockups
+     ============================================================ */
+  .pv2 {
+    position: relative;
+    overflow: hidden;
+    /* Start at the hero's ending tone, then ease into the section colour so the
+       boundary has no hard line. */
+    background: linear-gradient(180deg, #071014 0%, hsl(216 16% 8%) 260px);
+    padding-block: var(--section-space-m);
+  }
+
+  .pv2__container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  /* ── Header ── */
+  .pv2__head {
+    text-align: center;
+    max-width: 46rem;
+    margin-inline: auto;
+    margin-bottom: var(--space-7-5);
+  }
+
+  .pv2__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid var(--brand-border);
+    background: var(--brand-soft);
+    color: var(--brand-color);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: var(--ls-wide);
+    text-transform: uppercase;
+  }
+
+  .pv2__eyebrow-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--brand-color);
+    box-shadow: 0 0 8px hsl(var(--color-lime) / 0.8);
+  }
+
+  .pv2__title {
+    margin-top: var(--space-5);
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-weight: var(--fw-display);
+    line-height: 1.05;
+    letter-spacing: var(--ls-heading);
+    color: hsl(var(--color-text));
+  }
+
+  .pv2__title-accent {
+    color: var(--brand-color);
+    text-shadow: 0 0 28px hsl(var(--color-lime) / 0.55);
+  }
+
+  .pv2__sub {
+    margin-top: var(--space-5);
+    font-size: var(--text-body-lg);
+    line-height: var(--lh-body);
+    color: hsl(var(--color-muted));
+  }
+
+  /* ── Grid ── */
+  .pv2__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  /* ── Card ── */
+  .pcard {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius-2xl);
+    border: 1px solid hsl(var(--color-border));
+    background: linear-gradient(180deg, hsl(240 6% 11%), hsl(240 6% 9%));
+    padding: 1.5rem;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+    transition: border-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .pcard:hover {
+    border-color: var(--brand-border);
+    transform: translateY(-3px);
+  }
+
+  .pcard__head {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .pcard__num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    height: 1.75rem;
+    padding-inline: 0.4rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--brand-border);
+    color: var(--brand-color);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    font-weight: 700;
+  }
+
+  .pcard__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+    border-radius: var(--radius-md);
+    background: var(--brand-soft);
+    border: 1px solid var(--brand-border);
+    color: var(--brand-color);
+    box-shadow: inset 0 0 16px hsl(var(--color-lime) / 0.12);
+  }
+
+  .pcard__title {
+    flex: 1;
+    font-size: 1.1rem;
+    font-weight: var(--fw-heading);
+    line-height: 1.2;
+    color: hsl(var(--color-text));
+  }
+
+  .pcard__desc {
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    color: hsl(var(--color-muted));
+    margin-bottom: 1.1rem;
+  }
+
+  /* ── Mockup panel (shared) ── */
+  .pmock {
+    margin-top: auto;
+    border-radius: var(--radius-lg);
+    border: 1px solid hsl(var(--color-border));
+    background: hsl(220 12% 8%);
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* Mock 1 — Google search */
+  .pmock__search {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.65rem;
+    border-radius: var(--radius-md);
+    background: hsl(220 10% 12%);
+    border: 1px solid hsl(var(--color-border));
+  }
+  .pmock__google {
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: -0.02em;
+  }
+  .pmock__query {
+    flex: 1;
+    font-size: 0.7rem;
+    color: hsl(var(--color-muted));
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .pmock__mic { color: hsl(var(--color-muted)); flex-shrink: 0; }
+
+  .pmock__result {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.5rem 0.55rem;
+    border-radius: var(--radius-md);
+    background: hsl(220 10% 11%);
+    border: 1px solid transparent;
+  }
+  .pmock__rank {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: hsl(var(--color-muted));
+    flex-shrink: 0;
+  }
+  .pmock__rbody { flex: 1; min-width: 0; }
+  .pmock__rname {
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: hsl(var(--color-text));
+  }
+  .pmock__rmeta {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 0.1rem;
+    font-size: 0.66rem;
+    color: hsl(var(--color-muted));
+  }
+  .pmock__rmeta--warn { color: hsl(38 92% 60%); font-weight: 600; }
+  .pmock__stars { display: inline-flex; align-items: center; gap: 1px; }
+  .pmock__pin {
+    display: inline-flex;
+    color: var(--brand-color);
+    flex-shrink: 0;
+  }
+  .pmock__sad { font-size: 0.9rem; flex-shrink: 0; filter: grayscale(0.2); }
+
+  .pmock__result--you {
+    background: var(--brand-soft);
+    border-color: var(--brand-border);
+  }
+  .pmock__result--you .pmock__rank,
+  .pmock__result--you .pmock__rname { color: var(--brand-color); }
+
+  /* Mock 2 — Rating */
+  .pmock__ratinghd { padding: 0.15rem 0.15rem 0; }
+  .pmock__rlabel { font-size: 0.66rem; color: hsl(var(--color-muted)); }
+  .pmock__ratingrow {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.15rem 0.6rem;
+    border-bottom: 1px solid hsl(var(--color-border));
+    margin-bottom: 0.15rem;
+  }
+  .pmock__rnum {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: hsl(var(--color-text));
+    line-height: 1;
+  }
+  .pmock__rcount { font-size: 0.66rem; color: hsl(var(--color-muted)); }
+
+  .pmock__quote {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: var(--radius-md);
+    background: hsl(220 10% 11%);
+  }
+  .pmock__qbody { flex: 1; min-width: 0; }
+  .pmock__qtext {
+    font-size: 0.7rem;
+    line-height: 1.45;
+    color: hsl(var(--color-text) / 0.85);
+  }
+  .pmock__qtime {
+    display: block;
+    margin-top: 0.2rem;
+    font-size: 0.6rem;
+    color: hsl(var(--color-muted));
+  }
+
+  /* Mock 3 — Messages */
+  .pmock__tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid hsl(var(--color-border));
+    margin-bottom: 0.15rem;
+  }
+  .pmock__tab {
+    font-size: 0.64rem;
+    font-weight: 600;
+    color: hsl(var(--color-muted));
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+  }
+  .pmock__tab.is-active {
+    background: var(--brand-soft);
+    color: var(--brand-color);
+  }
+  .pmock__msg {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.4rem;
+    border-radius: var(--radius-md);
+    background: hsl(220 10% 11%);
+  }
+  .pmock__mbody { flex: 1; min-width: 0; }
+  .pmock__mname { font-size: 0.72rem; font-weight: 600; color: hsl(var(--color-text)); }
+  .pmock__mtext {
+    font-size: 0.66rem;
+    color: hsl(var(--color-muted));
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .pmock__mright { display: flex; flex-direction: column; align-items: flex-end; gap: 0.2rem; flex-shrink: 0; }
+  .pmock__badge {
+    font-size: 0.56rem;
+    font-weight: 600;
+    color: hsl(0 75% 65%);
+    border: 1px solid hsl(0 75% 60% / 0.4);
+    border-radius: 999px;
+    padding: 0.08rem 0.4rem;
+  }
+  .pmock__mtime { font-size: 0.6rem; color: hsl(var(--color-muted)); }
+
+  /* Mock 4 — Checklist */
+  .pmock__task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.5rem 0.55rem;
+    border-radius: var(--radius-md);
+    background: hsl(220 10% 11%);
+  }
+  .pmock__tlabel {
+    font-size: 0.7rem;
+    color: hsl(var(--color-text) / 0.9);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .pmock__tright { display: inline-flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
+  .pmock__ttime {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    font-size: 0.62rem;
+    color: hsl(var(--color-muted));
+  }
+  .pmock__check {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1.5px solid hsl(var(--color-border));
+  }
+  .pmock__count {
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #fff;
+    background: hsl(0 75% 55%);
+    border-radius: 999px;
+    min-width: 1.1rem;
+    height: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 0.25rem;
+  }
+  .pmock__dash { color: hsl(var(--color-muted)); font-size: 0.8rem; }
+
+  /* ── Result line ── */
+  .pcard__result {
+    display: block;
+    margin-top: 1.1rem;
+    font-size: var(--text-sm);
+    line-height: 1.5;
+    color: hsl(var(--color-muted));
+  }
+  .pcard__result svg {
+    color: var(--brand-color);
+    display: inline;
+    vertical-align: -2px;
+    margin-right: 0.3rem;
+  }
+  .pcard__result strong { color: var(--brand-color); font-weight: 600; }
+
+  /* ── Bottom CTA bar ── */
+  .pv2__cta {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+    padding: 1.5rem 1.75rem;
+    border-radius: var(--radius-2xl);
+    border: 1px solid hsl(var(--color-border));
+    background: linear-gradient(180deg, hsl(240 6% 11%), hsl(240 6% 9%));
+    text-decoration: none;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+  }
+  .pv2__cta:hover { border-color: var(--brand-border); transform: translateY(-2px); }
+  .pv2__cta:hover .pv2__cta-arrow { transform: translateX(4px); }
+
+  .pv2__cta-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--radius-md);
+    background: var(--brand-soft);
+    border: 1px solid var(--brand-border);
+    color: var(--brand-color);
+    flex-shrink: 0;
+  }
+  .pv2__cta-text { flex: 1; font-size: var(--text-body); line-height: 1.55; }
+  .pv2__cta-line { color: hsl(var(--color-text)); font-weight: 500; }
+  .pv2__cta-accent { display: block; margin-top: 0.15rem; color: var(--brand-color); font-weight: 600; }
+  .pv2__cta-arrow {
+    display: inline-flex;
+    color: var(--brand-color);
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+
+  /* ── Responsive ── */
+  @media (min-width: 640px) {
+    .pv2__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (min-width: 1024px) {
+    .pv2__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+}

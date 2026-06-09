@@ -1,48 +1,46 @@
+import { DatabaseSync } from 'node:sqlite';
 import fs from 'fs';
 import path from 'path';
-import sqlite3pkg from 'sqlite3';
 import env from './env.js';
-
-const sqlite3 = sqlite3pkg.verbose();
 
 fs.mkdirSync(path.dirname(env.sqliteAbsolutePath), { recursive: true });
 
-const db = new sqlite3.Database(env.sqliteAbsolutePath);
+const db = new DatabaseSync(env.sqliteAbsolutePath);
 
 function run(sql, params = []) {
-  return new Promise((resolve, reject) => {
-    db.run(sql, params, function onRun(error) {
-      if (error) { reject(error); return; }
-      resolve({ id: this.lastID, changes: this.changes });
-    });
-  });
+  try {
+    const result = db.prepare(sql).run(...params);
+    return Promise.resolve({ id: result.lastInsertRowid, changes: result.changes });
+  } catch (err) {
+    return Promise.reject(err);
+  }
 }
 
 function get(sql, params = []) {
-  return new Promise((resolve, reject) => {
-    db.get(sql, params, (error, row) => {
-      if (error) { reject(error); return; }
-      resolve(row);
-    });
-  });
+  try {
+    const row = db.prepare(sql).get(...params);
+    return Promise.resolve(row);
+  } catch (err) {
+    return Promise.reject(err);
+  }
 }
 
 function all(sql, params = []) {
-  return new Promise((resolve, reject) => {
-    db.all(sql, params, (error, rows) => {
-      if (error) { reject(error); return; }
-      resolve(rows);
-    });
-  });
+  try {
+    const rows = db.prepare(sql).all(...params);
+    return Promise.resolve(rows);
+  } catch (err) {
+    return Promise.reject(err);
+  }
 }
 
 function exec(sql) {
-  return new Promise((resolve, reject) => {
-    db.exec(sql, (error) => {
-      if (error) { reject(error); return; }
-      resolve();
-    });
-  });
+  try {
+    db.exec(sql);
+    return Promise.resolve();
+  } catch (err) {
+    return Promise.reject(err);
+  }
 }
 
 export default { db, run, get, all, exec };

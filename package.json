@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "postbuild": "node src/lib/db/migrate.js && node -e \"require('fs').copyFileSync('server.cjs','dist/server.cjs')\"",
+    "postbuild": "node src/lib/db/migrate.js",
     "preview": "astro preview",
     "astro": "astro",
     "migrate": "node src/lib/db/migrate.js",
@@ -23,9 +23,9 @@
     "dotenv": "^17.4.2",
     "express-rate-limit": "^8.5.2",
     "fast-xml-parser": "^5.8.0",
+    "better-sqlite3": "^11.10.0",
     "lucide-static": "^0.563.0",
     "postcss": "^8.5.6",
-
     "tailwindcss": "^3.4.19"
   },
   "devDependencies": {}

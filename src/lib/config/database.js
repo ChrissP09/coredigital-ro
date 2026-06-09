@@ -1,11 +1,12 @@
-import { DatabaseSync } from 'node:sqlite';
+import Database from 'better-sqlite3';
 import fs from 'fs';
 import path from 'path';
 import env from './env.js';
 
 fs.mkdirSync(path.dirname(env.sqliteAbsolutePath), { recursive: true });
 
-const db = new DatabaseSync(env.sqliteAbsolutePath);
+const db = new Database(env.sqliteAbsolutePath);
+db.pragma('journal_mode = WAL');
 
 function run(sql, params = []) {
   try {
@@ -18,8 +19,7 @@ function run(sql, params = []) {
 
 function get(sql, params = []) {
   try {
-    const row = db.prepare(sql).get(...params);
-    return Promise.resolve(row);
+    return Promise.resolve(db.prepare(sql).get(...params));
   } catch (err) {
     return Promise.reject(err);
   }
@@ -27,8 +27,7 @@ function get(sql, params = []) {
 
 function all(sql, params = []) {
   try {
-    const rows = db.prepare(sql).all(...params);
-    return Promise.resolve(rows);
+    return Promise.resolve(db.prepare(sql).all(...params));
   } catch (err) {
     return Promise.reject(err);
   }

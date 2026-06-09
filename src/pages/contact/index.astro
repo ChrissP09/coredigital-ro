@@ -137,7 +137,7 @@ const turnstileSiteKey = env.turnstileSiteKey;
             <input type="text" name="website_confirm" style="display:none" tabindex="-1" autocomplete="off" />
 
             {turnstileSiteKey && (
-              <div class="cf-turnstile" id="contact-turnstile" data-sitekey={turnstileSiteKey} data-appearance="interaction-only" data-execution="execute" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;"></div>
+              <div class="cf-turnstile" id="contact-turnstile" data-sitekey={turnstileSiteKey} data-appearance="interaction-only" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;"></div>
             )}
 
             <div id="contact-feedback" style="display:none;" class="contact-form__feedback"></div>
@@ -159,11 +159,15 @@ const turnstileSiteKey = env.turnstileSiteKey;
                 const widget = document.getElementById(widgetId);
                 const ts = (window as any).turnstile;
                 if (!widget || !ts) return resolve('');
-                try { ts.reset(widget); } catch (e) {}
-                ts.execute(widget, {
-                  callback: (token: string) => resolve(token),
-                  'error-callback': () => resolve(''),
-                });
+                const read = () => {
+                  const i = widget.querySelector("[name='cf-turnstile-response']") as HTMLInputElement | null;
+                  return i ? i.value : '';
+                };
+                if (read()) return resolve(read());
+                let waited = 0;
+                const iv = setInterval(() => {
+                  if (read() || (waited += 250) >= 10000) { clearInterval(iv); resolve(read()); }
+                }, 250);
               });
             }
 

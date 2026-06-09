@@ -60,24 +60,30 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
+  const getToken = () => form.querySelector("[name='cf-turnstile-response']")?.value || "";
+
   form.addEventListener("submit", (e) => {
     if (!button || !input.value.trim()) return;
 
-    const tokenInput = form.querySelector("[name='cf-turnstile-response']");
     const widget = form.querySelector(".cf-turnstile");
-    if (window.turnstile && widget && !tokenInput?.value) {
-      e.preventDefault();
-      // The widget may already be mid-challenge (managed mode auto-runs); reset
-      // first so execute() doesn't throw "already executing" and drop the submit.
-      try { window.turnstile.reset(widget); } catch (_) {}
-      window.turnstile.execute(widget, {
-        callback: () => { startLoading(); form.submit(); },
-        "error-callback": () => { startLoading(); form.submit(); }
-      });
+    // No Turnstile on the page, or token already solved → submit straight away.
+    if (!window.turnstile || !widget || getToken()) {
+      startLoading();
       return;
     }
 
+    // Widget auto-solves on load; if the token isn't ready yet, hold the submit
+    // and poll for it (up to 10s) instead of calling execute() — execute()'s
+    // callback doesn't fire on an already-rendered widget, which dropped submits.
+    e.preventDefault();
     startLoading();
+    let waited = 0;
+    const iv = setInterval(() => {
+      if (getToken() || (waited += 250) >= 10000) {
+        clearInterval(iv);
+        form.submit();
+      }
+    }, 250);
   });
 
   window.addEventListener("pageshow", () => {

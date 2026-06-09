@@ -392,7 +392,7 @@ const normalizedDomainJson = JSON.stringify(analysis.normalizedDomain);
             <div style="margin-top:1.25rem;display:flex;flex-direction:column;gap:0.75rem;">
               <input id="custom-email-input" type="email" placeholder="adresa@email.ro" class="form-input" style="width:100%;box-sizing:border-box;background:#131920;border:1px solid #1e2530;border-radius:0.75rem;padding:0.75rem 1rem;font-size:0.875rem;color:#e6edf3;outline:none;transition:border-color .2s;" />
               <p id="custom-email-error" style="display:none;color:#f87171;font-size:0.75rem;margin:0;"></p>
-              {turnstileSiteKey && <div class="cf-turnstile" id="custom-turnstile" data-sitekey={turnstileSiteKey} data-appearance="interaction-only" data-execution="execute" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;"></div>}
+              {turnstileSiteKey && <div class="cf-turnstile" id="custom-turnstile" data-sitekey={turnstileSiteKey} data-appearance="interaction-only" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;"></div>}
               <button id="custom-email-submit" class="btn-cta" style="background:#A3E635;color:#191C21;font-weight:700;font-size:0.875rem;padding:0.8rem 1rem;border-radius:0.875rem;border:none;cursor:pointer;">Rulează căutările →</button>
             </div>
           </div>
@@ -465,7 +465,7 @@ const normalizedDomainJson = JSON.stringify(analysis.normalizedDomain);
           </div>
           <p id="lead-error" style="display:none;color:#f87171;font-size:0.75rem;"></p>
           <button type="submit" id="lead-submit" class="btn-cta btn-submit" style="width:100%;background:#A3E635;color:#191C21;font-weight:700;font-size:0.9rem;padding:0.9rem 1rem;border-radius:0.875rem;border:none;cursor:pointer;margin-top:0.25rem;">Deblochez raportul complet →</button>
-          {turnstileSiteKey && <div class="cf-turnstile" id="lead-turnstile" data-sitekey={turnstileSiteKey} data-appearance="interaction-only" data-execution="execute" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;"></div>}
+          {turnstileSiteKey && <div class="cf-turnstile" id="lead-turnstile" data-sitekey={turnstileSiteKey} data-appearance="interaction-only" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;"></div>}
         </form>
         <p style="margin-top:1rem;text-align:center;font-size:0.72rem;color:#4a5568;">Nu trimitem spam. Datele sunt folosite exclusiv pentru a te contacta cu recomandările.</p>
       </div>
@@ -550,8 +550,12 @@ const normalizedDomainJson = JSON.stringify(analysis.normalizedDomain);
           return new Promise(function(resolve) {
             var widget = document.getElementById(widgetId);
             if (!widget || !window.turnstile) return resolve('');
-            try { window.turnstile.reset(widget); } catch (e) {}
-            window.turnstile.execute(widget, { callback: function(token) { resolve(token); }, 'error-callback': function() { resolve(''); } });
+            var read = function() { var i = widget.querySelector("[name='cf-turnstile-response']"); return i ? i.value : ''; };
+            if (read()) return resolve(read());
+            var waited = 0;
+            var iv = setInterval(function() {
+              if (read() || (waited += 250) >= 10000) { clearInterval(iv); resolve(read()); }
+            }, 250);
           });
         }
 
@@ -610,8 +614,12 @@ const normalizedDomainJson = JSON.stringify(analysis.normalizedDomain);
             return new Promise(function(resolve) {
               var widget = document.getElementById(widgetId);
               if (!widget || !window.turnstile) return resolve('');
-              try { window.turnstile.reset(widget); } catch (e) {}
-              window.turnstile.execute(widget, { callback: function(token) { resolve(token); }, 'error-callback': function() { resolve(''); } });
+              var read = function() { var i = widget.querySelector("[name='cf-turnstile-response']"); return i ? i.value : ''; };
+              if (read()) return resolve(read());
+              var waited = 0;
+              var iv = setInterval(function() {
+                if (read() || (waited += 250) >= 10000) { clearInterval(iv); resolve(read()); }
+              }, 250);
             });
           }
 

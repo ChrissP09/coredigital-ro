@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import LucideIcon from '../../components/ui/LucideIcon.astro';
+import env from '../../lib/config/env.js';
+
+const turnstileSiteKey = env.turnstileSiteKey;
 ---
 
 <BaseLayout
@@ -133,6 +136,10 @@ import LucideIcon from '../../components/ui/LucideIcon.astro';
             <!-- honeypot -->
             <input type="text" name="website_confirm" style="display:none" tabindex="-1" autocomplete="off" />
 
+            {turnstileSiteKey && (
+              <div class="cf-turnstile" id="contact-turnstile" data-sitekey={turnstileSiteKey} data-appearance="interaction-only" data-execution="execute" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;"></div>
+            )}
+
             <div id="contact-feedback" style="display:none;" class="contact-form__feedback"></div>
 
             <button class="contact-form__button" type="submit" id="contact-submit">
@@ -140,10 +147,24 @@ import LucideIcon from '../../components/ui/LucideIcon.astro';
             </button>
           </form>
 
+          {turnstileSiteKey && <script is:inline src="https://challenges.cloudflare.com/turnstile/v1/api.js" async defer></script>}
+
           <script>
             const form = document.getElementById('contact-form') as HTMLFormElement;
             const btn = document.getElementById('contact-submit') as HTMLButtonElement;
             const feedback = document.getElementById('contact-feedback') as HTMLDivElement;
+
+            function getTurnstileToken(widgetId: string): Promise<string> {
+              return new Promise((resolve) => {
+                const widget = document.getElementById(widgetId);
+                const ts = (window as any).turnstile;
+                if (!widget || !ts) return resolve('');
+                ts.execute(widget, {
+                  callback: (token: string) => resolve(token),
+                  'error-callback': () => resolve(''),
+                });
+              });
+            }
 
             form.addEventListener('submit', async (e) => {
               e.preventDefault();
@@ -158,6 +179,8 @@ import LucideIcon from '../../components/ui/LucideIcon.astro';
               btn.disabled = true;
               btn.textContent = 'Se trimite...';
 
+              const tsToken = await getTurnstileToken('contact-turnstile');
+
               const payload = {
                 name,
                 email,
@@ -166,6 +189,7 @@ import LucideIcon from '../../components/ui/LucideIcon.astro';
                 service: (form.elements.namedItem('service') as HTMLSelectElement).value,
                 message: (form.elements.namedItem('message') as HTMLTextAreaElement).value.trim(),
                 website_confirm: (form.elements.namedItem('website_confirm') as HTMLInputElement).value,
+                'cf-turnstile-response': tsToken,
               };
 
               try {

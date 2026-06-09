@@ -2,8 +2,9 @@ export const prerender = false;
 
 import type { APIRoute } from 'astro';
 import { sendTelegramMessage, escapeHtml } from '../../lib/utils/telegram.js';
+import { verifyTurnstile } from '../../lib/utils/turnstile.js';
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request, clientAddress }) => {
   let body: any;
   try { body = await request.json(); } catch { return Response.json({ error: 'Invalid JSON' }, { status: 400 }); }
 
@@ -18,6 +19,11 @@ export const POST: APIRoute = async ({ request }) => {
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim())) {
     return Response.json({ error: 'Adresa de email nu este validă.' }, { status: 400 });
+  }
+
+  const ip = request.headers.get('x-forwarded-for')?.split(',')[0].trim() || clientAddress;
+  if (!(await verifyTurnstile(body['cf-turnstile-response'], ip))) {
+    return Response.json({ error: 'Verificarea anti-bot a eșuat. Reîncarcă pagina.' }, { status: 403 });
   }
 
   const serviceLabels: Record<string, string> = {

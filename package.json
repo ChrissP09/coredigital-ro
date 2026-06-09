@@ -6,11 +6,11 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "postbuild": "node --experimental-sqlite src/lib/db/migrate.js",
+    "postbuild": "node src/lib/db/migrate.js",
     "preview": "astro preview",
     "astro": "astro",
-    "migrate": "node --experimental-sqlite src/lib/db/migrate.js",
-    "start": "HOST=0.0.0.0 node --experimental-sqlite dist/server/entry.mjs"
+    "migrate": "node src/lib/db/migrate.js",
+    "start": "HOST=0.0.0.0 node dist/server/entry.mjs"
   },
   "dependencies": {
     "@astrojs/node": "^9.5.5",

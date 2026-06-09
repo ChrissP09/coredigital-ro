@@ -64,14 +64,16 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!button || !input.value.trim()) return;
 
     const tokenInput = form.querySelector("[name='cf-turnstile-response']");
-    if (window.turnstile && !tokenInput?.value) {
+    const widget = form.querySelector(".cf-turnstile");
+    if (window.turnstile && widget && !tokenInput?.value) {
       e.preventDefault();
-      const widget = form.querySelector(".cf-turnstile");
-      if (widget) {
-        window.turnstile.execute(widget, {
-          callback: () => { startLoading(); form.submit(); }
-        });
-      }
+      // The widget may already be mid-challenge (managed mode auto-runs); reset
+      // first so execute() doesn't throw "already executing" and drop the submit.
+      try { window.turnstile.reset(widget); } catch (_) {}
+      window.turnstile.execute(widget, {
+        callback: () => { startLoading(); form.submit(); },
+        "error-callback": () => { startLoading(); form.submit(); }
+      });
       return;
     }
 

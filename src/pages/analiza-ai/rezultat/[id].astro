@@ -550,6 +550,7 @@ const normalizedDomainJson = JSON.stringify(analysis.normalizedDomain);
           return new Promise(function(resolve) {
             var widget = document.getElementById(widgetId);
             if (!widget || !window.turnstile) return resolve('');
+            try { window.turnstile.reset(widget); } catch (e) {}
             window.turnstile.execute(widget, { callback: function(token) { resolve(token); }, 'error-callback': function() { resolve(''); } });
           });
         }
@@ -609,6 +610,7 @@ const normalizedDomainJson = JSON.stringify(analysis.normalizedDomain);
             return new Promise(function(resolve) {
               var widget = document.getElementById(widgetId);
               if (!widget || !window.turnstile) return resolve('');
+              try { window.turnstile.reset(widget); } catch (e) {}
               window.turnstile.execute(widget, { callback: function(token) { resolve(token); }, 'error-callback': function() { resolve(''); } });
             });
           }

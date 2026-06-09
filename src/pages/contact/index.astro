@@ -159,6 +159,7 @@ const turnstileSiteKey = env.turnstileSiteKey;
                 const widget = document.getElementById(widgetId);
                 const ts = (window as any).turnstile;
                 if (!widget || !ts) return resolve('');
+                try { ts.reset(widget); } catch (e) {}
                 ts.execute(widget, {
                   callback: (token: string) => resolve(token),
                   'error-callback': () => resolve(''),

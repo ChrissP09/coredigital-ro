@@ -27,8 +27,11 @@ const CSP = [
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: https:",
   "font-src 'self'",
-  "connect-src 'self'",
+  // Turnstile needs to reach challenges.cloudflare.com (token exchange) and may
+  // spawn a blob: worker — without these the widget can't issue a token.
+  "connect-src 'self' https://challenges.cloudflare.com",
   "frame-src https://challenges.cloudflare.com",
+  "worker-src 'self' blob:",
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "object-src 'none'",

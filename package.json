@@ -7,6 +7,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "postbuild": "node src/lib/db/migrate.js",
+    "postinstall": "node -e \"if(process.platform!=='win32'){try{require('child_process').execSync('npm rebuild better-sqlite3 --build-from-source',{stdio:'inherit'})}catch(e){console.warn('native rebuild skipped:',e.message)}}\"",
     "preview": "astro preview",
     "astro": "astro",
     "migrate": "node src/lib/db/migrate.js",

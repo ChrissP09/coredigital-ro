@@ -2,9 +2,15 @@
 const { spawn } = require('child_process');
 const path = require('path');
 
+// works whether this file sits at repo root (dist/server/) or inside dist/ (server/)
+const fs = require('fs');
+const entryFromRoot = path.join(__dirname, 'dist/server/entry.mjs');
+const entryFromDist = path.join(__dirname, 'server/entry.mjs');
+const entryFile = fs.existsSync(entryFromRoot) ? entryFromRoot : entryFromDist;
+
 const child = spawn(
   process.execPath,
-  ['--experimental-sqlite', path.join(__dirname, 'dist/server/entry.mjs')],
+  ['--experimental-sqlite', entryFile],
   { stdio: 'inherit', env: process.env }
 );
 

@@ -72,16 +72,22 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Widget auto-solves on load; if the token isn't ready yet, hold the submit
-    // and poll for it (up to 10s) instead of calling execute() — execute()'s
-    // callback doesn't fire on an already-rendered widget, which dropped submits.
+    // Token not ready: high-risk sessions (e.g. incognito) need a tap on the
+    // visible widget. Do NOT show the full-screen overlay — it would cover the
+    // checkbox. Wait for the token, then show the loader and submit.
     e.preventDefault();
-    startLoading();
+    button.disabled = true;
+    button.textContent = "Verificare...";
     let waited = 0;
     const iv = setInterval(() => {
-      if (getToken() || (waited += 250) >= 10000) {
+      if (getToken()) {
         clearInterval(iv);
+        startLoading();
         form.submit();
+      } else if ((waited += 250) >= 30000) {
+        clearInterval(iv);
+        button.disabled = false;
+        button.textContent = "Analizează gratuit →";
       }
     }, 250);
   });

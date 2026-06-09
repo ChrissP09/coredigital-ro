@@ -1,45 +1,53 @@
 'use strict';
 const { spawn } = require('child_process');
+const { createServer, request: httpRequest } = require('http');
 const path = require('path');
-const fs = require('fs');
 
-const logFile = path.join(__dirname, 'server-debug.log');
-function log(msg) {
-  const line = `[${new Date().toISOString()}] ${msg}\n`;
-  process.stdout.write(line);
-  try { fs.appendFileSync(logFile, line); } catch (_) {}
+const CHILD_PORT = 3001;
+const PORT = Number(process.env.PORT || 3000);
+
+// Child runs entry.mjs with --experimental-sqlite on internal port 3001
+const child = spawn(
+  process.execPath,
+  ['--experimental-sqlite', path.join(__dirname, 'server/entry.mjs')],
+  {
+    stdio: 'inherit',
+    env: { ...process.env, PORT: String(CHILD_PORT), HOST: '127.0.0.1' }
+  }
+);
+
+child.on('error', err => process.stderr.write('Child error: ' + err.message + '\n'));
+child.on('exit', code => process.exit(code ?? 0));
+
+// Forward request to child, retry up to `retries` times if child isn't ready yet
+function forward(req, res, body, retries) {
+  const pr = httpRequest(
+    {
+      hostname: '127.0.0.1',
+      port: CHILD_PORT,
+      path: req.url,
+      method: req.method,
+      headers: { ...req.headers, 'content-length': body.length },
+    },
+    r => { res.writeHead(r.statusCode, r.headers); r.pipe(res); }
+  );
+  pr.write(body);
+  pr.end();
+  pr.on('error', err => {
+    if (retries > 0 && err.code === 'ECONNREFUSED')
+      setTimeout(() => forward(req, res, body, retries - 1), 300);
+    else if (!res.headersSent) { res.writeHead(502); res.end('Bad Gateway'); }
+  });
 }
 
-log('=== server.cjs started ===');
-log('Node.js version: ' + process.version);
-log('__dirname: ' + __dirname);
-log('process.cwd(): ' + process.cwd());
-log('PORT: ' + process.env.PORT);
-log('HOST: ' + process.env.HOST);
-log('NODE_OPTIONS: ' + process.env.NODE_OPTIONS);
-log('SQLITE_DB_PATH: ' + process.env.SQLITE_DB_PATH);
-
-const entryFromRoot = path.join(__dirname, 'dist/server/entry.mjs');
-const entryFromDist = path.join(__dirname, 'server/entry.mjs');
-const hasFromRoot = fs.existsSync(entryFromRoot);
-const hasFromDist = fs.existsSync(entryFromDist);
-log('entry (root path) ' + entryFromRoot + ' exists=' + hasFromRoot);
-log('entry (dist path) ' + entryFromDist + ' exists=' + hasFromDist);
-
-const entryFile = hasFromRoot ? entryFromRoot : hasFromDist ? entryFromDist : null;
-if (!entryFile) {
-  log('ERROR: entry.mjs not found!');
-  process.exit(1);
-}
-log('Spawning: node --experimental-sqlite ' + entryFile);
-
-const child = spawn(process.execPath, ['--experimental-sqlite', entryFile], {
-  stdio: 'inherit',
-  env: process.env,
+// Proxy server — Passenger intercepts this listen() call
+const proxyServer = createServer((req, res) => {
+  const chunks = [];
+  req.on('data', c => chunks.push(c));
+  req.on('end', () => forward(req, res, Buffer.concat(chunks), 10));
 });
 
-child.on('error', err => { log('Spawn error: ' + err.message); process.exit(1); });
-child.on('exit', (code, signal) => { log('Child exited code=' + code + ' signal=' + signal); process.exit(code ?? 0); });
-process.on('SIGTERM', () => { log('SIGTERM'); child.kill('SIGTERM'); });
-process.on('SIGINT',  () => { log('SIGINT');  child.kill('SIGINT');  });
-log('Child spawned, listening for events...');
+proxyServer.listen(PORT, '127.0.0.1');
+
+process.on('SIGTERM', () => { child.kill('SIGTERM'); proxyServer.close(); process.exit(0); });
+process.on('SIGINT',  () => { child.kill('SIGINT');  proxyServer.close(); process.exit(0); });

@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "postbuild": "node src/lib/db/migrate.js",
+    "postbuild": "node --experimental-sqlite src/lib/db/migrate.js && node -e \"require('fs').copyFileSync('server.cjs','dist/server.cjs')\"",
     "preview": "astro preview",
     "astro": "astro",
     "migrate": "node src/lib/db/migrate.js",

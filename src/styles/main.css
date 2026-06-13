@@ -13,7 +13,10 @@
 @import './components/service-ai-page.css';
 @import './components/hero.css';
 @import './components/problems.css';
+@import './components/problems-v2.css';
+@import './components/home-system.css';
 @import './components/services-overview.css';
+@import './components/services-system.css';
 @import './components/service-focus.css';
 @import './components/reviews-focus.css';
 @import './components/ai-focus.css';
